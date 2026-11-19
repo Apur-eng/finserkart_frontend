@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Card } from '@astryxdesign/core/Card';
 import { TextInput } from '@astryxdesign/core/TextInput';
@@ -40,19 +41,19 @@ export const AdminProfilePage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '960px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '28px' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-72)", margin: '0 auto', display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-20)" }}>
       {/* Header */}
-      <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#dc2626', fontSize: '13px', fontWeight: 600 }}>
+      <Surface>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", color: "var(--color-fsk-34)", fontSize: "var(--font-fsk-14)", fontWeight: 600 }}>
           <ShieldAlert size={16} /> Root Platform Governance Credentials
-        </div>
-        <h1 style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', margin: '4px 0 0 0' }}>
+        </Surface>
+        <h1 style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
           Administrator Profile & Security Clearance
         </h1>
-        <p style={{ fontSize: '14px', color: '#64748b', margin: '4px 0 0 0' }}>
+        <p style={{ fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
           Manage your platform root credentials, two-factor authentication, and security clearance.
         </p>
-      </div>
+      </Surface>
 
       {bannerMessage && (
         <Banner
@@ -64,117 +65,117 @@ export const AdminProfilePage: React.FC = () => {
 
       {/* Admin Card */}
       <Card elevation="low" padding={5}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
-          <div
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-2)", flexWrap: 'wrap' }}>
+          <Surface
             style={{
-              width: '72px',
-              height: '72px',
+              width: "var(--spacing-fsk-73)",
+              height: "var(--spacing-fsk-73)",
               borderRadius: '50%',
-              background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
-              color: '#ffffff',
+              background: "var(--color-fsk-brand)",
+              color: "var(--color-fsk-38)",
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '28px',
+              fontSize: "var(--font-fsk-16)",
               fontWeight: 800,
             }}
           >
             A
-          </div>
+          </Surface>
 
-          <div style={{ flex: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <h2 style={{ fontSize: '20px', fontWeight: 800, color: '#0f172a', margin: 0 }}>
+          <Surface style={{ flex: 1 }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 800, color: "var(--color-fsk-7)", margin: 0 }}>
                 {profile.name}
               </h2>
               <Badge label="Super Admin" variant="red" />
-            </div>
-            <div style={{ display: 'flex', gap: '16px', marginTop: '6px', fontSize: '13px', color: '#64748b', flexWrap: 'wrap' }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            </Surface>
+            <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-5)", marginTop: "var(--spacing-fsk-17)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", flexWrap: 'wrap' }}>
+              <Inline style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
                 <Mail size={14} /> {profile.email}
-              </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              </Inline>
+              <Inline style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
                 <Clock size={14} /> Last Login: {profile.lastLogin}
-              </span>
-            </div>
-          </div>
-        </div>
+              </Inline>
+            </Surface>
+          </Surface>
+        </Surface>
       </Card>
 
       {/* Security Clearance Details */}
       <Card elevation="low" padding={5}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-          <ShieldCheck size={20} color="#16a34a" />
-          <h2 style={{ fontSize: '17px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-5)" }}>
+          <ShieldCheck size={20} color="var(--color-fsk-39)" />
+          <h2 style={{ fontSize: "var(--font-fsk-74)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
             Active Security Clearance
           </h2>
-        </div>
+        </Surface>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
-          <div style={{ padding: '16px', borderRadius: '8px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
-            <div style={{ fontSize: '12px', color: '#64748b' }}>Security Clearance Level</div>
-            <div style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', marginTop: '4px' }}>
+        <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16.25rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
+          <Surface style={{ padding: "var(--spacing-fsk-5)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-27)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Security Clearance Level</Surface>
+            <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-29)" }}>
               {profile.securityClearance}
-            </div>
-          </div>
+            </Surface>
+          </Surface>
 
-          <div style={{ padding: '16px', borderRadius: '8px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
-            <div style={{ fontSize: '12px', color: '#64748b' }}>Authorized Operations</div>
-            <div style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', marginTop: '4px' }}>
+          <Surface style={{ padding: "var(--spacing-fsk-5)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-27)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Authorized Operations</Surface>
+            <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-29)" }}>
               Root Database, Treasury, User & CA Allocation
-            </div>
-          </div>
-        </div>
+            </Surface>
+          </Surface>
+        </Surface>
 
-        <div
+        <Surface
           style={{
-            marginTop: '20px',
-            padding: '16px',
-            borderRadius: '8px',
-            border: '1px solid #e2e8f0',
+            marginTop: "var(--spacing-fsk-2)",
+            padding: "var(--spacing-fsk-5)",
+            borderRadius: "var(--radius-fsk-37)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            background: profile.twoFactorEnabled ? '#f0fdf4' : '#fffbeb',
+            background: profile.twoFactorEnabled ? "var(--color-fsk-75)" : "var(--color-fsk-66)",
           }}
         >
-          <div>
-            <div style={{ fontWeight: 600, color: '#0f172a', fontSize: '14px' }}>
+          <Surface>
+            <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)", fontSize: "var(--font-fsk-24)" }}>
               Two-Factor Authentication (2FA)
-            </div>
-            <div style={{ fontSize: '12.5px', color: '#64748b', marginTop: '2px' }}>
+            </Surface>
+            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
               Hardware security key or TOTP authenticator required for administrative actions.
-            </div>
-          </div>
+            </Surface>
+          </Surface>
           <button
             type="button"
             onClick={toggle2FA}
             style={{
-              padding: '8px 16px',
-              borderRadius: '6px',
-              background: profile.twoFactorEnabled ? '#16a34a' : '#ffffff',
-              color: profile.twoFactorEnabled ? '#ffffff' : '#334155',
-              border: profile.twoFactorEnabled ? 'none' : '1px solid #cbd5e1',
+              padding: "var(--spacing-fsk-12) var(--spacing-fsk-5)",
+              borderRadius: "var(--radius-fsk-42)",
+              background: profile.twoFactorEnabled ? "var(--color-fsk-39)" : "var(--color-fsk-38)",
+              color: profile.twoFactorEnabled ? "var(--color-fsk-38)" : "var(--color-fsk-25)",
+              border: profile.twoFactorEnabled ? 'none' : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
               fontWeight: 600,
-              fontSize: '13px',
+              fontSize: "var(--font-fsk-14)",
               cursor: 'pointer',
             }}
           >
             {profile.twoFactorEnabled ? 'Enabled (Active)' : 'Enable 2FA'}
           </button>
-        </div>
+        </Surface>
       </Card>
 
       {/* Password Management */}
       <Card elevation="low" padding={5}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-          <Lock size={20} color="#dc2626" />
-          <h2 style={{ fontSize: '17px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-5)" }}>
+          <Lock size={20} color="var(--color-fsk-34)" />
+          <h2 style={{ fontSize: "var(--font-fsk-74)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
             Update Administrator Credentials
           </h2>
-        </div>
+        </Surface>
 
-        <form onSubmit={handlePasswordUpdate} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <form onSubmit={handlePasswordUpdate} style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-5)" }}>
           <TextInput
             label="Current Master Password"
             type="password"
@@ -199,28 +200,28 @@ export const AdminProfilePage: React.FC = () => {
             onChange={(val) => setConfirmPassword(val)}
           />
 
-          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
+          <Surface style={{ display: 'flex', justifyContent: 'flex-end', marginTop: "var(--spacing-fsk-12)" }}>
             <button
               type="submit"
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
-                padding: '10px 20px',
-                borderRadius: '8px',
-                background: '#dc2626',
-                color: '#ffffff',
+                gap: "var(--spacing-fsk-12)",
+                padding: "var(--spacing-fsk-35) var(--spacing-fsk-2)",
+                borderRadius: "var(--radius-fsk-37)",
+                background: "var(--color-fsk-34)",
+                color: "var(--color-fsk-38)",
                 fontWeight: 600,
-                fontSize: '14px',
+                fontSize: "var(--font-fsk-24)",
                 border: 'none',
                 cursor: 'pointer',
               }}
             >
               <Key size={16} /> Update Master Password
             </button>
-          </div>
+          </Surface>
         </form>
       </Card>
-    </div>
+    </Surface>
   );
 };

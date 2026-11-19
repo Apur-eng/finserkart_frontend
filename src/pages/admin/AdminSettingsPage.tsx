@@ -1,3 +1,4 @@
+import { Surface } from '../../components/Surface';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Card } from '@astryxdesign/core/Card';
 import { TextInput } from '@astryxdesign/core/TextInput';
@@ -25,19 +26,19 @@ export const AdminSettingsPage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '28px' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-78)", margin: '0 auto', display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-20)" }}>
       {/* Header */}
-      <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#dc2626', fontSize: '13px', fontWeight: 600 }}>
+      <Surface>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", color: "var(--color-fsk-34)", fontSize: "var(--font-fsk-14)", fontWeight: 600 }}>
           <Settings size={16} /> Global Platform Governance
-        </div>
-        <h1 style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', margin: '4px 0 0 0' }}>
+        </Surface>
+        <h1 style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
           Platform Settings & System Configuration
         </h1>
-        <p style={{ fontSize: '14px', color: '#64748b', margin: '4px 0 0 0' }}>
+        <p style={{ fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
           Configure core operational parameters, payment gateway webhooks, and automation thresholds.
         </p>
-      </div>
+      </Surface>
 
       {isSaved && (
         <Banner
@@ -47,17 +48,17 @@ export const AdminSettingsPage: React.FC = () => {
         />
       )}
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-26)" }}>
         {/* Section 1: General Branding & Support */}
         <Card elevation="low" padding={5}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-            <Globe size={20} color="#dc2626" />
-            <h2 style={{ fontSize: '17px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-5)" }}>
+            <Globe size={20} color="var(--color-fsk-34)" />
+            <h2 style={{ fontSize: "var(--font-fsk-74)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
               General Platform Identity
             </h2>
-          </div>
+          </Surface>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+          <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
             <TextInput
               label="Platform Legal Name"
               value={settings.platformName}
@@ -73,107 +74,107 @@ export const AdminSettingsPage: React.FC = () => {
               value={settings.supportPhone}
               onChange={(val) => setSettings({ ...settings, supportPhone: val })}
             />
-          </div>
+          </Surface>
         </Card>
 
         {/* Section 2: Automation & Operational Controls */}
         <Card elevation="low" padding={5}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-            <Sliders size={20} color="#2563eb" />
-            <h2 style={{ fontSize: '17px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-5)" }}>
+            <Sliders size={20} color="var(--color-fsk-40)" />
+            <h2 style={{ fontSize: "var(--font-fsk-74)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
               Operational Automation & Routing Rules
             </h2>
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-5)" }}>
             {/* Auto Assign CA */}
-            <div
+            <Surface
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                padding: '16px',
-                borderRadius: '8px',
-                border: '1px solid #e2e8f0',
-                background: '#f8fafc',
+                padding: "var(--spacing-fsk-5)",
+                borderRadius: "var(--radius-fsk-37)",
+                border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+                background: "var(--color-fsk-27)",
               }}
             >
-              <div>
-                <div style={{ fontWeight: 600, color: '#0f172a', fontSize: '14px' }}>
+              <Surface>
+                <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)", fontSize: "var(--font-fsk-24)" }}>
                   Automated CA Load-Balanced Allocation
-                </div>
-                <div style={{ fontSize: '12.5px', color: '#64748b', marginTop: '2px' }}>
+                </Surface>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
                   When enabled, verified applications are instantly routed to the CA with lowest active queue.
-                </div>
-              </div>
+                </Surface>
+              </Surface>
               <button
                 type="button"
                 onClick={() => setSettings({ ...settings, autoAssignCA: !settings.autoAssignCA })}
                 style={{
-                  padding: '8px 16px',
-                  borderRadius: '6px',
-                  background: settings.autoAssignCA ? '#2563eb' : '#ffffff',
-                  color: settings.autoAssignCA ? '#ffffff' : '#475569',
-                  border: settings.autoAssignCA ? 'none' : '1px solid #cbd5e1',
+                  padding: "var(--spacing-fsk-12) var(--spacing-fsk-5)",
+                  borderRadius: "var(--radius-fsk-42)",
+                  background: settings.autoAssignCA ? "var(--color-fsk-40)" : "var(--color-fsk-38)",
+                  color: settings.autoAssignCA ? "var(--color-fsk-38)" : "var(--color-fsk-18)",
+                  border: settings.autoAssignCA ? 'none' : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
                   fontWeight: 600,
-                  fontSize: '13px',
+                  fontSize: "var(--font-fsk-14)",
                   cursor: 'pointer',
                 }}
               >
                 {settings.autoAssignCA ? 'Enabled' : 'Disabled'}
               </button>
-            </div>
+            </Surface>
 
             {/* Maintenance Mode */}
-            <div
+            <Surface
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                padding: '16px',
-                borderRadius: '8px',
-                border: '1px solid #e2e8f0',
-                background: '#f8fafc',
+                padding: "var(--spacing-fsk-5)",
+                borderRadius: "var(--radius-fsk-37)",
+                border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+                background: "var(--color-fsk-27)",
               }}
             >
-              <div>
-                <div style={{ fontWeight: 600, color: '#0f172a', fontSize: '14px' }}>
+              <Surface>
+                <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)", fontSize: "var(--font-fsk-24)" }}>
                   Platform Emergency Maintenance Mode
-                </div>
-                <div style={{ fontSize: '12.5px', color: '#64748b', marginTop: '2px' }}>
+                </Surface>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
                   Restricts consumer logins and shows maintenance splash banner across portals.
-                </div>
-              </div>
+                </Surface>
+              </Surface>
               <button
                 type="button"
                 onClick={() => setSettings({ ...settings, maintenanceMode: !settings.maintenanceMode })}
                 style={{
-                  padding: '8px 16px',
-                  borderRadius: '6px',
-                  background: settings.maintenanceMode ? '#dc2626' : '#ffffff',
-                  color: settings.maintenanceMode ? '#ffffff' : '#475569',
-                  border: settings.maintenanceMode ? 'none' : '1px solid #cbd5e1',
+                  padding: "var(--spacing-fsk-12) var(--spacing-fsk-5)",
+                  borderRadius: "var(--radius-fsk-42)",
+                  background: settings.maintenanceMode ? "var(--color-fsk-34)" : "var(--color-fsk-38)",
+                  color: settings.maintenanceMode ? "var(--color-fsk-38)" : "var(--color-fsk-18)",
+                  border: settings.maintenanceMode ? 'none' : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
                   fontWeight: 600,
-                  fontSize: '13px',
+                  fontSize: "var(--font-fsk-14)",
                   cursor: 'pointer',
                 }}
               >
                 {settings.maintenanceMode ? 'ACTIVE' : 'Inactive'}
               </button>
-            </div>
-          </div>
+            </Surface>
+          </Surface>
         </Card>
 
         {/* Section 3: Financial & Statutory Payout Thresholds */}
         <Card elevation="low" padding={5}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-            <Database size={20} color="#16a34a" />
-            <h2 style={{ fontSize: '17px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-5)" }}>
+            <Database size={20} color="var(--color-fsk-39)" />
+            <h2 style={{ fontSize: "var(--font-fsk-74)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
               Financial & Statutory Parameters
             </h2>
-          </div>
+          </Surface>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+          <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
             <TextInput
               label="Statutory TDS Deduction Rate (%)"
               value={String(settings.taxDeductionPercent)}
@@ -189,31 +190,31 @@ export const AdminSettingsPage: React.FC = () => {
               value={settings.paymentGatewayKey}
               onChange={(val) => setSettings({ ...settings, paymentGatewayKey: val })}
             />
-          </div>
+          </Surface>
         </Card>
 
         {/* Action Button */}
-        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px' }}>
+        <Surface style={{ display: 'flex', justifyContent: 'flex-end', gap: "var(--spacing-fsk-8)" }}>
           <button
             type="submit"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '8px',
-              padding: '10px 20px',
-              borderRadius: '8px',
-              background: '#dc2626',
-              color: '#ffffff',
+              gap: "var(--spacing-fsk-12)",
+              padding: "var(--spacing-fsk-35) var(--spacing-fsk-2)",
+              borderRadius: "var(--radius-fsk-37)",
+              background: "var(--color-fsk-34)",
+              color: "var(--color-fsk-38)",
               fontWeight: 600,
-              fontSize: '14px',
+              fontSize: "var(--font-fsk-24)",
               border: 'none',
               cursor: 'pointer',
             }}
           >
             <Save size={16} /> Save Platform Configuration
           </button>
-        </div>
+        </Surface>
       </form>
-    </div>
+    </Surface>
   );
 };

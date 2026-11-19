@@ -1,3 +1,4 @@
+import { Surface } from '../components/Surface';
 import { AppShell } from '@astryxdesign/core/AppShell';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
@@ -12,12 +13,12 @@ export const PublicLayout: React.FC = () => {
       topNav={<Navbar />}
       contentPadding={0}
     >
-      <div style={{ minHeight: 'calc(100vh - 200px)', display: 'flex', flexDirection: 'column' }}>
-        <main style={{ flex: 1 }}>
+      <Surface style={{ minHeight: "calc(100vh - var(--spacing-fsk-144))", display: 'flex', flexDirection: 'column' }}>
+        <main id="public-content" tabIndex={-1} style={{ flex: 1, minWidth: 0 }}>
           <Outlet />
         </main>
         <Footer />
-      </div>
+      </Surface>
     </AppShell>
   );
 };

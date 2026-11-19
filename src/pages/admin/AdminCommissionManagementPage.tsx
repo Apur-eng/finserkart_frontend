@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Card } from '@astryxdesign/core/Card';
 import { TextInput } from '@astryxdesign/core/TextInput';
@@ -47,19 +48,19 @@ export const AdminCommissionManagementPage: React.FC = () => {
     .reduce((sum, p) => sum + p.amount, 0);
 
   return (
-    <div style={{ maxWidth: '1360px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '28px' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-33)", margin: '0 auto', display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-20)" }}>
       {/* Header */}
-      <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#dc2626', fontSize: '13px', fontWeight: 600 }}>
+      <Surface>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", color: "var(--color-fsk-34)", fontSize: "var(--font-fsk-14)", fontWeight: 600 }}>
           <Coins size={16} /> Platform Revenue & Compensation Control
-        </div>
-        <h1 style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', margin: '4px 0 0 0' }}>
+        </Surface>
+        <h1 style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
           Commission Management & Payout Approvals
         </h1>
-        <p style={{ fontSize: '14px', color: '#64748b', margin: '4px 0 0 0' }}>
+        <p style={{ fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
           Configure multi-tier partner revenue splits and authorise high-value withdrawal disbursements.
         </p>
-      </div>
+      </Surface>
 
       {successBanner && (
         <Banner
@@ -70,92 +71,92 @@ export const AdminCommissionManagementPage: React.FC = () => {
       )}
 
       {/* Overview Cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16.25rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
         <Card elevation="low" padding={4}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 500 }}>Pending Approval Value</span>
-            <AlertCircle size={20} color="#eab308" />
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', marginTop: '12px' }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 500 }}>Pending Approval Value</Inline>
+            <AlertCircle size={20} color="var(--color-fsk-55)" />
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-8)" }}>
             ₹{totalPendingPayout.toLocaleString('en-IN')}
-          </div>
-          <div style={{ fontSize: '12px', color: '#d97706', marginTop: '4px' }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-54)", marginTop: "var(--spacing-fsk-29)" }}>
             {payouts.filter((p) => p.status === 'Pending Approval').length} partner requests awaiting clearance
-          </div>
+          </Surface>
         </Card>
 
         <Card elevation="low" padding={4}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 500 }}>Active Commission Rules</span>
-            <Sliders size={20} color="#3b82f6" />
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', marginTop: '12px' }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 500 }}>Active Commission Rules</Inline>
+            <Sliders size={20} color="var(--color-fsk-56)" />
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-8)" }}>
             {rules.length} Categories
-          </div>
-          <div style={{ fontSize: '12px', color: '#2563eb', marginTop: '4px' }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-40)", marginTop: "var(--spacing-fsk-29)" }}>
             Platform average margin: 23.75%
-          </div>
+          </Surface>
         </Card>
 
         <Card elevation="low" padding={4}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 500 }}>Disbursed This Month</span>
-            <CheckCircle size={20} color="#16a34a" />
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', marginTop: '12px' }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 500 }}>Disbursed This Month</Inline>
+            <CheckCircle size={20} color="var(--color-fsk-39)" />
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-8)" }}>
             ₹2,48,200
-          </div>
-          <div style={{ fontSize: '12px', color: '#16a34a', marginTop: '4px' }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-39)", marginTop: "var(--spacing-fsk-29)" }}>
             100% automated NEFT/IMPS pipeline
-          </div>
+          </Surface>
         </Card>
-      </div>
+      </Surface>
 
       {/* Section 1: Payout Approval Queue */}
       <Card elevation="low" padding={5}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '16px' }}>
-          <div>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+        <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-2)", flexWrap: 'wrap', gap: "var(--spacing-fsk-5)" }}>
+          <Surface>
+            <h2 style={{ fontSize: "var(--font-fsk-30)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
               Partner Payout Requests & Approvals
             </h2>
-            <p style={{ fontSize: '13px', color: '#64748b', margin: '4px 0 0 0' }}>
+            <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
               Verify beneficiary banking credentials and release funds.
             </p>
-          </div>
-          <div style={{ width: '280px' }}>
+          </Surface>
+          <Surface style={{ width: "var(--spacing-fsk-45)" }}>
             <TextInput
               label="Search Payout Queue"
               placeholder="Filter by name, ID or role..."
               value={searchTerm}
               onChange={(val) => setSearchTerm(val)}
             />
-          </div>
-        </div>
+          </Surface>
+        </Surface>
 
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13px' }}>
+        <Surface style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid #e2e8f0', color: '#64748b', fontWeight: 600 }}>
-                <th style={{ padding: '12px 16px' }}>Request ID</th>
-                <th style={{ padding: '12px 16px' }}>Beneficiary</th>
-                <th style={{ padding: '12px 16px' }}>Role</th>
-                <th style={{ padding: '12px 16px' }}>Amount</th>
-                <th style={{ padding: '12px 16px' }}>Bank Account & IFSC</th>
-                <th style={{ padding: '12px 16px' }}>Requested</th>
-                <th style={{ padding: '12px 16px' }}>Status</th>
-                <th style={{ padding: '12px 16px', textAlign: 'right' }}>Authorization</th>
+              <tr style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontWeight: 600 }}>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Request ID</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Beneficiary</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Role</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Amount</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Bank Account & IFSC</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Requested</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Status</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)", textAlign: 'right' }}>Authorization</th>
               </tr>
             </thead>
             <tbody>
               {filteredPayouts.map((payout) => (
-                <tr key={payout.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '14px 16px', fontWeight: 700, color: '#0f172a' }}>
+                <tr key={payout.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                     {payout.id}
                   </td>
-                  <td style={{ padding: '14px 16px', fontWeight: 600, color: '#0f172a' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", fontWeight: 600, color: "var(--color-fsk-7)" }}>
                     {payout.beneficiaryName}
                   </td>
-                  <td style={{ padding: '14px 16px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>
                     <Badge
                       label={payout.beneficiaryRole}
                       variant={
@@ -167,17 +168,17 @@ export const AdminCommissionManagementPage: React.FC = () => {
                       }
                     />
                   </td>
-                  <td style={{ padding: '14px 16px', fontWeight: 700, color: '#0f172a', fontSize: '14px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", fontWeight: 700, color: "var(--color-fsk-7)", fontSize: "var(--font-fsk-24)" }}>
                     ₹{payout.amount.toLocaleString('en-IN')}
                   </td>
-                  <td style={{ padding: '14px 16px', color: '#64748b' }}>
-                    <div>{payout.bankAccount}</div>
-                    <div style={{ fontSize: '11px', color: '#94a3b8' }}>{payout.ifsc}</div>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-9)" }}>
+                    <Surface>{payout.bankAccount}</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)" }}>{payout.ifsc}</Surface>
                   </td>
-                  <td style={{ padding: '14px 16px', color: '#64748b' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-9)" }}>
                     {payout.requestedDate}
                   </td>
-                  <td style={{ padding: '14px 16px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>
                     <Badge
                       label={payout.status}
                       variant={
@@ -189,19 +190,19 @@ export const AdminCommissionManagementPage: React.FC = () => {
                       }
                     />
                   </td>
-                  <td style={{ padding: '14px 16px', textAlign: 'right' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", textAlign: 'right' }}>
                     {payout.status === 'Pending Approval' ? (
-                      <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+                      <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)", justifyContent: 'flex-end' }}>
                         <button
                           type="button"
                           onClick={() => handleApprove(payout.id, payout.beneficiaryName, payout.amount)}
                           style={{
-                            padding: '6px 14px',
-                            borderRadius: '6px',
-                            background: '#16a34a',
-                            color: '#ffffff',
+                            padding: "var(--spacing-fsk-17) var(--spacing-fsk-23)",
+                            borderRadius: "var(--radius-fsk-42)",
+                            background: "var(--color-fsk-39)",
+                            color: "var(--color-fsk-38)",
                             fontWeight: 600,
-                            fontSize: '12px',
+                            fontSize: "var(--font-fsk-14)",
                             border: 'none',
                             cursor: 'pointer',
                           }}
@@ -212,86 +213,86 @@ export const AdminCommissionManagementPage: React.FC = () => {
                           type="button"
                           onClick={() => handleReject(payout.id, payout.beneficiaryName)}
                           style={{
-                            padding: '6px 14px',
-                            borderRadius: '6px',
-                            background: '#fee2e2',
-                            color: '#dc2626',
+                            padding: "var(--spacing-fsk-17) var(--spacing-fsk-23)",
+                            borderRadius: "var(--radius-fsk-42)",
+                            background: "var(--color-fsk-43)",
+                            color: "var(--color-fsk-34)",
                             fontWeight: 600,
-                            fontSize: '12px',
-                            border: '1px solid #fecaca',
+                            fontSize: "var(--font-fsk-14)",
+                            border: "var(--spacing-fsk-22) solid var(--color-fsk-58)",
                             cursor: 'pointer',
                           }}
                         >
                           Reject
                         </button>
-                      </div>
+                      </Surface>
                     ) : (
-                      <span style={{ fontSize: '12px', color: '#94a3b8', fontStyle: 'italic' }}>
+                      <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)", fontStyle: 'italic' }}>
                         Processed
-                      </span>
+                      </Inline>
                     )}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
+        </Surface>
       </Card>
 
       {/* Section 2: Commission Split Rules */}
       <Card elevation="low" padding={5}>
-        <div style={{ marginBottom: '20px' }}>
-          <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+        <Surface style={{ marginBottom: "var(--spacing-fsk-2)" }}>
+          <h2 style={{ fontSize: "var(--font-fsk-30)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
             Multi-Tier Platform Commission Rules
           </h2>
-          <p style={{ fontSize: '13px', color: '#64748b', margin: '4px 0 0 0' }}>
+          <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
             Defined revenue allocation models applied automatically upon payment reconciliation.
           </p>
-        </div>
+        </Surface>
 
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13px' }}>
+        <Surface style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid #e2e8f0', color: '#64748b', fontWeight: 600 }}>
-                <th style={{ padding: '12px 16px' }}>Rule ID</th>
-                <th style={{ padding: '12px 16px' }}>Service Category</th>
-                <th style={{ padding: '12px 16px' }}>Chartered Accountant Share</th>
-                <th style={{ padding: '12px 16px' }}>Sourcing Agent Share</th>
-                <th style={{ padding: '12px 16px' }}>Franchise Node Share</th>
-                <th style={{ padding: '12px 16px' }}>Platform Retained Margin</th>
-                <th style={{ padding: '12px 16px' }}>Effective Date</th>
+              <tr style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontWeight: 600 }}>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Rule ID</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Service Category</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Chartered Accountant Share</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Sourcing Agent Share</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Franchise Node Share</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Platform Retained Margin</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Effective Date</th>
               </tr>
             </thead>
             <tbody>
               {rules.map((rule) => (
-                <tr key={rule.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '14px 16px', fontWeight: 700, color: '#0f172a' }}>
+                <tr key={rule.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                     {rule.id}
                   </td>
-                  <td style={{ padding: '14px 16px', fontWeight: 600, color: '#0f172a' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", fontWeight: 600, color: "var(--color-fsk-7)" }}>
                     {rule.serviceCategory}
                   </td>
-                  <td style={{ padding: '14px 16px', color: '#7c3aed', fontWeight: 600 }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-41)", fontWeight: 600 }}>
                     {rule.caSharePercent}%
                   </td>
-                  <td style={{ padding: '14px 16px', color: '#d97706', fontWeight: 600 }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-54)", fontWeight: 600 }}>
                     {rule.agentSharePercent}%
                   </td>
-                  <td style={{ padding: '14px 16px', color: '#2563eb', fontWeight: 600 }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-40)", fontWeight: 600 }}>
                     {rule.franchiseSharePercent}%
                   </td>
-                  <td style={{ padding: '14px 16px', color: '#16a34a', fontWeight: 700 }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-39)", fontWeight: 700 }}>
                     {rule.platformMarginPercent}%
                   </td>
-                  <td style={{ padding: '14px 16px', color: '#64748b' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-9)" }}>
                     {rule.updatedAt}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };

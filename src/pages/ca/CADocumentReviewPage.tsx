@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
 import { TextInput } from '@astryxdesign/core/TextInput';
@@ -47,23 +48,23 @@ export const CADocumentReviewPage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ marginBottom: '24px' }}>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
         <Heading level={1}>
-          <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
             Document Review & Audit Desk
-          </span>
+          </Inline>
         </Heading>
-        <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
           Examine applicant proofs, legal deeds, and identity documents. Approve compliant attachments or flag filing defects.
         </p>
-      </div>
+      </Surface>
 
       {/* Filter and Search Bar */}
-      <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '24px' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ flex: '1', minWidth: '280px', maxWidth: '420px' }}>
+      <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-5)", alignItems: 'center', justifyContent: 'space-between' }}>
+          <Surface style={{ flex: '1', minWidth: "min(100%, var(--spacing-fsk-45))", maxWidth: "var(--spacing-fsk-50)" }}>
             <TextInput
               label="Search Documents"
               placeholder="Search by document name, application ID, or client..."
@@ -71,21 +72,21 @@ export const CADocumentReviewPage: React.FC = () => {
               onChange={(val) => setSearchQuery(val)}
               width="100%"
             />
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', gap: '8px' }}>
+          <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)" }}>
             {(['All', 'Pending Review', 'Approved', 'Defective / Rejected'] as const).map((tab) => (
               <button
                 key={tab}
                 type="button"
                 onClick={() => setActiveTab(tab)}
                 style={{
-                  padding: '6px 14px',
-                  borderRadius: '20px',
-                  border: activeTab === tab ? '1px solid #7c3aed' : '1px solid #cbd5e1',
-                  background: activeTab === tab ? '#f5f3ff' : '#ffffff',
-                  color: activeTab === tab ? '#7c3aed' : '#475569',
-                  fontSize: '13px',
+                  padding: "var(--spacing-fsk-17) var(--spacing-fsk-23)",
+                  borderRadius: "var(--radius-fsk-28)",
+                  border: activeTab === tab ? "var(--spacing-fsk-22) solid var(--color-fsk-41)" : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                  background: activeTab === tab ? "var(--color-fsk-53)" : "var(--color-fsk-38)",
+                  color: activeTab === tab ? "var(--color-fsk-41)" : "var(--color-fsk-18)",
+                  fontSize: "var(--font-fsk-14)",
                   fontWeight: activeTab === tab ? 600 : 500,
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
@@ -94,75 +95,75 @@ export const CADocumentReviewPage: React.FC = () => {
                 {tab}
               </button>
             ))}
-          </div>
-        </div>
+          </Surface>
+        </Surface>
       </Card>
 
       {/* Documents Review List */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+      <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-23)" }}>
         {filteredDocs.map((doc) => (
           <Card
             key={doc.id}
             elevation="low"
             padding={4}
             style={{
-              borderRadius: '12px',
-              border: doc.status === 'Defective / Rejected' ? '1px solid #fecaca' : '1px solid #e2e8f0',
-              background: '#ffffff',
+              borderRadius: "var(--radius-fsk-28)",
+              border: doc.status === 'Defective / Rejected' ? "var(--spacing-fsk-22) solid var(--color-fsk-58)" : "var(--spacing-fsk-22) solid var(--color-fsk-163)",
+              background: "var(--color-fsk-38)",
             }}
           >
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div
+            <Surface style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: "var(--spacing-fsk-5)" }}>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-23)" }}>
+                <Surface
                   style={{
-                    width: '42px',
-                    height: '42px',
-                    borderRadius: '10px',
-                    background: '#f8fafc',
-                    border: '1px solid #e2e8f0',
+                    width: "var(--spacing-fsk-76)",
+                    height: "var(--spacing-fsk-76)",
+                    borderRadius: "var(--radius-fsk-68)",
+                    background: "var(--color-fsk-27)",
+                    border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#7c3aed',
+                    color: "var(--color-fsk-41)",
                   }}
                 >
                   <FileText size={22} />
-                </div>
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>{doc.fileName}</span>
+                </Surface>
+                <Surface>
+                  <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)" }}>
+                    <Inline style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)" }}>{doc.fileName}</Inline>
                     <Badge
                       label={doc.status}
                       variant={doc.status === 'Approved' ? 'green' : doc.status === 'Pending Review' ? 'orange' : 'red'}
                     />
-                  </div>
-                  <div style={{ fontSize: '12.5px', color: '#64748b', marginTop: '2px' }}>
-                    Type: <strong>{doc.fileType}</strong> • {doc.fileSize} • Client: <strong style={{ color: '#0f172a' }}>{doc.customerName}</strong> ({doc.serviceName} - #{doc.applicationId})
-                  </div>
+                  </Surface>
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
+                    Type: <strong>{doc.fileType}</strong> • {doc.fileSize} • Client: <strong style={{ color: "var(--color-fsk-7)" }}>{doc.customerName}</strong> ({doc.serviceName} - #{doc.applicationId})
+                  </Surface>
                   {doc.reviewNotes && (
-                    <div style={{ fontSize: '12px', color: doc.status === 'Defective / Rejected' ? '#b91c1c' : '#15803d', marginTop: '4px' }}>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: doc.status === 'Defective / Rejected' ? "var(--color-fsk-60)" : "var(--color-fsk-103)", marginTop: "var(--spacing-fsk-29)" }}>
                       <strong>Audit Note:</strong> {doc.reviewNotes}
-                    </div>
+                    </Surface>
                   )}
-                </div>
-              </div>
+                </Surface>
+              </Surface>
 
               {/* Action Buttons */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)" }}>
                 <button
                   type="button"
                   title="Download File"
                   style={{
-                    padding: '8px 12px',
-                    borderRadius: '8px',
-                    border: '1px solid #cbd5e1',
-                    background: '#ffffff',
+                    padding: "var(--spacing-fsk-12) var(--spacing-fsk-8)",
+                    borderRadius: "var(--radius-fsk-37)",
+                    border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                    background: "var(--color-fsk-38)",
                     cursor: 'pointer',
-                    color: '#475569',
-                    fontSize: '12.5px',
+                    color: "var(--color-fsk-18)",
+                    fontSize: "var(--font-fsk-14)",
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '4px',
+                    gap: "var(--spacing-fsk-29)",
                   }}
                 >
                   <Download size={14} /> Download
@@ -173,17 +174,17 @@ export const CADocumentReviewPage: React.FC = () => {
                     type="button"
                     onClick={() => handleApprove(doc.id)}
                     style={{
-                      padding: '8px 14px',
-                      borderRadius: '8px',
-                      border: '1px solid #a7f3d0',
-                      background: '#ecfdf5',
-                      color: '#059669',
-                      fontSize: '12.5px',
+                      padding: "var(--spacing-fsk-12) var(--spacing-fsk-23)",
+                      borderRadius: "var(--radius-fsk-37)",
+                      border: "var(--spacing-fsk-22) solid var(--color-fsk-81)",
+                      background: "var(--color-fsk-64)",
+                      color: "var(--color-fsk-65)",
+                      fontSize: "var(--font-fsk-14)",
                       fontWeight: 600,
                       cursor: 'pointer',
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '4px',
+                      gap: "var(--spacing-fsk-29)",
                     }}
                   >
                     <CheckCircle2 size={14} /> Approve Document
@@ -195,36 +196,36 @@ export const CADocumentReviewPage: React.FC = () => {
                     type="button"
                     onClick={() => handleReject(doc.id)}
                     style={{
-                      padding: '8px 14px',
-                      borderRadius: '8px',
-                      border: '1px solid #fecaca',
-                      background: '#fff1f2',
-                      color: '#e11d48',
-                      fontSize: '12.5px',
+                      padding: "var(--spacing-fsk-12) var(--spacing-fsk-23)",
+                      borderRadius: "var(--radius-fsk-37)",
+                      border: "var(--spacing-fsk-22) solid var(--color-fsk-58)",
+                      background: "var(--color-fsk-80)",
+                      color: "var(--color-fsk-104)",
+                      fontSize: "var(--font-fsk-14)",
                       fontWeight: 600,
                       cursor: 'pointer',
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '4px',
+                      gap: "var(--spacing-fsk-29)",
                     }}
                   >
                     <XCircle size={14} /> Flag Defect
                   </button>
                 )}
-              </div>
-            </div>
+              </Surface>
+            </Surface>
           </Card>
         ))}
 
         {filteredDocs.length === 0 && (
-          <Card elevation="low" padding={6} style={{ textAlign: 'center', borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-            <FileText size={28} color="#94a3b8" style={{ margin: '0 auto 12px' }} />
-            <div style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>No documents matching filters</div>
-            <div style={{ fontSize: '13px', color: '#64748b', marginTop: '4px' }}>All client document queues are up to date.</div>
+          <Card elevation="low" padding={6} style={{ textAlign: 'center', borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+            <FileText size={28} color="var(--color-fsk-57)" style={{ margin: "0 auto var(--spacing-fsk-8)" }} />
+            <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)" }}>No documents matching filters</Surface>
+            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-29)" }}>All client document queues are up to date.</Surface>
           </Card>
         )}
-      </div>
-    </div>
+      </Surface>
+    </Surface>
   );
 };
 

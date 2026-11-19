@@ -1,3 +1,4 @@
+import { Surface } from '../components/Surface';
 import { Button } from '@astryxdesign/core/Button';
 import { EmptyState } from '@astryxdesign/core/EmptyState';
 import { FileQuestion } from 'lucide-react';
@@ -8,11 +9,11 @@ export const NotFoundPage: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div style={{ maxWidth: '640px', margin: '80px auto', padding: '0 20px', textAlign: 'center' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-11)", margin: "var(--spacing-fsk-3) auto", padding: "0 var(--spacing-fsk-2)", textAlign: 'center' }}>
       <EmptyState
         title="404 — Page Not Found"
         description="The page you requested does not exist or has been relocated in the new Finservkart platform."
-        icon={<FileQuestion size={48} color="#94a3b8" />}
+        icon={<FileQuestion size={48} color="var(--color-fsk-57)" />}
         actions={
           <Button
             label="Return to Homepage"
@@ -21,7 +22,7 @@ export const NotFoundPage: React.FC = () => {
           />
         }
       />
-    </div>
+    </Surface>
   );
 };
 

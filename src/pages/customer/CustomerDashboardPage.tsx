@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
@@ -54,39 +55,39 @@ export const CustomerDashboardPage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
       {/* Header Banner */}
-      <div
+      <Surface
         style={{
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
-          marginBottom: '28px',
-          gap: '16px',
+          marginBottom: "var(--spacing-fsk-20)",
+          gap: "var(--spacing-fsk-5)",
         }}
       >
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-            <span style={{ fontSize: '13px', fontWeight: 600, color: '#0066cc', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <Surface>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-17)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-15)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Customer Portal Dashboard
-            </span>
-            <span style={{ color: '#cbd5e1' }}>•</span>
-            <span style={{ fontSize: '13px', color: '#64748b' }}>CustID: {profile.CustID}</span>
-          </div>
+            </Inline>
+            <Inline style={{ color: "var(--color-fsk-59)" }}>•</Inline>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>CustID: {profile.CustID}</Inline>
+          </Surface>
 
           <Heading level={1}>
-            <span style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
               Welcome back, {profile.fname}!
-            </span>
+            </Inline>
           </Heading>
 
-          <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
-            {profile.businessName} • Assigned Agent: <strong style={{ color: '#0f172a' }}>{profile.agentName}</strong> ({profile.agentId})
+          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+            {profile.businessName} • Assigned Agent: <strong style={{ color: "var(--color-fsk-7)" }}>{profile.agentName}</strong> ({profile.agentId})
           </p>
-        </div>
+        </Surface>
 
-        <div style={{ display: 'flex', gap: '12px' }}>
+        <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-8)" }}>
           <Button
             label="Apply for Service"
             variant="primary"
@@ -101,113 +102,113 @@ export const CustomerDashboardPage: React.FC = () => {
             icon={<UploadCloud size={16} />}
             onClick={() => navigate('/customer/documents/upload')}
           />
-        </div>
-      </div>
+        </Surface>
+      </Surface>
 
       {/* Profile Completion Alert (Bank details verified) */}
       {showBankAlert && (
-        <div style={{ marginBottom: '24px' }}>
+        <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
           <Banner
             status="info"
             title="Profile & Bank Account Verification"
             description={
-              <span>
+              <Inline>
                 Your registered payout account is <strong>{profile.bank}</strong> (A/C: ****{profile.ACNo.slice(-4)}, IFSC: {profile.IFSE}). Ensure banking information remains current for reimbursement and refund processing.
-              </span>
+              </Inline>
             }
             isDismissable
             onDismiss={() => setShowBankAlert(false)}
           />
-        </div>
+        </Surface>
       )}
 
       {/* KPI Metrics Cards */}
-      <div
+      <Surface
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: '20px',
-          marginBottom: '32px',
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 15rem), 1fr))",
+          gap: "var(--spacing-fsk-2)",
+          marginBottom: "var(--spacing-fsk-114)",
         }}
       >
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Total Applications</span>
-            <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: '#e0f2fe', color: '#0066cc', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: "var(--spacing-fsk-8)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Total Applications</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-85)", height: "var(--spacing-fsk-85)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", color: "var(--color-fsk-15)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Layers size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '32px', fontWeight: 800, color: '#0f172a' }}>{applications.length}</div>
-          <div style={{ fontSize: '12px', color: '#16a34a', marginTop: '4px', fontWeight: 600 }}>All registered services</div>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-95)", fontWeight: 800, color: "var(--color-fsk-7)" }}>{applications.length}</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-39)", marginTop: "var(--spacing-fsk-29)", fontWeight: 600 }}>All registered services</Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>In Workflow</span>
-            <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: '#fef3c7', color: '#d97706', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: "var(--spacing-fsk-8)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>In Workflow</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-85)", height: "var(--spacing-fsk-85)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-69)", color: "var(--color-fsk-54)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Clock size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '32px', fontWeight: 800, color: '#0f172a' }}>{activeCount}</div>
-          <div style={{ fontSize: '12px', color: '#d97706', marginTop: '4px', fontWeight: 600 }}>Active drafting &amp; review</div>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-95)", fontWeight: 800, color: "var(--color-fsk-7)" }}>{activeCount}</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-54)", marginTop: "var(--spacing-fsk-29)", fontWeight: 600 }}>Active drafting &amp; review</Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Completed Services</span>
-            <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: '#dcfce7', color: '#16a34a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: "var(--spacing-fsk-8)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Completed Services</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-85)", height: "var(--spacing-fsk-85)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-116)", color: "var(--color-fsk-39)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <CheckCircle2 size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '32px', fontWeight: 800, color: '#0f172a' }}>{completedCount}</div>
-          <div style={{ fontSize: '12px', color: '#16a34a', marginTop: '4px', fontWeight: 600 }}>Certificates delivered</div>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-95)", fontWeight: 800, color: "var(--color-fsk-7)" }}>{completedCount}</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-39)", marginTop: "var(--spacing-fsk-29)", fontWeight: 600 }}>Certificates delivered</Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Total Payments</span>
-            <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: '#f3e8ff', color: '#9333ea', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: "var(--spacing-fsk-8)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Total Payments</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-85)", height: "var(--spacing-fsk-85)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-118)", color: "var(--color-fsk-119)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Receipt size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '32px', fontWeight: 800, color: '#0f172a' }}>₹{totalAmountPaid.toLocaleString('en-IN')}</div>
-          <div style={{ fontSize: '12px', color: '#64748b', marginTop: '4px' }}>Invoices cleared</div>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-95)", fontWeight: 800, color: "var(--color-fsk-7)" }}>₹{totalAmountPaid.toLocaleString('en-IN')}</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-29)" }}>Invoices cleared</Surface>
         </Card>
-      </div>
+      </Surface>
 
       {/* Main Grid: Active Workflow Table & Sidebar Info */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '28px', alignItems: 'flex-start' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 21.25rem), 1fr))", gap: "var(--spacing-fsk-20)", alignItems: 'flex-start' }}>
         {/* Left Column: Active Applications Table (Dense Astryx Table) */}
-        <div style={{ gridColumn: 'span 2' }}>
-          <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-              <div>
+        <Surface style={{ gridColumn: 'span 2' }}>
+          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-2)" }}>
+              <Surface>
                 <Heading level={2}>
-                  <span style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a' }}>
+                  <Inline style={{ fontSize: "var(--font-fsk-30)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                     Active Workflow &amp; Filings
-                  </span>
+                  </Inline>
                 </Heading>
-                <p style={{ color: '#64748b', fontSize: '13px', marginTop: '2px', margin: 0 }}>
+                <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", marginTop: "var(--spacing-fsk-47)", margin: 0 }}>
                   Real-time status updates from assigned Chartered Accountants and statutory desks.
                 </p>
-              </div>
+              </Surface>
 
-              <Link to="/customer/applications" style={{ fontSize: '13px', fontWeight: 600, color: '#0066cc', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <Link to="/customer/applications" style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-15)", textDecoration: 'none', display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
                 View All <ArrowRight size={14} />
               </Link>
-            </div>
+            </Surface>
 
             {/* Dense Rows Table */}
-            <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13.5px' }}>
+            <Surface style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
                 <thead>
-                  <tr style={{ borderBottom: '1px solid #e2e8f0', color: '#64748b', fontWeight: 600, fontSize: '12px', textTransform: 'uppercase' }}>
-                    <th style={{ padding: '10px 12px' }}>Application ID</th>
-                    <th style={{ padding: '10px 12px' }}>Service Name</th>
-                    <th style={{ padding: '10px 12px' }}>Assigned CA</th>
-                    <th style={{ padding: '10px 12px' }}>Status</th>
-                    <th style={{ padding: '10px 12px' }}>Stage</th>
-                    <th style={{ padding: '10px 12px', textAlign: 'right' }}>Actions</th>
+                  <tr style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontWeight: 600, fontSize: "var(--font-fsk-14)", textTransform: 'uppercase' }}>
+                    <th style={{ padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)" }}>Application ID</th>
+                    <th style={{ padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)" }}>Service Name</th>
+                    <th style={{ padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)" }}>Assigned CA</th>
+                    <th style={{ padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)" }}>Status</th>
+                    <th style={{ padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)" }}>Stage</th>
+                    <th style={{ padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)", textAlign: 'right' }}>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -215,52 +216,52 @@ export const CustomerDashboardPage: React.FC = () => {
                     <tr
                       key={app.id}
                       style={{
-                        borderBottom: '1px solid #f1f5f9',
+                        borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)",
                         transition: 'background-color 0.2s',
                       }}
                     >
-                      <td style={{ padding: '14px 12px', fontWeight: 700, color: '#0066cc' }}>
+                      <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-8)", fontWeight: 700, color: "var(--color-fsk-15)" }}>
                         {app.id}
                       </td>
-                      <td style={{ padding: '14px 12px' }}>
-                        <div style={{ fontWeight: 600, color: '#0f172a' }}>{app.serviceName}</div>
-                        <div style={{ fontSize: '11.5px', color: '#64748b' }}>Submitted {app.submissionDate}</div>
+                      <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-8)" }}>
+                        <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>{app.serviceName}</Surface>
+                        <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Submitted {app.submissionDate}</Surface>
                       </td>
-                      <td style={{ padding: '14px 12px' }}>
+                      <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-8)" }}>
                         {app.assignedCA ? (
-                          <div>
-                            <div style={{ fontWeight: 600, color: '#1e293b' }}>{app.assignedCA.name}</div>
-                            <div style={{ fontSize: '11px', color: '#16a34a' }}>ID: {app.assignedCA.id}</div>
-                          </div>
+                          <Surface>
+                            <Surface style={{ fontWeight: 600, color: "var(--color-fsk-113)" }}>{app.assignedCA.name}</Surface>
+                            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-39)" }}>ID: {app.assignedCA.id}</Surface>
+                          </Surface>
                         ) : (
-                          <span style={{ color: '#94a3b8', fontSize: '12px' }}>Allocation in queue</span>
+                          <Inline style={{ color: "var(--color-fsk-57)", fontSize: "var(--font-fsk-14)" }}>Allocation in queue</Inline>
                         )}
                       </td>
-                      <td style={{ padding: '14px 12px' }}>
+                      <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-8)" }}>
                         {getStatusBadge(app.status)}
                       </td>
-                      <td style={{ padding: '14px 12px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <span style={{ fontWeight: 700, color: '#0f172a' }}>{app.currentStage}/5</span>
-                          <div style={{ width: '60px', height: '6px', background: '#e2e8f0', borderRadius: '3px', overflow: 'hidden' }}>
-                            <div style={{ width: `${(app.currentStage / 5) * 100}%`, height: '100%', background: '#0066cc' }} />
-                          </div>
-                        </div>
+                      <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-8)" }}>
+                        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-17)" }}>
+                          <Inline style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{app.currentStage}/5</Inline>
+                          <Surface style={{ width: "var(--spacing-fsk-120)", height: "var(--spacing-fsk-17)", background: "var(--color-fsk-21)", borderRadius: "var(--radius-fsk-110)", overflow: 'hidden' }}>
+                            <Surface style={{ width: `${(app.currentStage / 5) * 100}%`, height: '100%', background: "var(--color-fsk-15)" }} />
+                          </Surface>
+                        </Surface>
                       </td>
-                      <td style={{ padding: '14px 12px', textAlign: 'right' }}>
-                        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px' }}>
+                      <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-8)", textAlign: 'right' }}>
+                        <Surface style={{ display: 'flex', justifyContent: 'flex-end', gap: "var(--spacing-fsk-17)" }}>
                           <button
                             type="button"
                             onClick={() => navigate(`/customer/applications/${app.id}/tracker`)}
                             style={{
-                              padding: '5px 10px',
-                              borderRadius: '6px',
-                              border: '1px solid #cbd5e1',
-                              background: '#ffffff',
-                              fontSize: '12px',
+                              padding: "var(--spacing-fsk-86) var(--spacing-fsk-35)",
+                              borderRadius: "var(--radius-fsk-42)",
+                              border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                              background: "var(--color-fsk-38)",
+                              fontSize: "var(--font-fsk-14)",
                               fontWeight: 600,
                               cursor: 'pointer',
-                              color: '#334155',
+                              color: "var(--color-fsk-25)",
                             }}
                             title="Open Application Tracker"
                           >
@@ -270,48 +271,48 @@ export const CustomerDashboardPage: React.FC = () => {
                             type="button"
                             onClick={() => navigate(`/customer/applications/${app.id}`)}
                             style={{
-                              padding: '5px 10px',
-                              borderRadius: '6px',
+                              padding: "var(--spacing-fsk-86) var(--spacing-fsk-35)",
+                              borderRadius: "var(--radius-fsk-42)",
                               border: 'none',
-                              background: '#e0f2fe',
-                              fontSize: '12px',
+                              background: "var(--color-fsk-112)",
+                              fontSize: "var(--font-fsk-14)",
                               fontWeight: 600,
                               cursor: 'pointer',
-                              color: '#0066cc',
+                              color: "var(--color-fsk-15)",
                             }}
                             title="View Full Application Details"
                           >
                             View
                           </button>
-                        </div>
+                        </Surface>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-            </div>
+            </Surface>
           </Card>
-        </div>
+        </Surface>
 
         {/* Right Column: Quick Contact & Recent Documents */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-26)" }}>
           {/* Assigned CA Card */}
-          <Card elevation="low" padding={4} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
-              <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: '#e0f2fe', color: '#0066cc', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-23)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-90)", height: "var(--spacing-fsk-90)", borderRadius: '50%', background: "var(--color-fsk-112)", color: "var(--color-fsk-15)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <UserCheck size={20} />
-              </div>
-              <div>
-                <span style={{ fontSize: '11px', color: '#64748b', fontWeight: 600, textTransform: 'uppercase' }}>
+              </Surface>
+              <Surface>
+                <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600, textTransform: 'uppercase' }}>
                   Primary Chartered Accountant
-                </span>
-                <div style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>
+                </Inline>
+                <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                   CA Vivek Agrawal
-                </div>
-              </div>
-            </div>
+                </Surface>
+              </Surface>
+            </Surface>
 
-            <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.5, marginBottom: '16px' }}>
+            <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-18)", lineHeight: 1.5, marginBottom: "var(--spacing-fsk-5)" }}>
               Managing your active GST Registration and Annual Filings. Direct messaging available for queries and document verification.
             </p>
 
@@ -326,49 +327,49 @@ export const CustomerDashboardPage: React.FC = () => {
           </Card>
 
           {/* Quick Documents Preview */}
-          <Card elevation="low" padding={4} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-              <span style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>
+          <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-23)" }}>
+              <Inline style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                 Recent Documents
-              </span>
-              <Link to="/customer/documents" style={{ fontSize: '12px', fontWeight: 600, color: '#0066cc', textDecoration: 'none' }}>
+              </Inline>
+              <Link to="/customer/documents" style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-15)", textDecoration: 'none' }}>
                 All Files
               </Link>
-            </div>
+            </Surface>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-35)" }}>
               {INITIAL_DOCUMENTS.slice(0, 3).map((doc) => (
-                <div
+                <Surface
                   key={doc.id}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    padding: '8px 10px',
-                    borderRadius: '8px',
-                    background: '#f8fafc',
-                    border: '1px solid #e2e8f0',
+                    padding: "var(--spacing-fsk-12) var(--spacing-fsk-35)",
+                    borderRadius: "var(--radius-fsk-37)",
+                    background: "var(--color-fsk-27)",
+                    border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', overflow: 'hidden' }}>
-                    <FileText size={16} color="#0066cc" style={{ flexShrink: 0 }} />
-                    <div style={{ overflow: 'hidden' }}>
-                      <div style={{ fontSize: '12.5px', fontWeight: 600, color: '#1e293b', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", overflow: 'hidden' }}>
+                    <FileText size={16} color="var(--color-fsk-15)" style={{ flexShrink: 0 }} />
+                    <Surface style={{ overflow: 'hidden' }}>
+                      <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-113)", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {doc.fileName}
-                      </div>
-                      <div style={{ fontSize: '11px', color: '#64748b' }}>
+                      </Surface>
+                      <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>
                         {doc.fileSize} • {doc.status}
-                      </div>
-                    </div>
-                  </div>
-                  <Download size={15} color="#64748b" style={{ cursor: 'pointer', flexShrink: 0 }} />
-                </div>
+                      </Surface>
+                    </Surface>
+                  </Surface>
+                  <Download size={15} color="var(--color-fsk-9)" style={{ cursor: 'pointer', flexShrink: 0 }} />
+                </Surface>
               ))}
-            </div>
+            </Surface>
           </Card>
-        </div>
-      </div>
-    </div>
+        </Surface>
+      </Surface>
+    </Surface>
   );
 };
 

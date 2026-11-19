@@ -1,3 +1,4 @@
+import { Surface, Inline } from '../../components/Surface';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
@@ -29,43 +30,43 @@ export const CANotificationsPage: React.FC = () => {
   const getIcon = (type: CANotification['type']) => {
     switch (type) {
       case 'assignment':
-        return <Briefcase size={18} color="#7c3aed" />;
+        return <Briefcase size={18} color="var(--color-fsk-41)" />;
       case 'document':
-        return <FileText size={18} color="#059669" />;
+        return <FileText size={18} color="var(--color-fsk-65)" />;
       case 'message':
-        return <MessageSquare size={18} color="#0066cc" />;
+        return <MessageSquare size={18} color="var(--color-fsk-15)" />;
       case 'payout':
-        return <Wallet size={18} color="#d97706" />;
+        return <Wallet size={18} color="var(--color-fsk-54)" />;
       default:
-        return <Bell size={18} color="#475569" />;
+        return <Bell size={18} color="var(--color-fsk-18)" />;
     }
   };
 
   return (
-    <div style={{ maxWidth: '860px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-89)", margin: '0 auto' }}>
       {/* Header */}
-      <div
+      <Surface
         style={{
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '24px',
-          gap: '16px',
+          marginBottom: "var(--spacing-fsk-26)",
+          gap: "var(--spacing-fsk-5)",
         }}
       >
-        <div>
+        <Surface>
           <Heading level={1}>
-            <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
               Notifications & Activity
-            </span>
+            </Inline>
           </Heading>
-          <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
             Operational assignment dispatches, client document uploads, customer queries, and payout disbursements.
           </p>
-        </div>
+        </Surface>
 
-        <div style={{ display: 'flex', gap: '8px' }}>
+        <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)" }}>
           <Button
             label="Mark All as Read"
             variant="secondary"
@@ -73,23 +74,23 @@ export const CANotificationsPage: React.FC = () => {
             icon={<CheckCircle2 size={14} />}
             onClick={handleMarkAllRead}
           />
-        </div>
-      </div>
+        </Surface>
+      </Surface>
 
       {/* Filter Tabs */}
-      <div style={{ display: 'flex', gap: '8px', marginBottom: '20px' }}>
+      <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-2)" }}>
         {(['All', 'Unread'] as const).map((tab) => (
           <button
             key={tab}
             type="button"
             onClick={() => setFilter(tab)}
             style={{
-              padding: '6px 14px',
-              borderRadius: '20px',
-              border: filter === tab ? '1px solid #7c3aed' : '1px solid #cbd5e1',
-              background: filter === tab ? '#f5f3ff' : '#ffffff',
-              color: filter === tab ? '#7c3aed' : '#475569',
-              fontSize: '13px',
+              padding: "var(--spacing-fsk-17) var(--spacing-fsk-23)",
+              borderRadius: "var(--radius-fsk-28)",
+              border: filter === tab ? "var(--spacing-fsk-22) solid var(--color-fsk-41)" : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+              background: filter === tab ? "var(--color-fsk-53)" : "var(--color-fsk-38)",
+              color: filter === tab ? "var(--color-fsk-41)" : "var(--color-fsk-18)",
+              fontSize: "var(--font-fsk-14)",
               fontWeight: filter === tab ? 600 : 500,
               cursor: 'pointer',
               transition: 'all 0.15s ease',
@@ -98,32 +99,32 @@ export const CANotificationsPage: React.FC = () => {
             {tab} {tab === 'Unread' ? `(${notifications.filter((n) => !n.isRead).length})` : ''}
           </button>
         ))}
-      </div>
+      </Surface>
 
       {/* Notifications List */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-8)" }}>
         {filtered.map((item) => (
           <Card
             key={item.id}
             elevation="low"
             padding={4}
             style={{
-              borderRadius: '12px',
-              border: item.isRead ? '1px solid #e2e8f0' : '1px solid #ddd6fe',
-              background: item.isRead ? '#ffffff' : '#f5f3ff',
+              borderRadius: "var(--radius-fsk-28)",
+              border: item.isRead ? "var(--spacing-fsk-22) solid var(--color-fsk-163)" : "var(--spacing-fsk-22) solid var(--color-fsk-97)",
+              background: item.isRead ? "var(--color-fsk-38)" : "var(--color-fsk-53)",
               display: 'flex',
-              gap: '16px',
+              gap: "var(--spacing-fsk-5)",
               alignItems: 'flex-start',
               position: 'relative',
             }}
           >
-            <div
+            <Surface
               style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                background: '#ffffff',
-                border: '1px solid #e2e8f0',
+                width: "var(--spacing-fsk-90)",
+                height: "var(--spacing-fsk-90)",
+                borderRadius: "var(--radius-fsk-68)",
+                background: "var(--color-fsk-38)",
+                border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -131,48 +132,48 @@ export const CANotificationsPage: React.FC = () => {
               }}
             >
               {getIcon(item.type)}
-            </div>
+            </Surface>
 
-            <div style={{ flex: 1 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                <span style={{ fontSize: '14.5px', fontWeight: 700, color: '#0f172a' }}>
+            <Surface style={{ flex: 1 }}>
+              <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-29)" }}>
+                <Inline style={{ fontSize: "var(--font-fsk-91)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                   {item.title}
-                </span>
-                <span style={{ fontSize: '12px', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                </Inline>
+                <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
                   <Clock size={12} /> {item.timestamp}
-                </span>
-              </div>
+                </Inline>
+              </Surface>
 
-              <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.5, margin: '0 0 10px 0' }}>
+              <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-18)", lineHeight: 1.5, margin: "0 0 var(--spacing-fsk-35) 0" }}>
                 {item.description}
               </p>
 
               <Link
                 to={item.linkUrl}
                 style={{
-                  fontSize: '12.5px',
+                  fontSize: "var(--font-fsk-14)",
                   fontWeight: 600,
-                  color: '#7c3aed',
+                  color: "var(--color-fsk-41)",
                   textDecoration: 'none',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '4px',
+                  gap: "var(--spacing-fsk-29)",
                 }}
               >
                 Inspect Filing <ExternalLink size={12} />
               </Link>
-            </div>
+            </Surface>
 
             {!item.isRead && (
-              <span
+              <Inline
                 style={{
                   position: 'absolute',
-                  top: '12px',
-                  right: '12px',
-                  width: '8px',
-                  height: '8px',
+                  top: "var(--spacing-fsk-8)",
+                  right: "var(--spacing-fsk-8)",
+                  width: "var(--spacing-fsk-12)",
+                  height: "var(--spacing-fsk-12)",
                   borderRadius: '50%',
-                  background: '#7c3aed',
+                  background: "var(--color-fsk-41)",
                 }}
               />
             )}
@@ -180,14 +181,14 @@ export const CANotificationsPage: React.FC = () => {
         ))}
 
         {filtered.length === 0 && (
-          <Card elevation="low" padding={6} style={{ textAlign: 'center', borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-            <Bell size={28} color="#94a3b8" style={{ margin: '0 auto 12px' }} />
-            <div style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>No unread notifications</div>
-            <div style={{ fontSize: '13px', color: '#64748b', marginTop: '4px' }}>Your regulatory alerts are completely up to date!</div>
+          <Card elevation="low" padding={6} style={{ textAlign: 'center', borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+            <Bell size={28} color="var(--color-fsk-57)" style={{ margin: "0 auto var(--spacing-fsk-8)" }} />
+            <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)" }}>No unread notifications</Surface>
+            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-29)" }}>Your regulatory alerts are completely up to date!</Surface>
           </Card>
         )}
-      </div>
-    </div>
+      </Surface>
+    </Surface>
   );
 };
 

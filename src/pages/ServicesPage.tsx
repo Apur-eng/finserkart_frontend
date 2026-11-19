@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../components/Surface';
+import { StatusTag as Badge } from '../components/StatusTag';
 import { Heading } from '@astryxdesign/core/Heading';
 import { Text } from '@astryxdesign/core/Text';
 import React from 'react';
@@ -6,25 +7,25 @@ import ServiceList from '../features/services/ServiceList';
 
 export const ServicesPage: React.FC = () => {
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '40px 20px 80px 20px' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto', padding: "var(--spacing-fsk-1) var(--spacing-fsk-2) var(--spacing-fsk-3) var(--spacing-fsk-2)" }}>
       {/* Header Banner */}
-      <div style={{ textAlign: 'center', marginBottom: '48px', paddingTop: '16px' }}>
+      <Surface style={{ textAlign: 'center', marginBottom: "var(--spacing-fsk-4)", paddingTop: "var(--spacing-fsk-5)" }}>
         <Badge label="Complete Service Catalogue" variant="blue" />
         <Heading level={1}>
-          <span style={{ fontSize: '36px', fontWeight: 800, color: '#0f172a', display: 'block', marginTop: '12px' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-6)", fontWeight: 800, color: "var(--color-fsk-7)", display: 'block', marginTop: "var(--spacing-fsk-8)" }}>
             Financial & Compliance Services
-          </span>
+          </Inline>
         </Heading>
         <Text type="supporting">
-          <span style={{ fontSize: '16px', color: '#64748b', maxWidth: '640px', display: 'inline-block', marginTop: '8px' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-10)", color: "var(--color-fsk-9)", maxWidth: "var(--spacing-fsk-11)", display: 'inline-block', marginTop: "var(--spacing-fsk-12)" }}>
             Transparent pricing, clear document checklists, and verified chartered accountant support. Search our verified service catalog below.
-          </span>
+          </Inline>
         </Text>
-      </div>
+      </Surface>
 
       {/* Main Service List with search and cards */}
       <ServiceList />
-    </div>
+    </Surface>
   );
 };
 

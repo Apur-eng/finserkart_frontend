@@ -1,3 +1,4 @@
+import { Surface, Inline } from '../../components/Surface';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
@@ -47,56 +48,56 @@ export const NewApplicationPage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-78)", margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ marginBottom: '24px' }}>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
         <button
           type="button"
           onClick={() => navigate('/customer/applications')}
           style={{
             background: 'none',
             border: 'none',
-            color: '#0066cc',
-            fontSize: '13px',
+            color: "var(--color-fsk-15)",
+            fontSize: "var(--font-fsk-14)",
             fontWeight: 600,
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            gap: '6px',
+            gap: "var(--spacing-fsk-17)",
             padding: 0,
-            marginBottom: '12px',
+            marginBottom: "var(--spacing-fsk-8)",
           }}
         >
           <ArrowLeft size={16} /> Back to Applications
         </button>
 
         <Heading level={1}>
-          <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
             Submit New Service Application
-          </span>
+          </Inline>
         </Heading>
-        <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
           Select a verified financial or compliance service to generate your application dossier and assign a Chartered Accountant.
         </p>
-      </div>
+      </Surface>
 
       {isSubmitted ? (
-        <Card elevation="low" padding={6} style={{ borderRadius: '16px', border: '1px solid #bbf7d0', background: '#f0fdf4', textAlign: 'center' }}>
-          <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: '#dcfce7', color: '#16a34a', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px auto' }}>
+        <Card elevation="low" padding={6} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-125)", background: "var(--color-fsk-75)", textAlign: 'center' }}>
+          <Surface style={{ width: "var(--spacing-fsk-93)", height: "var(--spacing-fsk-93)", borderRadius: '50%', background: "var(--color-fsk-116)", color: "var(--color-fsk-39)", display: 'flex', alignItems: 'center', justifyContent: 'center', margin: "0 auto var(--spacing-fsk-5) auto" }}>
             <CheckCircle2 size={32} />
-          </div>
+          </Surface>
 
           <Heading level={2}>
-            <span style={{ fontSize: '22px', fontWeight: 800, color: '#166534' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-83)", fontWeight: 800, color: "var(--color-fsk-126)" }}>
               Application Lodged Successfully!
-            </span>
+            </Inline>
           </Heading>
 
-          <p style={{ color: '#15803d', fontSize: '14.5px', maxWidth: '580px', margin: '12px auto 24px auto', lineHeight: 1.6 }}>
+          <p style={{ color: "var(--color-fsk-103)", fontSize: "var(--font-fsk-91)", maxWidth: "var(--spacing-fsk-127)", margin: "var(--spacing-fsk-8) auto var(--spacing-fsk-26) auto", lineHeight: 1.6 }}>
             Your application for <strong>{selectedService.service_name}</strong> has been registered under Application Reference <strong>FK-SRV-9240</strong>. A Chartered Accountant will be assigned within 2 working hours.
           </p>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
+          <Surface style={{ display: 'flex', justifyContent: 'center', gap: "var(--spacing-fsk-5)" }}>
             <Button
               label="Track Application"
               variant="primary"
@@ -111,29 +112,29 @@ export const NewApplicationPage: React.FC = () => {
               icon={<UploadCloud size={16} />}
               onClick={() => navigate('/customer/documents/upload')}
             />
-          </div>
+          </Surface>
         </Card>
       ) : (
         <form onSubmit={handleApply}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px', alignItems: 'flex-start' }}>
+          <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 20rem), 1fr))", gap: "var(--spacing-fsk-20)", alignItems: 'flex-start' }}>
             {/* Left Column: Service Selector & Details */}
-            <div>
-              <div style={{ marginBottom: '16px', fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>
+            <Surface>
+              <Surface style={{ marginBottom: "var(--spacing-fsk-5)", fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                 1. Select Desired Service
-              </div>
+              </Surface>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
+              <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-26)" }}>
                 {services.map((svc) => {
                   const isSelected = svc.id === selectedServiceId;
                   return (
-                    <div
+                    <Surface
                       key={svc.id}
                       onClick={() => setSelectedServiceId(svc.id)}
                       style={{
-                        padding: '14px 16px',
-                        borderRadius: '12px',
-                        border: isSelected ? '2px solid #0066cc' : '1px solid #e2e8f0',
-                        background: isSelected ? '#f0f7ff' : '#ffffff',
+                        padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)",
+                        borderRadius: "var(--radius-fsk-28)",
+                        border: isSelected ? "var(--spacing-fsk-47) solid var(--color-fsk-162)" : "var(--spacing-fsk-22) solid var(--color-fsk-163)",
+                        background: isSelected ? "var(--color-fsk-130)" : "var(--color-fsk-38)",
                         cursor: 'pointer',
                         display: 'flex',
                         justifyContent: 'space-between',
@@ -141,54 +142,54 @@ export const NewApplicationPage: React.FC = () => {
                         transition: 'all 0.15s ease',
                       }}
                     >
-                      <div>
-                        <div style={{ fontWeight: 700, color: isSelected ? '#0066cc' : '#0f172a', fontSize: '14px' }}>
+                      <Surface>
+                        <Surface style={{ fontWeight: 700, color: isSelected ? "var(--color-fsk-15)" : "var(--color-fsk-7)", fontSize: "var(--font-fsk-24)" }}>
                           {svc.service_name}
-                        </div>
-                        <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>
+                        </Surface>
+                        <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
                           Standard Processing: 3-5 Business Days
-                        </div>
-                      </div>
-                      <div style={{ textAlign: 'right' }}>
-                        <div style={{ fontWeight: 800, color: '#0f172a', fontSize: '15px' }}>
+                        </Surface>
+                      </Surface>
+                      <Surface style={{ textAlign: 'right' }}>
+                        <Surface style={{ fontWeight: 800, color: "var(--color-fsk-7)", fontSize: "var(--font-fsk-19)" }}>
                           ₹{parseFloat(svc.total_amt || svc.service_price).toLocaleString('en-IN')}
-                        </div>
+                        </Surface>
                         {parseFloat(svc.govt_fees) > 0 && (
-                          <div style={{ fontSize: '10.5px', color: '#94a3b8' }}>
+                          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)" }}>
                             Govt fee: ₹{svc.govt_fees}
-                          </div>
+                          </Surface>
                         )}
-                      </div>
-                    </div>
+                      </Surface>
+                    </Surface>
                   );
                 })}
-              </div>
+              </Surface>
 
               {/* Required Documents Checklist */}
-              <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#f8fafc' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-                  <FileText size={18} color="#0066cc" />
-                  <span style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>
+              <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-27)" }}>
+                <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-8)" }}>
+                  <FileText size={18} color="var(--color-fsk-15)" />
+                  <Inline style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                     Required Documents Checklist
-                  </span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  </Inline>
+                </Surface>
+                <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-12)" }}>
                   {requiredDocs.map((doc, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '13px', color: '#334155' }}>
-                      <CheckCircle2 size={15} color="#16a34a" style={{ flexShrink: 0, marginTop: '2px' }} />
-                      <span>{doc}</span>
-                    </div>
+                    <Surface key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: "var(--spacing-fsk-12)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-25)" }}>
+                      <CheckCircle2 size={15} color="var(--color-fsk-39)" style={{ flexShrink: 0, marginTop: "var(--spacing-fsk-47)" }} />
+                      <Inline>{doc}</Inline>
+                    </Surface>
                   ))}
-                </div>
+                </Surface>
               </Card>
-            </div>
+            </Surface>
 
             {/* Right Column: Applicant Details & Payment Summary */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-                <div style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>
+            <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-26)" }}>
+              <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+                <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-5)" }}>
                   2. Applicant &amp; Entity Information
-                </div>
+                </Surface>
 
                 <VStack gap={3}>
                   <TextInput
@@ -218,27 +219,27 @@ export const NewApplicationPage: React.FC = () => {
                   />
                 </VStack>
 
-                <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid #e2e8f0' }}>
-                  <div style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', marginBottom: '12px' }}>
+                <Surface style={{ marginTop: "var(--spacing-fsk-26)", paddingTop: "var(--spacing-fsk-5)", borderTop: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                  <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-8)" }}>
                     3. Fee &amp; Payment Summary
-                  </div>
+                  </Surface>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13.5px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', color: '#64748b' }}>
-                      <span>Professional CA Drafting Fee</span>
-                      <span>₹{price.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', color: '#64748b' }}>
-                      <span>Statutory Government Department Fees</span>
-                      <span>₹{govtFees.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 800, fontSize: '16px', color: '#0f172a', paddingTop: '8px', borderTop: '1px solid #f1f5f9' }}>
-                      <span>Total Payable</span>
-                      <span style={{ color: '#0066cc' }}>₹{totalAmount.toLocaleString('en-IN')}</span>
-                    </div>
-                  </div>
+                  <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-12)", fontSize: "var(--font-fsk-14)" }}>
+                    <Surface style={{ display: 'flex', justifyContent: 'space-between', color: "var(--color-fsk-9)" }}>
+                      <Inline>Professional CA Drafting Fee</Inline>
+                      <Inline>₹{price.toLocaleString('en-IN')}</Inline>
+                    </Surface>
+                    <Surface style={{ display: 'flex', justifyContent: 'space-between', color: "var(--color-fsk-9)" }}>
+                      <Inline>Statutory Government Department Fees</Inline>
+                      <Inline>₹{govtFees.toLocaleString('en-IN')}</Inline>
+                    </Surface>
+                    <Surface style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 800, fontSize: "var(--font-fsk-10)", color: "var(--color-fsk-7)", paddingTop: "var(--spacing-fsk-12)", borderTop: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                      <Inline>Total Payable</Inline>
+                      <Inline style={{ color: "var(--color-fsk-15)" }}>₹{totalAmount.toLocaleString('en-IN')}</Inline>
+                    </Surface>
+                  </Surface>
 
-                  <div style={{ marginTop: '20px' }}>
+                  <Surface style={{ marginTop: "var(--spacing-fsk-2)" }}>
                     <Button
                       label={isSubmitting ? 'Submitting Application...' : `Confirm & Submit Application (₹${totalAmount.toLocaleString('en-IN')})`}
                       variant="primary"
@@ -248,19 +249,19 @@ export const NewApplicationPage: React.FC = () => {
                       isLoading={isSubmitting}
                       icon={<Sparkles size={16} />}
                     />
-                  </div>
+                  </Surface>
 
-                  <div style={{ fontSize: '11.5px', color: '#94a3b8', textAlign: 'center', marginTop: '12px' }}>
-                    <ShieldCheck size={13} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)", textAlign: 'center', marginTop: "var(--spacing-fsk-8)" }}>
+                    <ShieldCheck size={13} style={{ display: 'inline', verticalAlign: 'middle', marginRight: "var(--spacing-fsk-29)" }} />
                     Government fee receipt &amp; electronic invoice issued upon clearance.
-                  </div>
-                </div>
+                  </Surface>
+                </Surface>
               </Card>
-            </div>
-          </div>
+            </Surface>
+          </Surface>
         </form>
       )}
-    </div>
+    </Surface>
   );
 };
 

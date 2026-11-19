@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Card } from '@astryxdesign/core/Card';
 import { TextInput } from '@astryxdesign/core/TextInput';
@@ -77,40 +78,40 @@ export const AdminServiceCataloguePage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1360px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '28px' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-33)", margin: '0 auto', display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-20)" }}>
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px' }}>
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#dc2626', fontSize: '13px', fontWeight: 600 }}>
+      <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: "var(--spacing-fsk-5)" }}>
+        <Surface>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", color: "var(--color-fsk-34)", fontSize: "var(--font-fsk-14)", fontWeight: 600 }}>
             <FolderKanban size={16} /> Platform Product Management
-          </div>
-          <h1 style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', margin: '4px 0 0 0' }}>
+          </Surface>
+          <h1 style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
             Service Catalogue & Pricing Management
           </h1>
-          <p style={{ fontSize: '14px', color: '#64748b', margin: '4px 0 0 0' }}>
+          <p style={{ fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
             Manage offered financial compliance packages, statutory government fees, and partner commissions.
           </p>
-        </div>
+        </Surface>
         <button
           type="button"
           onClick={() => setIsAdding(!isAdding)}
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            padding: '10px 18px',
-            borderRadius: '8px',
-            background: '#dc2626',
-            color: '#ffffff',
+            gap: "var(--spacing-fsk-12)",
+            padding: "var(--spacing-fsk-35) var(--spacing-fsk-36)",
+            borderRadius: "var(--radius-fsk-37)",
+            background: "var(--color-fsk-34)",
+            color: "var(--color-fsk-38)",
             fontWeight: 600,
-            fontSize: '14px',
+            fontSize: "var(--font-fsk-24)",
             border: 'none',
             cursor: 'pointer',
           }}
         >
           <Plus size={16} /> {isAdding ? 'Close Editor' : 'Create New Service'}
         </button>
-      </div>
+      </Surface>
 
       {bannerMessage && (
         <Banner
@@ -123,17 +124,17 @@ export const AdminServiceCataloguePage: React.FC = () => {
       {/* Creation Modal / Inline Form */}
       {isAdding && (
         <Card elevation="med" padding={5}>
-          <form onSubmit={handleCreateService} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div>
-              <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+          <form onSubmit={handleCreateService} style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-2)" }}>
+            <Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-30)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 Configure New Platform Service
               </h2>
-              <p style={{ fontSize: '13px', color: '#64748b', margin: '4px 0 0 0' }}>
+              <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
                 Define commercial pricing, statutory costs, and partner payouts.
               </p>
-            </div>
+            </Surface>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+            <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
               <TextInput
                 label="Service Title"
                 placeholder="e.g. LLP Registration & Agreement Filing"
@@ -141,8 +142,8 @@ export const AdminServiceCataloguePage: React.FC = () => {
                 onChange={(val) => setNewServiceName(val)}
               />
 
-              <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
+              <Surface>
+                <label style={{ display: 'block', fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-25)", marginBottom: "var(--spacing-fsk-17)" }}>
                   Category
                 </label>
                 <select
@@ -150,13 +151,13 @@ export const AdminServiceCataloguePage: React.FC = () => {
                   onChange={(e) => setNewCategory(e.target.value)}
                   style={{
                     width: '100%',
-                    height: '42px',
-                    padding: '0 12px',
-                    borderRadius: '8px',
-                    border: '1px solid #cbd5e1',
-                    fontSize: '14px',
-                    background: '#ffffff',
-                    color: '#0f172a',
+                    height: "var(--spacing-fsk-76)",
+                    padding: "0 var(--spacing-fsk-8)",
+                    borderRadius: "var(--radius-fsk-37)",
+                    border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                    fontSize: "var(--font-fsk-24)",
+                    background: "var(--color-fsk-38)",
+                    color: "var(--color-fsk-7)",
                   }}
                 >
                   <option value="Company Registration">Company Registration</option>
@@ -164,7 +165,7 @@ export const AdminServiceCataloguePage: React.FC = () => {
                   <option value="Compliance">Compliance</option>
                   <option value="Licensing">Licensing</option>
                 </select>
-              </div>
+              </Surface>
 
               <TextInput
                 label="Commercial Price (₹)"
@@ -200,20 +201,20 @@ export const AdminServiceCataloguePage: React.FC = () => {
                 value={newSLA}
                 onChange={(val) => setNewSLA(val)}
               />
-            </div>
+            </Surface>
 
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', marginTop: '12px' }}>
+            <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-8)", justifyContent: 'flex-end', marginTop: "var(--spacing-fsk-8)" }}>
               <button
                 type="button"
                 onClick={() => setIsAdding(false)}
                 style={{
-                  padding: '10px 18px',
-                  borderRadius: '8px',
-                  border: '1px solid #cbd5e1',
-                  background: '#ffffff',
-                  color: '#475569',
+                  padding: "var(--spacing-fsk-35) var(--spacing-fsk-36)",
+                  borderRadius: "var(--radius-fsk-37)",
+                  border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                  background: "var(--color-fsk-38)",
+                  color: "var(--color-fsk-18)",
                   fontWeight: 600,
-                  fontSize: '14px',
+                  fontSize: "var(--font-fsk-24)",
                   cursor: 'pointer',
                 }}
               >
@@ -222,129 +223,129 @@ export const AdminServiceCataloguePage: React.FC = () => {
               <button
                 type="submit"
                 style={{
-                  padding: '10px 18px',
-                  borderRadius: '8px',
+                  padding: "var(--spacing-fsk-35) var(--spacing-fsk-36)",
+                  borderRadius: "var(--radius-fsk-37)",
                   border: 'none',
-                  background: '#dc2626',
-                  color: '#ffffff',
+                  background: "var(--color-fsk-34)",
+                  color: "var(--color-fsk-38)",
                   fontWeight: 600,
-                  fontSize: '14px',
+                  fontSize: "var(--font-fsk-24)",
                   cursor: 'pointer',
                 }}
               >
                 Publish Service to Platform
               </button>
-            </div>
+            </Surface>
           </form>
         </Card>
       )}
 
       {/* Filter and Search Bar */}
       <Card elevation="low" padding={4}>
-        <div style={{ display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+        <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-5)", alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+          <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)", flexWrap: 'wrap' }}>
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
                 style={{
-                  padding: '6px 14px',
-                  borderRadius: '999px',
-                  fontSize: '13px',
+                  padding: "var(--spacing-fsk-17) var(--spacing-fsk-23)",
+                  borderRadius: "var(--radius-fsk-77)",
+                  fontSize: "var(--font-fsk-14)",
                   fontWeight: 600,
                   cursor: 'pointer',
-                  border: selectedCategory === cat ? '1px solid #dc2626' : '1px solid #e2e8f0',
-                  background: selectedCategory === cat ? '#fee2e2' : '#ffffff',
-                  color: selectedCategory === cat ? '#991b1b' : '#64748b',
+                  border: selectedCategory === cat ? "var(--spacing-fsk-22) solid var(--color-fsk-34)" : "var(--spacing-fsk-22) solid var(--color-fsk-163)",
+                  background: selectedCategory === cat ? "var(--color-fsk-43)" : "var(--color-fsk-38)",
+                  color: selectedCategory === cat ? "var(--color-fsk-44)" : "var(--color-fsk-9)",
                   transition: 'all 0.15s ease',
                 }}
               >
                 {cat}
               </button>
             ))}
-          </div>
+          </Surface>
 
-          <div style={{ width: '280px' }}>
+          <Surface style={{ width: "var(--spacing-fsk-45)" }}>
             <TextInput
               label="Search Catalogue"
               placeholder="Filter by title or code..."
               value={searchTerm}
               onChange={(val) => setSearchTerm(val)}
             />
-          </div>
-        </div>
+          </Surface>
+        </Surface>
       </Card>
 
       {/* Services Table */}
       <Card elevation="low" padding={5}>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13px' }}>
+        <Surface style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid #e2e8f0', color: '#64748b', fontWeight: 600 }}>
-                <th style={{ padding: '12px 16px' }}>Service Code</th>
-                <th style={{ padding: '12px 16px' }}>Package Title</th>
-                <th style={{ padding: '12px 16px' }}>Category</th>
-                <th style={{ padding: '12px 16px' }}>Consumer Fee</th>
-                <th style={{ padding: '12px 16px' }}>Govt Fee</th>
-                <th style={{ padding: '12px 16px' }}>CA Payout</th>
-                <th style={{ padding: '12px 16px' }}>Agent Payout</th>
-                <th style={{ padding: '12px 16px' }}>Target SLA</th>
-                <th style={{ padding: '12px 16px' }}>Status</th>
-                <th style={{ padding: '12px 16px', textAlign: 'right' }}>Action</th>
+              <tr style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontWeight: 600 }}>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Service Code</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Package Title</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Category</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Consumer Fee</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Govt Fee</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>CA Payout</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Agent Payout</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Target SLA</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Status</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)", textAlign: 'right' }}>Action</th>
               </tr>
             </thead>
             <tbody>
               {filteredServices.map((srv) => (
-                <tr key={srv.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '14px 16px', fontWeight: 700, color: '#0f172a' }}>
+                <tr key={srv.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                     {srv.id}
                   </td>
-                  <td style={{ padding: '14px 16px', fontWeight: 600, color: '#0f172a' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", fontWeight: 600, color: "var(--color-fsk-7)" }}>
                     {srv.name}
                   </td>
-                  <td style={{ padding: '14px 16px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>
                     <Badge label={srv.category} variant="blue" />
                   </td>
-                  <td style={{ padding: '14px 16px', fontWeight: 700, color: '#0f172a' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                     ₹{srv.price.toLocaleString('en-IN')}
                   </td>
-                  <td style={{ padding: '14px 16px', color: '#64748b' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-9)" }}>
                     ₹{srv.govtFee.toLocaleString('en-IN')}
                   </td>
-                  <td style={{ padding: '14px 16px', color: '#7c3aed', fontWeight: 600 }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-41)", fontWeight: 600 }}>
                     ₹{srv.caCommission.toLocaleString('en-IN')}
                   </td>
-                  <td style={{ padding: '14px 16px', color: '#d97706', fontWeight: 600 }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-54)", fontWeight: 600 }}>
                     ₹{srv.agentCommission.toLocaleString('en-IN')}
                   </td>
-                  <td style={{ padding: '14px 16px', color: '#0f172a' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <Clock size={13} color="#64748b" /> {srv.turnaroundDays} Days
-                    </div>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-7)" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
+                      <Clock size={13} color="var(--color-fsk-9)" /> {srv.turnaroundDays} Days
+                    </Surface>
                   </td>
-                  <td style={{ padding: '14px 16px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>
                     <Badge
                       label={srv.status}
                       variant={srv.status === 'Active' ? 'green' : 'gray'}
                     />
                   </td>
-                  <td style={{ padding: '14px 16px', textAlign: 'right' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", textAlign: 'right' }}>
                     <button
                       type="button"
                       onClick={() => toggleStatus(srv.id, srv.name)}
                       style={{
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '6px',
-                        padding: '6px 12px',
-                        borderRadius: '6px',
-                        fontSize: '12px',
+                        gap: "var(--spacing-fsk-17)",
+                        padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
+                        borderRadius: "var(--radius-fsk-42)",
+                        fontSize: "var(--font-fsk-14)",
                         fontWeight: 600,
                         cursor: 'pointer',
-                        border: srv.status === 'Active' ? '1px solid #cbd5e1' : 'none',
-                        background: srv.status === 'Active' ? '#ffffff' : '#0f172a',
-                        color: srv.status === 'Active' ? '#475569' : '#ffffff',
+                        border: srv.status === 'Active' ? "var(--spacing-fsk-22) solid var(--color-fsk-59)" : 'none',
+                        background: srv.status === 'Active' ? "var(--color-fsk-38)" : "var(--color-fsk-7)",
+                        color: srv.status === 'Active' ? "var(--color-fsk-18)" : "var(--color-fsk-38)",
                       }}
                     >
                       <Power size={13} /> {srv.status === 'Active' ? 'Deactivate' : 'Activate'}
@@ -354,8 +355,8 @@ export const AdminServiceCataloguePage: React.FC = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };

@@ -20,6 +20,8 @@ import RegisterPage from '../pages/RegisterPage';
 import ServiceDetailPage from '../pages/ServiceDetailPage';
 import ServicesPage from '../pages/ServicesPage';
 import TermsPage from '../pages/TermsPage';
+import ExploreDemoPage from '../pages/ExploreDemoPage';
+import DemoProvider from '../features/demo/DemoContext';
 
 // Module 02: Customer Portal Pages
 import CustomerDashboardPage from '../pages/customer/CustomerDashboardPage';
@@ -93,8 +95,9 @@ import { AdminProfilePage } from '../pages/admin/AdminProfilePage';
 
 export const AppRoutes: React.FC = () => {
   return (
-    <Routes>
-      {/* Module 01: Public Website Routes */}
+    <DemoProvider>
+      <Routes>
+        {/* Module 01: Public Website Routes */}
       <Route element={<PublicLayout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
@@ -106,6 +109,7 @@ export const AppRoutes: React.FC = () => {
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms-and-conditions" element={<TermsPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/explore-demo" element={<ExploreDemoPage />} />
       </Route>
 
       {/* Module 02: Customer Portal Routes */}
@@ -199,6 +203,7 @@ export const AppRoutes: React.FC = () => {
       {/* Fallback */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
+  </DemoProvider>
   );
 };
 

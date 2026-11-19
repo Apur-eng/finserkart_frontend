@@ -1,258 +1,71 @@
+import { useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Button } from '@astryxdesign/core/Button';
+import { Drawer } from '@astryxdesign/core/Drawer';
 import { HStack } from '@astryxdesign/core/HStack';
-import { TopNav, TopNavHeading, TopNavItem } from '@astryxdesign/core/TopNav';
-import { Briefcase, ChevronDown, LogIn, Menu, ShieldCheck, User, UserCheck, X } from 'lucide-react';
-import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { VStack } from '@astryxdesign/core/VStack';
+import { Text } from '@astryxdesign/core/Text';
+import { Menu, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { useCompactViewport } from '../hooks/useCompactViewport';
 
-export const Navbar: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [loginDropdownOpen, setLoginDropdownOpen] = useState(false);
+const links = [['/', 'Home'], ['/about', 'About Us'], ['/services', 'Services'], ['/contact', 'Contact']];
+const roles = [
+  ['customer', 'Customer Login'],
+  ['agent', 'Agent Login'],
+  ['franchise', 'Franchise Login'],
+  ['ca', 'CA Login'],
+  ['coordinator', 'Operations Coordinator Login'],
+  ['admin', 'Main Admin Login'],
+];
+const linkStyle = { padding: 'var(--spacing-3)', borderRadius: 'var(--radius-element)', textDecoration: 'none', fontWeight: 600 };
 
-  const isActive = (path: string) => location.pathname === path;
-
-  return (
-    <header style={{ position: 'sticky', top: 0, zIndex: 1000, background: '#ffffff', borderBottom: '1px solid #e2e8f0', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-      <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '0 16px' }}>
-        <TopNav
-          label="Finservkart Navigation"
-          heading={
-            <TopNavHeading>
-              <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'linear-gradient(135deg, #0066cc 0%, #0052a3 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-                  <ShieldCheck size={22} />
-                </div>
-                <span style={{ fontSize: '20px', fontWeight: 700, color: '#0052a3', letterSpacing: '-0.02em' }}>
-                  Finservkart
-                </span>
-              </Link>
-            </TopNavHeading>
-          }
-          startContent={
-            <HStack gap={1} vAlign="center">
-              <TopNavItem
-                label="Home"
-                isSelected={isActive('/')}
-                onClick={() => navigate('/')}
-              />
-              <TopNavItem
-                label="About Us"
-                isSelected={isActive('/about')}
-                onClick={() => navigate('/about')}
-              />
-              <TopNavItem
-                label="Services"
-                isSelected={isActive('/services')}
-                onClick={() => navigate('/services')}
-              />
-              <TopNavItem
-                label="Contact"
-                isSelected={isActive('/contact')}
-                onClick={() => navigate('/contact')}
-              />
-            </HStack>
-          }
-          endContent={
-            <HStack gap={2} vAlign="center">
-              {/* Login dropdown trigger */}
-              <div style={{ position: 'relative' }}>
-                <Button
-                  label="Login"
-                  variant="ghost"
-                  size="sm"
-                  endContent={<ChevronDown size={14} style={{ marginLeft: '4px' }} />}
-                  icon={<LogIn size={15} />}
-                  onClick={() => setLoginDropdownOpen(!loginDropdownOpen)}
-                />
-
-                {loginDropdownOpen && (
-                  <div
-                    style={{
-                      position: 'absolute',
-                      right: 0,
-                      top: '100%',
-                      marginTop: '8px',
-                      background: '#ffffff',
-                      borderRadius: '12px',
-                      boxShadow: '0 12px 30px rgba(0, 0, 0, 0.12)',
-                      border: '1px solid #e2e8f0',
-                      padding: '8px',
-                      minWidth: '220px',
-                      zIndex: 1050,
-                    }}
-                  >
-                    <Link
-                      to="/login?role=customer"
-                      onClick={() => setLoginDropdownOpen(false)}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '10px',
-                        padding: '10px 14px',
-                        textDecoration: 'none',
-                        color: '#0f172a',
-                        fontSize: '14px',
-                        borderRadius: '8px',
-                        transition: 'background 0.2s',
-                      }}
-                      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f1f5f9')}
-                      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
-                    >
-                      <User size={16} color="#0066cc" />
-                      <div>
-                        <div style={{ fontWeight: 600 }}>Customer Login</div>
-                        <div style={{ fontSize: '12px', color: '#64748b' }}>For clients & service buyers</div>
-                      </div>
-                    </Link>
-
-                    <Link
-                      to="/login?role=agent"
-                      onClick={() => setLoginDropdownOpen(false)}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '10px',
-                        padding: '10px 14px',
-                        textDecoration: 'none',
-                        color: '#0f172a',
-                        fontSize: '14px',
-                        borderRadius: '8px',
-                        transition: 'background 0.2s',
-                      }}
-                      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f1f5f9')}
-                      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
-                    >
-                      <UserCheck size={16} color="#10b981" />
-                      <div>
-                        <div style={{ fontWeight: 600 }}>Agent Login</div>
-                        <div style={{ fontSize: '12px', color: '#64748b' }}>For registered sales agents</div>
-                      </div>
-                    </Link>
-
-                    <Link
-                      to="/login?role=ca"
-                      onClick={() => setLoginDropdownOpen(false)}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '10px',
-                        padding: '10px 14px',
-                        textDecoration: 'none',
-                        color: '#0f172a',
-                        fontSize: '14px',
-                        borderRadius: '8px',
-                        transition: 'background 0.2s',
-                      }}
-                      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f1f5f9')}
-                      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
-                    >
-                      <Briefcase size={16} color="#8b5cf6" />
-                      <div>
-                        <div style={{ fontWeight: 600 }}>CA Login</div>
-                        <div style={{ fontSize: '12px', color: '#64748b' }}>Chartered Accountants</div>
-                      </div>
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Primary Sign Up Action */}
-              <Button
-                label="Sign Up"
-                variant="primary"
-                size="sm"
-                onClick={() => navigate('/register')}
-              />
-
-              {/* Mobile toggle button */}
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                style={{
-                  display: 'none',
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  padding: '6px',
-                }}
-                className="mobile-toggle"
-                aria-label="Toggle Navigation"
-              >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </HStack>
-          }
-        />
-
-        {/* Mobile Navigation Drawer */}
-        {mobileMenuOpen && (
-          <div
-            style={{
-              padding: '16px 0',
-              borderTop: '1px solid #e2e8f0',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '12px',
-            }}
-          >
-            <Link
-              to="/"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ textDecoration: 'none', color: '#0f172a', fontWeight: 500, padding: '8px 12px' }}
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ textDecoration: 'none', color: '#0f172a', fontWeight: 500, padding: '8px 12px' }}
-            >
-              About Us
-            </Link>
-            <Link
-              to="/services"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ textDecoration: 'none', color: '#0f172a', fontWeight: 500, padding: '8px 12px' }}
-            >
-              Services
-            </Link>
-            <Link
-              to="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ textDecoration: 'none', color: '#0f172a', fontWeight: 500, padding: '8px 12px' }}
-            >
-              Contact
-            </Link>
-            <div style={{ height: '1px', background: '#e2e8f0', margin: '4px 0' }} />
-            <Link
-              to="/login"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ textDecoration: 'none', color: '#0066cc', fontWeight: 600, padding: '8px 12px' }}
-            >
-              Login to Account
-            </Link>
-            <Link
-              to="/register"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ textDecoration: 'none', color: '#10b981', fontWeight: 600, padding: '8px 12px' }}
-            >
-              Create New Account
-            </Link>
-          </div>
-        )}
-      </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .mobile-toggle {
-            display: block !important;
-          }
-        }
-      `}</style>
-    </header>
-  );
-};
-
+export function Navbar() {
+  const compact = useCompactViewport();
+  const { pathname, search } = useLocation();
+  const route = pathname + search;
+  const [openAt, setOpenAt] = useState<string | null>(null);
+  const navigation = <>
+    {links.map(([to, label]) => <NavLink key={to} to={to} end={to === '/'}
+      style={({ isActive }) => ({ ...linkStyle, color: isActive ? 'var(--color-accent)' : 'var(--color-text-primary)',
+        background: isActive ? 'var(--color-fsk-info-subtle)' : 'transparent' })}>{label}</NavLink>)}
+  </>;
+  return <VStack as="header" style={{ position: 'sticky', top: 0, zIndex: 40, background: 'var(--color-background-surface)',
+    borderBottom: 'thin solid var(--color-background-muted)' }} hAlign="center" paddingInline={4}>
+    <a className="skip-link" href="#public-content">Skip to content</a>
+    <HStack width="100%" maxWidth={1240} paddingBlock={3} hAlign="between" vAlign="center" gap={3}>
+      <Link to="/" aria-label="Finservkart home" style={{ textDecoration: 'none', color: 'var(--color-fsk-brand)' }}>
+        <HStack gap={2} vAlign="center"><ShieldCheck aria-hidden="true" /><Text size="xl" weight="bold" color="inherit">Finservkart</Text></HStack>
+      </Link>
+      {!compact && <HStack as="nav" aria-label="Main navigation" gap={1} vAlign="center">{navigation}</HStack>}
+      <HStack gap={2} vAlign="center">
+        {!compact && <>
+          <Link to="/explore-demo" style={{ ...linkStyle, border: '1px solid var(--color-accent)', color: 'var(--color-accent)' }}>Explore Demo</Link>
+          <details onKeyDown={(event) => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus(); } }}
+            style={{ position: 'relative' }}>
+            <summary style={{ ...linkStyle, cursor: 'pointer', color: 'var(--color-text-primary)' }}>Login</summary>
+            <VStack padding={2} gap={1} style={{ position: 'absolute', right: 0, zIndex: 50,
+              minWidth: 'max-content', background: 'var(--color-background-surface)', borderRadius: 'var(--radius-container)', boxShadow: 'var(--shadow-fsk-card)' }}>
+              {roles.map(([role, label]) => <Link key={role} to={`/login?role=${role}`} style={linkStyle}
+                onClick={(event) => { const details = event.currentTarget.closest('details'); if (details) details.open = false; }}>{label}</Link>)}
+            </VStack>
+          </details>
+          <Link to="/register" style={{ ...linkStyle, background: 'var(--color-accent)', color: 'var(--color-background-surface)' }}>Create account <ArrowUpRight aria-hidden="true" size={16} /></Link>
+        </>}
+        {compact && <Button label="Menu" icon={<Menu aria-hidden="true" />} variant="secondary"
+          aria-expanded={openAt === route} onClick={() => setOpenAt(route)} />}
+      </HStack>
+    </HStack>
+    {compact && <Drawer label="Main navigation" isOpen={openAt === route} onOpenChange={(open) => setOpenAt(open ? route : null)} width={340}>
+      <VStack gap={3}>
+        <Button label="Close menu" variant="secondary" onClick={() => setOpenAt(null)} />
+        <Link to="/explore-demo" style={{ ...linkStyle, background: 'var(--color-fsk-info-subtle)', color: 'var(--color-accent)' }}>Explore Demo</Link>
+        <VStack as="nav" aria-label="Main navigation">{navigation}</VStack>
+        <Text type="label">Your account</Text>
+        {roles.map(([role, label]) => <Link key={role} to={`/login?role=${role}`} style={linkStyle}>{label}</Link>)}
+        <Link to="/login" style={linkStyle}>Unified Login</Link>
+        <Link to="/register" style={linkStyle}>Create New Account</Link>
+      </VStack>
+    </Drawer>}
+  </VStack>;
+}
 export default Navbar;

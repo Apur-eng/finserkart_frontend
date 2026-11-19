@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
@@ -47,28 +48,28 @@ export const DocumentCentrePage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
       {/* Header */}
-      <div
+      <Surface
         style={{
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '24px',
-          gap: '16px',
+          marginBottom: "var(--spacing-fsk-26)",
+          gap: "var(--spacing-fsk-5)",
         }}
       >
-        <div>
+        <Surface>
           <Heading level={1}>
-            <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
               Document Centre
-            </span>
+            </Inline>
           </Heading>
-          <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
             Central repository for your identity proofs, business premises records, and official government deliverable certificates.
           </p>
-        </div>
+        </Surface>
 
         <Button
           label="Upload Document"
@@ -77,13 +78,13 @@ export const DocumentCentrePage: React.FC = () => {
           icon={<UploadCloud size={16} />}
           onClick={() => navigate('/customer/documents/upload')}
         />
-      </div>
+      </Surface>
 
       {/* Filter and Search Card */}
-      <Card elevation="low" padding={4} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '24px' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-5)", justifyContent: 'space-between', alignItems: 'center' }}>
           {/* Tabs */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+          <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-12)" }}>
             {(['All', 'Deliverable', 'Verified', 'Under Review'] as const).map((tab) => {
               const isActive = activeTab === tab;
               const count =
@@ -99,36 +100,36 @@ export const DocumentCentrePage: React.FC = () => {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '6px',
-                    padding: '8px 14px',
-                    borderRadius: '8px',
-                    border: isActive ? '1px solid #0066cc' : '1px solid #e2e8f0',
-                    background: isActive ? '#e0f2fe' : '#ffffff',
-                    color: isActive ? '#0066cc' : '#475569',
-                    fontSize: '13px',
+                    gap: "var(--spacing-fsk-17)",
+                    padding: "var(--spacing-fsk-12) var(--spacing-fsk-23)",
+                    borderRadius: "var(--radius-fsk-37)",
+                    border: isActive ? "var(--spacing-fsk-22) solid var(--color-fsk-162)" : "var(--spacing-fsk-22) solid var(--color-fsk-163)",
+                    background: isActive ? "var(--color-fsk-112)" : "var(--color-fsk-38)",
+                    color: isActive ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
+                    fontSize: "var(--font-fsk-14)",
                     fontWeight: 600,
                     cursor: 'pointer',
                   }}
                 >
-                  <span>{tab === 'Deliverable' ? 'Government Certificates' : tab}</span>
-                  <span
+                  <Inline>{tab === 'Deliverable' ? 'Government Certificates' : tab}</Inline>
+                  <Inline
                     style={{
-                      fontSize: '11px',
-                      padding: '1px 6px',
-                      borderRadius: '10px',
-                      background: isActive ? '#0066cc' : '#f1f5f9',
-                      color: isActive ? '#ffffff' : '#64748b',
+                      fontSize: "var(--font-fsk-14)",
+                      padding: "var(--spacing-fsk-22) var(--spacing-fsk-17)",
+                      borderRadius: "var(--radius-fsk-68)",
+                      background: isActive ? "var(--color-fsk-15)" : "var(--color-fsk-46)",
+                      color: isActive ? "var(--color-fsk-38)" : "var(--color-fsk-9)",
                     }}
                   >
                     {count}
-                  </span>
+                  </Inline>
                 </button>
               );
             })}
-          </div>
+          </Surface>
 
           {/* Search Box */}
-          <div style={{ width: '280px' }}>
+          <Surface style={{ width: "var(--spacing-fsk-45)" }}>
             <TextInput
               label="Search files"
               placeholder="Search by filename or ID..."
@@ -136,71 +137,71 @@ export const DocumentCentrePage: React.FC = () => {
               onChange={(val) => setSearchQuery(val)}
               width="100%"
             />
-          </div>
-        </div>
+          </Surface>
+        </Surface>
       </Card>
 
       {/* Documents Table */}
-      <Card elevation="low" padding={0} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff', overflow: 'hidden' }}>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13.5px' }}>
+      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+        <Surface style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
             <thead>
-              <tr style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', color: '#64748b', fontWeight: 600, fontSize: '12px', textTransform: 'uppercase' }}>
-                <th style={{ padding: '14px 16px' }}>Document Name</th>
-                <th style={{ padding: '14px 16px' }}>Application ID &amp; Service</th>
-                <th style={{ padding: '14px 16px' }}>Type</th>
-                <th style={{ padding: '14px 16px' }}>File Size</th>
-                <th style={{ padding: '14px 16px' }}>Uploaded On</th>
-                <th style={{ padding: '14px 16px' }}>Verification Status</th>
-                <th style={{ padding: '14px 16px', textAlign: 'right' }}>Action</th>
+              <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontWeight: 600, fontSize: "var(--font-fsk-14)", textTransform: 'uppercase' }}>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Document Name</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Application ID &amp; Service</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Type</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>File Size</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Uploaded On</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Verification Status</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", textAlign: 'right' }}>Action</th>
               </tr>
             </thead>
             <tbody>
               {filteredDocs.map((doc) => (
-                <tr key={doc.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '16px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <div style={{ width: '34px', height: '34px', borderRadius: '8px', background: doc.status === 'Deliverable' ? '#dcfce7' : '#e0f2fe', color: doc.status === 'Deliverable' ? '#16a34a' : '#0066cc', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <tr key={doc.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                  <td style={{ padding: "var(--spacing-fsk-5)" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+                      <Surface style={{ width: "var(--spacing-fsk-52)", height: "var(--spacing-fsk-52)", borderRadius: "var(--radius-fsk-37)", background: doc.status === 'Deliverable' ? "var(--color-fsk-116)" : "var(--color-fsk-112)", color: doc.status === 'Deliverable' ? "var(--color-fsk-39)" : "var(--color-fsk-15)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         {doc.status === 'Deliverable' ? <FileCheck size={18} /> : <FileText size={18} />}
-                      </div>
-                      <div>
-                        <div style={{ fontWeight: 700, color: '#0f172a' }}>{doc.fileName}</div>
-                        <div style={{ fontSize: '11.5px', color: '#64748b' }}>DOC-ID: {doc.id}</div>
-                      </div>
-                    </div>
+                      </Surface>
+                      <Surface>
+                        <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{doc.fileName}</Surface>
+                        <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>DOC-ID: {doc.id}</Surface>
+                      </Surface>
+                    </Surface>
                   </td>
-                  <td style={{ padding: '16px' }}>
-                    <div style={{ fontWeight: 600, color: '#0066cc' }}>{doc.applicationId}</div>
-                    <div style={{ fontSize: '12px', color: '#64748b' }}>{doc.serviceName}</div>
+                  <td style={{ padding: "var(--spacing-fsk-5)" }}>
+                    <Surface style={{ fontWeight: 600, color: "var(--color-fsk-15)" }}>{doc.applicationId}</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>{doc.serviceName}</Surface>
                   </td>
-                  <td style={{ padding: '16px', color: '#475569' }}>
+                  <td style={{ padding: "var(--spacing-fsk-5)", color: "var(--color-fsk-18)" }}>
                     {doc.fileType}
                   </td>
-                  <td style={{ padding: '16px', color: '#64748b', fontSize: '13px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-5)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)" }}>
                     {doc.fileSize}
                   </td>
-                  <td style={{ padding: '16px', color: '#475569', fontSize: '13px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-5)", color: "var(--color-fsk-18)", fontSize: "var(--font-fsk-14)" }}>
                     {doc.uploadDate}
                   </td>
-                  <td style={{ padding: '16px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-5)" }}>
                     {getDocStatusBadge(doc.status)}
                   </td>
-                  <td style={{ padding: '16px', textAlign: 'right' }}>
+                  <td style={{ padding: "var(--spacing-fsk-5)", textAlign: 'right' }}>
                     <a
                       href={doc.downloadUrl}
                       download
                       style={{
-                        padding: '6px 12px',
-                        borderRadius: '6px',
-                        border: '1px solid #cbd5e1',
-                        background: '#ffffff',
-                        color: '#0066cc',
-                        fontSize: '12.5px',
+                        padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
+                        borderRadius: "var(--radius-fsk-42)",
+                        border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                        background: "var(--color-fsk-38)",
+                        color: "var(--color-fsk-15)",
+                        fontSize: "var(--font-fsk-14)",
                         fontWeight: 600,
                         textDecoration: 'none',
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '6px',
+                        gap: "var(--spacing-fsk-17)",
                       }}
                     >
                       <Download size={14} /> Download
@@ -210,9 +211,9 @@ export const DocumentCentrePage: React.FC = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };
 

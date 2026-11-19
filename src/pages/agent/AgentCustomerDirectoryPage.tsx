@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
@@ -36,28 +37,28 @@ export const AgentCustomerDirectoryPage: React.FC = () => {
   }, [customers, searchQuery, statusFilter]);
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
       {/* Header */}
-      <div
+      <Surface
         style={{
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '24px',
-          gap: '16px',
+          marginBottom: "var(--spacing-fsk-26)",
+          gap: "var(--spacing-fsk-5)",
         }}
       >
-        <div>
+        <Surface>
           <Heading level={1}>
-            <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
               Customer Directory
-            </span>
+            </Inline>
           </Heading>
-          <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
             Inspect client accounts onboarded under your referral code, manage KYC status, and monitor active orders.
           </p>
-        </div>
+        </Surface>
 
         <Button
           label="Onboard New Customer"
@@ -66,12 +67,12 @@ export const AgentCustomerDirectoryPage: React.FC = () => {
           icon={<UserPlus size={16} />}
           onClick={() => navigate('/agent/customers/onboard')}
         />
-      </div>
+      </Surface>
 
       {/* Filter and Search Bar */}
-      <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '24px' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ flex: '1', minWidth: '280px', maxWidth: '420px' }}>
+      <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-5)", alignItems: 'center', justifyContent: 'space-between' }}>
+          <Surface style={{ flex: '1', minWidth: "min(100%, var(--spacing-fsk-45))", maxWidth: "var(--spacing-fsk-50)" }}>
             <TextInput
               label="Search Clients"
               placeholder="Search by client name, business, city, email or phone..."
@@ -79,21 +80,21 @@ export const AgentCustomerDirectoryPage: React.FC = () => {
               onChange={(val) => setSearchQuery(val)}
               width="100%"
             />
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', gap: '8px' }}>
+          <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)" }}>
             {(['All', 'Verified', 'Pending'] as const).map((filter) => (
               <button
                 key={filter}
                 type="button"
                 onClick={() => setStatusFilter(filter)}
                 style={{
-                  padding: '6px 14px',
-                  borderRadius: '20px',
-                  border: statusFilter === filter ? '1px solid #059669' : '1px solid #cbd5e1',
-                  background: statusFilter === filter ? '#ecfdf5' : '#ffffff',
-                  color: statusFilter === filter ? '#059669' : '#475569',
-                  fontSize: '13px',
+                  padding: "var(--spacing-fsk-17) var(--spacing-fsk-23)",
+                  borderRadius: "var(--radius-fsk-28)",
+                  border: statusFilter === filter ? "var(--spacing-fsk-22) solid var(--color-fsk-164)" : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                  background: statusFilter === filter ? "var(--color-fsk-64)" : "var(--color-fsk-38)",
+                  color: statusFilter === filter ? "var(--color-fsk-65)" : "var(--color-fsk-18)",
+                  fontSize: "var(--font-fsk-14)",
                   fontWeight: statusFilter === filter ? 600 : 500,
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
@@ -102,116 +103,116 @@ export const AgentCustomerDirectoryPage: React.FC = () => {
                 {filter} {filter === 'All' ? `(${customers.length})` : ''}
               </button>
             ))}
-          </div>
-        </div>
+          </Surface>
+        </Surface>
       </Card>
 
       {/* Customers Table */}
-      <Card elevation="low" padding={0} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff', overflow: 'hidden' }}>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13.5px' }}>
+      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+        <Surface style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
             <thead>
-              <tr style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', color: '#64748b', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: '14px 18px' }}>Client &amp; Enterprise</th>
-                <th style={{ padding: '14px 18px' }}>Contact Info</th>
-                <th style={{ padding: '14px 18px' }}>Location</th>
-                <th style={{ padding: '14px 18px' }}>Onboarded</th>
-                <th style={{ padding: '14px 18px' }}>Active Orders</th>
-                <th style={{ padding: '14px 18px' }}>KYC Status</th>
-                <th style={{ padding: '14px 18px', textAlign: 'right' }}>Actions</th>
+              <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Client &amp; Enterprise</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Contact Info</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Location</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Onboarded</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Active Orders</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>KYC Status</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredCustomers.map((cust) => (
-                <tr key={cust.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <div
+                <tr key={cust.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+                      <Surface
                         style={{
-                          width: '36px',
-                          height: '36px',
+                          width: "var(--spacing-fsk-85)",
+                          height: "var(--spacing-fsk-85)",
                           borderRadius: '50%',
-                          background: '#ecfdf5',
-                          color: '#059669',
+                          background: "var(--color-fsk-64)",
+                          color: "var(--color-fsk-65)",
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           fontWeight: 700,
-                          fontSize: '13px',
+                          fontSize: "var(--font-fsk-14)",
                         }}
                       >
                         {cust.name[0]}
-                      </div>
-                      <div>
-                        <div style={{ fontWeight: 700, color: '#0f172a' }}>{cust.name}</div>
-                        <div style={{ fontSize: '12px', color: '#64748b' }}>{cust.businessName}</div>
-                        <div style={{ fontSize: '11px', color: '#94a3b8' }}>ID: {cust.id}</div>
-                      </div>
-                    </div>
+                      </Surface>
+                      <Surface>
+                        <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{cust.name}</Surface>
+                        <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>{cust.businessName}</Surface>
+                        <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)" }}>ID: {cust.id}</Surface>
+                      </Surface>
+                    </Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', color: '#334155' }}>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '12.5px' }}>
-                        <Phone size={13} color="#64748b" /> {cust.phone}
-                      </span>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '12px', color: '#64748b' }}>
-                        <Mail size={13} color="#64748b" /> {cust.email}
-                      </span>
-                    </div>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-47)", color: "var(--color-fsk-25)" }}>
+                      <Inline style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-86)", fontSize: "var(--font-fsk-14)" }}>
+                        <Phone size={13} color="var(--color-fsk-9)" /> {cust.phone}
+                      </Inline>
+                      <Inline style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-86)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>
+                        <Mail size={13} color="var(--color-fsk-9)" /> {cust.email}
+                      </Inline>
+                    </Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px', color: '#334155' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-25)" }}>
                     {cust.city}
                   </td>
 
-                  <td style={{ padding: '14px 18px', color: '#64748b', fontSize: '12.5px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)" }}>
                     {cust.onboardedDate}
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ fontWeight: 700, color: '#0f172a' }}>{cust.activeOrdersCount} orders</div>
-                    <div style={{ fontSize: '11.5px', color: '#059669' }}>Total: ₹{cust.totalSpent.toLocaleString('en-IN')}</div>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{cust.activeOrdersCount} orders</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-65)" }}>Total: ₹{cust.totalSpent.toLocaleString('en-IN')}</Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
                     <Badge
                       label={cust.kycStatus}
                       variant={cust.kycStatus === 'Verified' ? 'green' : 'orange'}
                     />
                   </td>
 
-                  <td style={{ padding: '14px 18px', textAlign: 'right' }}>
-                    <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>
+                    <Surface style={{ display: 'flex', justifyContent: 'flex-end', gap: "var(--spacing-fsk-12)" }}>
                       <button
                         type="button"
                         onClick={() => navigate('/agent/applications')}
                         title="View Orders"
                         style={{
-                          padding: '6px 10px',
-                          borderRadius: '6px',
-                          border: '1px solid #e2e8f0',
-                          background: '#ffffff',
-                          color: '#059669',
-                          fontSize: '12px',
+                          padding: "var(--spacing-fsk-17) var(--spacing-fsk-35)",
+                          borderRadius: "var(--radius-fsk-42)",
+                          border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+                          background: "var(--color-fsk-38)",
+                          color: "var(--color-fsk-65)",
+                          fontSize: "var(--font-fsk-14)",
                           fontWeight: 600,
                           cursor: 'pointer',
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '4px',
+                          gap: "var(--spacing-fsk-29)",
                         }}
                       >
                         <FileText size={13} /> Orders
                       </button>
-                    </div>
+                    </Surface>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };
 

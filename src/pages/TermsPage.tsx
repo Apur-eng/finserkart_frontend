@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../components/Surface';
+import { StatusTag as Badge } from '../components/StatusTag';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
 import { VStack } from '@astryxdesign/core/VStack';
@@ -20,59 +21,59 @@ import { Link } from 'react-router-dom';
 
 export const TermsPage: React.FC = () => {
   return (
-    <div style={{ maxWidth: '1000px', margin: '40px auto 80px auto', padding: '0 20px' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-78)", margin: "var(--spacing-fsk-1) auto var(--spacing-fsk-3) auto", padding: "0 var(--spacing-fsk-2)" }}>
       {/* Header & Meta */}
-      <div style={{ marginBottom: '32px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#64748b', marginBottom: '16px' }}>
-          <Link to="/" style={{ color: '#0066cc', textDecoration: 'none' }}>Home</Link>
-          <span>/</span>
-          <span style={{ color: '#0f172a', fontWeight: 600 }}>Terms &amp; Conditions</span>
-        </div>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-114)" }}>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginBottom: "var(--spacing-fsk-5)" }}>
+          <Link to="/" style={{ color: "var(--color-fsk-15)", textDecoration: 'none' }}>Home</Link>
+          <Inline>/</Inline>
+          <Inline style={{ color: "var(--color-fsk-7)", fontWeight: 600 }}>Terms &amp; Conditions</Inline>
+        </Surface>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: "var(--spacing-fsk-8)", marginBottom: "var(--spacing-fsk-8)" }}>
           <Badge label="Master Service Agreement" variant="blue" />
           <Badge label="Last Updated: October 2026" variant="neutral" />
           <Badge label="Binding Legal Contract" variant="neutral" />
-        </div>
+        </Surface>
 
         <Heading level={1}>
-          <span
+          <Inline
             style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: 800,
-              color: '#0f172a',
+              color: "var(--color-fsk-7)",
               letterSpacing: '-0.02em',
               display: 'block',
-              marginTop: '4px',
+              marginTop: "var(--spacing-fsk-29)",
             }}
           >
             Terms &amp; Conditions of Service
-          </span>
+          </Inline>
         </Heading>
 
-        <p style={{ color: '#475569', fontSize: '16px', lineHeight: 1.6, marginTop: '8px', maxWidth: '780px' }}>
+        <p style={{ color: "var(--color-fsk-18)", fontSize: "var(--font-fsk-10)", lineHeight: 1.6, marginTop: "var(--spacing-fsk-12)", maxWidth: "var(--spacing-fsk-136)" }}>
           Please carefully review these terms and conditions before accessing Finservkart portals or purchasing taxation, audit, and regulatory filing services.
         </p>
-      </div>
+      </Surface>
 
       {/* Main Document Body */}
       <Card
         elevation="low"
         padding={5}
-        style={{ borderRadius: '16px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '32px' }}
+        style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-114)" }}
       >
         <VStack gap={5}>
           {/* Section 1 */}
           <section id="acceptance">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <CheckCircle size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 1. Acceptance of Terms
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', margin: 0 }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", margin: 0 }}>
               By registering an account, submitting an order, uploading documents, or utilizing the software products and professional services provided by Finservkart (&ldquo;the Company&rdquo;, &ldquo;we&rdquo;, &ldquo;our&rdquo;), you expressly agree to abide by and be bound by these Terms and Conditions. If you do not agree with any provision herein, you must refrain from using our software and services.
             </p>
           </section>
@@ -81,15 +82,15 @@ export const TermsPage: React.FC = () => {
 
           {/* Section 2 */}
           <section id="license">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <FileCheck size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 2. Scope of Services &amp; Platform License
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', margin: 0 }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", margin: 0 }}>
               Finservkart grants you a limited, non-exclusive, non-transferable license to access our customer, agent, franchise, and professional workstations. Our platform coordinates business formation (Private Limited, LLP, OPC), GST registrations and returns, Income Tax Return (ITR) filings, trademark applications, accounting ledgering, and related statutory compliance services through assigned certified Chartered Accountants.
             </p>
           </section>
@@ -98,15 +99,15 @@ export const TermsPage: React.FC = () => {
 
           {/* Section 3 */}
           <section id="intellectual-property">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <Shield size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 3. Ownership and Intellectual Property
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', margin: 0 }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", margin: 0 }}>
               All software source code, user interfaces, Astryx design implementations, trademarks, service marks, algorithms, and documentation are the exclusive intellectual property of Finservkart. Your license confers no ownership rights. You shall not reverse engineer, decompile, modify, copy, or distribute our platform or assets without explicit prior written authorization.
             </p>
           </section>
@@ -115,18 +116,18 @@ export const TermsPage: React.FC = () => {
 
           {/* Section 4 */}
           <section id="user-obligations">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <AlertCircle size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 4. Customer Obligations &amp; Document Accuracy
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', marginBottom: '12px' }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", marginBottom: "var(--spacing-fsk-8)" }}>
               As a user or client of Finservkart services, you warrant and agree that:
             </p>
-            <ul style={{ paddingLeft: '20px', margin: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', color: '#334155', lineHeight: 1.6 }}>
+            <ul style={{ paddingLeft: "var(--spacing-fsk-2)", margin: 0, display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-12)", fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-25)", lineHeight: 1.6 }}>
               <li>All documentation, identity proofs, financial figures, and statements provided by you are authentic, valid, and legally accurate.</li>
               <li>You possess lawful authority to submit documents on behalf of any enterprise or business entity you represent.</li>
               <li>Finservkart and its assigned Chartered Accountants are not liable for statutory penalties or delays arising from fraudulent, falsified, or delinquent submissions by the client.</li>
@@ -137,15 +138,15 @@ export const TermsPage: React.FC = () => {
 
           {/* Section 5 */}
           <section id="fees">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <Scale size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 5. Fees, Government Charges &amp; Payments
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', margin: 0 }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", margin: 0 }}>
               Service fees are clearly separated into professional fees and government statutory fees (e.g. MCA stamp duty, ROC challans, GST registration fees). All orders require advance clearance through our integrated payment gateways prior to filing submission. Tax invoices are generated electronically and downloadable from your Customer Portal.
             </p>
           </section>
@@ -154,15 +155,15 @@ export const TermsPage: React.FC = () => {
 
           {/* Section 6 */}
           <section id="refunds">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <ShieldAlert size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 6. Cancellation &amp; Refund Policy
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', margin: 0 }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", margin: 0 }}>
               If a service request is cancelled before document processing commences, a full refund of professional fees will be processed within 5 to 7 business days. Once statutory filing fees have been disbursed to government departments or work has been lodged on official portals, government fees and incurred CA drafting charges are strictly non-refundable.
             </p>
           </section>
@@ -171,18 +172,18 @@ export const TermsPage: React.FC = () => {
 
           {/* Section 7 */}
           <section id="liability">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <Gavel size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 7. Limitation of Liability &amp; Governing Law
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', marginBottom: '12px' }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", marginBottom: "var(--spacing-fsk-8)" }}>
               To the maximum extent permitted by Indian law, Finservkart shall not be liable for indirect, incidental, or consequential damages resulting from third-party portal downtimes, regulatory rule changes, or government rejections. Total liability is strictly limited to the professional fee received for the specific service in dispute.
             </p>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', margin: 0 }}>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", margin: 0 }}>
               These terms shall be governed by and construed in accordance with the laws of the Republic of India. Any disputes arising out of or in connection with these terms shall be subject to the exclusive jurisdiction of the competent courts in <strong>Lucknow, Uttar Pradesh</strong>.
             </p>
           </section>
@@ -191,46 +192,46 @@ export const TermsPage: React.FC = () => {
 
           {/* Section 8 */}
           <section id="contact">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <Mail size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 8. Contact &amp; Legal Notices
               </h2>
-            </div>
-            <div style={{ background: '#f8fafc', padding: '16px 20px', borderRadius: '12px', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', color: '#334155' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <strong style={{ color: '#0f172a' }}>Legal Entity:</strong>
-                <span>Finservkart Financial Services</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Mail size={15} color="#0066cc" />
-                <a href="mailto:info@finservkart.com" style={{ color: '#0066cc', textDecoration: 'none', fontWeight: 600 }}>info@finservkart.com</a>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Phone size={15} color="#0066cc" />
-                <span>+91 9120000000</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <MapPin size={15} color="#0066cc" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <span>Jankipuram Garden, Jankipuram, Lucknow, Uttar Pradesh 226021</span>
-              </div>
-            </div>
+            </Surface>
+            <Surface style={{ background: "var(--color-fsk-27)", padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)", borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-12)", fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-25)" }}>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+                <strong style={{ color: "var(--color-fsk-7)" }}>Legal Entity:</strong>
+                <Inline>Finservkart Financial Services</Inline>
+              </Surface>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+                <Mail size={15} color="var(--color-fsk-15)" />
+                <a href="mailto:info@finservkart.com" style={{ color: "var(--color-fsk-15)", textDecoration: 'none', fontWeight: 600 }}>info@finservkart.com</a>
+              </Surface>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+                <Phone size={15} color="var(--color-fsk-15)" />
+                <Inline>+91 9120000000</Inline>
+              </Surface>
+              <Surface style={{ display: 'flex', alignItems: 'flex-start', gap: "var(--spacing-fsk-35)" }}>
+                <MapPin size={15} color="var(--color-fsk-15)" style={{ flexShrink: 0, marginTop: "var(--spacing-fsk-47)" }} />
+                <Inline>Jankipuram Garden, Jankipuram, Lucknow, Uttar Pradesh 226021</Inline>
+              </Surface>
+            </Surface>
           </section>
         </VStack>
       </Card>
 
       {/* Footer Navigation Link */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
-        <Link to="/privacy-policy" style={{ color: '#0066cc', fontWeight: 600, textDecoration: 'none' }}>
+      <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: "var(--font-fsk-24)" }}>
+        <Link to="/privacy-policy" style={{ color: "var(--color-fsk-15)", fontWeight: 600, textDecoration: 'none' }}>
           &larr; View Privacy Policy
         </Link>
-        <Link to="/" style={{ color: '#0066cc', fontWeight: 600, textDecoration: 'none' }}>
+        <Link to="/" style={{ color: "var(--color-fsk-15)", fontWeight: 600, textDecoration: 'none' }}>
           Return to Home &rarr;
         </Link>
-      </div>
-    </div>
+      </Surface>
+    </Surface>
   );
 };
 

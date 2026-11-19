@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
 import { TextInput } from '@astryxdesign/core/TextInput';
@@ -56,23 +57,23 @@ export const AdminUserManagementPage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ marginBottom: '24px' }}>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
         <Heading level={1}>
-          <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
             Platform User Management
-          </span>
+          </Inline>
         </Heading>
-        <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
           Central identity registry across all platform roles. Supervise account authorizations, role access, and status locks.
         </p>
-      </div>
+      </Surface>
 
       {/* Filter and Search Bar */}
-      <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '24px' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ flex: '1', minWidth: '280px', maxWidth: '420px' }}>
+      <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-5)", alignItems: 'center', justifyContent: 'space-between' }}>
+          <Surface style={{ flex: '1', minWidth: "min(100%, var(--spacing-fsk-45))", maxWidth: "var(--spacing-fsk-50)" }}>
             <TextInput
               label="Search User Registry"
               placeholder="Search by name, email, ID, or location..."
@@ -80,21 +81,21 @@ export const AdminUserManagementPage: React.FC = () => {
               onChange={(val) => setSearchQuery(val)}
               width="100%"
             />
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)", flexWrap: 'wrap' }}>
             {(['All', 'Customer', 'Agent', 'CA', 'Franchise', 'Coordinator'] as const).map((role) => (
               <button
                 key={role}
                 type="button"
                 onClick={() => setRoleFilter(role)}
                 style={{
-                  padding: '6px 14px',
-                  borderRadius: '20px',
-                  border: roleFilter === role ? '1px solid #dc2626' : '1px solid #cbd5e1',
-                  background: roleFilter === role ? '#fef2f2' : '#ffffff',
-                  color: roleFilter === role ? '#dc2626' : '#475569',
-                  fontSize: '13px',
+                  padding: "var(--spacing-fsk-17) var(--spacing-fsk-23)",
+                  borderRadius: "var(--radius-fsk-28)",
+                  border: roleFilter === role ? "var(--spacing-fsk-22) solid var(--color-fsk-34)" : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                  background: roleFilter === role ? "var(--color-fsk-51)" : "var(--color-fsk-38)",
+                  color: roleFilter === role ? "var(--color-fsk-34)" : "var(--color-fsk-18)",
+                  fontSize: "var(--font-fsk-14)",
                   fontWeight: roleFilter === role ? 600 : 500,
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
@@ -103,71 +104,71 @@ export const AdminUserManagementPage: React.FC = () => {
                 {role}
               </button>
             ))}
-          </div>
-        </div>
+          </Surface>
+        </Surface>
       </Card>
 
       {/* Users Table */}
-      <Card elevation="low" padding={0} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff', overflow: 'hidden' }}>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13.5px' }}>
+      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+        <Surface style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
             <thead>
-              <tr style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', color: '#64748b', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: '14px 18px' }}>User Identity &amp; ID</th>
-                <th style={{ padding: '14px 18px' }}>Role</th>
-                <th style={{ padding: '14px 18px' }}>Contact Details</th>
-                <th style={{ padding: '14px 18px' }}>Location</th>
-                <th style={{ padding: '14px 18px' }}>Member Since</th>
-                <th style={{ padding: '14px 18px' }}>Status</th>
-                <th style={{ padding: '14px 18px', textAlign: 'right' }}>Governance</th>
+              <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>User Identity &amp; ID</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Role</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Contact Details</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Location</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Member Since</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Status</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>Governance</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((u) => (
-                <tr key={u.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ fontWeight: 700, color: '#0f172a' }}>{u.name}</div>
-                    <div style={{ fontSize: '11px', color: '#64748b', fontFamily: 'monospace' }}>{u.id}</div>
+                <tr key={u.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{u.name}</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontFamily: 'monospace' }}>{u.id}</Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
                     <Badge label={u.role} variant={getRoleBadgeVariant(u.role)} />
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', fontSize: '12.5px' }}>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <Mail size={12} color="#64748b" /> {u.email}
-                      </span>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#64748b' }}>
-                        <Phone size={12} color="#64748b" /> {u.phone}
-                      </span>
-                    </div>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-47)", fontSize: "var(--font-fsk-14)" }}>
+                      <Inline style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
+                        <Mail size={12} color="var(--color-fsk-9)" /> {u.email}
+                      </Inline>
+                      <Inline style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)", color: "var(--color-fsk-9)" }}>
+                        <Phone size={12} color="var(--color-fsk-9)" /> {u.phone}
+                      </Inline>
+                    </Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px', color: '#334155' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-25)" }}>
                     {u.location}
                   </td>
 
-                  <td style={{ padding: '14px 18px', color: '#64748b', fontSize: '12px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)" }}>
                     {u.joinedDate}
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
                     <Badge label={u.status} variant={u.status === 'Active' ? 'green' : 'red'} />
                   </td>
 
-                  <td style={{ padding: '14px 18px', textAlign: 'right' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>
                     <button
                       type="button"
                       onClick={() => handleToggleStatus(u.id)}
                       style={{
-                        padding: '6px 12px',
-                        borderRadius: '6px',
-                        border: u.status === 'Active' ? '1px solid #fecaca' : '1px solid #a7f3d0',
-                        background: u.status === 'Active' ? '#fff1f2' : '#ecfdf5',
-                        color: u.status === 'Active' ? '#dc2626' : '#059669',
-                        fontSize: '12px',
+                        padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
+                        borderRadius: "var(--radius-fsk-42)",
+                        border: u.status === 'Active' ? "var(--spacing-fsk-22) solid var(--color-fsk-58)" : "var(--spacing-fsk-22) solid var(--color-fsk-81)",
+                        background: u.status === 'Active' ? "var(--color-fsk-80)" : "var(--color-fsk-64)",
+                        color: u.status === 'Active' ? "var(--color-fsk-34)" : "var(--color-fsk-65)",
+                        fontSize: "var(--font-fsk-14)",
                         fontWeight: 600,
                         cursor: 'pointer',
                       }}
@@ -179,9 +180,9 @@ export const AdminUserManagementPage: React.FC = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };
 

@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../components/Surface';
+import { StatusTag as Badge } from '../components/StatusTag';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
@@ -20,23 +21,23 @@ export const ServiceDetailPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '400px', gap: '16px' }}>
+      <Surface style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: "var(--spacing-fsk-138)", gap: "var(--spacing-fsk-5)" }}>
         <Spinner />
-        <span style={{ color: '#64748b', fontSize: '15px' }}>Loading service details...</span>
-      </div>
+        <Inline style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-19)" }}>Loading service details...</Inline>
+      </Surface>
     );
   }
 
   if (isError || !service) {
     return (
-      <div style={{ maxWidth: '640px', margin: '80px auto', padding: '32px', textAlign: 'center', background: '#ffffff', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
-        <AlertCircle size={48} color="#ef4444" style={{ marginBottom: '16px' }} />
+      <Surface style={{ maxWidth: "var(--spacing-fsk-11)", margin: "var(--spacing-fsk-3) auto", padding: "var(--spacing-fsk-114)", textAlign: 'center', background: "var(--color-fsk-38)", borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+        <AlertCircle size={48} color="var(--color-fsk-129)" style={{ marginBottom: "var(--spacing-fsk-5)" }} />
         <Heading level={2}>Service Not Found</Heading>
-        <p style={{ color: '#64748b', margin: '12px 0 24px 0' }}>
+        <p style={{ color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-8) 0 var(--spacing-fsk-26) 0" }}>
           The requested service could not be located in the current Finservkart catalogue.
         </p>
         <Button label="Back to All Services" variant="primary" onClick={() => navigate('/services')} />
-      </div>
+      </Surface>
     );
   }
 
@@ -51,9 +52,9 @@ export const ServiceDetailPage: React.FC = () => {
     : '/services/service-1.jpg';
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '40px 20px 80px 20px' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto', padding: "var(--spacing-fsk-1) var(--spacing-fsk-2) var(--spacing-fsk-3) var(--spacing-fsk-2)" }}>
       {/* Back Button */}
-      <div style={{ marginBottom: '24px' }}>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
         <Button
           label="Back to Services"
           variant="ghost"
@@ -61,20 +62,20 @@ export const ServiceDetailPage: React.FC = () => {
           icon={<ArrowLeft size={16} />}
           onClick={() => navigate('/services')}
         />
-      </div>
+      </Surface>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '40px' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 21.25rem), 1fr))", gap: "var(--spacing-fsk-1)" }}>
         {/* Left Column: Image & Document Checklist */}
-        <div>
-          <div
+        <Surface>
+          <Surface
             style={{
-              borderRadius: '16px',
+              borderRadius: "var(--radius-fsk-28)",
               overflow: 'hidden',
-              height: '320px',
+              height: "var(--spacing-fsk-79)",
               width: '100%',
-              boxShadow: '0 8px 30px rgba(0, 102, 204, 0.12)',
-              marginBottom: '32px',
-              backgroundColor: '#f1f5f9',
+              boxShadow: "var(--shadow-fsk-card)",
+              marginBottom: "var(--spacing-fsk-114)",
+              backgroundColor: "var(--color-fsk-46)",
             }}
           >
             <img
@@ -85,92 +86,92 @@ export const ServiceDetailPage: React.FC = () => {
               }}
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
-          </div>
+          </Surface>
 
           {/* Required Documents Section */}
           <Card elevation="low" padding={4}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-              <FileText size={22} color="#0066cc" />
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-5)" }}>
+              <FileText size={22} color="var(--color-fsk-15)" />
               <Heading level={3}>
-                <span style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a' }}>
+                <Inline style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                   Required Documents Checklist
-                </span>
+                </Inline>
               </Heading>
-            </div>
-            <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '20px' }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginBottom: "var(--spacing-fsk-2)" }}>
               Please prepare the following documents. You will upload these during the application process:
             </p>
 
             <VStack gap={3}>
               {documents.map((doc, index) => (
-                <div
+                <Surface
                   key={index}
                   style={{
                     display: 'flex',
                     alignItems: 'flex-start',
-                    gap: '12px',
-                    padding: '12px',
-                    background: '#f8fafc',
-                    borderRadius: '8px',
-                    border: '1px solid #f1f5f9',
+                    gap: "var(--spacing-fsk-8)",
+                    padding: "var(--spacing-fsk-8)",
+                    background: "var(--color-fsk-27)",
+                    borderRadius: "var(--radius-fsk-37)",
+                    border: "var(--spacing-fsk-22) solid var(--color-fsk-46)",
                   }}
                 >
-                  <CheckCircle2 size={18} color="#10b981" style={{ flexShrink: 0, marginTop: '2px' }} />
-                  <span style={{ fontSize: '14px', color: '#1e293b', fontWeight: 500, lineHeight: 1.4 }}>
+                  <CheckCircle2 size={18} color="var(--color-fsk-31)" style={{ flexShrink: 0, marginTop: "var(--spacing-fsk-47)" }} />
+                  <Inline style={{ fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-113)", fontWeight: 500, lineHeight: 1.4 }}>
                     {doc}
-                  </span>
-                </div>
+                  </Inline>
+                </Surface>
               ))}
             </VStack>
           </Card>
-        </div>
+        </Surface>
 
         {/* Right Column: Pricing, Terms, Application CTA */}
-        <div>
-          <div style={{ marginBottom: '12px' }}>
+        <Surface>
+          <Surface style={{ marginBottom: "var(--spacing-fsk-8)" }}>
             <Badge label="Verified Financial Service" variant="green" />
-          </div>
+          </Surface>
 
           <Heading level={1}>
-            <span style={{ fontSize: '32px', fontWeight: 800, color: '#0f172a', lineHeight: 1.2 }}>
+            <Inline style={{ fontSize: "var(--font-fsk-95)", fontWeight: 800, color: "var(--color-fsk-7)", lineHeight: 1.2 }}>
               {service.service_name}
-            </span>
+            </Inline>
           </Heading>
 
-          <p style={{ fontSize: '15px', color: '#475569', lineHeight: 1.6, margin: '16px 0 24px 0' }}>
+          <p style={{ fontSize: "var(--font-fsk-19)", color: "var(--color-fsk-18)", lineHeight: 1.6, margin: "var(--spacing-fsk-5) 0 var(--spacing-fsk-26) 0" }}>
             Professional service execution handled directly through our verified Chartered Accountant network and coordinator workflow engine.
           </p>
 
           {/* Transparent Pricing Card */}
           <Card elevation="med" padding={4}>
             <Heading level={3}>
-              <span style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginBottom: '16px', display: 'block' }}>
+              <Inline style={{ fontSize: "var(--font-fsk-30)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-5)", display: 'block' }}>
                 Transparent Pricing Breakdown
-              </span>
+              </Inline>
             </Heading>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#475569' }}>
-                <span>Professional Net Fee:</span>
-                <span style={{ fontWeight: 600, color: '#0f172a' }}>{formatCurrency(servicePrice)}</span>
-              </div>
+            <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-8)", marginBottom: "var(--spacing-fsk-2)" }}>
+              <Surface style={{ display: 'flex', justifyContent: 'space-between', fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-18)" }}>
+                <Inline>Professional Net Fee:</Inline>
+                <Inline style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>{formatCurrency(servicePrice)}</Inline>
+              </Surface>
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#475569' }}>
-                <span>Government Statutory Fees:</span>
-                <span style={{ fontWeight: 600, color: '#0f172a' }}>
+              <Surface style={{ display: 'flex', justifyContent: 'space-between', fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-18)" }}>
+                <Inline>Government Statutory Fees:</Inline>
+                <Inline style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>
                   {govtFees > 0 ? formatCurrency(govtFees) : 'Included / ₹0'}
-                </span>
-              </div>
+                </Inline>
+              </Surface>
 
-              <div style={{ height: '1px', background: '#e2e8f0', margin: '4px 0' }} />
+              <Surface style={{ height: "var(--spacing-fsk-22)", background: "var(--color-fsk-21)", margin: "var(--spacing-fsk-29) 0" }} />
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                <span style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Total Payable Amount:</span>
-                <span style={{ fontSize: '28px', fontWeight: 800, color: '#0052a3' }}>
+              <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                <Inline style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Total Payable Amount:</Inline>
+                <Inline style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-139)" }}>
                   {formatCurrency(totalAmount)}
-                </span>
-              </div>
-            </div>
+                </Inline>
+              </Surface>
+            </Surface>
 
             <Button
               label={`Apply for ${service.service_name}`}
@@ -180,44 +181,44 @@ export const ServiceDetailPage: React.FC = () => {
               onClick={() => navigate(`/login?serviceId=${service.id}`)}
             />
 
-            <div style={{ marginTop: '14px', textAlign: 'center' }}>
+            <Surface style={{ marginTop: "var(--spacing-fsk-23)", textAlign: 'center' }}>
               <Text type="supporting">
-                <span style={{ fontSize: '12px', color: '#64748b' }}>
+                <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>
                   Don't have an account?{' '}
-                  <span
+                  <Inline
                     onClick={() => navigate('/register')}
-                    style={{ color: '#0066cc', fontWeight: 600, cursor: 'pointer', textDecoration: 'underline' }}
+                    style={{ color: "var(--color-fsk-15)", fontWeight: 600, cursor: 'pointer', textDecoration: 'underline' }}
                   >
                     Register free as a customer
-                  </span>
-                </span>
+                  </Inline>
+                </Inline>
               </Text>
-            </div>
+            </Surface>
           </Card>
 
           {/* Terms & Conditions Box */}
           {terms.length > 0 && (
-            <div style={{ marginTop: '32px' }}>
+            <Surface style={{ marginTop: "var(--spacing-fsk-114)" }}>
               <Banner status="info" title="Service Terms & Regulatory Disclosures">
-                <ul style={{ margin: 0, paddingLeft: '18px', fontSize: '13px', color: '#1e3a8a', lineHeight: 1.5 }}>
+                <ul style={{ margin: 0, paddingLeft: "var(--spacing-fsk-36)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-140)", lineHeight: 1.5 }}>
                   {terms.map((term, i) => (
                     <li key={i}>{term}</li>
                   ))}
                 </ul>
               </Banner>
-            </div>
+            </Surface>
           )}
 
           {/* Assurance Box */}
-          <div style={{ marginTop: '24px', padding: '16px', background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <ShieldCheck size={28} color="#10b981" />
-            <div style={{ fontSize: '13px', color: '#475569' }}>
+          <Surface style={{ marginTop: "var(--spacing-fsk-26)", padding: "var(--spacing-fsk-5)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-23)" }}>
+            <ShieldCheck size={28} color="var(--color-fsk-31)" />
+            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-18)" }}>
               <strong>100% Data Confidentiality Guarantee:</strong> Uploaded business proofs and identification are handled in compliance with Information Technology Act standards.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Surface>
+          </Surface>
+        </Surface>
+      </Surface>
+    </Surface>
   );
 };
 

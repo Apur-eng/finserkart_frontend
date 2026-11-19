@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Card } from '@astryxdesign/core/Card';
 import { TextInput } from '@astryxdesign/core/TextInput';
@@ -44,19 +45,19 @@ export const AdminSupportPage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1360px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '28px' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-33)", margin: '0 auto', display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-20)" }}>
       {/* Header */}
-      <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#dc2626', fontSize: '13px', fontWeight: 600 }}>
+      <Surface>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", color: "var(--color-fsk-34)", fontSize: "var(--font-fsk-14)", fontWeight: 600 }}>
           <Headphones size={16} /> Platform Helpdesk & Grievance Governance
-        </div>
-        <h1 style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', margin: '4px 0 0 0' }}>
+        </Surface>
+        <h1 style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
           Customer & Partner Support Enquiries
         </h1>
-        <p style={{ fontSize: '14px', color: '#64748b', margin: '4px 0 0 0' }}>
+        <p style={{ fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
           Monitor, reassign and resolve escalated customer, agent, franchise, and CA inquiries.
         </p>
-      </div>
+      </Surface>
 
       {bannerMessage && (
         <Banner
@@ -67,117 +68,117 @@ export const AdminSupportPage: React.FC = () => {
       )}
 
       {/* Ticket Metrics */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16.25rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
         <Card elevation="low" padding={4}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 500 }}>Open Enquiries</span>
-            <HelpCircle size={20} color="#dc2626" />
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', marginTop: '12px' }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 500 }}>Open Enquiries</Inline>
+            <HelpCircle size={20} color="var(--color-fsk-34)" />
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-8)" }}>
             {tickets.filter((t) => t.status === 'Open').length}
-          </div>
-          <div style={{ fontSize: '12px', color: '#dc2626', marginTop: '4px' }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-34)", marginTop: "var(--spacing-fsk-29)" }}>
             Requires immediate triage
-          </div>
+          </Surface>
         </Card>
 
         <Card elevation="low" padding={4}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 500 }}>In Investigation</span>
-            <Clock size={20} color="#eab308" />
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', marginTop: '12px' }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 500 }}>In Investigation</Inline>
+            <Clock size={20} color="var(--color-fsk-55)" />
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-8)" }}>
             {tickets.filter((t) => t.status === 'In Progress').length}
-          </div>
-          <div style={{ fontSize: '12px', color: '#d97706', marginTop: '4px' }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-54)", marginTop: "var(--spacing-fsk-29)" }}>
             Assigned to operations desk
-          </div>
+          </Surface>
         </Card>
 
         <Card elevation="low" padding={4}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 500 }}>Resolved Tickets</span>
-            <CheckCircle size={20} color="#16a34a" />
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', marginTop: '12px' }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 500 }}>Resolved Tickets</Inline>
+            <CheckCircle size={20} color="var(--color-fsk-39)" />
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-8)" }}>
             {tickets.filter((t) => t.status === 'Resolved').length}
-          </div>
-          <div style={{ fontSize: '12px', color: '#16a34a', marginTop: '4px' }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-39)", marginTop: "var(--spacing-fsk-29)" }}>
             Average resolution SLA: 3.2 hrs
-          </div>
+          </Surface>
         </Card>
-      </div>
+      </Surface>
 
       {/* Ticket Queue Card */}
       <Card elevation="low" padding={5}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '16px' }}>
-          <div>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+        <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-2)", flexWrap: 'wrap', gap: "var(--spacing-fsk-5)" }}>
+          <Surface>
+            <h2 style={{ fontSize: "var(--font-fsk-30)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
               Live Grievance Queue
             </h2>
-            <p style={{ fontSize: '13px', color: '#64748b', margin: '4px 0 0 0' }}>
+            <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
               Enquiries across Customer, Agent, and CA stakeholder groups.
             </p>
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
-            <div style={{ display: 'flex', gap: '6px' }}>
+          <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-8)", alignItems: 'center', flexWrap: 'wrap' }}>
+            <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-17)" }}>
               {['All', 'High', 'Medium', 'Low'].map((pri) => (
                 <button
                   key={pri}
                   type="button"
                   onClick={() => setPriorityFilter(pri)}
                   style={{
-                    padding: '6px 12px',
-                    borderRadius: '6px',
-                    fontSize: '12.5px',
+                    padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
+                    borderRadius: "var(--radius-fsk-42)",
+                    fontSize: "var(--font-fsk-14)",
                     fontWeight: 600,
                     cursor: 'pointer',
-                    border: priorityFilter === pri ? '1px solid #dc2626' : '1px solid #e2e8f0',
-                    background: priorityFilter === pri ? '#fee2e2' : '#ffffff',
-                    color: priorityFilter === pri ? '#991b1b' : '#64748b',
+                    border: priorityFilter === pri ? "var(--spacing-fsk-22) solid var(--color-fsk-34)" : "var(--spacing-fsk-22) solid var(--color-fsk-163)",
+                    background: priorityFilter === pri ? "var(--color-fsk-43)" : "var(--color-fsk-38)",
+                    color: priorityFilter === pri ? "var(--color-fsk-44)" : "var(--color-fsk-9)",
                   }}
                 >
                   {pri} Priority
                 </button>
               ))}
-            </div>
+            </Surface>
 
-            <div style={{ width: '280px' }}>
+            <Surface style={{ width: "var(--spacing-fsk-45)" }}>
               <TextInput
                 label="Search Tickets"
                 placeholder="Search subject, user or ID..."
                 value={searchTerm}
                 onChange={(val) => setSearchTerm(val)}
               />
-            </div>
-          </div>
-        </div>
+            </Surface>
+          </Surface>
+        </Surface>
 
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13px' }}>
+        <Surface style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid #e2e8f0', color: '#64748b', fontWeight: 600 }}>
-                <th style={{ padding: '12px 16px' }}>Ticket Code</th>
-                <th style={{ padding: '12px 16px' }}>Initiator</th>
-                <th style={{ padding: '12px 16px' }}>Stakeholder Role</th>
-                <th style={{ padding: '12px 16px' }}>Subject</th>
-                <th style={{ padding: '12px 16px' }}>Priority</th>
-                <th style={{ padding: '12px 16px' }}>Status</th>
-                <th style={{ padding: '12px 16px' }}>Last Updated</th>
-                <th style={{ padding: '12px 16px', textAlign: 'right' }}>Resolution Actions</th>
+              <tr style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontWeight: 600 }}>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Ticket Code</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Initiator</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Stakeholder Role</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Subject</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Priority</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Status</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Last Updated</th>
+                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)", textAlign: 'right' }}>Resolution Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredTickets.map((t) => (
-                <tr key={t.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '14px 16px', fontWeight: 700, color: '#0f172a' }}>
+                <tr key={t.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                     {t.id}
                   </td>
-                  <td style={{ padding: '14px 16px', fontWeight: 600, color: '#0f172a' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", fontWeight: 600, color: "var(--color-fsk-7)" }}>
                     {t.userName}
                   </td>
-                  <td style={{ padding: '14px 16px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>
                     <Badge
                       label={t.userRole}
                       variant={
@@ -189,10 +190,10 @@ export const AdminSupportPage: React.FC = () => {
                       }
                     />
                   </td>
-                  <td style={{ padding: '14px 16px', color: '#334155', maxWidth: '320px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-25)", maxWidth: "var(--spacing-fsk-79)" }}>
                     {t.subject}
                   </td>
-                  <td style={{ padding: '14px 16px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>
                     <Badge
                       label={t.priority}
                       variant={
@@ -204,7 +205,7 @@ export const AdminSupportPage: React.FC = () => {
                       }
                     />
                   </td>
-                  <td style={{ padding: '14px 16px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>
                     <Badge
                       label={t.status}
                       variant={
@@ -216,22 +217,22 @@ export const AdminSupportPage: React.FC = () => {
                       }
                     />
                   </td>
-                  <td style={{ padding: '14px 16px', color: '#64748b' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-9)" }}>
                     {t.lastUpdated}
                   </td>
-                  <td style={{ padding: '14px 16px', textAlign: 'right' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", textAlign: 'right' }}>
                     {t.status !== 'Resolved' ? (
-                      <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+                      <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)", justifyContent: 'flex-end' }}>
                         <button
                           type="button"
                           onClick={() => handleResolve(t.id)}
                           style={{
-                            padding: '6px 12px',
-                            borderRadius: '6px',
-                            background: '#16a34a',
-                            color: '#ffffff',
+                            padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
+                            borderRadius: "var(--radius-fsk-42)",
+                            background: "var(--color-fsk-39)",
+                            color: "var(--color-fsk-38)",
                             fontWeight: 600,
-                            fontSize: '12px',
+                            fontSize: "var(--font-fsk-14)",
                             border: 'none',
                             cursor: 'pointer',
                           }}
@@ -242,29 +243,29 @@ export const AdminSupportPage: React.FC = () => {
                           type="button"
                           onClick={() => handleEscalate(t.id)}
                           style={{
-                            padding: '6px 12px',
-                            borderRadius: '6px',
-                            background: '#fee2e2',
-                            color: '#dc2626',
+                            padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
+                            borderRadius: "var(--radius-fsk-42)",
+                            background: "var(--color-fsk-43)",
+                            color: "var(--color-fsk-34)",
                             fontWeight: 600,
-                            fontSize: '12px',
-                            border: '1px solid #fecaca',
+                            fontSize: "var(--font-fsk-14)",
+                            border: "var(--spacing-fsk-22) solid var(--color-fsk-58)",
                             cursor: 'pointer',
                           }}
                         >
                           Escalate
                         </button>
-                      </div>
+                      </Surface>
                     ) : (
-                      <span style={{ fontSize: '12px', color: '#16a34a', fontWeight: 600 }}>Closed</span>
+                      <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-39)", fontWeight: 600 }}>Closed</Inline>
                     )}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };

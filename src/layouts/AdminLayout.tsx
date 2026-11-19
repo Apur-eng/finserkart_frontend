@@ -1,5 +1,6 @@
-import { AppShell } from '@astryxdesign/core/AppShell';
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../components/Surface';
+import { PortalShell } from '../components/PortalShell';
+import { StatusTag as Badge } from '../components/StatusTag';
 import {
   Activity,
   Award,
@@ -31,61 +32,62 @@ export const AdminLayout: React.FC = () => {
   const adminTopNav = (
     <header
       style={{
-        height: '64px',
-        background: '#ffffff',
-        borderBottom: '1px solid #e2e8f0',
+        flexWrap: 'wrap', gap: "var(--spacing-fsk-8)", paddingBlock: "var(--spacing-fsk-8)",
+        minHeight: "var(--spacing-fsk-141)",
+        background: "var(--color-fsk-38)",
+        borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 24px',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+        padding: "0 var(--spacing-fsk-26)",
+        boxShadow: "var(--shadow-fsk-card)",
       }}
     >
       {/* Brand Lockup */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <Link to="/admin/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-          <div
+      <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-8)" }}>
+        <Link to="/admin/dashboard" style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", textDecoration: 'none' }}>
+          <Surface
             style={{
-              width: '34px',
-              height: '34px',
-              borderRadius: '8px',
-              background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
+              width: "var(--spacing-fsk-52)",
+              height: "var(--spacing-fsk-52)",
+              borderRadius: "var(--radius-fsk-37)",
+              background: "var(--color-fsk-brand)",
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#ffffff',
+              color: "var(--color-fsk-38)",
             }}
           >
             <ShieldAlert size={20} />
-          </div>
-          <span style={{ fontSize: '18px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.01em' }}>
+          </Surface>
+          <Inline style={{ fontSize: "var(--font-fsk-30)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.01em' }}>
             Finservkart
-          </span>
+          </Inline>
         </Link>
-        <span style={{ color: '#cbd5e1' }}>|</span>
+        <Inline style={{ color: "var(--color-fsk-59)" }}>|</Inline>
         <Badge label="Central Admin" variant="red" />
-      </div>
+      </Surface>
 
       {/* Right Controls */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+      <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-5)" }}>
         <Link
           to="/"
           style={{
-            fontSize: '13px',
-            color: '#64748b',
+            fontSize: "var(--font-fsk-14)",
+            color: "var(--color-fsk-9)",
             textDecoration: 'none',
             display: 'flex',
             alignItems: 'center',
-            gap: '5px',
+            gap: "var(--spacing-fsk-86)",
           }}
         >
           <ExternalLink size={14} /> Public Website
         </Link>
 
         {/* Security badge */}
-        <div style={{ fontSize: '11px', color: '#16a34a', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
+        <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-39)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)", fontWeight: 600 }}>
           <ShieldCheck size={14} /> Root Clearance Level 5
-        </div>
+        </Surface>
 
         {/* User Pill */}
         <Link
@@ -93,37 +95,37 @@ export const AdminLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
-            padding: '6px 12px',
-            borderRadius: '999px',
-            background: '#f8fafc',
-            border: '1px solid #e2e8f0',
+            gap: "var(--spacing-fsk-35)",
+            padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
+            borderRadius: "var(--radius-fsk-77)",
+            background: "var(--color-fsk-27)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
             textDecoration: 'none',
             color: 'inherit',
           }}
         >
-          <div
+          <Surface
             style={{
-              width: '28px',
-              height: '28px',
+              width: "var(--spacing-fsk-71)",
+              height: "var(--spacing-fsk-71)",
               borderRadius: '50%',
-              background: '#dc2626',
-              color: '#ffffff',
+              background: "var(--color-fsk-34)",
+              color: "var(--color-fsk-38)",
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '12px',
+              fontSize: "var(--font-fsk-14)",
               fontWeight: 700,
             }}
           >
             A
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}>
-            <span style={{ fontSize: '12.5px', fontWeight: 600, color: '#0f172a' }}>
+          </Surface>
+          <Surface style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-7)" }}>
               Super Admin
-            </span>
-            <span style={{ fontSize: '10.5px', color: '#64748b' }}>{admin.email}</span>
-          </div>
+            </Inline>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>{admin.email}</Inline>
+          </Surface>
         </Link>
 
         {/* Logout */}
@@ -135,15 +137,15 @@ export const AdminLayout: React.FC = () => {
             background: 'none',
             border: 'none',
             cursor: 'pointer',
-            padding: '8px',
-            color: '#94a3b8',
+            padding: "var(--spacing-fsk-12)",
+            color: "var(--color-fsk-57)",
             display: 'flex',
             alignItems: 'center',
           }}
         >
           <LogOut size={18} />
         </button>
-      </div>
+      </Surface>
     </header>
   );
 
@@ -164,31 +166,31 @@ export const AdminLayout: React.FC = () => {
   const adminSideNav = (
     <aside
       style={{
-        width: '240px',
-        background: '#ffffff',
-        borderRight: '1px solid #e2e8f0',
+        width: '100%',
+        background: "var(--color-fsk-38)",
+        borderRight: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        padding: '16px 12px',
-        minHeight: 'calc(100vh - 64px)',
+        padding: "var(--spacing-fsk-5) var(--spacing-fsk-8)",
+        minHeight: "calc(100vh - var(--spacing-fsk-141))",
       }}
     >
-      <div>
-        <div
+      <Surface>
+        <Surface
           style={{
-            padding: '8px 12px 14px',
-            fontSize: '11px',
+            padding: "var(--spacing-fsk-12) var(--spacing-fsk-8) var(--spacing-fsk-23)",
+            fontSize: "var(--font-fsk-14)",
             fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
-            color: '#94a3b8',
+            color: "var(--color-fsk-57)",
           }}
         >
           Central Platform Control
-        </div>
+        </Surface>
 
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+        <nav style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-29)" }}>
           {navItems.map((item) => {
             const isActive = currentPath === item.path || (item.path !== '/admin/dashboard' && currentPath.startsWith(item.path));
             return (
@@ -198,66 +200,49 @@ export const AdminLayout: React.FC = () => {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '10px',
-                  padding: '9px 12px',
-                  borderRadius: '8px',
+                  gap: "var(--spacing-fsk-35)",
+                  padding: "var(--spacing-fsk-142) var(--spacing-fsk-8)",
+                  borderRadius: "var(--radius-fsk-37)",
                   textDecoration: 'none',
-                  fontSize: '13.5px',
+                  fontSize: "var(--font-fsk-14)",
                   fontWeight: isActive ? 600 : 500,
-                  color: isActive ? '#dc2626' : '#475569',
-                  background: isActive ? '#fef2f2' : 'transparent',
+                  color: isActive ? "var(--color-fsk-34)" : "var(--color-fsk-18)",
+                  background: isActive ? "var(--color-fsk-51)" : 'transparent',
                   transition: 'background 0.15s ease, color 0.15s ease',
                 }}
               >
-                <span style={{ color: isActive ? '#dc2626' : '#64748b' }}>{item.icon}</span>
-                <span>{item.label}</span>
+                <Inline style={{ color: isActive ? "var(--color-fsk-34)" : "var(--color-fsk-9)" }}>{item.icon}</Inline>
+                <Inline>{item.label}</Inline>
               </Link>
             );
           })}
         </nav>
-      </div>
+      </Surface>
 
-      <div
+      <Surface
         style={{
-          background: '#f8fafc',
-          borderRadius: '10px',
-          border: '1px solid #e2e8f0',
-          padding: '12px',
-          fontSize: '12px',
-          color: '#475569',
+          background: "var(--color-fsk-27)",
+          borderRadius: "var(--radius-fsk-68)",
+          border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+          padding: "var(--spacing-fsk-8)",
+          fontSize: "var(--font-fsk-14)",
+          color: "var(--color-fsk-18)",
         }}
       >
-        <div style={{ fontWeight: 700, color: '#0f172a', marginBottom: '4px' }}>
+        <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-29)" }}>
           Super Admin Console
-        </div>
-        <div style={{ fontSize: '11px', color: '#64748b', lineHeight: 1.4 }}>
+        </Surface>
+        <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", lineHeight: 1.4 }}>
           Finservkart Enterprise Platform
-        </div>
-      </div>
+        </Surface>
+      </Surface>
     </aside>
   );
 
   return (
-    <AppShell
-      height="auto"
-      variant="surface"
-      topNav={adminTopNav}
-      contentPadding={0}
-    >
-      <div style={{ display: 'flex', minHeight: 'calc(100vh - 64px)' }}>
-        {adminSideNav}
-        <main
-          style={{
-            flex: 1,
-            background: '#f8fafc',
-            padding: '32px 36px 64px 36px',
-            overflowY: 'auto',
-          }}
-        >
-          <Outlet />
-        </main>
-      </div>
-    </AppShell>
+    <PortalShell header={adminTopNav} navigation={adminSideNav}>
+      <Outlet />
+    </PortalShell>
   );
 };
 

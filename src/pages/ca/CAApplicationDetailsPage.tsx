@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
@@ -25,50 +26,50 @@ export const CAApplicationDetailsPage: React.FC = () => {
     INITIAL_CA_APPLICATIONS.find((a) => a.id === id) || INITIAL_CA_APPLICATIONS[0];
 
   return (
-    <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-78)", margin: '0 auto' }}>
       {/* Back button & Header */}
-      <div style={{ marginBottom: '24px' }}>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
         <button
           type="button"
           onClick={() => navigate('/ca/applications')}
           style={{
             background: 'none',
             border: 'none',
-            color: '#7c3aed',
-            fontSize: '13px',
+            color: "var(--color-fsk-41)",
+            fontSize: "var(--font-fsk-14)",
             fontWeight: 600,
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            gap: '6px',
+            gap: "var(--spacing-fsk-17)",
             padding: 0,
-            marginBottom: '12px',
+            marginBottom: "var(--spacing-fsk-8)",
           }}
         >
           <ArrowLeft size={16} /> Back to Assigned Queue
         </button>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-              <span style={{ fontSize: '13px', fontWeight: 700, color: '#7c3aed' }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: "var(--spacing-fsk-5)" }}>
+          <Surface>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-17)" }}>
+              <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-41)" }}>
                 Application Dossier #{application.id}
-              </span>
+              </Inline>
               <Badge
                 label={application.status}
                 variant={application.status === 'Completed' ? 'green' : 'orange'}
               />
               <Badge label={`Priority: ${application.priority}`} variant="red" />
-            </div>
+            </Surface>
 
             <Heading level={1}>
-              <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+              <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
                 {application.serviceName}
-              </span>
+              </Inline>
             </Heading>
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', gap: '10px' }}>
+          <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-35)" }}>
             <Button
               label="Message Client"
               variant="secondary"
@@ -83,73 +84,73 @@ export const CAApplicationDetailsPage: React.FC = () => {
               icon={<ArrowRight size={16} />}
               onClick={() => navigate(`/ca/applications/${application.id}/workflow`)}
             />
-          </div>
-        </div>
-      </div>
+          </Surface>
+        </Surface>
+      </Surface>
 
       {/* Grid: Client info & Regulatory Details */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px', marginBottom: '28px' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 20rem), 1fr))", gap: "var(--spacing-fsk-2)", marginBottom: "var(--spacing-fsk-20)" }}>
         {/* Client Info */}
-        <Card elevation="low" padding={5} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-            <User size={18} color="#7c3aed" />
-            <span style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>Applicant Client Information</span>
-          </div>
+        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-23)" }}>
+            <User size={18} color="var(--color-fsk-41)" />
+            <Inline style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Applicant Client Information</Inline>
+          </Surface>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
-              <span style={{ color: '#64748b' }}>Client Name</span>
-              <strong style={{ color: '#0f172a' }}>{application.customerName}</strong>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
-              <span style={{ color: '#64748b' }}>Enterprise</span>
-              <span style={{ color: '#0f172a' }}>{application.businessName}</span>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
-              <span style={{ color: '#64748b' }}>Customer ID</span>
-              <span style={{ color: '#7c3aed', fontFamily: 'monospace' }}>{application.customerId}</span>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '2px' }}>
-              <span style={{ color: '#64748b' }}>Assigned On</span>
-              <span style={{ color: '#0f172a' }}>{application.assignedDate}</span>
-            </div>
-          </div>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-35)", fontSize: "var(--font-fsk-14)" }}>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingBottom: "var(--spacing-fsk-12)" }}>
+              <Inline style={{ color: "var(--color-fsk-9)" }}>Client Name</Inline>
+              <strong style={{ color: "var(--color-fsk-7)" }}>{application.customerName}</strong>
+            </Surface>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingBottom: "var(--spacing-fsk-12)" }}>
+              <Inline style={{ color: "var(--color-fsk-9)" }}>Enterprise</Inline>
+              <Inline style={{ color: "var(--color-fsk-7)" }}>{application.businessName}</Inline>
+            </Surface>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingBottom: "var(--spacing-fsk-12)" }}>
+              <Inline style={{ color: "var(--color-fsk-9)" }}>Customer ID</Inline>
+              <Inline style={{ color: "var(--color-fsk-41)", fontFamily: 'monospace' }}>{application.customerId}</Inline>
+            </Surface>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', paddingTop: "var(--spacing-fsk-47)" }}>
+              <Inline style={{ color: "var(--color-fsk-9)" }}>Assigned On</Inline>
+              <Inline style={{ color: "var(--color-fsk-7)" }}>{application.assignedDate}</Inline>
+            </Surface>
+          </Surface>
         </Card>
 
         {/* Regulatory Scope */}
-        <Card elevation="low" padding={5} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-            <ShieldCheck size={18} color="#059669" />
-            <span style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>Statutory Execution Scope</span>
-          </div>
+        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-23)" }}>
+            <ShieldCheck size={18} color="var(--color-fsk-65)" />
+            <Inline style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Statutory Execution Scope</Inline>
+          </Surface>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
-              <span style={{ color: '#64748b' }}>Target Filing Deadline</span>
-              <strong style={{ color: '#d97706', display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-35)", fontSize: "var(--font-fsk-14)" }}>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingBottom: "var(--spacing-fsk-12)" }}>
+              <Inline style={{ color: "var(--color-fsk-9)" }}>Target Filing Deadline</Inline>
+              <strong style={{ color: "var(--color-fsk-54)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
                 <Clock size={13} /> {application.deadline}
               </strong>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
-              <span style={{ color: '#64748b' }}>Current Milestone</span>
-              <span style={{ color: '#0f172a', fontWeight: 600 }}>Stage {application.currentStage} of {application.totalStages}</span>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
-              <span style={{ color: '#64748b' }}>Professional Commission</span>
-              <strong style={{ color: '#7c3aed' }}>₹{application.caCommission.toLocaleString('en-IN')}</strong>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '2px' }}>
-              <span style={{ color: '#64748b' }}>Uploaded Documents</span>
-              <span style={{ color: '#0f172a', fontWeight: 600 }}>{application.documents.length} verified files</span>
-            </div>
-          </div>
+            </Surface>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingBottom: "var(--spacing-fsk-12)" }}>
+              <Inline style={{ color: "var(--color-fsk-9)" }}>Current Milestone</Inline>
+              <Inline style={{ color: "var(--color-fsk-7)", fontWeight: 600 }}>Stage {application.currentStage} of {application.totalStages}</Inline>
+            </Surface>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingBottom: "var(--spacing-fsk-12)" }}>
+              <Inline style={{ color: "var(--color-fsk-9)" }}>Professional Commission</Inline>
+              <strong style={{ color: "var(--color-fsk-41)" }}>₹{application.caCommission.toLocaleString('en-IN')}</strong>
+            </Surface>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', paddingTop: "var(--spacing-fsk-47)" }}>
+              <Inline style={{ color: "var(--color-fsk-9)" }}>Uploaded Documents</Inline>
+              <Inline style={{ color: "var(--color-fsk-7)", fontWeight: 600 }}>{application.documents.length} verified files</Inline>
+            </Surface>
+          </Surface>
         </Card>
-      </div>
+      </Surface>
 
       {/* Associated Documents */}
-      <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-          <div style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Associated Statutory Documents</div>
+      <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+        <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-5)" }}>
+          <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Associated Statutory Documents</Surface>
           <Button
             label="Open Audit Desk"
             variant="secondary"
@@ -157,64 +158,64 @@ export const CAApplicationDetailsPage: React.FC = () => {
             icon={<FileCheck size={14} />}
             onClick={() => navigate('/ca/documents')}
           />
-        </div>
+        </Surface>
 
         {application.documents.length > 0 ? (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-35)" }}>
             {application.documents.map((doc) => (
-              <div
+              <Surface
                 key={doc.id}
                 style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  padding: '12px 14px',
-                  borderRadius: '10px',
-                  border: '1px solid #f1f5f9',
-                  background: '#f8fafc',
+                  padding: "var(--spacing-fsk-8) var(--spacing-fsk-23)",
+                  borderRadius: "var(--radius-fsk-68)",
+                  border: "var(--spacing-fsk-22) solid var(--color-fsk-46)",
+                  background: "var(--color-fsk-27)",
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: '#ffffff', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+                <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-8)" }}>
+                  <Surface style={{ width: "var(--spacing-fsk-85)", height: "var(--spacing-fsk-85)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-38)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                     <FileText size={18} />
-                  </div>
-                  <div>
-                    <div style={{ fontSize: '13.5px', fontWeight: 700, color: '#0f172a' }}>{doc.fileName}</div>
-                    <div style={{ fontSize: '11.5px', color: '#64748b' }}>
+                  </Surface>
+                  <Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)" }}>{doc.fileName}</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>
                       {doc.fileType} • {doc.fileSize} • Uploaded by {doc.uploadedBy}
-                    </div>
-                  </div>
-                </div>
+                    </Surface>
+                  </Surface>
+                </Surface>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-8)" }}>
                   <Badge label={doc.status} variant={doc.status === 'Approved' ? 'green' : 'orange'} />
                   <button
                     type="button"
                     title="Download Copy"
                     style={{
-                      padding: '6px',
-                      borderRadius: '6px',
-                      border: '1px solid #cbd5e1',
-                      background: '#ffffff',
+                      padding: "var(--spacing-fsk-17)",
+                      borderRadius: "var(--radius-fsk-42)",
+                      border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                      background: "var(--color-fsk-38)",
                       cursor: 'pointer',
-                      color: '#475569',
+                      color: "var(--color-fsk-18)",
                       display: 'flex',
                       alignItems: 'center',
                     }}
                   >
                     <Download size={14} />
                   </button>
-                </div>
-              </div>
+                </Surface>
+              </Surface>
             ))}
-          </div>
+          </Surface>
         ) : (
-          <div style={{ textAlign: 'center', padding: '24px', color: '#64748b', fontSize: '13.5px' }}>
+          <Surface style={{ textAlign: 'center', padding: "var(--spacing-fsk-26)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)" }}>
             No documents uploaded yet for this application dossier.
-          </div>
+          </Surface>
         )}
       </Card>
-    </div>
+    </Surface>
   );
 };
 

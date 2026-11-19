@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
@@ -21,49 +22,49 @@ export const ApplicationTrackerPage: React.FC = () => {
     INITIAL_APPLICATIONS.find((a) => a.id === id) || INITIAL_APPLICATIONS[0];
 
   return (
-    <div style={{ maxWidth: '960px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-72)", margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ marginBottom: '28px' }}>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-20)" }}>
         <button
           type="button"
           onClick={() => navigate('/customer/applications')}
           style={{
             background: 'none',
             border: 'none',
-            color: '#0066cc',
-            fontSize: '13px',
+            color: "var(--color-fsk-15)",
+            fontSize: "var(--font-fsk-14)",
             fontWeight: 600,
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            gap: '6px',
+            gap: "var(--spacing-fsk-17)",
             padding: 0,
-            marginBottom: '12px',
+            marginBottom: "var(--spacing-fsk-8)",
           }}
         >
           <ArrowLeft size={16} /> Back to Applications
         </button>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-              <span style={{ fontSize: '13px', fontWeight: 700, color: '#0066cc' }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: "var(--spacing-fsk-5)" }}>
+          <Surface>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-17)" }}>
+              <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-15)" }}>
                 Application Tracker #{application.id}
-              </span>
+              </Inline>
               <Badge label={`Stage ${application.currentStage} of 5`} variant="blue" />
-            </div>
+            </Surface>
 
             <Heading level={1}>
-              <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+              <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
                 {application.serviceName}
-              </span>
+              </Inline>
             </Heading>
-            <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+            <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
               Submitted on {application.submissionDate} • Estimated Delivery: <strong>{application.estimatedCompletion}</strong>
             </p>
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-8)" }}>
             <Button
               label="Chat with CA"
               variant="secondary"
@@ -77,67 +78,67 @@ export const ApplicationTrackerPage: React.FC = () => {
               size="md"
               onClick={() => navigate(`/customer/applications/${application.id}`)}
             />
-          </div>
-        </div>
-      </div>
+          </Surface>
+        </Surface>
+      </Surface>
 
       {/* Timeline Stepper Container */}
-      <Card elevation="low" padding={6} style={{ borderRadius: '16px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '32px' }}>
-        <div style={{ marginBottom: '24px' }}>
+      <Card elevation="low" padding={6} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-114)" }}>
+        <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
           <Heading level={2}>
-            <span style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-30)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
               Filing Progression Milestones
-            </span>
+            </Inline>
           </Heading>
-          <p style={{ color: '#64748b', fontSize: '13.5px', marginTop: '2px', margin: 0 }}>
+          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", marginTop: "var(--spacing-fsk-47)", margin: 0 }}>
             Standard operating procedure tracking from initial verification through to final government certification.
           </p>
-        </div>
+        </Surface>
 
         {/* Vertical Stepper Timeline */}
-        <div style={{ position: 'relative', paddingLeft: '16px' }}>
+        <Surface style={{ position: 'relative', paddingLeft: "var(--spacing-fsk-5)" }}>
           {application.milestones.map((milestone, idx) => {
             const isCompleted = milestone.status === 'completed';
             const isInProgress = milestone.status === 'in_progress';
             const isLast = idx === application.milestones.length - 1;
 
             return (
-              <div key={milestone.stage} style={{ display: 'flex', gap: '20px', position: 'relative', paddingBottom: isLast ? '0' : '36px' }}>
+              <Surface key={milestone.stage} style={{ display: 'flex', gap: "var(--spacing-fsk-2)", position: 'relative', paddingBottom: isLast ? '0' : "var(--spacing-fsk-85)" }}>
                 {/* Connecting Line */}
                 {!isLast && (
-                  <div
+                  <Surface
                     style={{
                       position: 'absolute',
-                      left: '17px',
-                      top: '36px',
+                      left: "var(--spacing-fsk-115)",
+                      top: "var(--spacing-fsk-85)",
                       bottom: '0',
-                      width: '2px',
-                      background: isCompleted ? '#10b981' : '#e2e8f0',
+                      width: "var(--spacing-fsk-47)",
+                      background: isCompleted ? "var(--color-fsk-31)" : "var(--color-fsk-21)",
                     }}
                   />
                 )}
 
                 {/* Status Dot / Icon */}
-                <div
+                <Surface
                   style={{
-                    width: '36px',
-                    height: '36px',
+                    width: "var(--spacing-fsk-85)",
+                    height: "var(--spacing-fsk-85)",
                     borderRadius: '50%',
                     background: isCompleted
-                      ? '#dcfce7'
+                      ? "var(--color-fsk-116)"
                       : isInProgress
-                      ? '#e0f2fe'
-                      : '#f1f5f9',
+                      ? "var(--color-fsk-112)"
+                      : "var(--color-fsk-46)",
                     color: isCompleted
-                      ? '#16a34a'
+                      ? "var(--color-fsk-39)"
                       : isInProgress
-                      ? '#0066cc'
-                      : '#94a3b8',
+                      ? "var(--color-fsk-15)"
+                      : "var(--color-fsk-57)",
                     border: isCompleted
-                      ? '2px solid #16a34a'
+                      ? "var(--spacing-fsk-47) solid var(--color-fsk-39)"
                       : isInProgress
-                      ? '2px solid #0066cc'
-                      : '2px solid #cbd5e1',
+                      ? "var(--spacing-fsk-47) solid var(--color-fsk-162)"
+                      : "var(--spacing-fsk-47) solid var(--color-fsk-59)",
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -150,16 +151,16 @@ export const ApplicationTrackerPage: React.FC = () => {
                   ) : isInProgress ? (
                     <Clock size={18} />
                   ) : (
-                    <span style={{ fontSize: '14px', fontWeight: 700 }}>{milestone.stage}</span>
+                    <Inline style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700 }}>{milestone.stage}</Inline>
                   )}
-                </div>
+                </Surface>
 
                 {/* Milestone Content */}
-                <div style={{ flex: 1, paddingTop: '4px' }}>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
-                    <span style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>
+                <Surface style={{ flex: 1, paddingTop: "var(--spacing-fsk-29)" }}>
+                  <Surface style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+                    <Inline style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                       Stage {milestone.stage}: {milestone.title}
-                    </span>
+                    </Inline>
                     <Badge
                       label={
                         isCompleted
@@ -172,40 +173,40 @@ export const ApplicationTrackerPage: React.FC = () => {
                         isCompleted ? 'green' : isInProgress ? 'orange' : 'neutral'
                       }
                     />
-                  </div>
+                  </Surface>
 
-                  <p style={{ fontSize: '13.5px', color: '#475569', lineHeight: 1.6, marginTop: '4px', margin: '4px 0 0 0' }}>
+                  <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-18)", lineHeight: 1.6, marginTop: "var(--spacing-fsk-29)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
                     {milestone.description}
                   </p>
 
                   {milestone.timestamp && (
-                    <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-17)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
                       <Calendar size={13} /> {milestone.timestamp}
-                    </div>
+                    </Surface>
                   )}
 
                   {milestone.remarks && (
-                    <div
+                    <Surface
                       style={{
-                        marginTop: '10px',
-                        background: '#fffbeb',
-                        border: '1px solid #fef3c7',
-                        borderRadius: '8px',
-                        padding: '10px 12px',
-                        fontSize: '13px',
-                        color: '#92400e',
+                        marginTop: "var(--spacing-fsk-35)",
+                        background: "var(--color-fsk-66)",
+                        border: "var(--spacing-fsk-22) solid var(--color-fsk-69)",
+                        borderRadius: "var(--radius-fsk-37)",
+                        padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)",
+                        fontSize: "var(--font-fsk-14)",
+                        color: "var(--color-fsk-111)",
                       }}
                     >
                       <strong>CA Remarks:</strong> {milestone.remarks}
-                    </div>
+                    </Surface>
                   )}
-                </div>
-              </div>
+                </Surface>
+              </Surface>
             );
           })}
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };
 

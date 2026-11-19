@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
@@ -54,41 +55,41 @@ export const CADeliverablesPage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-78)", margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ marginBottom: '24px' }}>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
         <Heading level={1}>
-          <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
             Deliverables Handover &amp; Certificate Upload
-          </span>
+          </Inline>
         </Heading>
-        <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
           Upload final government registration certificates, MCA incorporation packs, and approved tax filings for client release.
         </p>
-      </div>
+      </Surface>
 
       {isSuccess && (
-        <div style={{ marginBottom: '24px' }}>
+        <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
           <Banner
             status="success"
             title="Certificate Successfully Released to Client"
             description="The client has received an automated email notification with the downloadable certificate in their Document Centre."
           />
-        </div>
+        </Surface>
       )}
 
       {/* Upload Form */}
-      <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '28px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-          <UploadCloud size={20} color="#7c3aed" />
-          <span style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Upload Approved Statutory Deliverable</span>
-        </div>
+      <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-20)" }}>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-5)" }}>
+          <UploadCloud size={20} color="var(--color-fsk-41)" />
+          <Inline style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Upload Approved Statutory Deliverable</Inline>
+        </Surface>
 
         <form onSubmit={handleUploadDeliverable}>
           <VStack gap={3}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-              <div>
-                <label style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a', display: 'block', marginBottom: '6px' }}>
+            <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
+              <Surface>
+                <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
                   Target Application
                 </label>
                 <select
@@ -96,12 +97,12 @@ export const CADeliverablesPage: React.FC = () => {
                   onChange={(e) => setSelectedAppId(e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '10px 12px',
-                    borderRadius: '8px',
-                    border: '1px solid #cbd5e1',
-                    fontSize: '13.5px',
-                    color: '#0f172a',
-                    background: '#ffffff',
+                    padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)",
+                    borderRadius: "var(--radius-fsk-37)",
+                    border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                    fontSize: "var(--font-fsk-14)",
+                    color: "var(--color-fsk-7)",
+                    background: "var(--color-fsk-38)",
                     outline: 'none',
                   }}
                 >
@@ -111,7 +112,7 @@ export const CADeliverablesPage: React.FC = () => {
                     </option>
                   ))}
                 </select>
-              </div>
+              </Surface>
 
               <TextInput
                 label="Statutory Registration / Certificate Number"
@@ -121,7 +122,7 @@ export const CADeliverablesPage: React.FC = () => {
                 isRequired
                 width="100%"
               />
-            </div>
+            </Surface>
 
             <TextInput
               label="Deliverable File Name &amp; Description"
@@ -132,7 +133,7 @@ export const CADeliverablesPage: React.FC = () => {
               width="100%"
             />
 
-            <div style={{ marginTop: '8px' }}>
+            <Surface style={{ marginTop: "var(--spacing-fsk-12)" }}>
               <Button
                 label="Upload &amp; Release to Client"
                 variant="primary"
@@ -141,77 +142,77 @@ export const CADeliverablesPage: React.FC = () => {
                 icon={<FileCheck size={16} />}
                 isDisabled={!deliverableName.trim()}
               />
-            </div>
+            </Surface>
           </VStack>
         </form>
       </Card>
 
       {/* Deliverables List */}
-      <Card elevation="low" padding={0} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff', overflow: 'hidden' }}>
-        <div style={{ padding: '16px 20px', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Released Deliverables History</div>
-          <span style={{ fontSize: '12px', color: '#64748b' }}>{deliverables.length} deliverables</span>
-        </div>
+      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+        <Surface style={{ padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Released Deliverables History</Surface>
+          <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>{deliverables.length} deliverables</Inline>
+        </Surface>
 
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13.5px' }}>
+        <Surface style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
             <thead>
-              <tr style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', color: '#64748b', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: '14px 18px' }}>Deliverable &amp; Certificate</th>
-                <th style={{ padding: '14px 18px' }}>Application &amp; Service</th>
-                <th style={{ padding: '14px 18px' }}>Client Handover</th>
-                <th style={{ padding: '14px 18px' }}>Date Released</th>
-                <th style={{ padding: '14px 18px' }}>Status</th>
-                <th style={{ padding: '14px 18px', textAlign: 'right' }}>Download</th>
+              <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Deliverable &amp; Certificate</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Application &amp; Service</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Client Handover</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Date Released</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Status</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>Download</th>
               </tr>
             </thead>
             <tbody>
               {deliverables.map((deliv) => (
-                <tr key={deliv.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <div style={{ width: '34px', height: '34px', borderRadius: '8px', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <tr key={deliv.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+                      <Surface style={{ width: "var(--spacing-fsk-52)", height: "var(--spacing-fsk-52)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-64)", color: "var(--color-fsk-65)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <CheckCircle2 size={18} />
-                      </div>
-                      <div>
-                        <div style={{ fontWeight: 700, color: '#0f172a' }}>{deliv.deliverableName}</div>
+                      </Surface>
+                      <Surface>
+                        <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{deliv.deliverableName}</Surface>
                         {deliv.certNumber && (
-                          <div style={{ fontSize: '11px', color: '#059669', fontFamily: 'monospace' }}>
+                          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-65)", fontFamily: 'monospace' }}>
                             Cert: {deliv.certNumber}
-                          </div>
+                          </Surface>
                         )}
-                      </div>
-                    </div>
+                      </Surface>
+                    </Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ fontWeight: 600, color: '#0f172a' }}>{deliv.serviceName}</div>
-                    <div style={{ fontSize: '11px', color: '#7c3aed', fontFamily: 'monospace' }}>#{deliv.applicationId}</div>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>{deliv.serviceName}</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-41)", fontFamily: 'monospace' }}>#{deliv.applicationId}</Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px', color: '#334155' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-25)" }}>
                     {deliv.customerName}
                   </td>
 
-                  <td style={{ padding: '14px 18px', color: '#64748b' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-9)" }}>
                     {deliv.uploadDate}
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
                     <Badge label={deliv.status} variant={deliv.status === 'Released to Client' ? 'green' : 'orange'} />
                   </td>
 
-                  <td style={{ padding: '14px 18px', textAlign: 'right' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>
                     <button
                       type="button"
                       title="Download Certificate"
                       style={{
-                        padding: '6px',
-                        borderRadius: '6px',
-                        border: '1px solid #cbd5e1',
-                        background: '#ffffff',
+                        padding: "var(--spacing-fsk-17)",
+                        borderRadius: "var(--radius-fsk-42)",
+                        border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                        background: "var(--color-fsk-38)",
                         cursor: 'pointer',
-                        color: '#475569',
+                        color: "var(--color-fsk-18)",
                         display: 'inline-flex',
                         alignItems: 'center',
                       }}
@@ -223,9 +224,9 @@ export const CADeliverablesPage: React.FC = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };
 

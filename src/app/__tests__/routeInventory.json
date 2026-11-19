@@ -1,0 +1,377 @@
+[
+  {
+    "path": "/",
+    "page": "HomePage",
+    "preview": "/"
+  },
+  {
+    "path": "/about",
+    "page": "AboutPage",
+    "preview": "/about"
+  },
+  {
+    "path": "/services",
+    "page": "ServicesPage",
+    "preview": "/services"
+  },
+  {
+    "path": "/services/:id",
+    "page": "ServiceDetailPage",
+    "preview": "/services/1"
+  },
+  {
+    "path": "/login",
+    "page": "LoginPage",
+    "preview": "/login"
+  },
+  {
+    "path": "/register",
+    "page": "RegisterPage",
+    "preview": "/register"
+  },
+  {
+    "path": "/forgot-password",
+    "page": "ForgotPasswordPage",
+    "preview": "/forgot-password"
+  },
+  {
+    "path": "/privacy-policy",
+    "page": "PrivacyPolicyPage",
+    "preview": "/privacy-policy"
+  },
+  {
+    "path": "/terms-and-conditions",
+    "page": "TermsPage",
+    "preview": "/terms-and-conditions"
+  },
+  {
+    "path": "/contact",
+    "page": "ContactPage",
+    "preview": "/contact"
+  },
+  {
+    "path": "/customer",
+    "page": "CustomerDashboardPage",
+    "preview": "/customer"
+  },
+  {
+    "path": "/customer/dashboard",
+    "page": "CustomerDashboardPage",
+    "preview": "/customer/dashboard"
+  },
+  {
+    "path": "/customer/applications",
+    "page": "CustomerApplicationsPage",
+    "preview": "/customer/applications"
+  },
+  {
+    "path": "/customer/applications/new",
+    "page": "NewApplicationPage",
+    "preview": "/customer/applications/new"
+  },
+  {
+    "path": "/customer/applications/:id",
+    "page": "ApplicationDetailsPage",
+    "preview": "/customer/applications/new"
+  },
+  {
+    "path": "/customer/applications/:id/tracker",
+    "page": "ApplicationTrackerPage",
+    "preview": "/customer/applications/FK-SRV-9041/tracker"
+  },
+  {
+    "path": "/customer/documents",
+    "page": "DocumentCentrePage",
+    "preview": "/customer/documents"
+  },
+  {
+    "path": "/customer/documents/upload",
+    "page": "DocumentUploadPage",
+    "preview": "/customer/documents/upload"
+  },
+  {
+    "path": "/customer/conversations",
+    "page": "CustomerConversationsPage",
+    "preview": "/customer/conversations"
+  },
+  {
+    "path": "/customer/payments",
+    "page": "CustomerPaymentsPage",
+    "preview": "/customer/payments"
+  },
+  {
+    "path": "/customer/profile",
+    "page": "CustomerProfilePage",
+    "preview": "/customer/profile"
+  },
+  {
+    "path": "/customer/notifications",
+    "page": "CustomerNotificationsPage",
+    "preview": "/customer/notifications"
+  },
+  {
+    "path": "/customer/support",
+    "page": "CustomerSupportPage",
+    "preview": "/customer/support"
+  },
+  {
+    "path": "/agent",
+    "page": "AgentDashboardPage",
+    "preview": "/agent"
+  },
+  {
+    "path": "/agent/dashboard",
+    "page": "AgentDashboardPage",
+    "preview": "/agent/dashboard"
+  },
+  {
+    "path": "/agent/customers/onboard",
+    "page": "AgentOnboardCustomerPage",
+    "preview": "/agent/customers/onboard"
+  },
+  {
+    "path": "/agent/customers",
+    "page": "AgentCustomerDirectoryPage",
+    "preview": "/agent/customers"
+  },
+  {
+    "path": "/agent/applications",
+    "page": "AgentApplicationsPage",
+    "preview": "/agent/applications"
+  },
+  {
+    "path": "/agent/applications/:id",
+    "page": "AgentApplicationDetailsPage",
+    "preview": "/agent/applications/FK-SRV-9041"
+  },
+  {
+    "path": "/agent/commissions",
+    "page": "AgentCommissionsPage",
+    "preview": "/agent/commissions"
+  },
+  {
+    "path": "/agent/payouts",
+    "page": "AgentPayoutsPage",
+    "preview": "/agent/payouts"
+  },
+  {
+    "path": "/agent/profile",
+    "page": "AgentProfilePage",
+    "preview": "/agent/profile"
+  },
+  {
+    "path": "/agent/notifications",
+    "page": "AgentNotificationsPage",
+    "preview": "/agent/notifications"
+  },
+  {
+    "path": "/ca",
+    "page": "CADashboardPage",
+    "preview": "/ca"
+  },
+  {
+    "path": "/ca/dashboard",
+    "page": "CADashboardPage",
+    "preview": "/ca/dashboard"
+  },
+  {
+    "path": "/ca/applications",
+    "page": "CAAssignedApplicationsPage",
+    "preview": "/ca/applications"
+  },
+  {
+    "path": "/ca/applications/:id",
+    "page": "CAApplicationDetailsPage",
+    "preview": "/ca/applications/FK-SRV-9041"
+  },
+  {
+    "path": "/ca/applications/:id/workflow",
+    "page": "CAWorkflowPage",
+    "preview": "/ca/applications/FK-SRV-9041/workflow"
+  },
+  {
+    "path": "/ca/documents",
+    "page": "CADocumentReviewPage",
+    "preview": "/ca/documents"
+  },
+  {
+    "path": "/ca/conversations",
+    "page": "CAConversationsPage",
+    "preview": "/ca/conversations"
+  },
+  {
+    "path": "/ca/deliverables",
+    "page": "CADeliverablesPage",
+    "preview": "/ca/deliverables"
+  },
+  {
+    "path": "/ca/completed",
+    "page": "CACompletedApplicationsPage",
+    "preview": "/ca/completed"
+  },
+  {
+    "path": "/ca/profile",
+    "page": "CAProfilePage",
+    "preview": "/ca/profile"
+  },
+  {
+    "path": "/ca/notifications",
+    "page": "CANotificationsPage",
+    "preview": "/ca/notifications"
+  },
+  {
+    "path": "/franchise",
+    "page": "FranchiseDashboardPage",
+    "preview": "/franchise"
+  },
+  {
+    "path": "/franchise/dashboard",
+    "page": "FranchiseDashboardPage",
+    "preview": "/franchise/dashboard"
+  },
+  {
+    "path": "/franchise/agents",
+    "page": "FranchiseAgentsPage",
+    "preview": "/franchise/agents"
+  },
+  {
+    "path": "/franchise/customers",
+    "page": "FranchiseCustomersPage",
+    "preview": "/franchise/customers"
+  },
+  {
+    "path": "/franchise/applications",
+    "page": "FranchiseApplicationsPage",
+    "preview": "/franchise/applications"
+  },
+  {
+    "path": "/franchise/commissions",
+    "page": "FranchiseCommissionsPage",
+    "preview": "/franchise/commissions"
+  },
+  {
+    "path": "/franchise/payouts",
+    "page": "FranchisePayoutsPage",
+    "preview": "/franchise/payouts"
+  },
+  {
+    "path": "/franchise/reports",
+    "page": "FranchiseReportsPage",
+    "preview": "/franchise/reports"
+  },
+  {
+    "path": "/franchise/profile",
+    "page": "FranchiseProfilePage",
+    "preview": "/franchise/profile"
+  },
+  {
+    "path": "/coordinator",
+    "page": "CoordinatorDashboardPage",
+    "preview": "/coordinator"
+  },
+  {
+    "path": "/coordinator/dashboard",
+    "page": "CoordinatorDashboardPage",
+    "preview": "/coordinator/dashboard"
+  },
+  {
+    "path": "/coordinator/applications",
+    "page": "CoordinatorApplicationsPage",
+    "preview": "/coordinator/applications"
+  },
+  {
+    "path": "/coordinator/applications/:id",
+    "page": "CoordinatorApplicationDetailsPage",
+    "preview": "/coordinator/applications/FK-SRV-9041"
+  },
+  {
+    "path": "/coordinator/ca-assignment",
+    "page": "CoordinatorCAAssignmentPage",
+    "preview": "/coordinator/ca-assignment"
+  },
+  {
+    "path": "/coordinator/cas",
+    "page": "CoordinatorCAManagementPage",
+    "preview": "/coordinator/cas"
+  },
+  {
+    "path": "/coordinator/documents",
+    "page": "CoordinatorDocumentMonitoringPage",
+    "preview": "/coordinator/documents"
+  },
+  {
+    "path": "/coordinator/transactions",
+    "page": "CoordinatorTransactionsPage",
+    "preview": "/coordinator/transactions"
+  },
+  {
+    "path": "/coordinator/notifications",
+    "page": "CoordinatorNotificationsPage",
+    "preview": "/coordinator/notifications"
+  },
+  {
+    "path": "/admin",
+    "page": "AdminDashboardPage",
+    "preview": "/admin"
+  },
+  {
+    "path": "/admin/dashboard",
+    "page": "AdminDashboardPage",
+    "preview": "/admin/dashboard"
+  },
+  {
+    "path": "/admin/users",
+    "page": "AdminUserManagementPage",
+    "preview": "/admin/users"
+  },
+  {
+    "path": "/admin/applications",
+    "page": "AdminApplicationsPage",
+    "preview": "/admin/applications"
+  },
+  {
+    "path": "/admin/cas",
+    "page": "AdminCAManagementPage",
+    "preview": "/admin/cas"
+  },
+  {
+    "path": "/admin/commissions",
+    "page": "AdminCommissionManagementPage",
+    "preview": "/admin/commissions"
+  },
+  {
+    "path": "/admin/services",
+    "page": "AdminServiceCataloguePage",
+    "preview": "/admin/services"
+  },
+  {
+    "path": "/admin/finances",
+    "page": "AdminFinancialReportsPage",
+    "preview": "/admin/finances"
+  },
+  {
+    "path": "/admin/support",
+    "page": "AdminSupportPage",
+    "preview": "/admin/support"
+  },
+  {
+    "path": "/admin/activity",
+    "page": "AdminActivityLogsPage",
+    "preview": "/admin/activity"
+  },
+  {
+    "path": "/admin/settings",
+    "page": "AdminSettingsPage",
+    "preview": "/admin/settings"
+  },
+  {
+    "path": "/admin/profile",
+    "page": "AdminProfilePage",
+    "preview": "/admin/profile"
+  },
+  {
+    "path": "/*",
+    "page": "NotFoundPage",
+    "preview": "/not-a-real-route"
+  }
+]

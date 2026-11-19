@@ -34,6 +34,12 @@ describe('Module 01: Public Website Master Inventory (10 Pages)', () => {
 
       expect(html).toBeTruthy();
       expect(html).toContain(titleExpected);
+      if (route === '/') {
+        // Guard content integrity when converting the marketing sections to data.
+        expect(html).toContain('Lightning Fast');
+        expect(html).not.toContain('&lt;/h3&gt;');
+        expect((html.match(/<h1\b/g) ?? []).length).toBe(1);
+      }
     });
   });
 

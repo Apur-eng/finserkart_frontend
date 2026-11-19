@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
@@ -65,36 +66,36 @@ export const CustomerSupportPage: React.FC = () => {
   ];
 
   return (
-    <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-78)", margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ marginBottom: '24px' }}>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
         <Heading level={1}>
-          <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
             Customer Support & Helpdesk
-          </span>
+          </Inline>
         </Heading>
-        <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
           Submit support inquiries, report filing hurdles, or speak directly with our Lucknow operational team.
         </p>
-      </div>
+      </Surface>
 
       {isSubmitted && (
-        <div style={{ marginBottom: '24px' }}>
+        <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
           <Banner
             status="success"
             title="Support Ticket Created Successfully"
             description="Your inquiry has been assigned to our operations coordinator team. Expected response within 2 hours."
           />
-        </div>
+        </Surface>
       )}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px', alignItems: 'flex-start' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 20rem), 1fr))", gap: "var(--spacing-fsk-20)", alignItems: 'flex-start' }}>
         {/* Left Column: Create Ticket Form */}
-        <div>
-          <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '28px' }}>
-            <div style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>
+        <Surface>
+          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-20)" }}>
+            <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-5)" }}>
               Create Support Ticket
-            </div>
+            </Surface>
 
             <form onSubmit={handleCreateTicket}>
               <VStack gap={3}>
@@ -107,9 +108,9 @@ export const CustomerSupportPage: React.FC = () => {
                   width="100%"
                 />
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '14px' }}>
-                  <div>
-                    <label style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a', display: 'block', marginBottom: '6px' }}>
+                <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-23)" }}>
+                  <Surface>
+                    <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
                       Category
                     </label>
                     <select
@@ -117,12 +118,12 @@ export const CustomerSupportPage: React.FC = () => {
                       onChange={(e) => setCategory(e.target.value as any)}
                       style={{
                         width: '100%',
-                        padding: '10px 12px',
-                        borderRadius: '8px',
-                        border: '1px solid #cbd5e1',
-                        fontSize: '13.5px',
-                        color: '#0f172a',
-                        background: '#ffffff',
+                        padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)",
+                        borderRadius: "var(--radius-fsk-37)",
+                        border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                        fontSize: "var(--font-fsk-14)",
+                        color: "var(--color-fsk-7)",
+                        background: "var(--color-fsk-38)",
                         outline: 'none',
                       }}
                     >
@@ -131,10 +132,10 @@ export const CustomerSupportPage: React.FC = () => {
                       <option value="Billing & Refund">Billing &amp; Refund</option>
                       <option value="Technical">Technical</option>
                     </select>
-                  </div>
+                  </Surface>
 
-                  <div>
-                    <label style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a', display: 'block', marginBottom: '6px' }}>
+                  <Surface>
+                    <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
                       Priority
                     </label>
                     <select
@@ -142,12 +143,12 @@ export const CustomerSupportPage: React.FC = () => {
                       onChange={(e) => setPriority(e.target.value as any)}
                       style={{
                         width: '100%',
-                        padding: '10px 12px',
-                        borderRadius: '8px',
-                        border: '1px solid #cbd5e1',
-                        fontSize: '13.5px',
-                        color: '#0f172a',
-                        background: '#ffffff',
+                        padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)",
+                        borderRadius: "var(--radius-fsk-37)",
+                        border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                        fontSize: "var(--font-fsk-14)",
+                        color: "var(--color-fsk-7)",
+                        background: "var(--color-fsk-38)",
                         outline: 'none',
                       }}
                     >
@@ -156,10 +157,10 @@ export const CustomerSupportPage: React.FC = () => {
                       <option value="High">High</option>
                       <option value="Urgent">Urgent</option>
                     </select>
-                  </div>
+                  </Surface>
 
-                  <div>
-                    <label style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a', display: 'block', marginBottom: '6px' }}>
+                  <Surface>
+                    <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
                       Related Application
                     </label>
                     <select
@@ -167,12 +168,12 @@ export const CustomerSupportPage: React.FC = () => {
                       onChange={(e) => setSelectedAppId(e.target.value)}
                       style={{
                         width: '100%',
-                        padding: '10px 12px',
-                        borderRadius: '8px',
-                        border: '1px solid #cbd5e1',
-                        fontSize: '13.5px',
-                        color: '#0f172a',
-                        background: '#ffffff',
+                        padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)",
+                        borderRadius: "var(--radius-fsk-37)",
+                        border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                        fontSize: "var(--font-fsk-14)",
+                        color: "var(--color-fsk-7)",
+                        background: "var(--color-fsk-38)",
                         outline: 'none',
                       }}
                     >
@@ -182,8 +183,8 @@ export const CustomerSupportPage: React.FC = () => {
                         </option>
                       ))}
                     </select>
-                  </div>
-                </div>
+                  </Surface>
+                </Surface>
 
                 <TextInput
                   label="Inquiry Details"
@@ -193,7 +194,7 @@ export const CustomerSupportPage: React.FC = () => {
                   width="100%"
                 />
 
-                <div style={{ marginTop: '8px' }}>
+                <Surface style={{ marginTop: "var(--spacing-fsk-12)" }}>
                   <Button
                     label="Submit Support Ticket"
                     variant="primary"
@@ -203,100 +204,100 @@ export const CustomerSupportPage: React.FC = () => {
                     icon={<Send size={15} />}
                     isDisabled={!subject.trim()}
                   />
-                </div>
+                </Surface>
               </VStack>
             </form>
           </Card>
 
           {/* Active Tickets List */}
-          <div style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', marginBottom: '12px' }}>
+          <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-8)" }}>
             My Active Support Tickets ({tickets.length})
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-8)" }}>
             {tickets.map((t) => (
-              <Card key={t.id} elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                  <div>
-                    <span style={{ fontSize: '11.5px', fontWeight: 700, color: '#0066cc' }}>{t.id}</span>
-                    <div style={{ fontSize: '14.5px', fontWeight: 700, color: '#0f172a', marginTop: '2px' }}>
+              <Card key={t.id} elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+                <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: "var(--spacing-fsk-12)" }}>
+                  <Surface>
+                    <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-15)" }}>{t.id}</Inline>
+                    <Surface style={{ fontSize: "var(--font-fsk-91)", fontWeight: 700, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)" }}>
                       {t.subject}
-                    </div>
-                  </div>
+                    </Surface>
+                  </Surface>
                   <Badge
                     label={t.status}
                     variant={t.status === 'Resolved' ? 'green' : t.status === 'In Progress' ? 'orange' : 'blue'}
                   />
-                </div>
+                </Surface>
 
-                <div style={{ fontSize: '12.5px', color: '#64748b', marginBottom: '8px' }}>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginBottom: "var(--spacing-fsk-12)" }}>
                   Category: <strong>{t.category}</strong> {t.applicationId ? `• File: ${t.applicationId}` : ''} • Created: {t.createdAt}
-                </div>
+                </Surface>
 
-                <div style={{ background: '#f8fafc', padding: '8px 12px', borderRadius: '8px', fontSize: '12px', color: '#334155', border: '1px solid #e2e8f0' }}>
+                <Surface style={{ background: "var(--color-fsk-27)", padding: "var(--spacing-fsk-12) var(--spacing-fsk-8)", borderRadius: "var(--radius-fsk-37)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-25)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
                   <strong>Latest Note:</strong> {t.lastReply}
-                </div>
+                </Surface>
               </Card>
             ))}
-          </div>
-        </div>
+          </Surface>
+        </Surface>
 
         {/* Right Column: Contact Channels & FAQs */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-26)" }}>
           {/* Helpdesk Contact Card */}
-          <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
-              <div style={{ width: '38px', height: '38px', borderRadius: '8px', background: '#e0f2fe', color: '#0066cc', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-23)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-90)", height: "var(--spacing-fsk-90)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", color: "var(--color-fsk-15)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <LifeBuoy size={20} />
-              </div>
-              <div>
-                <span style={{ fontSize: '11px', color: '#64748b', fontWeight: 600, textTransform: 'uppercase' }}>
+              </Surface>
+              <Surface>
+                <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600, textTransform: 'uppercase' }}>
                   Customer Support Center
-                </span>
-                <div style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>
+                </Inline>
+                <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                   Direct Channels
-                </div>
-              </div>
-            </div>
+                </Surface>
+              </Surface>
+            </Surface>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13px', color: '#334155' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Phone size={16} color="#0066cc" />
-                <span>+91 9120000000 (Mon–Sat, 9:30 AM–6:30 PM)</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Mail size={16} color="#0066cc" />
-                <span>support@finservkart.com</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <MapPin size={16} color="#0066cc" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <span>Jankipuram Garden, Jankipuram, Lucknow, UP 226021</span>
-              </div>
-            </div>
+            <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-8)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-25)" }}>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+                <Phone size={16} color="var(--color-fsk-15)" />
+                <Inline>+91 9120000000 (Mon–Sat, 9:30 AM–6:30 PM)</Inline>
+              </Surface>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+                <Mail size={16} color="var(--color-fsk-15)" />
+                <Inline>support@finservkart.com</Inline>
+              </Surface>
+              <Surface style={{ display: 'flex', alignItems: 'flex-start', gap: "var(--spacing-fsk-35)" }}>
+                <MapPin size={16} color="var(--color-fsk-15)" style={{ flexShrink: 0, marginTop: "var(--spacing-fsk-47)" }} />
+                <Inline>Jankipuram Garden, Jankipuram, Lucknow, UP 226021</Inline>
+              </Surface>
+            </Surface>
           </Card>
 
           {/* FAQs Accordion */}
-          <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-            <div style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', marginBottom: '14px' }}>
+          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+            <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-23)" }}>
               Frequently Asked Questions
-            </div>
+            </Surface>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-23)" }}>
               {faqs.map((faq, idx) => (
-                <div key={idx} style={{ borderBottom: idx === faqs.length - 1 ? 'none' : '1px solid #f1f5f9', paddingBottom: idx === faqs.length - 1 ? 0 : '12px' }}>
-                  <div style={{ fontWeight: 700, fontSize: '13px', color: '#0f172a', marginBottom: '4px' }}>
+                <Surface key={idx} style={{ borderBottom: idx === faqs.length - 1 ? 'none' : "var(--spacing-fsk-22) solid var(--color-fsk-165)", paddingBottom: idx === faqs.length - 1 ? 0 : "var(--spacing-fsk-8)" }}>
+                  <Surface style={{ fontWeight: 700, fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-29)" }}>
                     {faq.q}
-                  </div>
-                  <div style={{ fontSize: '12.5px', color: '#64748b', lineHeight: 1.5 }}>
+                  </Surface>
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", lineHeight: 1.5 }}>
                     {faq.a}
-                  </div>
-                </div>
+                  </Surface>
+                </Surface>
               ))}
-            </div>
+            </Surface>
           </Card>
-        </div>
-      </div>
-    </div>
+        </Surface>
+      </Surface>
+    </Surface>
   );
 };
 

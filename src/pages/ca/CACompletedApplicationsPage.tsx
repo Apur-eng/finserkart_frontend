@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
 import { TextInput } from '@astryxdesign/core/TextInput';
@@ -25,22 +26,22 @@ export const CACompletedApplicationsPage: React.FC = () => {
   }, [completed, searchQuery]);
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ marginBottom: '24px' }}>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
         <Heading level={1}>
-          <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
             Completed Filings Archive
-          </span>
+          </Inline>
         </Heading>
-        <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
           Historical archive of approved regulatory filings, client handovers, and performance ratings.
         </p>
-      </div>
+      </Surface>
 
       {/* Filter and Search Bar */}
-      <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '24px' }}>
-        <div style={{ maxWidth: '420px' }}>
+      <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
+        <Surface style={{ maxWidth: "var(--spacing-fsk-50)" }}>
           <TextInput
             label="Search Archive"
             placeholder="Search completed archive by ID, service, or client..."
@@ -48,73 +49,73 @@ export const CACompletedApplicationsPage: React.FC = () => {
             onChange={(val) => setSearchQuery(val)}
             width="100%"
           />
-        </div>
+        </Surface>
       </Card>
 
       {/* Completed Applications Table */}
-      <Card elevation="low" padding={0} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff', overflow: 'hidden' }}>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13.5px' }}>
+      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+        <Surface style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
             <thead>
-              <tr style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', color: '#64748b', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: '14px 18px' }}>Application ID &amp; Service</th>
-                <th style={{ padding: '14px 18px' }}>Client Enterprise</th>
-                <th style={{ padding: '14px 18px' }}>Timeline</th>
-                <th style={{ padding: '14px 18px' }}>CA Fee</th>
-                <th style={{ padding: '14px 18px' }}>Client Rating</th>
-                <th style={{ padding: '14px 18px' }}>Status</th>
-                <th style={{ padding: '14px 18px', textAlign: 'right' }}>Certificate</th>
+              <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Application ID &amp; Service</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Client Enterprise</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Timeline</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>CA Fee</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Client Rating</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Status</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>Certificate</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((app) => (
-                <tr key={app.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ fontWeight: 700, color: '#0f172a' }}>{app.serviceName}</div>
-                    <div style={{ fontSize: '11.5px', color: '#059669', fontFamily: 'monospace', fontWeight: 600 }}>
+                <tr key={app.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{app.serviceName}</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-65)", fontFamily: 'monospace', fontWeight: 600 }}>
                       #{app.id}
-                    </div>
+                    </Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ fontWeight: 600, color: '#0f172a' }}>{app.customerName}</div>
-                    <div style={{ fontSize: '12px', color: '#64748b' }}>{app.businessName}</div>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>{app.customerName}</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>{app.businessName}</Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px', color: '#64748b', fontSize: '12.5px' }}>
-                    <div>Assigned: {app.assignedDate}</div>
-                    <div style={{ color: '#059669', fontWeight: 600 }}>Completed: {app.deadline}</div>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)" }}>
+                    <Surface>Assigned: {app.assignedDate}</Surface>
+                    <Surface style={{ color: "var(--color-fsk-65)", fontWeight: 600 }}>Completed: {app.deadline}</Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px', fontWeight: 700, color: '#0f172a' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                     ₹{app.caCommission.toLocaleString('en-IN')}
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#d97706', fontWeight: 700 }}>
-                      <Star size={14} fill="#d97706" /> 5.0 / 5.0
-                    </div>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)", color: "var(--color-fsk-54)", fontWeight: 700 }}>
+                      <Star size={14} fill="var(--color-fsk-54)" /> 5.0 / 5.0
+                    </Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
                     <Badge label="Completed &amp; Released" variant="green" />
                   </td>
 
-                  <td style={{ padding: '14px 18px', textAlign: 'right' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>
                     <button
                       type="button"
                       title="Download Archived Handover"
                       style={{
-                        padding: '6px 10px',
-                        borderRadius: '6px',
-                        border: '1px solid #cbd5e1',
-                        background: '#ffffff',
+                        padding: "var(--spacing-fsk-17) var(--spacing-fsk-35)",
+                        borderRadius: "var(--radius-fsk-42)",
+                        border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                        background: "var(--color-fsk-38)",
                         cursor: 'pointer',
-                        color: '#475569',
-                        fontSize: '12px',
+                        color: "var(--color-fsk-18)",
+                        fontSize: "var(--font-fsk-14)",
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '4px',
+                        gap: "var(--spacing-fsk-29)",
                       }}
                     >
                       <Download size={13} /> Dossier
@@ -124,9 +125,9 @@ export const CACompletedApplicationsPage: React.FC = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };
 

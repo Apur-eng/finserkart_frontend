@@ -1,3 +1,4 @@
+import { Surface, Inline } from '../components/Surface';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
@@ -64,43 +65,43 @@ export const ContactPage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '40px 20px 80px 20px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-        <span style={{ fontSize: '13px', fontWeight: 600, color: '#0066cc', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto', padding: "var(--spacing-fsk-1) var(--spacing-fsk-2) var(--spacing-fsk-3) var(--spacing-fsk-2)" }}>
+      <Surface style={{ textAlign: 'center', marginBottom: "var(--spacing-fsk-4)" }}>
+        <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-15)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           Get in Touch
-        </span>
+        </Inline>
         <Heading level={1}>
-          <span style={{ fontSize: '36px', fontWeight: 800, color: '#0f172a', display: 'block', marginTop: '6px' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-6)", fontWeight: 800, color: "var(--color-fsk-7)", display: 'block', marginTop: "var(--spacing-fsk-17)" }}>
             We're Here to Support Your Business
-          </span>
+          </Inline>
         </Heading>
-        <p style={{ color: '#64748b', fontSize: '15px', marginTop: '8px', maxWidth: '600px', margin: '8px auto 0 auto' }}>
+        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-19)", marginTop: "var(--spacing-fsk-12)", maxWidth: "var(--spacing-fsk-106)", margin: "var(--spacing-fsk-12) auto 0 auto" }}>
           Have questions regarding service requirements, tax filing, or custom corporate compliance? Reach our advisory team.
         </p>
-      </div>
+      </Surface>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '48px' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 21.25rem), 1fr))", gap: "var(--spacing-fsk-4)" }}>
         {/* Contact Form */}
         <Card elevation="low" padding={4}>
-          <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>
+          <h3 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-5)" }}>
             Send Us a Message
           </h3>
 
           {errorMessage && (
-            <div style={{ marginBottom: '20px' }}>
+            <Surface style={{ marginBottom: "var(--spacing-fsk-2)" }}>
               <Banner status="error" title={errorMessage} />
-            </div>
+            </Surface>
           )}
 
           {successMessage && (
-            <div style={{ marginBottom: '20px' }}>
+            <Surface style={{ marginBottom: "var(--spacing-fsk-2)" }}>
               <Banner status="success" title={successMessage} />
-            </div>
+            </Surface>
           )}
 
           <form onSubmit={handleSubmit}>
             <VStack gap={3}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
                 <TextInput
                   label="Country"
                   value={country}
@@ -115,9 +116,9 @@ export const ContactPage: React.FC = () => {
                   isRequired
                   width="100%"
                 />
-              </div>
+              </Surface>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
                 <TextInput
                   label="Your Name"
                   placeholder="Full name"
@@ -133,9 +134,9 @@ export const ContactPage: React.FC = () => {
                   onChange={(val) => setPhone(val)}
                   width="100%"
                 />
-              </div>
+              </Surface>
 
-              <div>
+              <Surface>
                 <TextInput
                   type="email"
                   label="Email Address"
@@ -145,9 +146,9 @@ export const ContactPage: React.FC = () => {
                   isRequired
                   width="100%"
                 />
-              </div>
+              </Surface>
 
-              <div>
+              <Surface>
                 <TextInput
                   label="Subject"
                   placeholder="e.g. GST Registration Inquiry"
@@ -156,9 +157,9 @@ export const ContactPage: React.FC = () => {
                   isRequired
                   width="100%"
                 />
-              </div>
+              </Surface>
 
-              <div>
+              <Surface>
                 <TextArea
                   label="Message / Requirements"
                   placeholder="Describe your inquiry or requirement..."
@@ -168,9 +169,9 @@ export const ContactPage: React.FC = () => {
                   isRequired
                   width="100%"
                 />
-              </div>
+              </Surface>
 
-              <div style={{ marginTop: '8px' }}>
+              <Surface style={{ marginTop: "var(--spacing-fsk-12)" }}>
                 <Button
                   label={isLoading ? 'Sending...' : 'Send Message'}
                   variant="primary"
@@ -178,59 +179,59 @@ export const ContactPage: React.FC = () => {
                   width="100%"
                   type="submit"
                   isLoading={isLoading}
-                  endContent={<Send size={15} style={{ marginLeft: '6px' }} />}
+                  endContent={<Send size={15} style={{ marginLeft: "var(--spacing-fsk-17)" }} />}
                 />
-              </div>
+              </Surface>
             </VStack>
           </form>
         </Card>
 
         {/* Office & Map Details */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-26)" }}>
           <Card elevation="low" padding={4}>
-            <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>
+            <h3 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-5)" }}>
               Office Headquarters
             </h3>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '14px' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                <MapPin size={20} color="#0066cc" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <div>
-                  <strong style={{ color: '#0f172a' }}>Finservkart Corporate Office</strong>
-                  <div style={{ color: '#64748b', marginTop: '2px' }}>
+            <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-5)", fontSize: "var(--font-fsk-24)" }}>
+              <Surface style={{ display: 'flex', alignItems: 'flex-start', gap: "var(--spacing-fsk-8)" }}>
+                <MapPin size={20} color="var(--color-fsk-15)" style={{ flexShrink: 0, marginTop: "var(--spacing-fsk-47)" }} />
+                <Surface>
+                  <strong style={{ color: "var(--color-fsk-7)" }}>Finservkart Corporate Office</strong>
+                  <Surface style={{ color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
                     Jankipuram Garden, Jankipuram, Lucknow, Uttar Pradesh 226021, India
-                  </div>
-                </div>
-              </div>
+                  </Surface>
+                </Surface>
+              </Surface>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <Phone size={20} color="#0066cc" style={{ flexShrink: 0 }} />
-                <div>
-                  <strong style={{ color: '#0f172a' }}>Direct Phone</strong>
-                  <div style={{ color: '#64748b' }}>+91 9120000000</div>
-                </div>
-              </div>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-8)" }}>
+                <Phone size={20} color="var(--color-fsk-15)" style={{ flexShrink: 0 }} />
+                <Surface>
+                  <strong style={{ color: "var(--color-fsk-7)" }}>Direct Phone</strong>
+                  <Surface style={{ color: "var(--color-fsk-9)" }}>+91 9120000000</Surface>
+                </Surface>
+              </Surface>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <Mail size={20} color="#0066cc" style={{ flexShrink: 0 }} />
-                <div>
-                  <strong style={{ color: '#0f172a' }}>Email Support</strong>
-                  <div style={{ color: '#64748b' }}>info@finservkart.com</div>
-                </div>
-              </div>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-8)" }}>
+                <Mail size={20} color="var(--color-fsk-15)" style={{ flexShrink: 0 }} />
+                <Surface>
+                  <strong style={{ color: "var(--color-fsk-7)" }}>Email Support</strong>
+                  <Surface style={{ color: "var(--color-fsk-9)" }}>info@finservkart.com</Surface>
+                </Surface>
+              </Surface>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <Clock size={20} color="#0066cc" style={{ flexShrink: 0 }} />
-                <div>
-                  <strong style={{ color: '#0f172a' }}>Working Hours</strong>
-                  <div style={{ color: '#64748b' }}>Monday – Saturday: 9:30 AM – 6:30 PM IST</div>
-                </div>
-              </div>
-            </div>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-8)" }}>
+                <Clock size={20} color="var(--color-fsk-15)" style={{ flexShrink: 0 }} />
+                <Surface>
+                  <strong style={{ color: "var(--color-fsk-7)" }}>Working Hours</strong>
+                  <Surface style={{ color: "var(--color-fsk-9)" }}>Monday – Saturday: 9:30 AM – 6:30 PM IST</Surface>
+                </Surface>
+              </Surface>
+            </Surface>
           </Card>
 
           {/* Embedded Google Map matching original website */}
-          <div style={{ borderRadius: '16px', overflow: 'hidden', height: '280px', border: '1px solid #e2e8f0' }}>
+          <Surface style={{ borderRadius: "var(--radius-fsk-28)", overflow: 'hidden', height: "var(--spacing-fsk-45)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
             <iframe
               title="Finservkart Office Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7114.536523637259!2d80.95776159273686!3d26.926708772270473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399957a1a4d5f6e3%3A0xdc4f658729c7b67b!2sJankipuram%20Garden%2C%20Jankipuram%2C%20Lucknow%2C%20Uttar%20Pradesh%20226021!5e0!3m2!1sen!2sin!4v1710649185981!5m2!1sen!2sin"
@@ -240,10 +241,10 @@ export const ContactPage: React.FC = () => {
               allowFullScreen={false}
               loading="lazy"
             />
-          </div>
-        </div>
-      </div>
-    </div>
+          </Surface>
+        </Surface>
+      </Surface>
+    </Surface>
   );
 };
 

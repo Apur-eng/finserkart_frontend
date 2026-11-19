@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
 import { TextInput } from '@astryxdesign/core/TextInput';
@@ -21,22 +22,22 @@ export const CoordinatorTransactionsPage: React.FC = () => {
   }, [transactions, searchQuery]);
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ marginBottom: '24px' }}>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
         <Heading level={1}>
-          <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
             Operations Payment &amp; Fee Transactions
-          </span>
+          </Inline>
         </Heading>
-        <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
           Monitor client statutory filing payments, payment gateway references, and financial reconciliations.
         </p>
-      </div>
+      </Surface>
 
       {/* Filter and Search Bar */}
-      <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '24px' }}>
-        <div style={{ maxWidth: '420px' }}>
+      <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
+        <Surface style={{ maxWidth: "var(--spacing-fsk-50)" }}>
           <TextInput
             label="Search Transactions"
             placeholder="Search by transaction ID, application, or gateway reference..."
@@ -44,66 +45,66 @@ export const CoordinatorTransactionsPage: React.FC = () => {
             onChange={(val) => setSearchQuery(val)}
             width="100%"
           />
-        </div>
+        </Surface>
       </Card>
 
       {/* Table */}
-      <Card elevation="low" padding={0} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff', overflow: 'hidden' }}>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13.5px' }}>
+      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+        <Surface style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
             <thead>
-              <tr style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', color: '#64748b', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: '14px 18px' }}>Transaction ID</th>
-                <th style={{ padding: '14px 18px' }}>Application</th>
-                <th style={{ padding: '14px 18px' }}>Customer</th>
-                <th style={{ padding: '14px 18px' }}>Amount</th>
-                <th style={{ padding: '14px 18px' }}>Payment Mode</th>
-                <th style={{ padding: '14px 18px' }}>Gateway Reference</th>
-                <th style={{ padding: '14px 18px' }}>Timestamp</th>
-                <th style={{ padding: '14px 18px', textAlign: 'right' }}>Status</th>
+              <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Transaction ID</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Application</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Customer</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Amount</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Payment Mode</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Gateway Reference</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Timestamp</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>Status</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((t) => (
-                <tr key={t.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '14px 18px', fontWeight: 700, color: '#0f172a', fontFamily: 'monospace' }}>
+                <tr key={t.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", fontWeight: 700, color: "var(--color-fsk-7)", fontFamily: 'monospace' }}>
                     {t.id}
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <span style={{ color: '#d97706', fontFamily: 'monospace', fontWeight: 600 }}>#{t.applicationId}</span>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Inline style={{ color: "var(--color-fsk-54)", fontFamily: 'monospace', fontWeight: 600 }}>#{t.applicationId}</Inline>
                   </td>
 
-                  <td style={{ padding: '14px 18px', color: '#334155', fontWeight: 600 }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-25)", fontWeight: 600 }}>
                     {t.customerName}
                   </td>
 
-                  <td style={{ padding: '14px 18px', fontWeight: 800, color: '#059669' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", fontWeight: 800, color: "var(--color-fsk-65)" }}>
                     ₹{t.amount.toLocaleString('en-IN')}
                   </td>
 
-                  <td style={{ padding: '14px 18px', color: '#475569' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-18)" }}>
                     {t.paymentGateway}
                   </td>
 
-                  <td style={{ padding: '14px 18px', fontFamily: 'monospace', color: '#64748b', fontSize: '12.5px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", fontFamily: 'monospace', color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)" }}>
                     {t.gatewayRef}
                   </td>
 
-                  <td style={{ padding: '14px 18px', color: '#64748b', fontSize: '12px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)" }}>
                     {t.timestamp}
                   </td>
 
-                  <td style={{ padding: '14px 18px', textAlign: 'right' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>
                     <Badge label={t.status} variant="green" />
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };
 

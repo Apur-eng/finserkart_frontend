@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
@@ -56,76 +57,76 @@ export const CAWorkflowPage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '980px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-105)", margin: '0 auto' }}>
       {/* Back button & Header */}
-      <div style={{ marginBottom: '24px' }}>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
         <button
           type="button"
           onClick={() => navigate('/ca/applications')}
           style={{
             background: 'none',
             border: 'none',
-            color: '#7c3aed',
-            fontSize: '13px',
+            color: "var(--color-fsk-41)",
+            fontSize: "var(--font-fsk-14)",
             fontWeight: 600,
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            gap: '6px',
+            gap: "var(--spacing-fsk-17)",
             padding: 0,
-            marginBottom: '12px',
+            marginBottom: "var(--spacing-fsk-8)",
           }}
         >
           <ArrowLeft size={16} /> Back to Assigned Queue
         </button>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-              <span style={{ fontSize: '13px', fontWeight: 700, color: '#7c3aed' }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: "var(--spacing-fsk-5)" }}>
+          <Surface>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-17)" }}>
+              <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-41)" }}>
                 Workflow Controller #{application.id}
-              </span>
+              </Inline>
               <Badge
                 label={currentStatus}
                 variant={currentStatus === 'Completed' ? 'green' : 'orange'}
               />
               <Badge label={`Stage ${currentStage} of ${application.totalStages}`} variant="purple" />
-            </div>
+            </Surface>
 
             <Heading level={1}>
-              <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+              <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
                 {application.serviceName}
-              </span>
+              </Inline>
             </Heading>
 
-            <p style={{ color: '#64748b', fontSize: '13.5px', marginTop: '4px', margin: 0 }}>
-              Client: <strong style={{ color: '#0f172a' }}>{application.customerName}</strong> ({application.businessName}) • Deadline: <strong style={{ color: '#d97706' }}>{application.deadline}</strong>
+            <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+              Client: <strong style={{ color: "var(--color-fsk-7)" }}>{application.customerName}</strong> ({application.businessName}) • Deadline: <strong style={{ color: "var(--color-fsk-54)" }}>{application.deadline}</strong>
             </p>
-          </div>
-        </div>
-      </div>
+          </Surface>
+        </Surface>
+      </Surface>
 
       {isSaved && (
-        <div style={{ marginBottom: '24px' }}>
+        <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
           <Banner
             status="success"
             title="Workflow Stage Updated Successfully"
             description="The client and operations coordinator have been notified of this milestone progression."
           />
-        </div>
+        </Surface>
       )}
 
       {/* Workflow Controls Form */}
-      <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '28px' }}>
-        <div style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>
+      <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-20)" }}>
+        <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-5)" }}>
           Update Overall Filing Status &amp; CA Remarks
-        </div>
+        </Surface>
 
         <form onSubmit={handleSaveStatus}>
           <VStack gap={3}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '16px' }}>
-              <div>
-                <label style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a', display: 'block', marginBottom: '6px' }}>
+            <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
+              <Surface>
+                <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
                   Filing Status
                 </label>
                 <select
@@ -133,12 +134,12 @@ export const CAWorkflowPage: React.FC = () => {
                   onChange={(e) => setCurrentStatus(e.target.value as any)}
                   style={{
                     width: '100%',
-                    padding: '10px 12px',
-                    borderRadius: '8px',
-                    border: '1px solid #cbd5e1',
-                    fontSize: '13.5px',
-                    color: '#0f172a',
-                    background: '#ffffff',
+                    padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)",
+                    borderRadius: "var(--radius-fsk-37)",
+                    border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                    fontSize: "var(--font-fsk-14)",
+                    color: "var(--color-fsk-7)",
+                    background: "var(--color-fsk-38)",
                     outline: 'none',
                   }}
                 >
@@ -147,7 +148,7 @@ export const CAWorkflowPage: React.FC = () => {
                   <option value="Completed">Completed</option>
                   <option value="Action Required">Action Required (Client OTP / Doc)</option>
                 </select>
-              </div>
+              </Surface>
 
               <TextInput
                 label="CA Official Remarks / Portal Reference"
@@ -157,9 +158,9 @@ export const CAWorkflowPage: React.FC = () => {
                 isRequired
                 width="100%"
               />
-            </div>
+            </Surface>
 
-            <div style={{ marginTop: '8px' }}>
+            <Surface style={{ marginTop: "var(--spacing-fsk-12)" }}>
               <Button
                 label="Save Status &amp; Notify Stakeholders"
                 variant="primary"
@@ -167,105 +168,105 @@ export const CAWorkflowPage: React.FC = () => {
                 type="submit"
                 icon={<Save size={16} />}
               />
-            </div>
+            </Surface>
           </VStack>
         </form>
       </Card>
 
       {/* Interactive Milestone Stages */}
-      <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-        <div style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>
+      <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+        <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-5)" }}>
           Statutory Milestone Advancement
-        </div>
+        </Surface>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-2)" }}>
           {application.milestones.map((m) => {
             const isCurrent = m.stage === currentStage;
             const isPast = m.stage < currentStage;
 
             return (
-              <div
+              <Surface
                 key={m.stage}
                 style={{
                   display: 'flex',
-                  gap: '16px',
+                  gap: "var(--spacing-fsk-5)",
                   alignItems: 'flex-start',
-                  padding: '16px',
-                  borderRadius: '12px',
-                  border: isCurrent ? '2px solid #7c3aed' : '1px solid #f1f5f9',
-                  background: isCurrent ? '#f5f3ff' : '#f8fafc',
+                  padding: "var(--spacing-fsk-5)",
+                  borderRadius: "var(--radius-fsk-28)",
+                  border: isCurrent ? "var(--spacing-fsk-47) solid var(--color-fsk-41)" : "var(--spacing-fsk-22) solid var(--color-fsk-165)",
+                  background: isCurrent ? "var(--color-fsk-53)" : "var(--color-fsk-27)",
                 }}
               >
-                <div
+                <Surface
                   style={{
-                    width: '36px',
-                    height: '36px',
+                    width: "var(--spacing-fsk-85)",
+                    height: "var(--spacing-fsk-85)",
                     borderRadius: '50%',
-                    background: isPast ? '#ecfdf5' : isCurrent ? '#7c3aed' : '#f1f5f9',
-                    color: isPast ? '#059669' : isCurrent ? '#ffffff' : '#94a3b8',
-                    border: isPast ? '2px solid #059669' : isCurrent ? '2px solid #7c3aed' : '2px solid #cbd5e1',
+                    background: isPast ? "var(--color-fsk-64)" : isCurrent ? "var(--color-fsk-41)" : "var(--color-fsk-46)",
+                    color: isPast ? "var(--color-fsk-65)" : isCurrent ? "var(--color-fsk-38)" : "var(--color-fsk-57)",
+                    border: isPast ? "var(--spacing-fsk-47) solid var(--color-fsk-164)" : isCurrent ? "var(--spacing-fsk-47) solid var(--color-fsk-41)" : "var(--spacing-fsk-47) solid var(--color-fsk-59)",
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontWeight: 700,
-                    fontSize: '14px',
+                    fontSize: "var(--font-fsk-24)",
                     flexShrink: 0,
                   }}
                 >
                   {isPast ? <CheckCircle2 size={18} /> : m.stage}
-                </div>
+                </Surface>
 
-                <div style={{ flex: 1 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                    <div style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>
+                <Surface style={{ flex: 1 }}>
+                  <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-29)" }}>
+                    <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                       Stage {m.stage}: {m.title}
-                    </div>
+                    </Surface>
                     <Badge
                       label={isPast ? 'Completed' : isCurrent ? 'In Progress' : 'Pending'}
                       variant={isPast ? 'green' : isCurrent ? 'purple' : 'neutral'}
                     />
-                  </div>
+                  </Surface>
 
-                  <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.5, margin: '4px 0 0 0' }}>
+                  <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-18)", lineHeight: 1.5, margin: "var(--spacing-fsk-29) 0 0 0" }}>
                     {m.description}
                   </p>
 
                   {m.timestamp && (
-                    <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-17)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
                       <Calendar size={13} /> {m.timestamp}
-                    </div>
+                    </Surface>
                   )}
 
                   {isCurrent && (
-                    <div style={{ marginTop: '12px', display: 'flex', gap: '10px' }}>
+                    <Surface style={{ marginTop: "var(--spacing-fsk-8)", display: 'flex', gap: "var(--spacing-fsk-35)" }}>
                       <button
                         type="button"
                         onClick={() => handleAdvanceStage(m.stage + 1)}
                         style={{
-                          padding: '6px 14px',
-                          borderRadius: '6px',
+                          padding: "var(--spacing-fsk-17) var(--spacing-fsk-23)",
+                          borderRadius: "var(--radius-fsk-42)",
                           border: 'none',
-                          background: '#7c3aed',
-                          color: '#ffffff',
-                          fontSize: '12.5px',
+                          background: "var(--color-fsk-41)",
+                          color: "var(--color-fsk-38)",
+                          fontSize: "var(--font-fsk-14)",
                           fontWeight: 600,
                           cursor: 'pointer',
                           display: 'inline-flex',
                           alignItems: 'center',
-                          gap: '6px',
+                          gap: "var(--spacing-fsk-17)",
                         }}
                       >
                         <CheckCircle2 size={14} /> Complete Stage {m.stage} &amp; Advance
                       </button>
-                    </div>
+                    </Surface>
                   )}
-                </div>
-              </div>
+                </Surface>
+              </Surface>
             );
           })}
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };
 

@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
@@ -60,36 +61,36 @@ export const AgentProfilePage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '960px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-72)", margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ marginBottom: '24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-          <span style={{ fontSize: '13px', fontWeight: 600, color: '#059669' }}>Partner Identity</span>
-          <span style={{ color: '#cbd5e1' }}>•</span>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-29)" }}>
+          <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-65)" }}>Partner Identity</Inline>
+          <Inline style={{ color: "var(--color-fsk-59)" }}>•</Inline>
           <Badge label={`Agent ID: ${agent.id}`} variant="green" />
-        </div>
+        </Surface>
         <Heading level={1}>
-          <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
             Agent Partner Profile &amp; Settings
-          </span>
+          </Inline>
         </Heading>
-        <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
           Manage your partner profile, affiliated franchise, settlement banking details, and portal security.
         </p>
-      </div>
+      </Surface>
 
       {feedbackMessage && (
-        <div style={{ marginBottom: '20px' }}>
+        <Surface style={{ marginBottom: "var(--spacing-fsk-2)" }}>
           <Banner
             status="success"
             title="Update Complete"
             description={feedbackMessage}
           />
-        </div>
+        </Surface>
       )}
 
       {/* Tabs */}
-      <div style={{ display: 'flex', gap: '8px', borderBottom: '1px solid #e2e8f0', marginBottom: '24px' }}>
+      <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", marginBottom: "var(--spacing-fsk-26)" }}>
         {[
           { key: 'profile', label: 'Agent Identity & Franchise' },
           { key: 'bank', label: 'Settlement Banking Details' },
@@ -100,100 +101,100 @@ export const AgentProfilePage: React.FC = () => {
             type="button"
             onClick={() => setActiveTab(tab.key as any)}
             style={{
-              padding: '10px 18px',
+              padding: "var(--spacing-fsk-35) var(--spacing-fsk-36)",
               border: 'none',
-              borderBottom: activeTab === tab.key ? '2px solid #059669' : '2px solid transparent',
+              borderBottom: activeTab === tab.key ? "var(--spacing-fsk-47) solid var(--color-fsk-164)" : "var(--spacing-fsk-47) solid transparent",
               background: 'none',
-              color: activeTab === tab.key ? '#059669' : '#64748b',
+              color: activeTab === tab.key ? "var(--color-fsk-65)" : "var(--color-fsk-9)",
               fontWeight: activeTab === tab.key ? 700 : 500,
-              fontSize: '13.5px',
+              fontSize: "var(--font-fsk-14)",
               cursor: 'pointer',
-              marginBottom: '-1px',
+              marginBottom: "var(--spacing-fsk-96)",
               transition: 'all 0.15s ease',
             }}
           >
             {tab.label}
           </button>
         ))}
-      </div>
+      </Surface>
 
       {/* Tab 1: Profile & Franchise */}
       {activeTab === 'profile' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-            <div style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>
+        <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-26)" }}>
+          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+            <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-5)" }}>
               Personal Identity &amp; Referral Credentials
-            </div>
+            </Surface>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', fontSize: '13.5px' }}>
-              <div style={{ padding: '12px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Full Name</div>
-                <div style={{ fontWeight: 700, color: '#0f172a', marginTop: '2px' }}>{agent.fname} {agent.lname}</div>
-              </div>
+            <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "var(--spacing-fsk-5)", fontSize: "var(--font-fsk-14)" }}>
+              <Surface style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-23)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", textTransform: 'uppercase', fontWeight: 600 }}>Full Name</Surface>
+                <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)" }}>{agent.fname} {agent.lname}</Surface>
+              </Surface>
 
-              <div style={{ padding: '12px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Referral Code</div>
-                <div style={{ fontWeight: 800, color: '#059669', marginTop: '2px', fontFamily: 'monospace' }}>{agent.referralCode}</div>
-              </div>
+              <Surface style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-23)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", textTransform: 'uppercase', fontWeight: 600 }}>Referral Code</Surface>
+                <Surface style={{ fontWeight: 800, color: "var(--color-fsk-65)", marginTop: "var(--spacing-fsk-47)", fontFamily: 'monospace' }}>{agent.referralCode}</Surface>
+              </Surface>
 
-              <div style={{ padding: '12px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Mobile Number</div>
-                <div style={{ fontWeight: 600, color: '#0f172a', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Phone size={14} color="#64748b" /> {agent.phone}
-                </div>
-              </div>
+              <Surface style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-23)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", textTransform: 'uppercase', fontWeight: 600 }}>Mobile Number</Surface>
+                <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-17)" }}>
+                  <Phone size={14} color="var(--color-fsk-9)" /> {agent.phone}
+                </Surface>
+              </Surface>
 
-              <div style={{ padding: '12px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Email Address</div>
-                <div style={{ fontWeight: 600, color: '#0f172a', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Mail size={14} color="#64748b" /> {agent.email}
-                </div>
-              </div>
+              <Surface style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-23)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", textTransform: 'uppercase', fontWeight: 600 }}>Email Address</Surface>
+                <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-17)" }}>
+                  <Mail size={14} color="var(--color-fsk-9)" /> {agent.email}
+                </Surface>
+              </Surface>
 
-              <div style={{ padding: '12px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Permanent Account Number (PAN)</div>
-                <div style={{ fontWeight: 700, color: '#0f172a', marginTop: '2px', fontFamily: 'monospace' }}>{agent.pan}</div>
-              </div>
+              <Surface style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-23)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", textTransform: 'uppercase', fontWeight: 600 }}>Permanent Account Number (PAN)</Surface>
+                <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)", fontFamily: 'monospace' }}>{agent.pan}</Surface>
+              </Surface>
 
-              <div style={{ padding: '12px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Regional Headquarters</div>
-                <div style={{ fontWeight: 600, color: '#0f172a', marginTop: '2px' }}>{agent.city}, {agent.state}</div>
-              </div>
-            </div>
+              <Surface style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-23)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", textTransform: 'uppercase', fontWeight: 600 }}>Regional Headquarters</Surface>
+                <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)" }}>{agent.city}, {agent.state}</Surface>
+              </Surface>
+            </Surface>
           </Card>
 
           {/* Franchise Affiliation Details */}
-          <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-              <Building2 size={18} color="#059669" />
-              <span style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Affiliated Franchise Office</span>
-            </div>
+          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-23)" }}>
+              <Building2 size={18} color="var(--color-fsk-65)" />
+              <Inline style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Affiliated Franchise Office</Inline>
+            </Surface>
 
-            <p style={{ color: '#64748b', fontSize: '13px', lineHeight: 1.5, margin: '0 0 16px 0' }}>
+            <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", lineHeight: 1.5, margin: "0 0 var(--spacing-fsk-5) 0" }}>
               Your agent activities, commissions, and customer registrations are supervised by the following regional franchise office:
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '14px', fontSize: '13px' }}>
-              <div style={{ padding: '12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <span style={{ color: '#64748b', display: 'block', fontSize: '11px', textTransform: 'uppercase' }}>Franchise Code</span>
-                <strong style={{ color: '#0f172a' }}>{agent.franchiseCode}</strong>
-              </div>
-              <div style={{ padding: '12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <span style={{ color: '#64748b', display: 'block', fontSize: '11px', textTransform: 'uppercase' }}>Franchise Branch</span>
-                <strong style={{ color: '#0f172a' }}>{agent.franchiseName}</strong>
-              </div>
-            </div>
+            <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16.25rem), 1fr))", gap: "var(--spacing-fsk-23)", fontSize: "var(--font-fsk-14)" }}>
+              <Surface style={{ padding: "var(--spacing-fsk-8)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Inline style={{ color: "var(--color-fsk-9)", display: 'block', fontSize: "var(--font-fsk-14)", textTransform: 'uppercase' }}>Franchise Code</Inline>
+                <strong style={{ color: "var(--color-fsk-7)" }}>{agent.franchiseCode}</strong>
+              </Surface>
+              <Surface style={{ padding: "var(--spacing-fsk-8)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Inline style={{ color: "var(--color-fsk-9)", display: 'block', fontSize: "var(--font-fsk-14)", textTransform: 'uppercase' }}>Franchise Branch</Inline>
+                <strong style={{ color: "var(--color-fsk-7)" }}>{agent.franchiseName}</strong>
+              </Surface>
+            </Surface>
           </Card>
-        </div>
+        </Surface>
       )}
 
       {/* Tab 2: Bank Details */}
       {activeTab === 'bank' && (
-        <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-            <Building2 size={18} color="#059669" />
-            <span style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Settlement Bank Account</span>
-          </div>
+        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-5)" }}>
+            <Building2 size={18} color="var(--color-fsk-65)" />
+            <Inline style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Settlement Bank Account</Inline>
+          </Surface>
 
           <form onSubmit={handleUpdateBank}>
             <VStack gap={3}>
@@ -215,7 +216,7 @@ export const AgentProfilePage: React.FC = () => {
                 width="100%"
               />
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+              <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-23)" }}>
                 <TextInput
                   label="Account Number"
                   placeholder="30918239012"
@@ -232,9 +233,9 @@ export const AgentProfilePage: React.FC = () => {
                   isRequired
                   width="100%"
                 />
-              </div>
+              </Surface>
 
-              <div style={{ marginTop: '12px' }}>
+              <Surface style={{ marginTop: "var(--spacing-fsk-8)" }}>
                 <Button
                   label="Save Bank Details"
                   variant="primary"
@@ -242,7 +243,7 @@ export const AgentProfilePage: React.FC = () => {
                   type="submit"
                   icon={<Save size={16} />}
                 />
-              </div>
+              </Surface>
             </VStack>
           </form>
         </Card>
@@ -250,11 +251,11 @@ export const AgentProfilePage: React.FC = () => {
 
       {/* Tab 3: Security */}
       {activeTab === 'security' && (
-        <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-            <Lock size={18} color="#059669" />
-            <span style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Change Password</span>
-          </div>
+        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-5)" }}>
+            <Lock size={18} color="var(--color-fsk-65)" />
+            <Inline style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Change Password</Inline>
+          </Surface>
 
           <form onSubmit={handleUpdatePassword}>
             <VStack gap={3}>
@@ -285,7 +286,7 @@ export const AgentProfilePage: React.FC = () => {
                 width="100%"
               />
 
-              <div style={{ marginTop: '12px' }}>
+              <Surface style={{ marginTop: "var(--spacing-fsk-8)" }}>
                 <Button
                   label="Update Password"
                   variant="primary"
@@ -294,12 +295,12 @@ export const AgentProfilePage: React.FC = () => {
                   icon={<KeyRound size={16} />}
                   isDisabled={!currentPassword || !newPassword || newPassword !== confirmPassword}
                 />
-              </div>
+              </Surface>
             </VStack>
           </form>
         </Card>
       )}
-    </div>
+    </Surface>
   );
 };
 

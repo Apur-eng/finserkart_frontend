@@ -1,5 +1,6 @@
-import { AppShell } from '@astryxdesign/core/AppShell';
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../components/Surface';
+import { PortalShell } from '../components/PortalShell';
+import { StatusTag as Badge } from '../components/StatusTag';
 import {
   Bell,
   FileText,
@@ -30,53 +31,54 @@ export const CustomerLayout: React.FC = () => {
   const customerTopNav = (
     <header
       style={{
-        height: '64px',
-        background: '#ffffff',
-        borderBottom: '1px solid #e2e8f0',
+        flexWrap: 'wrap', gap: "var(--spacing-fsk-8)", paddingBlock: "var(--spacing-fsk-8)",
+        minHeight: "var(--spacing-fsk-141)",
+        background: "var(--color-fsk-38)",
+        borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 24px',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+        padding: "0 var(--spacing-fsk-26)",
+        boxShadow: "var(--shadow-fsk-card)",
       }}
     >
       {/* Brand Lockup */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <Link to="/customer/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-          <div
+      <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-8)" }}>
+        <Link to="/customer/dashboard" style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", textDecoration: 'none' }}>
+          <Surface
             style={{
-              width: '34px',
-              height: '34px',
-              borderRadius: '8px',
-              background: 'linear-gradient(135deg, #0066cc 0%, #0052a3 100%)',
+              width: "var(--spacing-fsk-52)",
+              height: "var(--spacing-fsk-52)",
+              borderRadius: "var(--radius-fsk-37)",
+              background: "var(--color-fsk-brand)",
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#ffffff',
+              color: "var(--color-fsk-38)",
             }}
           >
             <ShieldCheck size={20} />
-          </div>
-          <span style={{ fontSize: '18px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.01em' }}>
+          </Surface>
+          <Inline style={{ fontSize: "var(--font-fsk-30)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.01em' }}>
             Finservkart
-          </span>
+          </Inline>
         </Link>
-        <span style={{ color: '#cbd5e1' }}>|</span>
+        <Inline style={{ color: "var(--color-fsk-59)" }}>|</Inline>
         <Badge label="Customer Portal" variant="blue" />
-      </div>
+      </Surface>
 
       {/* Right Controls */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+      <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-5)" }}>
         {/* Link back to public site */}
         <Link
           to="/"
           style={{
-            fontSize: '13px',
-            color: '#64748b',
+            fontSize: "var(--font-fsk-14)",
+            color: "var(--color-fsk-9)",
             textDecoration: 'none',
             display: 'flex',
             alignItems: 'center',
-            gap: '5px',
+            gap: "var(--spacing-fsk-86)",
           }}
         >
           <ExternalLink size={14} /> Public Website
@@ -84,85 +86,84 @@ export const CustomerLayout: React.FC = () => {
 
         {/* Notifications Icon Button */}
         <Link
-          to="/customer/notifications"
+          to="/customer/notifications" aria-label="Notifications"
           style={{
             position: 'relative',
-            width: '36px',
-            height: '36px',
-            borderRadius: '8px',
-            border: '1px solid #e2e8f0',
+            width: "var(--spacing-fsk-85)",
+            height: "var(--spacing-fsk-85)",
+            borderRadius: "var(--radius-fsk-37)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#475569',
+            color: "var(--color-fsk-18)",
             textDecoration: 'none',
-            background: currentPath === '/customer/notifications' ? '#f1f5f9' : '#ffffff',
+            background: currentPath === '/customer/notifications' ? "var(--color-fsk-46)" : "var(--color-fsk-38)",
           }}
         >
           <Bell size={18} />
           {unreadCount > 0 && (
-            <span
+            <Inline
               style={{
                 position: 'absolute',
-                top: '-4px',
-                right: '-4px',
-                background: '#ef4444',
-                color: '#ffffff',
-                fontSize: '10px',
+                top: "var(--spacing-fsk-143)",
+                right: "var(--spacing-fsk-143)",
+                background: "var(--color-fsk-129)",
+                color: "var(--color-fsk-38)",
+                fontSize: "var(--font-fsk-14)",
                 fontWeight: 700,
-                borderRadius: '999px',
-                width: '18px',
-                height: '18px',
+                borderRadius: "var(--radius-fsk-77)",
+                width: "var(--spacing-fsk-36)",
+                height: "var(--spacing-fsk-36)",
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                border: '2px solid #ffffff',
+                border: "var(--spacing-fsk-47) solid var(--color-fsk-38)",
               }}
             >
               {unreadCount}
-            </span>
+            </Inline>
           )}
         </Link>
 
         {/* User Pill */}
-        <div
-          onClick={() => navigate('/customer/profile')}
+        <Link  to="/customer/profile"
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
-            padding: '4px 12px 4px 6px',
-            borderRadius: '24px',
-            border: '1px solid #e2e8f0',
-            background: '#f8fafc',
+            gap: "var(--spacing-fsk-35)",
+            padding: "var(--spacing-fsk-29) var(--spacing-fsk-8) var(--spacing-fsk-29) var(--spacing-fsk-17)",
+            borderRadius: "var(--radius-fsk-28)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+            background: "var(--color-fsk-27)",
             cursor: 'pointer',
           }}
         >
-          <div
+          <Surface
             style={{
-              width: '28px',
-              height: '28px',
+              width: "var(--spacing-fsk-71)",
+              height: "var(--spacing-fsk-71)",
               borderRadius: '50%',
-              background: '#0066cc',
-              color: '#ffffff',
+              background: "var(--color-fsk-15)",
+              color: "var(--color-fsk-38)",
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '12px',
+              fontSize: "var(--font-fsk-14)",
               fontWeight: 700,
             }}
           >
             {INITIAL_CUSTOMER_PROFILE.fname[0]}
-          </div>
-          <div>
-            <div style={{ fontSize: '13px', fontWeight: 600, color: '#0f172a', lineHeight: 1.2 }}>
+          </Surface>
+          <Surface>
+            <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-7)", lineHeight: 1.2 }}>
               {INITIAL_CUSTOMER_PROFILE.fname} {INITIAL_CUSTOMER_PROFILE.lname}
-            </div>
-            <div style={{ fontSize: '11px', color: '#64748b' }}>
+            </Surface>
+            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>
               {INITIAL_CUSTOMER_PROFILE.CustID}
-            </div>
-          </div>
-        </div>
+            </Surface>
+          </Surface>
+        </Link>
 
         {/* Sign Out Action */}
         <button
@@ -172,56 +173,56 @@ export const CustomerLayout: React.FC = () => {
             background: 'none',
             border: 'none',
             cursor: 'pointer',
-            padding: '8px',
-            color: '#64748b',
+            padding: "var(--spacing-fsk-12)",
+            color: "var(--color-fsk-9)",
             display: 'flex',
             alignItems: 'center',
-            borderRadius: '6px',
+            borderRadius: "var(--radius-fsk-42)",
           }}
           title="Sign out of customer session"
         >
           <LogOut size={18} />
         </button>
-      </div>
+      </Surface>
     </header>
   );
 
   // Custom SideNav Sidebar
   const customerSideNav = (
-    <div
+    <Surface
       style={{
-        width: '260px',
-        borderRight: '1px solid #e2e8f0',
-        background: '#ffffff',
-        minHeight: 'calc(100vh - 64px)',
-        padding: '16px 12px',
+        width: '100%',
+        borderRight: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+        background: "var(--color-fsk-38)",
+        minHeight: "calc(100vh - var(--spacing-fsk-141))",
+        padding: "var(--spacing-fsk-5) var(--spacing-fsk-8)",
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
       }}
     >
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-        <div style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', padding: '8px 12px 4px 12px' }}>
+      <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-29)" }}>
+        <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-57)", textTransform: 'uppercase', letterSpacing: '0.05em', padding: "var(--spacing-fsk-12) var(--spacing-fsk-8) var(--spacing-fsk-29) var(--spacing-fsk-8)" }}>
           Overview
-        </div>
+        </Surface>
 
         <Link
           to="/customer/dashboard"
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            fontSize: '14px',
+            gap: "var(--spacing-fsk-35)",
+            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
+            borderRadius: "var(--radius-fsk-37)",
+            fontSize: "var(--font-fsk-24)",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/dashboard' || currentPath === '/customer' ? '#e0f2fe' : 'transparent',
-            color: currentPath === '/customer/dashboard' || currentPath === '/customer' ? '#0066cc' : '#475569',
+            background: currentPath === '/customer/dashboard' || currentPath === '/customer' ? "var(--color-fsk-112)" : 'transparent',
+            color: currentPath === '/customer/dashboard' || currentPath === '/customer' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
           }}
         >
           <Home size={18} />
-          <span>Dashboard</span>
+          <Inline>Dashboard</Inline>
         </Link>
 
         <Link
@@ -229,18 +230,18 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            fontSize: '14px',
+            gap: "var(--spacing-fsk-35)",
+            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
+            borderRadius: "var(--radius-fsk-37)",
+            fontSize: "var(--font-fsk-24)",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath.startsWith('/customer/applications') && currentPath !== '/customer/applications/new' ? '#e0f2fe' : 'transparent',
-            color: currentPath.startsWith('/customer/applications') && currentPath !== '/customer/applications/new' ? '#0066cc' : '#475569',
+            background: currentPath.startsWith('/customer/applications') && currentPath !== '/customer/applications/new' ? "var(--color-fsk-112)" : 'transparent',
+            color: currentPath.startsWith('/customer/applications') && currentPath !== '/customer/applications/new' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
           }}
         >
           <Layers size={18} />
-          <span>My Applications</span>
+          <Inline>My Applications</Inline>
         </Link>
 
         <Link
@@ -248,41 +249,41 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            fontSize: '14px',
+            gap: "var(--spacing-fsk-35)",
+            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
+            borderRadius: "var(--radius-fsk-37)",
+            fontSize: "var(--font-fsk-24)",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/applications/new' ? '#e0f2fe' : 'transparent',
-            color: currentPath === '/customer/applications/new' ? '#0066cc' : '#475569',
+            background: currentPath === '/customer/applications/new' ? "var(--color-fsk-112)" : 'transparent',
+            color: currentPath === '/customer/applications/new' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
           }}
         >
           <PlusCircle size={18} />
-          <span>New Application</span>
+          <Inline>New Application</Inline>
         </Link>
 
-        <div style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', padding: '16px 12px 4px 12px' }}>
+        <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-57)", textTransform: 'uppercase', letterSpacing: '0.05em', padding: "var(--spacing-fsk-5) var(--spacing-fsk-8) var(--spacing-fsk-29) var(--spacing-fsk-8)" }}>
           Workstation
-        </div>
+        </Surface>
 
         <Link
           to="/customer/documents"
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            fontSize: '14px',
+            gap: "var(--spacing-fsk-35)",
+            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
+            borderRadius: "var(--radius-fsk-37)",
+            fontSize: "var(--font-fsk-24)",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/documents' ? '#e0f2fe' : 'transparent',
-            color: currentPath === '/customer/documents' ? '#0066cc' : '#475569',
+            background: currentPath === '/customer/documents' ? "var(--color-fsk-112)" : 'transparent',
+            color: currentPath === '/customer/documents' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
           }}
         >
           <FileText size={18} />
-          <span>Document Centre</span>
+          <Inline>Document Centre</Inline>
         </Link>
 
         <Link
@@ -290,18 +291,18 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            fontSize: '14px',
+            gap: "var(--spacing-fsk-35)",
+            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
+            borderRadius: "var(--radius-fsk-37)",
+            fontSize: "var(--font-fsk-24)",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/documents/upload' ? '#e0f2fe' : 'transparent',
-            color: currentPath === '/customer/documents/upload' ? '#0066cc' : '#475569',
+            background: currentPath === '/customer/documents/upload' ? "var(--color-fsk-112)" : 'transparent',
+            color: currentPath === '/customer/documents/upload' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
           }}
         >
           <UploadCloud size={18} />
-          <span>Document Upload</span>
+          <Inline>Document Upload</Inline>
         </Link>
 
         <Link
@@ -309,18 +310,18 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            fontSize: '14px',
+            gap: "var(--spacing-fsk-35)",
+            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
+            borderRadius: "var(--radius-fsk-37)",
+            fontSize: "var(--font-fsk-24)",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/conversations' ? '#e0f2fe' : 'transparent',
-            color: currentPath === '/customer/conversations' ? '#0066cc' : '#475569',
+            background: currentPath === '/customer/conversations' ? "var(--color-fsk-112)" : 'transparent',
+            color: currentPath === '/customer/conversations' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
           }}
         >
           <MessageSquare size={18} />
-          <span>Conversations (CA)</span>
+          <Inline>Conversations (CA)</Inline>
         </Link>
 
         <Link
@@ -328,66 +329,66 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            fontSize: '14px',
+            gap: "var(--spacing-fsk-35)",
+            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
+            borderRadius: "var(--radius-fsk-37)",
+            fontSize: "var(--font-fsk-24)",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/payments' ? '#e0f2fe' : 'transparent',
-            color: currentPath === '/customer/payments' ? '#0066cc' : '#475569',
+            background: currentPath === '/customer/payments' ? "var(--color-fsk-112)" : 'transparent',
+            color: currentPath === '/customer/payments' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
           }}
         >
           <Receipt size={18} />
-          <span>Payments &amp; Invoices</span>
+          <Inline>Payments &amp; Invoices</Inline>
         </Link>
 
-        <div style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', padding: '16px 12px 4px 12px' }}>
+        <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-57)", textTransform: 'uppercase', letterSpacing: '0.05em', padding: "var(--spacing-fsk-5) var(--spacing-fsk-8) var(--spacing-fsk-29) var(--spacing-fsk-8)" }}>
           Account &amp; Help
-        </div>
+        </Surface>
 
         <Link
           to="/customer/profile"
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            fontSize: '14px',
+            gap: "var(--spacing-fsk-35)",
+            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
+            borderRadius: "var(--radius-fsk-37)",
+            fontSize: "var(--font-fsk-24)",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/profile' ? '#e0f2fe' : 'transparent',
-            color: currentPath === '/customer/profile' ? '#0066cc' : '#475569',
+            background: currentPath === '/customer/profile' ? "var(--color-fsk-112)" : 'transparent',
+            color: currentPath === '/customer/profile' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
           }}
         >
           <User size={18} />
-          <span>Profile &amp; Bank Info</span>
+          <Inline>Profile &amp; Bank Info</Inline>
         </Link>
 
         <Link
-          to="/customer/notifications"
+          to="/customer/notifications" aria-label="Notifications"
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            fontSize: '14px',
+            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
+            borderRadius: "var(--radius-fsk-37)",
+            fontSize: "var(--font-fsk-24)",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/notifications' ? '#e0f2fe' : 'transparent',
-            color: currentPath === '/customer/notifications' ? '#0066cc' : '#475569',
+            background: currentPath === '/customer/notifications' ? "var(--color-fsk-112)" : 'transparent',
+            color: currentPath === '/customer/notifications' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
             <Bell size={18} />
-            <span>Notifications</span>
-          </div>
+            <Inline>Notifications</Inline>
+          </Surface>
           {unreadCount > 0 && (
-            <span style={{ background: '#ef4444', color: '#fff', fontSize: '11px', padding: '1px 6px', borderRadius: '10px' }}>
+            <Inline style={{ background: "var(--color-fsk-129)", color: "var(--color-fsk-38)", fontSize: "var(--font-fsk-14)", padding: "var(--spacing-fsk-22) var(--spacing-fsk-17)", borderRadius: "var(--radius-fsk-68)" }}>
               {unreadCount}
-            </span>
+            </Inline>
           )}
         </Link>
 
@@ -396,66 +397,49 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            fontSize: '14px',
+            gap: "var(--spacing-fsk-35)",
+            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
+            borderRadius: "var(--radius-fsk-37)",
+            fontSize: "var(--font-fsk-24)",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/support' ? '#e0f2fe' : 'transparent',
-            color: currentPath === '/customer/support' ? '#0066cc' : '#475569',
+            background: currentPath === '/customer/support' ? "var(--color-fsk-112)" : 'transparent',
+            color: currentPath === '/customer/support' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
           }}
         >
           <HelpCircle size={18} />
-          <span>Customer Support</span>
+          <Inline>Customer Support</Inline>
         </Link>
-      </div>
+      </Surface>
 
       {/* Assigned Agent Box */}
-      <div
+      <Surface
         style={{
-          background: '#f8fafc',
-          borderRadius: '12px',
-          border: '1px solid #e2e8f0',
-          padding: '12px',
-          fontSize: '12px',
-          marginTop: '20px',
+          background: "var(--color-fsk-27)",
+          borderRadius: "var(--radius-fsk-28)",
+          border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+          padding: "var(--spacing-fsk-8)",
+          fontSize: "var(--font-fsk-14)",
+          marginTop: "var(--spacing-fsk-2)",
         }}
       >
-        <div style={{ color: '#64748b', fontSize: '11px', textTransform: 'uppercase', fontWeight: 600 }}>
+        <Surface style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", textTransform: 'uppercase', fontWeight: 600 }}>
           Assigned Business Agent
-        </div>
-        <div style={{ fontWeight: 700, color: '#0f172a', marginTop: '2px' }}>
+        </Surface>
+        <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)" }}>
           {INITIAL_CUSTOMER_PROFILE.agentName}
-        </div>
-        <div style={{ color: '#0066cc', fontSize: '11px', marginTop: '1px' }}>
+        </Surface>
+        <Surface style={{ color: "var(--color-fsk-15)", fontSize: "var(--font-fsk-14)", marginTop: "var(--spacing-fsk-22)" }}>
           ID: {INITIAL_CUSTOMER_PROFILE.agentId}
-        </div>
-      </div>
-    </div>
+        </Surface>
+      </Surface>
+    </Surface>
   );
 
   return (
-    <AppShell
-      height="auto"
-      variant="surface"
-      topNav={customerTopNav}
-      contentPadding={0}
-    >
-      <div style={{ display: 'flex', minHeight: 'calc(100vh - 64px)' }}>
-        {customerSideNav}
-        <main
-          style={{
-            flex: 1,
-            background: '#f8fafc',
-            padding: '32px 36px 64px 36px',
-            overflowY: 'auto',
-          }}
-        >
-          <Outlet />
-        </main>
-      </div>
-    </AppShell>
+    <PortalShell header={customerTopNav} navigation={customerSideNav}>
+      <Outlet />
+    </PortalShell>
   );
 };
 

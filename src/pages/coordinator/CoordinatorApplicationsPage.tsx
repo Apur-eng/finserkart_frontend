@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
 import { TextInput } from '@astryxdesign/core/TextInput';
@@ -38,23 +39,23 @@ export const CoordinatorApplicationsPage: React.FC = () => {
   }, [applications, searchQuery, statusFilter]);
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ marginBottom: '24px' }}>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
         <Heading level={1}>
-          <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
             Operations Application Queue
-          </span>
+          </Inline>
         </Heading>
-        <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
           Central operational application flow across all disciplines. Allocate unassigned cases, review documents, and enforce SLA turnarounds.
         </p>
-      </div>
+      </Surface>
 
       {/* Filter and Search Bar */}
-      <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '24px' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ flex: '1', minWidth: '280px', maxWidth: '420px' }}>
+      <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-5)", alignItems: 'center', justifyContent: 'space-between' }}>
+          <Surface style={{ flex: '1', minWidth: "min(100%, var(--spacing-fsk-45))", maxWidth: "var(--spacing-fsk-50)" }}>
             <TextInput
               label="Search Application Queue"
               placeholder="Search by ID, service name, client or CA..."
@@ -62,21 +63,21 @@ export const CoordinatorApplicationsPage: React.FC = () => {
               onChange={(val) => setSearchQuery(val)}
               width="100%"
             />
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', gap: '8px' }}>
+          <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)" }}>
             {(['All', 'Unassigned', 'Assigned', 'Processing'] as const).map((filter) => (
               <button
                 key={filter}
                 type="button"
                 onClick={() => setStatusFilter(filter)}
                 style={{
-                  padding: '6px 14px',
-                  borderRadius: '20px',
-                  border: statusFilter === filter ? '1px solid #d97706' : '1px solid #cbd5e1',
-                  background: statusFilter === filter ? '#fffbeb' : '#ffffff',
-                  color: statusFilter === filter ? '#d97706' : '#475569',
-                  fontSize: '13px',
+                  padding: "var(--spacing-fsk-17) var(--spacing-fsk-23)",
+                  borderRadius: "var(--radius-fsk-28)",
+                  border: statusFilter === filter ? "var(--spacing-fsk-22) solid var(--color-fsk-54)" : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                  background: statusFilter === filter ? "var(--color-fsk-66)" : "var(--color-fsk-38)",
+                  color: statusFilter === filter ? "var(--color-fsk-54)" : "var(--color-fsk-18)",
+                  fontSize: "var(--font-fsk-14)",
                   fontWeight: statusFilter === filter ? 600 : 500,
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
@@ -85,82 +86,82 @@ export const CoordinatorApplicationsPage: React.FC = () => {
                 {filter}
               </button>
             ))}
-          </div>
-        </div>
+          </Surface>
+        </Surface>
       </Card>
 
       {/* Table */}
-      <Card elevation="low" padding={0} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff', overflow: 'hidden' }}>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13.5px' }}>
+      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+        <Surface style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
             <thead>
-              <tr style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', color: '#64748b', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: '14px 18px' }}>Application ID &amp; Service</th>
-                <th style={{ padding: '14px 18px' }}>Client Enterprise</th>
-                <th style={{ padding: '14px 18px' }}>Allocated CA</th>
-                <th style={{ padding: '14px 18px' }}>Allocation Status</th>
-                <th style={{ padding: '14px 18px' }}>Document Audit</th>
-                <th style={{ padding: '14px 18px' }}>SLA Target</th>
-                <th style={{ padding: '14px 18px', textAlign: 'right' }}>Action</th>
+              <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Application ID &amp; Service</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Client Enterprise</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Allocated CA</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Allocation Status</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Document Audit</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>SLA Target</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>Action</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((app) => (
-                <tr key={app.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ fontWeight: 700, color: '#0f172a' }}>{app.serviceName}</div>
-                    <div style={{ fontSize: '11.5px', color: '#d97706', fontFamily: 'monospace', fontWeight: 600 }}>
+                <tr key={app.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{app.serviceName}</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-54)", fontFamily: 'monospace', fontWeight: 600 }}>
                       #{app.id}
-                    </div>
+                    </Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ fontWeight: 600, color: '#0f172a' }}>{app.customerName}</div>
-                    <div style={{ fontSize: '12px', color: '#64748b' }}>{app.businessName}</div>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>{app.customerName}</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>{app.businessName}</Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ fontWeight: 600, color: app.assignedCAName ? '#0f172a' : '#d97706' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ fontWeight: 600, color: app.assignedCAName ? "var(--color-fsk-7)" : "var(--color-fsk-54)" }}>
                       {app.assignedCAName || 'Unassigned'}
-                    </div>
+                    </Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
                     <Badge
                       label={app.assignmentStatus}
                       variant={app.assignmentStatus === 'Assigned' ? 'green' : 'orange'}
                     />
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
                     <Badge
                       label={app.docVerificationStatus}
                       variant={app.docVerificationStatus === 'Verified' ? 'green' : 'neutral'}
                     />
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#64748b', fontSize: '12.5px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)" }}>
                       <Clock size={12} /> {app.slaDeadline}
-                    </div>
+                    </Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px', textAlign: 'right' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>
                     <button
                       type="button"
                       onClick={() => navigate(`/coordinator/applications/${app.id}`)}
                       style={{
-                        padding: '6px 12px',
-                        borderRadius: '6px',
-                        border: '1px solid #fde68a',
-                        background: '#fffbeb',
-                        color: '#d97706',
-                        fontSize: '12px',
+                        padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
+                        borderRadius: "var(--radius-fsk-42)",
+                        border: "var(--spacing-fsk-22) solid var(--color-fsk-88)",
+                        background: "var(--color-fsk-66)",
+                        color: "var(--color-fsk-54)",
+                        fontSize: "var(--font-fsk-14)",
                         fontWeight: 600,
                         cursor: 'pointer',
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '4px',
+                        gap: "var(--spacing-fsk-29)",
                       }}
                     >
                       Inspect <ArrowRight size={13} />
@@ -170,9 +171,9 @@ export const CoordinatorApplicationsPage: React.FC = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };
 

@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
 import {
@@ -23,139 +24,139 @@ export const CADashboardPage: React.FC = () => {
   const applications = INITIAL_CA_APPLICATIONS;
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
       {/* Header Banner */}
-      <div
+      <Surface
         style={{
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
-          marginBottom: '28px',
-          gap: '20px',
+          marginBottom: "var(--spacing-fsk-20)",
+          gap: "var(--spacing-fsk-2)",
         }}
       >
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-            <span style={{ fontSize: '13px', fontWeight: 600, color: '#7c3aed', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <Surface>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-17)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-41)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               CA Regulatory Dashboard
-            </span>
-            <span style={{ color: '#cbd5e1' }}>•</span>
-            <span style={{ fontSize: '13px', color: '#64748b' }}>ICAI Reg: {ca.membershipNo}</span>
-          </div>
+            </Inline>
+            <Inline style={{ color: "var(--color-fsk-59)" }}>•</Inline>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>ICAI Reg: {ca.membershipNo}</Inline>
+          </Surface>
 
           <Heading level={1}>
-            <span style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
               Welcome, CA {ca.fname} {ca.lname}
-            </span>
+            </Inline>
           </Heading>
 
-          <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
             {ca.firmName} • {ca.title}
           </p>
-        </div>
+        </Surface>
 
         {/* Practice Credentials Pill */}
         <Card
           elevation="low"
           padding={3}
           style={{
-            background: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)',
-            border: '1px solid #ddd6fe',
-            borderRadius: '12px',
+            background: "var(--color-fsk-brand)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-97)",
+            borderRadius: "var(--radius-fsk-28)",
             display: 'flex',
             alignItems: 'center',
-            gap: '14px',
+            gap: "var(--spacing-fsk-23)",
           }}
         >
-          <div style={{ width: '38px', height: '38px', borderRadius: '8px', background: '#7c3aed', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Surface style={{ width: "var(--spacing-fsk-90)", height: "var(--spacing-fsk-90)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-41)", color: "var(--color-fsk-38)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Scale size={20} />
-          </div>
-          <div>
-            <div style={{ fontSize: '11px', fontWeight: 700, color: '#6d28d9', textTransform: 'uppercase' }}>
+          </Surface>
+          <Surface>
+            <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-101)", textTransform: 'uppercase' }}>
               Certificate of Practice
-            </div>
-            <div style={{ fontSize: '14px', fontWeight: 800, color: '#4c1d95', fontFamily: 'monospace' }}>
+            </Surface>
+            <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 800, color: "var(--color-fsk-102)", fontFamily: 'monospace' }}>
               {ca.copNo} (Active)
-            </div>
-          </div>
+            </Surface>
+          </Surface>
         </Card>
-      </div>
+      </Surface>
 
       {/* KPI Cards */}
-      <div
+      <Surface
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: '20px',
-          marginBottom: '28px',
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 15rem), 1fr))",
+          gap: "var(--spacing-fsk-2)",
+          marginBottom: "var(--spacing-fsk-20)",
         }}
       >
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Active Filings Queue</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#f5f3ff', color: '#7c3aed', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-12)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Active Filings Queue</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-53)", color: "var(--color-fsk-41)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Briefcase size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a' }}>{ca.activeWorkflowsCount}</div>
-          <div style={{ fontSize: '12px', color: '#7c3aed', marginTop: '6px', fontWeight: 600 }}>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)" }}>{ca.activeWorkflowsCount}</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-41)", marginTop: "var(--spacing-fsk-17)", fontWeight: 600 }}>
             Under active statutory drafting
-          </div>
+          </Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Pending Document Reviews</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#fffbeb', color: '#d97706', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-12)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Pending Document Reviews</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-66)", color: "var(--color-fsk-54)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <FileCheck size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a' }}>{ca.pendingReviewDocsCount}</div>
-          <div style={{ fontSize: '12px', color: '#d97706', marginTop: '6px', fontWeight: 600 }}>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)" }}>{ca.pendingReviewDocsCount}</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-54)", marginTop: "var(--spacing-fsk-17)", fontWeight: 600 }}>
             Uploaded by clients today
-          </div>
+          </Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Completed Filings</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-12)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Completed Filings</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-64)", color: "var(--color-fsk-65)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <CheckCircle2 size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a' }}>{ca.completedWorkflowsCount}</div>
-          <div style={{ fontSize: '12px', color: '#059669', marginTop: '6px', fontWeight: 600 }}>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)" }}>{ca.completedWorkflowsCount}</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-65)", marginTop: "var(--spacing-fsk-17)", fontWeight: 600 }}>
             100% on-time turnaround
-          </div>
+          </Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Professional Commission</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#eff6ff', color: '#0066cc', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-12)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Professional Commission</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-63)", color: "var(--color-fsk-15)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Coins size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a' }}>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)" }}>
             ₹{ca.totalCommissionEarned.toLocaleString('en-IN')}
-          </div>
-          <div style={{ fontSize: '12px', color: '#0066cc', marginTop: '6px', fontWeight: 600 }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-15)", marginTop: "var(--spacing-fsk-17)", fontWeight: 600 }}>
             ₹{ca.pendingCommission.toLocaleString('en-IN')} pending
-          </div>
+          </Surface>
         </Card>
-      </div>
+      </Surface>
 
       {/* Quick Action Buttons */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '28px' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "var(--spacing-fsk-5)", marginBottom: "var(--spacing-fsk-20)" }}>
         <button
           type="button"
           onClick={() => navigate('/ca/applications')}
           style={{
-            padding: '16px 20px',
-            borderRadius: '12px',
-            border: '1px solid #ddd6fe',
-            background: '#ffffff',
+            padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)",
+            borderRadius: "var(--radius-fsk-28)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-97)",
+            background: "var(--color-fsk-38)",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -163,26 +164,26 @@ export const CADashboardPage: React.FC = () => {
             textAlign: 'left',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#f5f3ff', color: '#7c3aed', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-23)" }}>
+            <Surface style={{ width: "var(--spacing-fsk-67)", height: "var(--spacing-fsk-67)", borderRadius: "var(--radius-fsk-68)", background: "var(--color-fsk-53)", color: "var(--color-fsk-41)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Briefcase size={20} />
-            </div>
-            <div>
-              <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>Assigned Applications Queue</div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Inspect filing steps &amp; progress</div>
-            </div>
-          </div>
-          <ArrowRight size={18} color="#7c3aed" />
+            </Surface>
+            <Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Assigned Applications Queue</Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Inspect filing steps &amp; progress</Surface>
+            </Surface>
+          </Surface>
+          <ArrowRight size={18} color="var(--color-fsk-41)" />
         </button>
 
         <button
           type="button"
           onClick={() => navigate('/ca/documents')}
           style={{
-            padding: '16px 20px',
-            borderRadius: '12px',
-            border: '1px solid #fde68a',
-            background: '#ffffff',
+            padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)",
+            borderRadius: "var(--radius-fsk-28)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-88)",
+            background: "var(--color-fsk-38)",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -190,26 +191,26 @@ export const CADashboardPage: React.FC = () => {
             textAlign: 'left',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#fffbeb', color: '#d97706', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-23)" }}>
+            <Surface style={{ width: "var(--spacing-fsk-67)", height: "var(--spacing-fsk-67)", borderRadius: "var(--radius-fsk-68)", background: "var(--color-fsk-66)", color: "var(--color-fsk-54)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <FileCheck size={20} />
-            </div>
-            <div>
-              <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>Document Review &amp; Audit</div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Verify KYC &amp; premises proofs</div>
-            </div>
-          </div>
-          <ArrowRight size={18} color="#d97706" />
+            </Surface>
+            <Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Document Review &amp; Audit</Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Verify KYC &amp; premises proofs</Surface>
+            </Surface>
+          </Surface>
+          <ArrowRight size={18} color="var(--color-fsk-54)" />
         </button>
 
         <button
           type="button"
           onClick={() => navigate('/ca/deliverables')}
           style={{
-            padding: '16px 20px',
-            borderRadius: '12px',
-            border: '1px solid #a7f3d0',
-            background: '#ffffff',
+            padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)",
+            borderRadius: "var(--radius-fsk-28)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-81)",
+            background: "var(--color-fsk-38)",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -217,100 +218,100 @@ export const CADashboardPage: React.FC = () => {
             textAlign: 'left',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-23)" }}>
+            <Surface style={{ width: "var(--spacing-fsk-67)", height: "var(--spacing-fsk-67)", borderRadius: "var(--radius-fsk-68)", background: "var(--color-fsk-64)", color: "var(--color-fsk-65)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <CheckCircle2 size={20} />
-            </div>
-            <div>
-              <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>Deliverables Handover</div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Upload final govt certificates</div>
-            </div>
-          </div>
-          <ArrowRight size={18} color="#059669" />
+            </Surface>
+            <Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Deliverables Handover</Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Upload final govt certificates</Surface>
+            </Surface>
+          </Surface>
+          <ArrowRight size={18} color="var(--color-fsk-65)" />
         </button>
-      </div>
+      </Surface>
 
       {/* Active Workflows Queue Table */}
-      <Card elevation="low" padding={0} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff', overflow: 'hidden' }}>
-        <div style={{ padding: '16px 20px', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div>
-            <div style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Active Filing Workflows</div>
-            <div style={{ fontSize: '12px', color: '#64748b' }}>Statutory applications allocated to your desk</div>
-          </div>
-          <Link to="/ca/applications" style={{ fontSize: '12.5px', fontWeight: 600, color: '#7c3aed', textDecoration: 'none' }}>
+      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+        <Surface style={{ padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Surface>
+            <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Active Filing Workflows</Surface>
+            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Statutory applications allocated to your desk</Surface>
+          </Surface>
+          <Link to="/ca/applications" style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-41)", textDecoration: 'none' }}>
             View all queue
           </Link>
-        </div>
+        </Surface>
 
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13.5px' }}>
+        <Surface style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
             <thead>
-              <tr style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', color: '#64748b', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: '14px 18px' }}>Priority &amp; ID</th>
-                <th style={{ padding: '14px 18px' }}>Service Name</th>
-                <th style={{ padding: '14px 18px' }}>Client Enterprise</th>
-                <th style={{ padding: '14px 18px' }}>Deadline</th>
-                <th style={{ padding: '14px 18px' }}>Current Progress</th>
-                <th style={{ padding: '14px 18px' }}>CA Fee</th>
-                <th style={{ padding: '14px 18px', textAlign: 'right' }}>Actions</th>
+              <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Priority &amp; ID</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Service Name</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Client Enterprise</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Deadline</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Current Progress</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>CA Fee</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {applications.map((app) => (
-                <tr key={app.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <tr key={app.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)" }}>
                       <Badge
                         label={app.priority}
                         variant={app.priority === 'Urgent' ? 'red' : app.priority === 'High' ? 'orange' : 'neutral'}
                       />
-                      <span style={{ fontWeight: 700, fontFamily: 'monospace', color: '#0f172a' }}>#{app.id}</span>
-                    </div>
+                      <Inline style={{ fontWeight: 700, fontFamily: 'monospace', color: "var(--color-fsk-7)" }}>#{app.id}</Inline>
+                    </Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ fontWeight: 700, color: '#0f172a' }}>{app.serviceName}</div>
-                    <div style={{ fontSize: '11px', color: '#64748b' }}>Assigned {app.assignedDate}</div>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{app.serviceName}</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Assigned {app.assignedDate}</Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ fontWeight: 600, color: '#0f172a' }}>{app.customerName}</div>
-                    <div style={{ fontSize: '12px', color: '#64748b' }}>{app.businessName}</div>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>{app.customerName}</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>{app.businessName}</Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px', color: '#d97706', fontWeight: 600, fontSize: '13px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-86)", color: "var(--color-fsk-54)", fontWeight: 600, fontSize: "var(--font-fsk-14)" }}>
                       <Clock size={13} /> {app.deadline}
-                    </div>
+                    </Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)" }}>
                       <Badge label={`Stage ${app.currentStage} / ${app.totalStages}`} variant="purple" />
-                      <span style={{ fontSize: '12px', color: '#64748b' }}>{app.status}</span>
-                    </div>
+                      <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>{app.status}</Inline>
+                    </Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px', fontWeight: 700, color: '#7c3aed' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", fontWeight: 700, color: "var(--color-fsk-41)" }}>
                     ₹{app.caCommission.toLocaleString('en-IN')}
                   </td>
 
-                  <td style={{ padding: '14px 18px', textAlign: 'right' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>
                     <button
                       type="button"
                       onClick={() => navigate(`/ca/applications/${app.id}/workflow`)}
                       style={{
-                        padding: '6px 12px',
-                        borderRadius: '6px',
-                        border: '1px solid #ddd6fe',
-                        background: '#f5f3ff',
-                        color: '#7c3aed',
-                        fontSize: '12px',
+                        padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
+                        borderRadius: "var(--radius-fsk-42)",
+                        border: "var(--spacing-fsk-22) solid var(--color-fsk-97)",
+                        background: "var(--color-fsk-53)",
+                        color: "var(--color-fsk-41)",
+                        fontSize: "var(--font-fsk-14)",
                         fontWeight: 600,
                         cursor: 'pointer',
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '4px',
+                        gap: "var(--spacing-fsk-29)",
                       }}
                     >
                       Update <ArrowRight size={13} />
@@ -320,9 +321,9 @@ export const CADashboardPage: React.FC = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };
 

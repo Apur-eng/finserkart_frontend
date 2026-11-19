@@ -1,3 +1,4 @@
+import { Surface, Inline } from '../../components/Surface';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
@@ -27,54 +28,54 @@ export const CustomerNotificationsPage: React.FC = () => {
   const getNotificationIcon = (type: CustomerNotification['type']) => {
     switch (type) {
       case 'milestone':
-        return <Clock size={18} color="#0066cc" />;
+        return <Clock size={18} color="var(--color-fsk-15)" />;
       case 'document':
-        return <FileText size={18} color="#16a34a" />;
+        return <FileText size={18} color="var(--color-fsk-39)" />;
       case 'message':
-        return <MessageSquare size={18} color="#9333ea" />;
+        return <MessageSquare size={18} color="var(--color-fsk-119)" />;
       case 'payment':
-        return <Receipt size={18} color="#0066cc" />;
+        return <Receipt size={18} color="var(--color-fsk-15)" />;
       default:
-        return <Bell size={18} color="#475569" />;
+        return <Bell size={18} color="var(--color-fsk-18)" />;
     }
   };
 
   return (
-    <div style={{ maxWidth: '860px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-89)", margin: '0 auto' }}>
       {/* Header */}
-      <div
+      <Surface
         style={{
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '24px',
-          gap: '16px',
+          marginBottom: "var(--spacing-fsk-26)",
+          gap: "var(--spacing-fsk-5)",
         }}
       >
-        <div>
+        <Surface>
           <Heading level={1}>
-            <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
               Notifications & Activity
-            </span>
+            </Inline>
           </Heading>
-          <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
             Operational updates, CA query dispatches, document approvals, and payment receipts.
           </p>
-        </div>
+        </Surface>
 
-        <div style={{ display: 'flex', gap: '8px' }}>
+        <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)" }}>
           <Button
             label="Mark All Read"
             variant="secondary"
             size="sm"
             onClick={handleMarkAllRead}
           />
-        </div>
-      </div>
+        </Surface>
+      </Surface>
 
       {/* Filter Tabs */}
-      <div style={{ display: 'flex', gap: '8px', marginBottom: '20px' }}>
+      <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-2)" }}>
         {(['All', 'Unread'] as const).map((tab) => {
           const isActive = filter === tab;
           const count =
@@ -90,109 +91,109 @@ export const CustomerNotificationsPage: React.FC = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '6px',
-                padding: '6px 14px',
-                borderRadius: '8px',
-                border: isActive ? '1px solid #0066cc' : '1px solid #e2e8f0',
-                background: isActive ? '#e0f2fe' : '#ffffff',
-                color: isActive ? '#0066cc' : '#475569',
-                fontSize: '13px',
+                gap: "var(--spacing-fsk-17)",
+                padding: "var(--spacing-fsk-17) var(--spacing-fsk-23)",
+                borderRadius: "var(--radius-fsk-37)",
+                border: isActive ? "var(--spacing-fsk-22) solid var(--color-fsk-162)" : "var(--spacing-fsk-22) solid var(--color-fsk-163)",
+                background: isActive ? "var(--color-fsk-112)" : "var(--color-fsk-38)",
+                color: isActive ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
+                fontSize: "var(--font-fsk-14)",
                 fontWeight: 600,
                 cursor: 'pointer',
               }}
             >
-              <span>{tab}</span>
-              <span style={{ fontSize: '11px', padding: '1px 6px', borderRadius: '10px', background: isActive ? '#0066cc' : '#f1f5f9', color: isActive ? '#fff' : '#64748b' }}>
+              <Inline>{tab}</Inline>
+              <Inline style={{ fontSize: "var(--font-fsk-14)", padding: "var(--spacing-fsk-22) var(--spacing-fsk-17)", borderRadius: "var(--radius-fsk-68)", background: isActive ? "var(--color-fsk-15)" : "var(--color-fsk-46)", color: isActive ? "var(--color-fsk-38)" : "var(--color-fsk-9)" }}>
                 {count}
-              </span>
+              </Inline>
             </button>
           );
         })}
-      </div>
+      </Surface>
 
       {/* Notifications List */}
-      <Card elevation="low" padding={0} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff', overflow: 'hidden' }}>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+        <Surface style={{ display: 'flex', flexDirection: 'column' }}>
           {filtered.map((item, idx) => (
-            <div
+            <Surface
               key={item.id}
               style={{
-                padding: '16px 20px',
-                borderBottom: idx === filtered.length - 1 ? 'none' : '1px solid #f1f5f9',
+                padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)",
+                borderBottom: idx === filtered.length - 1 ? 'none' : "var(--spacing-fsk-22) solid var(--color-fsk-165)",
                 display: 'flex',
                 alignItems: 'flex-start',
                 justifyContent: 'space-between',
-                gap: '16px',
-                background: item.isRead ? '#ffffff' : '#f8fafc',
+                gap: "var(--spacing-fsk-5)",
+                background: item.isRead ? "var(--color-fsk-38)" : "var(--color-fsk-27)",
                 transition: 'background-color 0.15s ease',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
-                <div
+              <Surface style={{ display: 'flex', alignItems: 'flex-start', gap: "var(--spacing-fsk-23)" }}>
+                <Surface
                   style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '8px',
-                    background: '#f1f5f9',
+                    width: "var(--spacing-fsk-85)",
+                    height: "var(--spacing-fsk-85)",
+                    borderRadius: "var(--radius-fsk-37)",
+                    background: "var(--color-fsk-46)",
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0,
-                    marginTop: '2px',
+                    marginTop: "var(--spacing-fsk-47)",
                   }}
                 >
                   {getNotificationIcon(item.type)}
-                </div>
+                </Surface>
 
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ fontSize: '14.5px', fontWeight: 700, color: '#0f172a' }}>
+                <Surface>
+                  <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)" }}>
+                    <Inline style={{ fontSize: "var(--font-fsk-91)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
                       {item.title}
-                    </span>
+                    </Inline>
                     {!item.isRead && (
-                      <span
+                      <Inline
                         style={{
-                          width: '8px',
-                          height: '8px',
+                          width: "var(--spacing-fsk-12)",
+                          height: "var(--spacing-fsk-12)",
                           borderRadius: '50%',
-                          background: '#0066cc',
+                          background: "var(--color-fsk-15)",
                           display: 'inline-block',
                         }}
                       />
                     )}
-                  </div>
+                  </Surface>
 
-                  <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.5, marginTop: '4px', margin: '4px 0 0 0' }}>
+                  <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-18)", lineHeight: 1.5, marginTop: "var(--spacing-fsk-29)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
                     {item.description}
                   </p>
 
-                  <div style={{ fontSize: '11.5px', color: '#94a3b8', marginTop: '6px' }}>
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)", marginTop: "var(--spacing-fsk-17)" }}>
                     {item.timestamp}
-                  </div>
-                </div>
-              </div>
+                  </Surface>
+                </Surface>
+              </Surface>
 
               <Link
                 to={item.linkUrl}
                 style={{
-                  fontSize: '12.5px',
+                  fontSize: "var(--font-fsk-14)",
                   fontWeight: 600,
-                  color: '#0066cc',
+                  color: "var(--color-fsk-15)",
                   textDecoration: 'none',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '4px',
+                  gap: "var(--spacing-fsk-29)",
                   whiteSpace: 'nowrap',
-                  paddingTop: '2px',
+                  paddingTop: "var(--spacing-fsk-47)",
                 }}
               >
                 View <ExternalLink size={13} />
               </Link>
-            </div>
+            </Surface>
           ))}
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };
 

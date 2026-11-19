@@ -1,3 +1,4 @@
+import { Surface, Inline } from '../components/Surface';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
@@ -129,41 +130,41 @@ export const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '840px', margin: '40px auto 80px auto', padding: '0 20px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-        <span style={{ fontSize: '13px', fontWeight: 600, color: '#0066cc', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-137)", margin: "var(--spacing-fsk-1) auto var(--spacing-fsk-3) auto", padding: "0 var(--spacing-fsk-2)" }}>
+      <Surface style={{ textAlign: 'center', marginBottom: "var(--spacing-fsk-114)" }}>
+        <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-15)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           New Client Registration
-        </span>
+        </Inline>
         <Heading level={1}>
-          <span style={{ fontSize: '32px', fontWeight: 800, color: '#0f172a', display: 'block', marginTop: '6px' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-95)", fontWeight: 800, color: "var(--color-fsk-7)", display: 'block', marginTop: "var(--spacing-fsk-17)" }}>
             Create Your Customer Account
-          </span>
+          </Inline>
         </Heading>
-        <p style={{ color: '#64748b', fontSize: '15px', marginTop: '6px' }}>
+        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-19)", marginTop: "var(--spacing-fsk-17)" }}>
           Register to apply for financial services, track application workflows, and manage compliance documents.
         </p>
-      </div>
+      </Surface>
 
       <Card elevation="low" padding={4}>
         {/* Error banner */}
         {errorMessage && (
-          <div style={{ marginBottom: '24px' }}>
+          <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
             <Banner status="error" title={errorMessage} />
-          </div>
+          </Surface>
         )}
 
         {/* Success banner */}
         {successMessage && (
-          <div style={{ marginBottom: '24px' }}>
+          <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
             <Banner status="success" title={successMessage} />
-          </div>
+          </Surface>
         )}
 
         <form onSubmit={handleSubmit}>
           <VStack gap={4}>
             {/* Name Fields */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-              <div>
+            <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
+              <Surface>
                 <TextInput
                   label="First Name"
                   placeholder="e.g. John"
@@ -173,8 +174,8 @@ export const RegisterPage: React.FC = () => {
                   width="100%"
                   startIcon={User}
                 />
-              </div>
-              <div>
+              </Surface>
+              <Surface>
                 <TextInput
                   label="Last Name"
                   placeholder="e.g. Doe"
@@ -184,12 +185,12 @@ export const RegisterPage: React.FC = () => {
                   width="100%"
                   startIcon={User}
                 />
-              </div>
-            </div>
+              </Surface>
+            </Surface>
 
             {/* Email & Phone */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-              <div>
+            <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
+              <Surface>
                 <TextInput
                   type="email"
                   label="Email Address"
@@ -202,13 +203,13 @@ export const RegisterPage: React.FC = () => {
                   onKeyDown={(e) => { if (e.key === 'Tab') handleEmailBlur(); }}
                 />
                 {emailWarning && (
-                  <div style={{ fontSize: '12px', color: '#ef4444', marginTop: '4px' }}>
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-129)", marginTop: "var(--spacing-fsk-29)" }}>
                     {emailWarning}
-                  </div>
+                  </Surface>
                 )}
-              </div>
+              </Surface>
 
-              <div>
+              <Surface>
                 <TextInput
                   type="tel"
                   label="Mobile Contact"
@@ -221,16 +222,16 @@ export const RegisterPage: React.FC = () => {
                   onKeyDown={(e) => { if (e.key === 'Tab') handlePhoneBlur(); }}
                 />
                 {phoneWarning && (
-                  <div style={{ fontSize: '12px', color: '#ef4444', marginTop: '4px' }}>
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-129)", marginTop: "var(--spacing-fsk-29)" }}>
                     {phoneWarning}
-                  </div>
+                  </Surface>
                 )}
-              </div>
-            </div>
+              </Surface>
+            </Surface>
 
             {/* Address & Pincode */}
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px' }}>
-              <div>
+            <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
+              <Surface>
                 <TextInput
                   label="Street Address"
                   placeholder="Full business or residence address"
@@ -240,8 +241,8 @@ export const RegisterPage: React.FC = () => {
                   width="100%"
                   startIcon={MapPin}
                 />
-              </div>
-              <div>
+              </Surface>
+              <Surface>
                 <TextInput
                   label="Pincode"
                   placeholder="6-digit code"
@@ -250,12 +251,12 @@ export const RegisterPage: React.FC = () => {
                   isRequired
                   width="100%"
                 />
-              </div>
-            </div>
+              </Surface>
+            </Surface>
 
             {/* Password & Referral Code */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-              <div>
+            <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
+              <Surface>
                 <TextInput
                   type="password"
                   label="Account Password"
@@ -266,9 +267,9 @@ export const RegisterPage: React.FC = () => {
                   width="100%"
                   startIcon={Lock}
                 />
-              </div>
+              </Surface>
 
-              <div>
+              <Surface>
                 <TextInput
                   label="Agent Referral Code (Optional)"
                   placeholder="e.g. AG1234 or leave blank"
@@ -278,20 +279,20 @@ export const RegisterPage: React.FC = () => {
                   onKeyDown={(e) => { if (e.key === 'Tab') handleReferralBlur(); }}
                 />
                 {referralValid === true && (
-                  <div style={{ fontSize: '12px', color: '#10b981', marginTop: '4px' }}>
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-31)", marginTop: "var(--spacing-fsk-29)" }}>
                     ✓ Valid agent referral code
-                  </div>
+                  </Surface>
                 )}
                 {referralValid === false && (
-                  <div style={{ fontSize: '12px', color: '#f59e0b', marginTop: '4px' }}>
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-32)", marginTop: "var(--spacing-fsk-29)" }}>
                     ⚠ Referral code not found. You can still register without it.
-                  </div>
+                  </Surface>
                 )}
-              </div>
-            </div>
+              </Surface>
+            </Surface>
 
             {/* Submit */}
-            <div style={{ marginTop: '8px' }}>
+            <Surface style={{ marginTop: "var(--spacing-fsk-12)" }}>
               <Button
                 label={isLoading ? 'Creating Account...' : 'Complete Customer Registration'}
                 variant="primary"
@@ -300,24 +301,24 @@ export const RegisterPage: React.FC = () => {
                 type="submit"
                 isLoading={isLoading}
               />
-            </div>
+            </Surface>
           </VStack>
         </form>
 
-        <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid #f1f5f9', textAlign: 'center', fontSize: '14px', color: '#64748b' }}>
+        <Surface style={{ marginTop: "var(--spacing-fsk-26)", paddingTop: "var(--spacing-fsk-5)", borderTop: "var(--spacing-fsk-22) solid var(--color-fsk-46)", textAlign: 'center', fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-9)" }}>
           Already have an account?{' '}
-          <Link to="/login" style={{ color: '#0066cc', fontWeight: 600, textDecoration: 'none' }}>
+          <Link to="/login" style={{ color: "var(--color-fsk-15)", fontWeight: 600, textDecoration: 'none' }}>
             Sign In Here
           </Link>
-        </div>
+        </Surface>
       </Card>
 
       {/* Security note */}
-      <div style={{ marginTop: '24px', textAlign: 'center', fontSize: '12px', color: '#94a3b8', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-        <ShieldCheck size={16} color="#10b981" />
-        <span>Your data is protected under Finservkart Privacy & Encryption policies.</span>
-      </div>
-    </div>
+      <Surface style={{ marginTop: "var(--spacing-fsk-26)", textAlign: 'center', fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)", display: 'flex', alignItems: 'center', justifyContent: 'center', gap: "var(--spacing-fsk-12)" }}>
+        <ShieldCheck size={16} color="var(--color-fsk-31)" />
+        <Inline>Your data is protected under Finservkart Privacy & Encryption policies.</Inline>
+      </Surface>
+    </Surface>
   );
 };
 

@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
 import { TextInput } from '@astryxdesign/core/TextInput';
@@ -31,63 +32,63 @@ export const FranchiseCommissionsPage: React.FC = () => {
   }, [commissions, searchQuery, statusFilter]);
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ marginBottom: '24px' }}>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
         <Heading level={1}>
-          <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
             Franchise Commission Statements
-          </span>
+          </Inline>
         </Heading>
-        <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
           Itemized accounting of 10% franchise network override revenue earned across all regional agent filings.
         </p>
-      </div>
+      </Surface>
 
       {/* KPI Cards */}
-      <div
+      <Surface
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '20px',
-          marginBottom: '28px',
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16.25rem), 1fr))",
+          gap: "var(--spacing-fsk-2)",
+          marginBottom: "var(--spacing-fsk-20)",
         }}
       >
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Total Franchise Override Accrued</div>
-          <div style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', marginTop: '4px' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Total Franchise Override Accrued</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-29)" }}>
             ₹{franchise.franchiseCommissionEarned.toLocaleString('en-IN')}
-          </div>
-          <div style={{ fontSize: '12px', color: '#0284c7', marginTop: '4px', fontWeight: 600 }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-70)", marginTop: "var(--spacing-fsk-29)", fontWeight: 600 }}>
             Cumulative network override
-          </div>
+          </Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Disbursed to Franchise Bank</div>
-          <div style={{ fontSize: '26px', fontWeight: 800, color: '#059669', marginTop: '4px' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Disbursed to Franchise Bank</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-65)", marginTop: "var(--spacing-fsk-29)" }}>
             ₹{franchise.totalDisbursed.toLocaleString('en-IN')}
-          </div>
-          <div style={{ fontSize: '12px', color: '#64748b', marginTop: '4px' }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-29)" }}>
             Settled to {franchise.bank}
-          </div>
+          </Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Available for Settlement</div>
-          <div style={{ fontSize: '26px', fontWeight: 800, color: '#d97706', marginTop: '4px' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Available for Settlement</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-54)", marginTop: "var(--spacing-fsk-29)" }}>
             ₹{franchise.pendingPayout.toLocaleString('en-IN')}
-          </div>
-          <div style={{ fontSize: '12px', color: '#d97706', marginTop: '4px', fontWeight: 600 }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-54)", marginTop: "var(--spacing-fsk-29)", fontWeight: 600 }}>
             Eligible for immediate withdrawal
-          </div>
+          </Surface>
         </Card>
-      </div>
+      </Surface>
 
       {/* Filter and Search Bar */}
-      <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '24px' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ flex: '1', minWidth: '280px', maxWidth: '420px' }}>
+      <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-5)", alignItems: 'center', justifyContent: 'space-between' }}>
+          <Surface style={{ flex: '1', minWidth: "min(100%, var(--spacing-fsk-45))", maxWidth: "var(--spacing-fsk-50)" }}>
             <TextInput
               label="Search Commissions"
               placeholder="Search by statement ID, service, or agent..."
@@ -95,21 +96,21 @@ export const FranchiseCommissionsPage: React.FC = () => {
               onChange={(val) => setSearchQuery(val)}
               width="100%"
             />
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', gap: '8px' }}>
+          <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)" }}>
             {(['All', 'Approved', 'Pending', 'Disbursed'] as const).map((filter) => (
               <button
                 key={filter}
                 type="button"
                 onClick={() => setStatusFilter(filter)}
                 style={{
-                  padding: '6px 14px',
-                  borderRadius: '20px',
-                  border: statusFilter === filter ? '1px solid #0284c7' : '1px solid #cbd5e1',
-                  background: statusFilter === filter ? '#f0f9ff' : '#ffffff',
-                  color: statusFilter === filter ? '#0284c7' : '#475569',
-                  fontSize: '13px',
+                  padding: "var(--spacing-fsk-17) var(--spacing-fsk-23)",
+                  borderRadius: "var(--radius-fsk-28)",
+                  border: statusFilter === filter ? "var(--spacing-fsk-22) solid var(--color-fsk-70)" : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                  background: statusFilter === filter ? "var(--color-fsk-131)" : "var(--color-fsk-38)",
+                  color: statusFilter === filter ? "var(--color-fsk-70)" : "var(--color-fsk-18)",
+                  fontSize: "var(--font-fsk-14)",
                   fontWeight: statusFilter === filter ? 600 : 500,
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
@@ -118,57 +119,57 @@ export const FranchiseCommissionsPage: React.FC = () => {
                 {filter}
               </button>
             ))}
-          </div>
-        </div>
+          </Surface>
+        </Surface>
       </Card>
 
       {/* Table */}
-      <Card elevation="low" padding={0} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff', overflow: 'hidden' }}>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13.5px' }}>
+      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+        <Surface style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
             <thead>
-              <tr style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', color: '#64748b', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: '14px 18px' }}>Statement ID &amp; Date</th>
-                <th style={{ padding: '14px 18px' }}>Application &amp; Service</th>
-                <th style={{ padding: '14px 18px' }}>Producing Agent</th>
-                <th style={{ padding: '14px 18px' }}>Order Total</th>
-                <th style={{ padding: '14px 18px' }}>Override Rate</th>
-                <th style={{ padding: '14px 18px' }}>Franchise Cut</th>
-                <th style={{ padding: '14px 18px', textAlign: 'right' }}>Status</th>
+              <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Statement ID &amp; Date</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Application &amp; Service</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Producing Agent</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Order Total</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Override Rate</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Franchise Cut</th>
+                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>Status</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((c) => (
-                <tr key={c.id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ fontWeight: 700, color: '#0f172a', fontFamily: 'monospace' }}>{c.id}</div>
-                    <div style={{ fontSize: '11px', color: '#94a3b8' }}>{c.date}</div>
+                <tr key={c.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)", fontFamily: 'monospace' }}>{c.id}</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)" }}>{c.date}</Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ fontWeight: 600, color: '#0f172a' }}>{c.serviceName}</div>
-                    <div style={{ fontSize: '11.5px', color: '#0284c7', fontFamily: 'monospace' }}>#{c.applicationId}</div>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>{c.serviceName}</Surface>
+                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-70)", fontFamily: 'monospace' }}>#{c.applicationId}</Surface>
                   </td>
 
-                  <td style={{ padding: '14px 18px', color: '#334155' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-25)" }}>
                     {c.agentName}
                   </td>
 
-                  <td style={{ padding: '14px 18px', fontWeight: 600, color: '#0f172a' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", fontWeight: 600, color: "var(--color-fsk-7)" }}>
                     ₹{c.orderTotal.toLocaleString('en-IN')}
                   </td>
 
-                  <td style={{ padding: '14px 18px', color: '#64748b', fontWeight: 600 }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-9)", fontWeight: 600 }}>
                     {c.franchiseRate}
                   </td>
 
-                  <td style={{ padding: '14px 18px' }}>
-                    <span style={{ fontSize: '15px', fontWeight: 800, color: '#059669' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                    <Inline style={{ fontSize: "var(--font-fsk-19)", fontWeight: 800, color: "var(--color-fsk-65)" }}>
                       +₹{c.franchiseAmount}
-                    </span>
+                    </Inline>
                   </td>
 
-                  <td style={{ padding: '14px 18px', textAlign: 'right' }}>
+                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>
                     <Badge
                       label={c.status}
                       variant={c.status === 'Disbursed' ? 'green' : c.status === 'Approved' ? 'blue' : 'orange'}
@@ -178,9 +179,9 @@ export const FranchiseCommissionsPage: React.FC = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </Surface>
       </Card>
-    </div>
+    </Surface>
   );
 };
 

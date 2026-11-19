@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Banner } from '@astryxdesign/core/Banner';
 import { Button } from '@astryxdesign/core/Button';
 import { Card } from '@astryxdesign/core/Card';
@@ -63,36 +64,36 @@ export const CAProfilePage: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: '960px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-72)", margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ marginBottom: '24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-          <span style={{ fontSize: '13px', fontWeight: 600, color: '#7c3aed' }}>Regulatory Counsel</span>
-          <span style={{ color: '#cbd5e1' }}>•</span>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-29)" }}>
+          <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-41)" }}>Regulatory Counsel</Inline>
+          <Inline style={{ color: "var(--color-fsk-59)" }}>•</Inline>
           <Badge label={`ICAI: ${ca.membershipNo}`} variant="purple" />
-        </div>
+        </Surface>
         <Heading level={1}>
-          <span style={{ fontSize: '26px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
             CA Professional Profile &amp; Practice
-          </span>
+          </Inline>
         </Heading>
-        <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
           Manage your chartered accountancy credentials, Certificate of Practice (COP), practicing firm, and payout accounts.
         </p>
-      </div>
+      </Surface>
 
       {feedbackMessage && (
-        <div style={{ marginBottom: '20px' }}>
+        <Surface style={{ marginBottom: "var(--spacing-fsk-2)" }}>
           <Banner
             status="success"
             title="Update Complete"
             description={feedbackMessage}
           />
-        </div>
+        </Surface>
       )}
 
       {/* Tabs */}
-      <div style={{ display: 'flex', gap: '8px', borderBottom: '1px solid #e2e8f0', marginBottom: '24px' }}>
+      <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", marginBottom: "var(--spacing-fsk-26)" }}>
         {[
           { key: 'profile', label: 'ICAI Credentials & Firm' },
           { key: 'bank', label: 'Professional Payout Bank' },
@@ -103,110 +104,110 @@ export const CAProfilePage: React.FC = () => {
             type="button"
             onClick={() => setActiveTab(tab.key as any)}
             style={{
-              padding: '10px 18px',
+              padding: "var(--spacing-fsk-35) var(--spacing-fsk-36)",
               border: 'none',
-              borderBottom: activeTab === tab.key ? '2px solid #7c3aed' : '2px solid transparent',
+              borderBottom: activeTab === tab.key ? "var(--spacing-fsk-47) solid var(--color-fsk-41)" : "var(--spacing-fsk-47) solid transparent",
               background: 'none',
-              color: activeTab === tab.key ? '#7c3aed' : '#64748b',
+              color: activeTab === tab.key ? "var(--color-fsk-41)" : "var(--color-fsk-9)",
               fontWeight: activeTab === tab.key ? 700 : 500,
-              fontSize: '13.5px',
+              fontSize: "var(--font-fsk-14)",
               cursor: 'pointer',
-              marginBottom: '-1px',
+              marginBottom: "var(--spacing-fsk-96)",
               transition: 'all 0.15s ease',
             }}
           >
             {tab.label}
           </button>
         ))}
-      </div>
+      </Surface>
 
       {/* Tab 1: Profile & Credentials */}
       {activeTab === 'profile' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-              <Scale size={20} color="#7c3aed" />
-              <span style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>ICAI Credentials &amp; Verification</span>
-            </div>
+        <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-26)" }}>
+          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-5)" }}>
+              <Scale size={20} color="var(--color-fsk-41)" />
+              <Inline style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>ICAI Credentials &amp; Verification</Inline>
+            </Surface>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', fontSize: '13.5px' }}>
-              <div style={{ padding: '12px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Practicing Chartered Accountant</div>
-                <div style={{ fontWeight: 700, color: '#0f172a', marginTop: '2px' }}>CA {ca.fname} {ca.lname}</div>
-              </div>
+            <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "var(--spacing-fsk-5)", fontSize: "var(--font-fsk-14)" }}>
+              <Surface style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-23)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", textTransform: 'uppercase', fontWeight: 600 }}>Practicing Chartered Accountant</Surface>
+                <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)" }}>CA {ca.fname} {ca.lname}</Surface>
+              </Surface>
 
-              <div style={{ padding: '12px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>ICAI Membership No</div>
-                <div style={{ fontWeight: 800, color: '#7c3aed', marginTop: '2px', fontFamily: 'monospace' }}>{ca.membershipNo}</div>
-              </div>
+              <Surface style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-23)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", textTransform: 'uppercase', fontWeight: 600 }}>ICAI Membership No</Surface>
+                <Surface style={{ fontWeight: 800, color: "var(--color-fsk-41)", marginTop: "var(--spacing-fsk-47)", fontFamily: 'monospace' }}>{ca.membershipNo}</Surface>
+              </Surface>
 
-              <div style={{ padding: '12px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Certificate of Practice (COP)</div>
-                <div style={{ fontWeight: 700, color: '#0f172a', marginTop: '2px', fontFamily: 'monospace' }}>{ca.copNo}</div>
-              </div>
+              <Surface style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-23)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", textTransform: 'uppercase', fontWeight: 600 }}>Certificate of Practice (COP)</Surface>
+                <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)", fontFamily: 'monospace' }}>{ca.copNo}</Surface>
+              </Surface>
 
-              <div style={{ padding: '12px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Professional Title</div>
-                <div style={{ fontWeight: 600, color: '#0f172a', marginTop: '2px' }}>{ca.title}</div>
-              </div>
+              <Surface style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-23)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", textTransform: 'uppercase', fontWeight: 600 }}>Professional Title</Surface>
+                <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)" }}>{ca.title}</Surface>
+              </Surface>
 
-              <div style={{ padding: '12px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Official Email</div>
-                <div style={{ fontWeight: 600, color: '#0f172a', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Mail size={14} color="#64748b" /> {ca.email}
-                </div>
-              </div>
+              <Surface style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-23)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", textTransform: 'uppercase', fontWeight: 600 }}>Official Email</Surface>
+                <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-17)" }}>
+                  <Mail size={14} color="var(--color-fsk-9)" /> {ca.email}
+                </Surface>
+              </Surface>
 
-              <div style={{ padding: '12px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Direct Contact Phone</div>
-                <div style={{ fontWeight: 600, color: '#0f172a', marginTop: '2px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Phone size={14} color="#64748b" /> {ca.phone}
-                </div>
-              </div>
-            </div>
+              <Surface style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-23)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", textTransform: 'uppercase', fontWeight: 600 }}>Direct Contact Phone</Surface>
+                <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-17)" }}>
+                  <Phone size={14} color="var(--color-fsk-9)" /> {ca.phone}
+                </Surface>
+              </Surface>
+            </Surface>
           </Card>
 
           {/* Firm & Specializations */}
-          <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-              <Building2 size={18} color="#7c3aed" />
-              <span style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Practicing Firm &amp; Office Location</span>
-            </div>
+          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-23)" }}>
+              <Building2 size={18} color="var(--color-fsk-41)" />
+              <Inline style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Practicing Firm &amp; Office Location</Inline>
+            </Surface>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', fontSize: '13px', marginBottom: '20px' }}>
-              <div style={{ padding: '12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <span style={{ color: '#64748b', display: 'block', fontSize: '11px', textTransform: 'uppercase' }}>Chartered Accountancy Firm</span>
-                <strong style={{ color: '#0f172a' }}>{ca.firmName}</strong>
-              </div>
+            <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "var(--spacing-fsk-5)", fontSize: "var(--font-fsk-14)", marginBottom: "var(--spacing-fsk-2)" }}>
+              <Surface style={{ padding: "var(--spacing-fsk-8)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Inline style={{ color: "var(--color-fsk-9)", display: 'block', fontSize: "var(--font-fsk-14)", textTransform: 'uppercase' }}>Chartered Accountancy Firm</Inline>
+                <strong style={{ color: "var(--color-fsk-7)" }}>{ca.firmName}</strong>
+              </Surface>
 
-              <div style={{ padding: '12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <span style={{ color: '#64748b', display: 'block', fontSize: '11px', textTransform: 'uppercase' }}>Office Chambers</span>
-                <span style={{ color: '#0f172a', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <MapPin size={13} color="#64748b" /> {ca.officeAddress}, {ca.city} ({ca.pincode})
-                </span>
-              </div>
-            </div>
+              <Surface style={{ padding: "var(--spacing-fsk-8)", background: "var(--color-fsk-27)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Inline style={{ color: "var(--color-fsk-9)", display: 'block', fontSize: "var(--font-fsk-14)", textTransform: 'uppercase' }}>Office Chambers</Inline>
+                <Inline style={{ color: "var(--color-fsk-7)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
+                  <MapPin size={13} color="var(--color-fsk-9)" /> {ca.officeAddress}, {ca.city} ({ca.pincode})
+                </Inline>
+              </Surface>
+            </Surface>
 
-            <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Award size={16} color="#7c3aed" /> Approved Regulatory Specializations
-            </div>
+            <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-12)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-17)" }}>
+              <Award size={16} color="var(--color-fsk-41)" /> Approved Regulatory Specializations
+            </Surface>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+            <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-12)" }}>
               {ca.specializations.map((spec) => (
                 <Badge key={spec} label={spec} variant="purple" />
               ))}
-            </div>
+            </Surface>
           </Card>
-        </div>
+        </Surface>
       )}
 
       {/* Tab 2: Bank Details */}
       {activeTab === 'bank' && (
-        <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-            <Building2 size={18} color="#7c3aed" />
-            <span style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Professional Fee Settlement Account</span>
-          </div>
+        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-5)" }}>
+            <Building2 size={18} color="var(--color-fsk-41)" />
+            <Inline style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Professional Fee Settlement Account</Inline>
+          </Surface>
 
           <form onSubmit={handleUpdateBank}>
             <VStack gap={3}>
@@ -228,7 +229,7 @@ export const CAProfilePage: React.FC = () => {
                 width="100%"
               />
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+              <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-23)" }}>
                 <TextInput
                   label="Account Number"
                   placeholder="1092837465012"
@@ -245,9 +246,9 @@ export const CAProfilePage: React.FC = () => {
                   isRequired
                   width="100%"
                 />
-              </div>
+              </Surface>
 
-              <div style={{ marginTop: '12px' }}>
+              <Surface style={{ marginTop: "var(--spacing-fsk-8)" }}>
                 <Button
                   label="Save Bank Account"
                   variant="primary"
@@ -255,7 +256,7 @@ export const CAProfilePage: React.FC = () => {
                   type="submit"
                   icon={<Save size={16} />}
                 />
-              </div>
+              </Surface>
             </VStack>
           </form>
         </Card>
@@ -263,11 +264,11 @@ export const CAProfilePage: React.FC = () => {
 
       {/* Tab 3: Security */}
       {activeTab === 'security' && (
-        <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-            <Lock size={18} color="#7c3aed" />
-            <span style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Change Password</span>
-          </div>
+        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-5)" }}>
+            <Lock size={18} color="var(--color-fsk-41)" />
+            <Inline style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Change Password</Inline>
+          </Surface>
 
           <form onSubmit={handleUpdatePassword}>
             <VStack gap={3}>
@@ -298,7 +299,7 @@ export const CAProfilePage: React.FC = () => {
                 width="100%"
               />
 
-              <div style={{ marginTop: '12px' }}>
+              <Surface style={{ marginTop: "var(--spacing-fsk-8)" }}>
                 <Button
                   label="Update Password"
                   variant="primary"
@@ -307,12 +308,12 @@ export const CAProfilePage: React.FC = () => {
                   icon={<KeyRound size={16} />}
                   isDisabled={!currentPassword || !newPassword || newPassword !== confirmPassword}
                 />
-              </div>
+              </Surface>
             </VStack>
           </form>
         </Card>
       )}
-    </div>
+    </Surface>
   );
 };
 

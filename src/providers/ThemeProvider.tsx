@@ -1,6 +1,6 @@
 import { Theme } from '@astryxdesign/core/theme';
 import React, { type ReactNode } from 'react';
-import { finservkartTheme } from '../styles/theme';
+import { themes, defaultThemeSlug } from '../astryx-themes';
 
 interface ThemeProviderProps {
   children: ReactNode;
@@ -9,7 +9,7 @@ interface ThemeProviderProps {
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, mode = 'light' }) => {
   return (
-    <Theme theme={finservkartTheme} mode={mode}>
+    <Theme theme={themes[defaultThemeSlug]} mode={mode}>
       {children}
     </Theme>
   );

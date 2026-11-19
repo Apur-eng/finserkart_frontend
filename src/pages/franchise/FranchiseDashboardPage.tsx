@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../../components/Surface';
+import { StatusTag as Badge } from '../../components/StatusTag';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
 import {
@@ -25,134 +26,134 @@ export const FranchiseDashboardPage: React.FC = () => {
   const applications = INITIAL_FRANCHISE_APPLICATIONS;
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
       {/* Header Banner */}
-      <div
+      <Surface
         style={{
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
-          marginBottom: '28px',
-          gap: '20px',
+          marginBottom: "var(--spacing-fsk-20)",
+          gap: "var(--spacing-fsk-2)",
         }}
       >
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-            <span style={{ fontSize: '13px', fontWeight: 600, color: '#0284c7', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <Surface>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-17)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-70)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Franchise Business Dashboard
-            </span>
-            <span style={{ color: '#cbd5e1' }}>•</span>
-            <span style={{ fontSize: '13px', color: '#64748b' }}>Franchise ID: {franchise.id}</span>
-          </div>
+            </Inline>
+            <Inline style={{ color: "var(--color-fsk-59)" }}>•</Inline>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Franchise ID: {franchise.id}</Inline>
+          </Surface>
 
           <Heading level={1}>
-            <span style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
               {franchise.name}
-            </span>
+            </Inline>
           </Heading>
 
-          <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
-            Director: <strong style={{ color: '#0f172a' }}>{franchise.directorName}</strong> • Territory: {franchise.territory}
+          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+            Director: <strong style={{ color: "var(--color-fsk-7)" }}>{franchise.directorName}</strong> • Territory: {franchise.territory}
           </p>
-        </div>
+        </Surface>
 
         <Card
           elevation="low"
           padding={3}
           style={{
-            background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
-            border: '1px solid #bae6fd',
-            borderRadius: '12px',
+            background: "var(--color-fsk-brand)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-132)",
+            borderRadius: "var(--radius-fsk-28)",
             textAlign: 'right',
           }}
         >
-          <div style={{ fontSize: '11px', fontWeight: 700, color: '#0369a1', textTransform: 'uppercase' }}>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-133)", textTransform: 'uppercase' }}>
             Franchise Override
-          </div>
-          <div style={{ fontSize: '22px', fontWeight: 800, color: '#0c4a6e' }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-83)", fontWeight: 800, color: "var(--color-fsk-134)" }}>
             10% Platform Override
-          </div>
-          <span style={{ fontSize: '11.5px', color: '#0284c7' }}>Across all territory agent orders</span>
+          </Surface>
+          <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-70)" }}>Across all territory agent orders</Inline>
         </Card>
-      </div>
+      </Surface>
 
       {/* KPI Cards */}
-      <div
+      <Surface
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: '20px',
-          marginBottom: '28px',
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 15rem), 1fr))",
+          gap: "var(--spacing-fsk-2)",
+          marginBottom: "var(--spacing-fsk-20)",
         }}
       >
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Active Agents</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#f0f9ff', color: '#0284c7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-12)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Active Agents</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-131)", color: "var(--color-fsk-70)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Users size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a' }}>{franchise.totalAgents}</div>
-          <div style={{ fontSize: '12px', color: '#0284c7', marginTop: '6px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)" }}>{franchise.totalAgents}</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-70)", marginTop: "var(--spacing-fsk-17)", fontWeight: 600, display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
             <TrendingUp size={13} /> Active in Central UP
-          </div>
+          </Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Network Clients</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-12)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Network Clients</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-64)", color: "var(--color-fsk-65)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <UserCheck size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a' }}>{franchise.totalCustomers}</div>
-          <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px' }}>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)" }}>{franchise.totalCustomers}</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-17)" }}>
             {franchise.totalApplications} total filing orders
-          </div>
+          </Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Territory Gross Volume</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#fef3c7', color: '#d97706', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-12)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Territory Gross Volume</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-69)", color: "var(--color-fsk-54)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Coins size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a' }}>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)" }}>
             ₹{franchise.grossRevenue.toLocaleString('en-IN')}
-          </div>
-          <div style={{ fontSize: '12px', color: '#16a34a', marginTop: '6px', fontWeight: 600 }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-39)", marginTop: "var(--spacing-fsk-17)", fontWeight: 600 }}>
             +18% month over month
-          </div>
+          </Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Franchise Earnings</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#f5f3ff', color: '#7c3aed', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-12)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Franchise Earnings</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-53)", color: "var(--color-fsk-41)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Wallet size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a' }}>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)" }}>
             ₹{franchise.franchiseCommissionEarned.toLocaleString('en-IN')}
-          </div>
-          <div style={{ fontSize: '12px', color: '#7c3aed', marginTop: '6px', fontWeight: 600 }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-41)", marginTop: "var(--spacing-fsk-17)", fontWeight: 600 }}>
             ₹{franchise.pendingPayout.toLocaleString('en-IN')} available
-          </div>
+          </Surface>
         </Card>
-      </div>
+      </Surface>
 
       {/* Quick Action Shortcuts */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '28px' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "var(--spacing-fsk-5)", marginBottom: "var(--spacing-fsk-20)" }}>
         <button
           type="button"
           onClick={() => navigate('/franchise/agents')}
           style={{
-            padding: '16px 20px',
-            borderRadius: '12px',
-            border: '1px solid #bae6fd',
-            background: '#ffffff',
+            padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)",
+            borderRadius: "var(--radius-fsk-28)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-132)",
+            background: "var(--color-fsk-38)",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -160,26 +161,26 @@ export const FranchiseDashboardPage: React.FC = () => {
             textAlign: 'left',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#f0f9ff', color: '#0284c7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-23)" }}>
+            <Surface style={{ width: "var(--spacing-fsk-67)", height: "var(--spacing-fsk-67)", borderRadius: "var(--radius-fsk-68)", background: "var(--color-fsk-131)", color: "var(--color-fsk-70)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Users size={20} />
-            </div>
-            <div>
-              <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>Associated Agents</div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Monitor agent production &amp; orders</div>
-            </div>
-          </div>
-          <ArrowRight size={18} color="#0284c7" />
+            </Surface>
+            <Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Associated Agents</Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Monitor agent production &amp; orders</Surface>
+            </Surface>
+          </Surface>
+          <ArrowRight size={18} color="var(--color-fsk-70)" />
         </button>
 
         <button
           type="button"
           onClick={() => navigate('/franchise/customers')}
           style={{
-            padding: '16px 20px',
-            borderRadius: '12px',
-            border: '1px solid #a7f3d0',
-            background: '#ffffff',
+            padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)",
+            borderRadius: "var(--radius-fsk-28)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-81)",
+            background: "var(--color-fsk-38)",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -187,26 +188,26 @@ export const FranchiseDashboardPage: React.FC = () => {
             textAlign: 'left',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-23)" }}>
+            <Surface style={{ width: "var(--spacing-fsk-67)", height: "var(--spacing-fsk-67)", borderRadius: "var(--radius-fsk-68)", background: "var(--color-fsk-64)", color: "var(--color-fsk-65)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <UserCheck size={20} />
-            </div>
-            <div>
-              <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>Network Customers</div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Inspect client accounts across agents</div>
-            </div>
-          </div>
-          <ArrowRight size={18} color="#059669" />
+            </Surface>
+            <Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Network Customers</Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Inspect client accounts across agents</Surface>
+            </Surface>
+          </Surface>
+          <ArrowRight size={18} color="var(--color-fsk-65)" />
         </button>
 
         <button
           type="button"
           onClick={() => navigate('/franchise/reports')}
           style={{
-            padding: '16px 20px',
-            borderRadius: '12px',
-            border: '1px solid #ddd6fe',
-            background: '#ffffff',
+            padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)",
+            borderRadius: "var(--radius-fsk-28)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-97)",
+            background: "var(--color-fsk-38)",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -214,119 +215,119 @@ export const FranchiseDashboardPage: React.FC = () => {
             textAlign: 'left',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#f5f3ff', color: '#7c3aed', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-23)" }}>
+            <Surface style={{ width: "var(--spacing-fsk-67)", height: "var(--spacing-fsk-67)", borderRadius: "var(--radius-fsk-68)", background: "var(--color-fsk-53)", color: "var(--color-fsk-41)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <BarChart3 size={20} />
-            </div>
-            <div>
-              <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>Business Reports</div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Monthly revenue analytics &amp; charts</div>
-            </div>
-          </div>
-          <ArrowRight size={18} color="#7c3aed" />
+            </Surface>
+            <Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Business Reports</Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Monthly revenue analytics &amp; charts</Surface>
+            </Surface>
+          </Surface>
+          <ArrowRight size={18} color="var(--color-fsk-41)" />
         </button>
-      </div>
+      </Surface>
 
       {/* Grid: Top Agents & Recent Applications */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '24px', alignItems: 'flex-start' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 22.5rem), 1fr))", gap: "var(--spacing-fsk-26)", alignItems: 'flex-start' }}>
         {/* Top Agents */}
-        <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <div>
-              <div style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Top Producing Agents</div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Agents driving highest volume this month</div>
-            </div>
-            <Link to="/franchise/agents" style={{ fontSize: '12.5px', fontWeight: 600, color: '#0284c7', textDecoration: 'none' }}>
+        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-5)" }}>
+            <Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Top Producing Agents</Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Agents driving highest volume this month</Surface>
+            </Surface>
+            <Link to="/franchise/agents" style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-70)", textDecoration: 'none' }}>
               View all ({agents.length})
             </Link>
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-8)" }}>
             {agents.slice(0, 4).map((ag) => (
-              <div
+              <Surface
                 key={ag.id}
                 style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  padding: '12px',
-                  borderRadius: '10px',
-                  border: '1px solid #f1f5f9',
-                  background: '#f8fafc',
+                  padding: "var(--spacing-fsk-8)",
+                  borderRadius: "var(--radius-fsk-68)",
+                  border: "var(--spacing-fsk-22) solid var(--color-fsk-46)",
+                  background: "var(--color-fsk-27)",
                 }}
               >
-                <div>
-                  <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>{ag.name}</div>
-                  <div style={{ fontSize: '12px', color: '#64748b' }}>
+                <Surface>
+                  <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>{ag.name}</Surface>
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>
                     {ag.id} • {ag.city}
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#94a3b8', marginTop: '2px' }}>
+                  </Surface>
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)", marginTop: "var(--spacing-fsk-47)" }}>
                     {ag.customersCount} clients • {ag.applicationsCount} filings
-                  </div>
-                </div>
+                  </Surface>
+                </Surface>
 
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: '14px', fontWeight: 800, color: '#0284c7' }}>
+                <Surface style={{ textAlign: 'right' }}>
+                  <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 800, color: "var(--color-fsk-70)" }}>
                     ₹{ag.totalRevenue.toLocaleString('en-IN')}
-                  </div>
-                  <span style={{ fontSize: '11px', color: '#64748b' }}>Gross Volume</span>
-                </div>
-              </div>
+                  </Surface>
+                  <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Gross Volume</Inline>
+                </Surface>
+              </Surface>
             ))}
-          </div>
+          </Surface>
         </Card>
 
         {/* Recent Applications in Territory */}
-        <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <div>
-              <div style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Recent Franchise Applications</div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Latest services booked by network agents</div>
-            </div>
-            <Link to="/franchise/applications" style={{ fontSize: '12.5px', fontWeight: 600, color: '#0284c7', textDecoration: 'none' }}>
+        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-5)" }}>
+            <Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Recent Franchise Applications</Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Latest services booked by network agents</Surface>
+            </Surface>
+            <Link to="/franchise/applications" style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-70)", textDecoration: 'none' }}>
               All applications
             </Link>
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-8)" }}>
             {applications.map((app) => (
-              <div
+              <Surface
                 key={app.id}
                 style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  padding: '12px',
-                  borderRadius: '10px',
-                  border: '1px solid #f1f5f9',
-                  background: '#f8fafc',
+                  padding: "var(--spacing-fsk-8)",
+                  borderRadius: "var(--radius-fsk-68)",
+                  border: "var(--spacing-fsk-22) solid var(--color-fsk-46)",
+                  background: "var(--color-fsk-27)",
                 }}
               >
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ fontSize: '13.5px', fontWeight: 700, color: '#0f172a' }}>{app.serviceName}</span>
+                <Surface>
+                  <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)" }}>
+                    <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)" }}>{app.serviceName}</Inline>
                     <Badge label={app.status} variant={app.status === 'Completed' ? 'green' : 'orange'} />
-                  </div>
-                  <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>
-                    Agent: <strong style={{ color: '#0f172a' }}>{app.agentName}</strong> ({app.agentId})
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#94a3b8' }}>
+                  </Surface>
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
+                    Agent: <strong style={{ color: "var(--color-fsk-7)" }}>{app.agentName}</strong> ({app.agentId})
+                  </Surface>
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)" }}>
                     Client: {app.customerName} • {app.id}
-                  </div>
-                </div>
+                  </Surface>
+                </Surface>
 
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: '14px', fontWeight: 800, color: '#059669' }}>
+                <Surface style={{ textAlign: 'right' }}>
+                  <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 800, color: "var(--color-fsk-65)" }}>
                     +₹{app.franchiseCut}
-                  </div>
-                  <span style={{ fontSize: '11px', color: '#64748b' }}>Override Cut</span>
-                </div>
-              </div>
+                  </Surface>
+                  <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Override Cut</Inline>
+                </Surface>
+              </Surface>
             ))}
-          </div>
+          </Surface>
         </Card>
-      </div>
-    </div>
+      </Surface>
+    </Surface>
   );
 };
 

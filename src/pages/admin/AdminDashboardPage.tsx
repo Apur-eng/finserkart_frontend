@@ -1,3 +1,4 @@
+import { Surface, Inline } from '../../components/Surface';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
 import {
@@ -28,134 +29,134 @@ export const AdminDashboardPage: React.FC = () => {
   const logs = INITIAL_ADMIN_ACTIVITY_LOGS;
 
   return (
-    <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
       {/* Header Banner */}
-      <div
+      <Surface
         style={{
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
-          marginBottom: '28px',
-          gap: '20px',
+          marginBottom: "var(--spacing-fsk-20)",
+          gap: "var(--spacing-fsk-2)",
         }}
       >
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-            <span style={{ fontSize: '13px', fontWeight: 600, color: '#dc2626', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <Surface>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-17)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-34)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Central Platform Governance
-            </span>
-            <span style={{ color: '#cbd5e1' }}>•</span>
-            <span style={{ fontSize: '13px', color: '#64748b' }}>Super Admin: {admin.email}</span>
-          </div>
+            </Inline>
+            <Inline style={{ color: "var(--color-fsk-59)" }}>•</Inline>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Super Admin: {admin.email}</Inline>
+          </Surface>
 
           <Heading level={1}>
-            <span style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em' }}>
+            <Inline style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
               Platform Executive Dashboard
-            </span>
+            </Inline>
           </Heading>
 
-          <p style={{ color: '#64748b', fontSize: '14px', marginTop: '4px', margin: 0 }}>
+          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
             Real-time business analytics across all participant tiers: Customers, Agents, CAs, Franchises, and Operations.
           </p>
-        </div>
+        </Surface>
 
         <Card
           elevation="low"
           padding={3}
           style={{
-            background: 'linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%)',
-            border: '1px solid #fecaca',
-            borderRadius: '12px',
+            background: "var(--color-fsk-brand)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-58)",
+            borderRadius: "var(--radius-fsk-28)",
             textAlign: 'right',
           }}
         >
-          <div style={{ fontSize: '11px', fontWeight: 700, color: '#b91c1c', textTransform: 'uppercase' }}>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-60)", textTransform: 'uppercase' }}>
             System Health
-          </div>
-          <div style={{ fontSize: '20px', fontWeight: 800, color: '#991b1b', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <ShieldCheck size={18} color="#16a34a" /> 99.98% Uptime
-          </div>
-          <span style={{ fontSize: '11.5px', color: '#64748b' }}>All microservices nominal</span>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-61)", fontWeight: 800, color: "var(--color-fsk-44)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-17)" }}>
+            <ShieldCheck size={18} color="var(--color-fsk-39)" /> 99.98% Uptime
+          </Surface>
+          <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>All microservices nominal</Inline>
         </Card>
-      </div>
+      </Surface>
 
       {/* KPI Cards */}
-      <div
+      <Surface
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: '20px',
-          marginBottom: '28px',
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 15rem), 1fr))",
+          gap: "var(--spacing-fsk-2)",
+          marginBottom: "var(--spacing-fsk-20)",
         }}
       >
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Total Platform GMV</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#eff6ff', color: '#0066cc', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-12)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Total Platform GMV</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-63)", color: "var(--color-fsk-15)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Coins size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a' }}>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)" }}>
             ₹{stats.totalGMV.toLocaleString('en-IN')}
-          </div>
-          <div style={{ fontSize: '12px', color: '#16a34a', marginTop: '6px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-39)", marginTop: "var(--spacing-fsk-17)", fontWeight: 600, display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
             <TrendingUp size={13} /> +24% YoY Growth
-          </div>
+          </Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Net Platform Margin</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-12)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Net Platform Margin</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-64)", color: "var(--color-fsk-65)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <CreditCard size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#059669' }}>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-65)" }}>
             ₹{stats.platformNetRevenue.toLocaleString('en-IN')}
-          </div>
-          <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px' }}>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-17)" }}>
             After CA &amp; agent disbursements
-          </div>
+          </Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Active Filings Pipeline</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#fffbeb', color: '#d97706', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-12)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Active Filings Pipeline</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-66)", color: "var(--color-fsk-54)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Briefcase size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a' }}>{stats.activeApplications}</div>
-          <div style={{ fontSize: '12px', color: '#059669', marginTop: '6px', fontWeight: 600 }}>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)" }}>{stats.activeApplications}</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-65)", marginTop: "var(--spacing-fsk-17)", fontWeight: 600 }}>
             {stats.completedApplications} total historical handovers
-          </div>
+          </Surface>
         </Card>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 600 }}>Registered Users</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#f5f3ff', color: '#7c3aed', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-12)" }}>
+            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Registered Users</Inline>
+            <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-53)", color: "var(--color-fsk-41)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Users size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a' }}>{stats.totalCustomers}</div>
-          <div style={{ fontSize: '12px', color: '#7c3aed', marginTop: '6px', fontWeight: 600 }}>
+            </Surface>
+          </Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)" }}>{stats.totalCustomers}</Surface>
+          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-41)", marginTop: "var(--spacing-fsk-17)", fontWeight: 600 }}>
             Across 5 participant roles
-          </div>
+          </Surface>
         </Card>
-      </div>
+      </Surface>
 
       {/* Quick Action Shortcuts */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '28px' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "var(--spacing-fsk-5)", marginBottom: "var(--spacing-fsk-20)" }}>
         <button
           type="button"
           onClick={() => navigate('/admin/users')}
           style={{
-            padding: '16px 20px',
-            borderRadius: '12px',
-            border: '1px solid #e2e8f0',
-            background: '#ffffff',
+            padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)",
+            borderRadius: "var(--radius-fsk-28)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+            background: "var(--color-fsk-38)",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -163,26 +164,26 @@ export const AdminDashboardPage: React.FC = () => {
             textAlign: 'left',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#eff6ff', color: '#0066cc', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-23)" }}>
+            <Surface style={{ width: "var(--spacing-fsk-67)", height: "var(--spacing-fsk-67)", borderRadius: "var(--radius-fsk-68)", background: "var(--color-fsk-63)", color: "var(--color-fsk-15)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Users size={20} />
-            </div>
-            <div>
-              <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>User Management</div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Manage clients, agents, CAs &amp; franchises</div>
-            </div>
-          </div>
-          <ArrowRight size={18} color="#0066cc" />
+            </Surface>
+            <Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>User Management</Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Manage clients, agents, CAs &amp; franchises</Surface>
+            </Surface>
+          </Surface>
+          <ArrowRight size={18} color="var(--color-fsk-15)" />
         </button>
 
         <button
           type="button"
           onClick={() => navigate('/admin/services')}
           style={{
-            padding: '16px 20px',
-            borderRadius: '12px',
-            border: '1px solid #e2e8f0',
-            background: '#ffffff',
+            padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)",
+            borderRadius: "var(--radius-fsk-28)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+            background: "var(--color-fsk-38)",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -190,26 +191,26 @@ export const AdminDashboardPage: React.FC = () => {
             textAlign: 'left',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#ecfdf5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-23)" }}>
+            <Surface style={{ width: "var(--spacing-fsk-67)", height: "var(--spacing-fsk-67)", borderRadius: "var(--radius-fsk-68)", background: "var(--color-fsk-64)", color: "var(--color-fsk-65)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <CreditCard size={20} />
-            </div>
-            <div>
-              <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>Service Catalogue</div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Configure pricing &amp; commission splits</div>
-            </div>
-          </div>
-          <ArrowRight size={18} color="#059669" />
+            </Surface>
+            <Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Service Catalogue</Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Configure pricing &amp; commission splits</Surface>
+            </Surface>
+          </Surface>
+          <ArrowRight size={18} color="var(--color-fsk-65)" />
         </button>
 
         <button
           type="button"
           onClick={() => navigate('/admin/commissions')}
           style={{
-            padding: '16px 20px',
-            borderRadius: '12px',
-            border: '1px solid #e2e8f0',
-            background: '#ffffff',
+            padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)",
+            borderRadius: "var(--radius-fsk-28)",
+            border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+            background: "var(--color-fsk-38)",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -217,89 +218,89 @@ export const AdminDashboardPage: React.FC = () => {
             textAlign: 'left',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#fef3c7', color: '#d97706', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-23)" }}>
+            <Surface style={{ width: "var(--spacing-fsk-67)", height: "var(--spacing-fsk-67)", borderRadius: "var(--radius-fsk-68)", background: "var(--color-fsk-69)", color: "var(--color-fsk-54)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Coins size={20} />
-            </div>
-            <div>
-              <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>Commissions &amp; Payouts</div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Approve partner disbursement batches</div>
-            </div>
-          </div>
-          <ArrowRight size={18} color="#d97706" />
+            </Surface>
+            <Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Commissions &amp; Payouts</Surface>
+              <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Approve partner disbursement batches</Surface>
+            </Surface>
+          </Surface>
+          <ArrowRight size={18} color="var(--color-fsk-54)" />
         </button>
-      </div>
+      </Surface>
 
       {/* Grid: Role Distribution & System Activity Logs */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '24px' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 22.5rem), 1fr))", gap: "var(--spacing-fsk-26)" }}>
         {/* User Distribution by Role */}
-        <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>
+        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-5)" }}>
             Platform Network Distribution
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 12px', borderRadius: '8px', background: '#f8fafc', border: '1px solid #f1f5f9' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <UserCheck size={16} color="#0066cc" />
-                <span style={{ fontWeight: 600, color: '#0f172a' }}>Onboarded Customers</span>
-              </div>
-              <strong style={{ color: '#0066cc' }}>{stats.totalCustomers}</strong>
-            </div>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-8)", fontSize: "var(--font-fsk-14)" }}>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-27)", border: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)" }}>
+                <UserCheck size={16} color="var(--color-fsk-15)" />
+                <Inline style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>Onboarded Customers</Inline>
+              </Surface>
+              <strong style={{ color: "var(--color-fsk-15)" }}>{stats.totalCustomers}</strong>
+            </Surface>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 12px', borderRadius: '8px', background: '#f8fafc', border: '1px solid #f1f5f9' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Users size={16} color="#059669" />
-                <span style={{ fontWeight: 600, color: '#0f172a' }}>Active Field Agents</span>
-              </div>
-              <strong style={{ color: '#059669' }}>{stats.totalAgents}</strong>
-            </div>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-27)", border: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)" }}>
+                <Users size={16} color="var(--color-fsk-65)" />
+                <Inline style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>Active Field Agents</Inline>
+              </Surface>
+              <strong style={{ color: "var(--color-fsk-65)" }}>{stats.totalAgents}</strong>
+            </Surface>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 12px', borderRadius: '8px', background: '#f8fafc', border: '1px solid #f1f5f9' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Scale size={16} color="#7c3aed" />
-                <span style={{ fontWeight: 600, color: '#0f172a' }}>Certified Chartered Accountants</span>
-              </div>
-              <strong style={{ color: '#7c3aed' }}>{stats.totalCas}</strong>
-            </div>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-27)", border: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)" }}>
+                <Scale size={16} color="var(--color-fsk-41)" />
+                <Inline style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>Certified Chartered Accountants</Inline>
+              </Surface>
+              <strong style={{ color: "var(--color-fsk-41)" }}>{stats.totalCas}</strong>
+            </Surface>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 12px', borderRadius: '8px', background: '#f8fafc', border: '1px solid #f1f5f9' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Building size={16} color="#0284c7" />
-                <span style={{ fontWeight: 600, color: '#0f172a' }}>Regional Franchise Hubs</span>
-              </div>
-              <strong style={{ color: '#0284c7' }}>{stats.totalFranchises}</strong>
-            </div>
-          </div>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-27)", border: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)" }}>
+                <Building size={16} color="var(--color-fsk-70)" />
+                <Inline style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>Regional Franchise Hubs</Inline>
+              </Surface>
+              <strong style={{ color: "var(--color-fsk-70)" }}>{stats.totalFranchises}</strong>
+            </Surface>
+          </Surface>
         </Card>
 
         {/* Real-time Activity Logs */}
-        <Card elevation="low" padding={5} style={{ borderRadius: '14px', border: '1px solid #e2e8f0', background: '#ffffff' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <div style={{ fontSize: '16px', fontWeight: 700, color: '#0f172a' }}>Live System Activity</div>
-            <Link to="/admin/activity" style={{ fontSize: '12.5px', fontWeight: 600, color: '#dc2626', textDecoration: 'none' }}>
+        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-5)" }}>
+            <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Live System Activity</Surface>
+            <Link to="/admin/activity" style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-34)", textDecoration: 'none' }}>
               Full Audit Trail
             </Link>
-          </div>
+          </Surface>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-8)" }}>
             {logs.map((log) => (
-              <div key={log.id} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', paddingBottom: '10px', borderBottom: '1px solid #f1f5f9' }}>
-                <div style={{ width: '28px', height: '28px', borderRadius: '6px', background: '#f8fafc', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748b', flexShrink: 0 }}>
+              <Surface key={log.id} style={{ display: 'flex', gap: "var(--spacing-fsk-35)", alignItems: 'flex-start', paddingBottom: "var(--spacing-fsk-35)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
+                <Surface style={{ width: "var(--spacing-fsk-71)", height: "var(--spacing-fsk-71)", borderRadius: "var(--radius-fsk-42)", background: "var(--color-fsk-27)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-9)", flexShrink: 0 }}>
                   <Activity size={14} />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '13px', fontWeight: 600, color: '#0f172a' }}>{log.action}</div>
-                  <div style={{ fontSize: '11.5px', color: '#64748b' }}>
+                </Surface>
+                <Surface style={{ flex: 1 }}>
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-7)" }}>{log.action}</Surface>
+                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>
                     {log.actor} • IP: {log.ip} • {log.timestamp}
-                  </div>
-                </div>
-              </div>
+                  </Surface>
+                </Surface>
+              </Surface>
             ))}
-          </div>
+          </Surface>
         </Card>
-      </div>
-    </div>
+      </Surface>
+    </Surface>
   );
 };
 

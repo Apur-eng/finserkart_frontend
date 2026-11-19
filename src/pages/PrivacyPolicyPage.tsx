@@ -1,4 +1,5 @@
-import { Badge } from '@astryxdesign/core/Badge';
+import { Surface, Inline } from '../components/Surface';
+import { StatusTag as Badge } from '../components/StatusTag';
 import { Card } from '@astryxdesign/core/Card';
 import { Heading } from '@astryxdesign/core/Heading';
 import { VStack } from '@astryxdesign/core/VStack';
@@ -19,59 +20,59 @@ import { Link } from 'react-router-dom';
 
 export const PrivacyPolicyPage: React.FC = () => {
   return (
-    <div style={{ maxWidth: '1000px', margin: '40px auto 80px auto', padding: '0 20px' }}>
+    <Surface style={{ maxWidth: "var(--spacing-fsk-78)", margin: "var(--spacing-fsk-1) auto var(--spacing-fsk-3) auto", padding: "0 var(--spacing-fsk-2)" }}>
       {/* Header & Meta */}
-      <div style={{ marginBottom: '32px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#64748b', marginBottom: '16px' }}>
-          <Link to="/" style={{ color: '#0066cc', textDecoration: 'none' }}>Home</Link>
-          <span>/</span>
-          <span style={{ color: '#0f172a', fontWeight: 600 }}>Privacy Policy</span>
-        </div>
+      <Surface style={{ marginBottom: "var(--spacing-fsk-114)" }}>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginBottom: "var(--spacing-fsk-5)" }}>
+          <Link to="/" style={{ color: "var(--color-fsk-15)", textDecoration: 'none' }}>Home</Link>
+          <Inline>/</Inline>
+          <Inline style={{ color: "var(--color-fsk-7)", fontWeight: 600 }}>Privacy Policy</Inline>
+        </Surface>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: "var(--spacing-fsk-8)", marginBottom: "var(--spacing-fsk-8)" }}>
           <Badge label="Legal & Statutory Compliance" variant="blue" />
           <Badge label="Last Updated: October 2026" variant="neutral" />
           <Badge label="Version 2.4" variant="neutral" />
-        </div>
+        </Surface>
 
         <Heading level={1}>
-          <span
+          <Inline
             style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: 800,
-              color: '#0f172a',
+              color: "var(--color-fsk-7)",
               letterSpacing: '-0.02em',
               display: 'block',
-              marginTop: '4px',
+              marginTop: "var(--spacing-fsk-29)",
             }}
           >
             Finservkart Privacy Policy
-          </span>
+          </Inline>
         </Heading>
 
-        <p style={{ color: '#475569', fontSize: '16px', lineHeight: 1.6, marginTop: '8px', maxWidth: '780px' }}>
+        <p style={{ color: "var(--color-fsk-18)", fontSize: "var(--font-fsk-10)", lineHeight: 1.6, marginTop: "var(--spacing-fsk-12)", maxWidth: "var(--spacing-fsk-136)" }}>
           This Privacy Policy details how Finservkart collects, uses, and safeguards your personal, business, and financial information across our public portal, customer accounts, and professional workflow applications.
         </p>
-      </div>
+      </Surface>
 
       {/* Main Document Body */}
       <Card
         elevation="low"
         padding={5}
-        style={{ borderRadius: '16px', border: '1px solid #e2e8f0', background: '#ffffff', marginBottom: '32px' }}
+        style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-114)" }}
       >
         <VStack gap={5}>
           {/* Section 1 */}
           <section id="introduction">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <Shield size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 1. Commitment to Privacy
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', margin: 0 }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", margin: 0 }}>
               Finservkart (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;) is committed to safeguarding your privacy and ensuring the confidentiality of your data. As a specialized technology platform providing taxation, auditing, company formation, and regulatory compliance services, we handle sensitive identity and financial information strictly under applicable Indian legislation, including the Information Technology Act 2000, the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules 2011, and the Digital Personal Data Protection Act 2023.
             </p>
           </section>
@@ -80,18 +81,18 @@ export const PrivacyPolicyPage: React.FC = () => {
 
           {/* Section 2 */}
           <section id="information-collected">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <FileText size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 2. Information We Collect
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', marginBottom: '12px' }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", marginBottom: "var(--spacing-fsk-8)" }}>
               We collect information that is strictly necessary to authenticate your profile, process your service requests, and fulfill statutory government filing requirements:
             </p>
-            <ul style={{ paddingLeft: '20px', margin: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', color: '#334155', lineHeight: 1.6 }}>
+            <ul style={{ paddingLeft: "var(--spacing-fsk-2)", margin: 0, display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-12)", fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-25)", lineHeight: 1.6 }}>
               <li>
                 <strong>Personal Identifiers:</strong> Name, contact telephone number, official email address, postal address, and business premises documentation.
               </li>
@@ -114,18 +115,18 @@ export const PrivacyPolicyPage: React.FC = () => {
 
           {/* Section 3 */}
           <section id="purpose">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <UserCheck size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 3. Purpose and Legal Basis for Processing
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', marginBottom: '12px' }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", marginBottom: "var(--spacing-fsk-8)" }}>
               Your information is processed strictly for legitimate business and regulatory purposes:
             </p>
-            <ul style={{ paddingLeft: '20px', margin: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', color: '#334155', lineHeight: 1.6 }}>
+            <ul style={{ paddingLeft: "var(--spacing-fsk-2)", margin: 0, display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-12)", fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-25)", lineHeight: 1.6 }}>
               <li>To prepare and lodge statutory filings with government portals (MCA, GSTN, Income Tax Department, MSME, Trademark Registry).</li>
               <li>To communicate service progress, delivery milestones, query resolutions, and payment confirmations.</li>
               <li>To assign verified Chartered Accountants (CAs) and legal professionals to your case dossier.</li>
@@ -137,15 +138,15 @@ export const PrivacyPolicyPage: React.FC = () => {
 
           {/* Section 4 */}
           <section id="security">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <Lock size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 4. Data Security and Technical Safeguards
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', margin: 0 }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", margin: 0 }}>
               We implement industry-standard administrative, technical, and physical security measures. All document transmissions utilize TLS encryption. Uploaded documents are stored in access-controlled environments accessible only to assigned verification professionals and operations coordinators. Server sessions are strictly guarded against session hijacking and privilege escalation.
             </p>
           </section>
@@ -154,15 +155,15 @@ export const PrivacyPolicyPage: React.FC = () => {
 
           {/* Section 5 */}
           <section id="sharing">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <Scale size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 5. Third-Party Sharing and Non-Disclosure
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', margin: 0 }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", margin: 0 }}>
               <strong>We do not sell, rent, monetize, or trade your personal or business data under any circumstances.</strong> Information is shared solely with certified Chartered Accountants contracted under strict non-disclosure obligations, payment gateway processors for completing transaction disbursements, and official government statutory portals required for processing your application.
             </p>
           </section>
@@ -171,18 +172,18 @@ export const PrivacyPolicyPage: React.FC = () => {
 
           {/* Section 6 */}
           <section id="rights">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <ShieldCheck size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 6. Customer Rights and Data Governance
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', marginBottom: '12px' }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", marginBottom: "var(--spacing-fsk-8)" }}>
               Under Indian law and Finservkart platform policies, you retain the right to:
             </p>
-            <ul style={{ paddingLeft: '20px', margin: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', color: '#334155', lineHeight: 1.6 }}>
+            <ul style={{ paddingLeft: "var(--spacing-fsk-2)", margin: 0, display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-12)", fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-25)", lineHeight: 1.6 }}>
               <li>Review, edit, and update your profile information in the Customer Portal.</li>
               <li>Request an export of all documents and invoices associated with your account.</li>
               <li>Opt-out of non-statutory promotional notifications.</li>
@@ -194,49 +195,49 @@ export const PrivacyPolicyPage: React.FC = () => {
 
           {/* Section 7 */}
           <section id="contact">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#e0f2fe', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0066cc' }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ width: "var(--spacing-fsk-62)", height: "var(--spacing-fsk-62)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", display: 'flex', alignItems: 'center', justifyContent: 'center', color: "var(--color-fsk-15)" }}>
                 <Mail size={18} />
-              </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', margin: 0 }}>
+              </Surface>
+              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
                 7. Grievance Officer & Contact Information
               </h2>
-            </div>
-            <p style={{ fontSize: '14.5px', lineHeight: 1.7, color: '#334155', marginBottom: '16px' }}>
+            </Surface>
+            <p style={{ fontSize: "var(--font-fsk-91)", lineHeight: 1.7, color: "var(--color-fsk-25)", marginBottom: "var(--spacing-fsk-5)" }}>
               For inquiries regarding this Privacy Policy, your personal data, or compliance requests, contact our designated Grievance Officer:
             </p>
-            <div style={{ background: '#f8fafc', padding: '16px 20px', borderRadius: '12px', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', color: '#334155' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <strong style={{ color: '#0f172a' }}>Grievance Officer:</strong>
-                <span>Legal & Compliance Directorate, Finservkart</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Mail size={15} color="#0066cc" />
-                <a href="mailto:info@finservkart.com" style={{ color: '#0066cc', textDecoration: 'none', fontWeight: 600 }}>info@finservkart.com</a>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Phone size={15} color="#0066cc" />
-                <span>+91 9120000000</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <MapPin size={15} color="#0066cc" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <span>Jankipuram Garden, Jankipuram, Lucknow, Uttar Pradesh 226021</span>
-              </div>
-            </div>
+            <Surface style={{ background: "var(--color-fsk-27)", padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)", borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-12)", fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-25)" }}>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+                <strong style={{ color: "var(--color-fsk-7)" }}>Grievance Officer:</strong>
+                <Inline>Legal & Compliance Directorate, Finservkart</Inline>
+              </Surface>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+                <Mail size={15} color="var(--color-fsk-15)" />
+                <a href="mailto:info@finservkart.com" style={{ color: "var(--color-fsk-15)", textDecoration: 'none', fontWeight: 600 }}>info@finservkart.com</a>
+              </Surface>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+                <Phone size={15} color="var(--color-fsk-15)" />
+                <Inline>+91 9120000000</Inline>
+              </Surface>
+              <Surface style={{ display: 'flex', alignItems: 'flex-start', gap: "var(--spacing-fsk-35)" }}>
+                <MapPin size={15} color="var(--color-fsk-15)" style={{ flexShrink: 0, marginTop: "var(--spacing-fsk-47)" }} />
+                <Inline>Jankipuram Garden, Jankipuram, Lucknow, Uttar Pradesh 226021</Inline>
+              </Surface>
+            </Surface>
           </section>
         </VStack>
       </Card>
 
       {/* Footer Navigation Link */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px' }}>
-        <Link to="/" style={{ color: '#0066cc', fontWeight: 600, textDecoration: 'none' }}>
+      <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: "var(--font-fsk-24)" }}>
+        <Link to="/" style={{ color: "var(--color-fsk-15)", fontWeight: 600, textDecoration: 'none' }}>
           &larr; Return to Home
         </Link>
-        <Link to="/terms-and-conditions" style={{ color: '#0066cc', fontWeight: 600, textDecoration: 'none' }}>
+        <Link to="/terms-and-conditions" style={{ color: "var(--color-fsk-15)", fontWeight: 600, textDecoration: 'none' }}>
           View Terms &amp; Conditions &rarr;
         </Link>
-      </div>
-    </div>
+      </Surface>
+    </Surface>
   );
 };
 
