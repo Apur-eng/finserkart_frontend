@@ -1,5 +1,7 @@
 @import '@astryxdesign/core/reset.css';
 @import '@astryxdesign/core/astryx.css';
+@import '../motion/styles/motion.css';
+@import './public-experience.css';
 
 /* Document-level behavior; component appearance is owned by the Astryx theme. */
 body { margin: 0; font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }

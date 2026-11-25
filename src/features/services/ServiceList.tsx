@@ -1,96 +1,40 @@
-import { Surface, Inline } from '../../components/Surface';
-import { Button } from '@astryxdesign/core/Button';
-import { EmptyState } from '@astryxdesign/core/EmptyState';
-import { Spinner } from '@astryxdesign/core/Spinner';
-import { TextInput } from '@astryxdesign/core/TextInput';
-import { Search } from 'lucide-react';
-import React, { useState } from 'react';
+import { useDeferredValue, useState, type FC } from 'react';
+import { Search, X } from 'lucide-react';
+import type { ServiceRecord } from '../../api/types';
 import ServiceCard from '../../components/ServiceCard';
-import useDebounce from '../../hooks/useDebounce';
+import { SERVICE_CATEGORIES, serviceCategory } from './serviceCategories';
 import { useServices } from './useServices';
 
-interface ServiceListProps {
-  initialSearch?: string;
-  limit?: number;
-}
+interface ServiceListProps { initialSearch?: string; limit?: number; }
 
-export const ServiceList: React.FC<ServiceListProps> = ({ initialSearch = '', limit }) => {
-  const [searchTerm, setSearchTerm] = useState(initialSearch);
-  const debouncedSearch = useDebounce(searchTerm, 300);
+export const ServiceList: FC<ServiceListProps> = ({ initialSearch = '', limit }) => {
+  const [search, setSearch] = useState(initialSearch);
+  const [category, setCategory] = useState<string>('All services');
+  const deferredSearch = useDeferredValue(search.trim().toLowerCase());
+  const { data: services = [], isLoading, isError, refetch } = useServices();
+  const matching = services.filter((service: ServiceRecord) => {
+    const matchesText = !deferredSearch || `${service.service_name} ${serviceCategory(service.service_name)}`.toLowerCase().includes(deferredSearch);
+    return matchesText && (category === 'All services' || serviceCategory(service.service_name) === category);
+  });
+  const displayed = limit ? matching.slice(0, limit) : matching;
+  const categories = ['All services', ...SERVICE_CATEGORIES.filter((name) => services.some((service) => serviceCategory(service.service_name) === name))];
 
-  const { data: services, isLoading, isError, refetch } = useServices(debouncedSearch);
-
-  const displayedServices = limit && services ? services.slice(0, limit) : services;
-
-  return (
-    <Surface style={{ width: '100%' }}>
-      {/* Search Bar */}
-      <Surface style={{ maxWidth: "var(--spacing-fsk-151)", margin: "0 auto var(--spacing-fsk-122) auto" }}>
-        <TextInput
-          label="Search Services"
-          isLabelHidden
-          placeholder="Search services (e.g. GST, ITR, Audit, Pvt Ltd)..."
-          value={searchTerm}
-          onChange={(val) => setSearchTerm(val)}
-          hasClear
-          width="100%"
-          size="lg"
-        />
-      </Surface>
-
-      {/* Loading State */}
-      {isLoading && (
-        <Surface style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: "var(--spacing-fsk-13) 0", gap: "var(--spacing-fsk-5)" }}>
-          <Spinner />
-          <Inline style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)" }}>Loading verified financial services...</Inline>
-        </Surface>
-      )}
-
-      {/* Error State */}
-      {isError && (
-        <Surface style={{ padding: "var(--spacing-fsk-114)", textAlign: 'center', background: "var(--color-fsk-51)", border: "var(--spacing-fsk-22) solid var(--color-fsk-43)", borderRadius: "var(--radius-fsk-28)", maxWidth: "var(--spacing-fsk-106)", margin: '0 auto' }}>
-          <h3 style={{ color: "var(--color-fsk-44)", marginBottom: "var(--spacing-fsk-12)", fontSize: "var(--font-fsk-30)" }}>Failed to retrieve services</h3>
-          <p style={{ color: "var(--color-fsk-60)", fontSize: "var(--font-fsk-24)", marginBottom: "var(--spacing-fsk-5)" }}>
-            We could not fetch data from the backend. Please check your network connection and try again.
-          </p>
-          <Button label="Retry Connection" variant="secondary" onClick={() => refetch()} />
-        </Surface>
-      )}
-
-      {/* Empty State */}
-      {!isLoading && !isError && displayedServices && displayedServices.length === 0 && (
-        <Surface style={{ padding: "var(--spacing-fsk-4) var(--spacing-fsk-5)" }}>
-          <EmptyState
-            title="No services found"
-            description={`No services matched "${debouncedSearch}". Please try searching with a different term like "GST", "ITR", "Company", or "Audit".`}
-            icon={<Search size={40} color="var(--color-fsk-57)" />}
-            actions={
-              <Button
-                label="Clear Search"
-                variant="secondary"
-                onClick={() => setSearchTerm('')}
-              />
-            }
-          />
-        </Surface>
-      )}
-
-      {/* Services Grid */}
-      {!isLoading && !isError && displayedServices && displayedServices.length > 0 && (
-        <Surface
-          style={{
-            display: 'grid',
-            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 20rem), 1fr))",
-            gap: "var(--spacing-fsk-20)",
-          }}
-        >
-          {displayedServices.map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
-        </Surface>
-      )}
-    </Surface>
-  );
+  return <div className="service-catalogue">
+    <div className="service-catalogue__toolbar">
+      <label className="service-search"><Search size={20} aria-hidden="true" /><span className="sr-only">Search services</span>
+        <input type="search" placeholder="Search by service or category" value={search} onChange={(event) => setSearch(event.target.value)} />
+        {search && <button type="button" aria-label="Clear search" onClick={() => setSearch('')}><X size={18} /></button>}
+      </label>
+      <div className="service-categories" role="group" aria-label="Filter services by category">
+        {categories.map((name) => <button key={name} type="button" aria-pressed={category === name} className={category === name ? 'is-active' : ''} onClick={() => setCategory(name)}>{name}</button>)}
+      </div>
+    </div>
+    {isLoading && <p className="service-catalogue__status" role="status">Loading available services…</p>}
+    {isError && <div className="service-catalogue__status" role="alert"><p>We couldn’t load the service catalogue.</p><button type="button" onClick={() => void refetch()}>Try again</button></div>}
+    {!isLoading && !isError && displayed.length > 0 && <div className="service-grid">{displayed.map((service) => <ServiceCard key={service.id} service={service} />)}</div>}
+    {!isLoading && !isError && displayed.length === 0 && <div className="service-empty"><Search size={24} /><h3>No matching services</h3><p>Try another search or choose a different category.</p><button type="button" onClick={() => { setSearch(''); setCategory('All services'); }}>Clear filters</button></div>}
+    {limit && matching.length > limit && <p className="service-catalogue__more">Showing {limit} of {matching.length} available services.</p>}
+  </div>;
 };
 
 export default ServiceList;

@@ -1,71 +1,131 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Button } from '@astryxdesign/core/Button';
-import { Drawer } from '@astryxdesign/core/Drawer';
-import { HStack } from '@astryxdesign/core/HStack';
-import { VStack } from '@astryxdesign/core/VStack';
-import { Text } from '@astryxdesign/core/Text';
-import { Menu, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { ArrowDown, ArrowRight, ArrowUpRight, Menu, ShieldCheck, X } from 'lucide-react';
 import { useCompactViewport } from '../hooks/useCompactViewport';
+import { serviceCategory } from '../features/services/serviceCategories';
+import api, { VERIFIED_INITIAL_SERVICES } from '../api/client';
+import type { ServiceRecord } from '../api/types';
 
-const links = [['/', 'Home'], ['/about', 'About Us'], ['/services', 'Services'], ['/contact', 'Contact']];
 const roles = [
-  ['customer', 'Customer Login'],
-  ['agent', 'Agent Login'],
-  ['franchise', 'Franchise Login'],
-  ['ca', 'CA Login'],
-  ['coordinator', 'Operations Coordinator Login'],
-  ['admin', 'Main Admin Login'],
+  ['customer', 'Customer Login'], ['agent', 'Agent Login'], ['franchise', 'Franchise Login'],
+  ['ca', 'CA Login'], ['coordinator', 'Operations Coordinator Login'], ['admin', 'Main Admin Login'],
 ];
-const linkStyle = { padding: 'var(--spacing-3)', borderRadius: 'var(--radius-element)', textDecoration: 'none', fontWeight: 600 };
+const itemStyle = { color: 'inherit', textDecoration: 'none' } as const;
 
 export function Navbar() {
   const compact = useCompactViewport();
-  const { pathname, search } = useLocation();
-  const route = pathname + search;
-  const [openAt, setOpenAt] = useState<string | null>(null);
-  const navigation = <>
-    {links.map(([to, label]) => <NavLink key={to} to={to} end={to === '/'}
-      style={({ isActive }) => ({ ...linkStyle, color: isActive ? 'var(--color-accent)' : 'var(--color-text-primary)',
-        background: isActive ? 'var(--color-fsk-info-subtle)' : 'transparent' })}>{label}</NavLink>)}
-  </>;
-  return <VStack as="header" style={{ position: 'sticky', top: 0, zIndex: 40, background: 'var(--color-background-surface)',
-    borderBottom: 'thin solid var(--color-background-muted)' }} hAlign="center" paddingInline={4}>
+  const { pathname } = useLocation();
+  const [services, setServices] = useState<ServiceRecord[]>(VERIFIED_INITIAL_SERVICES);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState('Business registration');
+  const [mobileCategory, setMobileCategory] = useState('');
+  const rootRef = useRef<HTMLElement>(null);
+  const home = pathname === '/';
+  const grouped = useMemo(() => {
+    const result = new Map<string, typeof services>();
+    services.forEach((service) => {
+      const category = serviceCategory(service.service_name);
+      result.set(category, [...(result.get(category) || []), service]);
+    });
+    return [...result.entries()];
+  }, [services]);
+  const activeServices = grouped.find(([category]) => category === activeCategory)?.[1] || grouped[0]?.[1] || [];
+
+  useEffect(() => {
+    const closeOutside = (event: PointerEvent) => {
+      if (rootRef.current && !rootRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+        setMobileOpen(false);
+      }
+    };
+    const closeEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        setMobileOpen(false);
+        rootRef.current?.querySelector<HTMLButtonElement>('[data-services-trigger]')?.focus();
+      }
+    };
+    document.addEventListener('pointerdown', closeOutside);
+    document.addEventListener('keydown', closeEscape);
+    return () => {
+      document.removeEventListener('pointerdown', closeOutside);
+      document.removeEventListener('keydown', closeEscape);
+    };
+  }, []);
+
+  const navLink = (to: string, label: string) => <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => `fsk-nav__link${isActive ? ' is-active' : ''}`} style={itemStyle} onClick={close}>{label}</NavLink>;
+  const close = () => { setMenuOpen(false); setMobileOpen(false); };
+
+  useEffect(() => {
+    let active = true;
+    void api.searchServices().then((records) => { if (active && records.length) setServices(records); });
+    return () => { active = false; };
+  }, []);
+
+  return <header ref={rootRef} className={`fsk-nav${home ? ' fsk-nav--home' : ''}`}>
     <a className="skip-link" href="#public-content">Skip to content</a>
-    <HStack width="100%" maxWidth={1240} paddingBlock={3} hAlign="between" vAlign="center" gap={3}>
-      <Link to="/" aria-label="Finservkart home" style={{ textDecoration: 'none', color: 'var(--color-fsk-brand)' }}>
-        <HStack gap={2} vAlign="center"><ShieldCheck aria-hidden="true" /><Text size="xl" weight="bold" color="inherit">Finservkart</Text></HStack>
+    <div className="fsk-nav__bar">
+      <Link to="/" aria-label="Finservkart home" className="fsk-nav__brand">
+        <ShieldCheck aria-hidden="true" size={25} strokeWidth={2.1} />
+        <span>finservkart</span>
       </Link>
-      {!compact && <HStack as="nav" aria-label="Main navigation" gap={1} vAlign="center">{navigation}</HStack>}
-      <HStack gap={2} vAlign="center">
-        {!compact && <>
-          <Link to="/explore-demo" style={{ ...linkStyle, border: '1px solid var(--color-accent)', color: 'var(--color-accent)' }}>Explore Demo</Link>
-          <details onKeyDown={(event) => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus(); } }}
-            style={{ position: 'relative' }}>
-            <summary style={{ ...linkStyle, cursor: 'pointer', color: 'var(--color-text-primary)' }}>Login</summary>
-            <VStack padding={2} gap={1} style={{ position: 'absolute', right: 0, zIndex: 50,
-              minWidth: 'max-content', background: 'var(--color-background-surface)', borderRadius: 'var(--radius-container)', boxShadow: 'var(--shadow-fsk-card)' }}>
-              {roles.map(([role, label]) => <Link key={role} to={`/login?role=${role}`} style={linkStyle}
-                onClick={(event) => { const details = event.currentTarget.closest('details'); if (details) details.open = false; }}>{label}</Link>)}
-            </VStack>
-          </details>
-          <Link to="/register" style={{ ...linkStyle, background: 'var(--color-accent)', color: 'var(--color-background-surface)' }}>Create account <ArrowUpRight aria-hidden="true" size={16} /></Link>
-        </>}
-        {compact && <Button label="Menu" icon={<Menu aria-hidden="true" />} variant="secondary"
-          aria-expanded={openAt === route} onClick={() => setOpenAt(route)} />}
-      </HStack>
-    </HStack>
-    {compact && <Drawer label="Main navigation" isOpen={openAt === route} onOpenChange={(open) => setOpenAt(open ? route : null)} width={340}>
-      <VStack gap={3}>
-        <Button label="Close menu" variant="secondary" onClick={() => setOpenAt(null)} />
-        <Link to="/explore-demo" style={{ ...linkStyle, background: 'var(--color-fsk-info-subtle)', color: 'var(--color-accent)' }}>Explore Demo</Link>
-        <VStack as="nav" aria-label="Main navigation">{navigation}</VStack>
-        <Text type="label">Your account</Text>
-        {roles.map(([role, label]) => <Link key={role} to={`/login?role=${role}`} style={linkStyle}>{label}</Link>)}
-        <Link to="/login" style={linkStyle}>Unified Login</Link>
-        <Link to="/register" style={linkStyle}>Create New Account</Link>
-      </VStack>
-    </Drawer>}
-  </VStack>;
+      {!compact && <nav className="fsk-nav__links" aria-label="Main navigation">
+        {navLink('/', 'Home')}{navLink('/about', 'About Us')}
+        <button data-services-trigger type="button" aria-expanded={menuOpen} aria-controls="services-mega-menu"
+          className={`fsk-nav__link fsk-nav__trigger${menuOpen || pathname.startsWith('/services') ? ' is-active' : ''}`}
+          onMouseEnter={() => setMenuOpen(true)} onFocus={() => setMenuOpen(true)}
+          onClick={() => setMenuOpen((open) => !open)}>
+          Services <ArrowDown size={15} aria-hidden="true" />
+        </button>
+        {navLink('/contact', 'Contact')}
+      </nav>}
+      <div className="fsk-nav__actions">
+        <Link className="fsk-nav__demo" to="/explore-demo">Explore Demo</Link>
+        {!compact && <details className="fsk-nav__login">
+          <summary>Login <ArrowDown size={14} aria-hidden="true" /></summary>
+          <div className="fsk-nav__login-menu">{roles.map(([role, label]) => <Link key={role} to={`/login?role=${role}`} onClick={close}>{label}</Link>)}</div>
+        </details>}
+        <Link className="fsk-nav__cta" to="/register">Create account <ArrowUpRight size={15} aria-hidden="true" /></Link>
+        {compact && <button className="fsk-nav__mobile-trigger" type="button" aria-label={mobileOpen ? 'Close menu' : 'Open menu'} aria-expanded={mobileOpen} onClick={() => setMobileOpen((open) => !open)}>
+          {mobileOpen ? <X /> : <Menu />}<span className="sr-only">Menu</span>
+        </button>}
+      </div>
+    </div>
+
+    {!compact && menuOpen && <div id="services-mega-menu" className="fsk-mega" onMouseLeave={() => setMenuOpen(false)}>
+      <div className="fsk-mega__inner">
+        <div className="fsk-mega__categories" aria-label="Service categories">
+          <p className="fsk-mega__eyebrow">EXPLORE BY CATEGORY</p>
+          {grouped.map(([category]) => <button key={category} type="button" className={activeCategory === category ? 'is-selected' : ''}
+            onMouseEnter={() => setActiveCategory(category)} onFocus={() => setActiveCategory(category)} onClick={() => setActiveCategory(category)}>
+            {category}<ArrowRight size={15} aria-hidden="true" />
+          </button>)}
+          <Link className="fsk-mega__all" to="/services" onClick={close}>View all services <ArrowUpRight size={15} /></Link>
+        </div>
+        <div className="fsk-mega__services" aria-live="polite">
+          <div><p className="fsk-mega__eyebrow">AVAILABLE SERVICES</p><h2>{activeCategory}</h2></div>
+          <div className="fsk-mega__service-grid">{activeServices.map((service) => <Link key={service.id} to={`/services/${service.id}`} onClick={close}>
+            <span>{service.service_name}</span><ArrowUpRight size={16} aria-hidden="true" />
+          </Link>)}</div>
+          <Link className="fsk-mega__browse" to="/services" onClick={close}>Browse the full catalogue <ArrowRight size={16} /></Link>
+        </div>
+      </div>
+    </div>}
+
+    {compact && mobileOpen && <div className="fsk-mobile-menu">
+      <nav className="fsk-mobile-menu__links" aria-label="Mobile navigation">
+        {navLink('/', 'Home')}{navLink('/about', 'About Us')}
+        <Link className="fsk-nav__link" to="/services" onClick={close}>All services</Link>
+        {grouped.map(([category, items]) => <section className="fsk-mobile-menu__category" key={category}>
+          <button type="button" aria-expanded={mobileCategory === category} onClick={() => setMobileCategory(mobileCategory === category ? '' : category)}>{category}<ArrowDown size={15} /></button>
+          {mobileCategory === category && <div>{items.map((service) => <Link key={service.id} to={`/services/${service.id}`} onClick={close}>{service.service_name}</Link>)}</div>}
+        </section>)}
+        {navLink('/contact', 'Contact')}
+      </nav>
+      <div className="fsk-mobile-menu__account"><p>Your account</p>{roles.map(([role, label]) => <Link key={role} to={`/login?role=${role}`} onClick={close}>{label}</Link>)}<Link to="/register" onClick={close}>Create an account</Link></div>
+      <Link className="fsk-mobile-menu__demo" to="/explore-demo" onClick={close}>Explore Demo <ArrowUpRight size={15} /></Link>
+    </div>}
+  </header>;
 }
 export default Navbar;

@@ -8,15 +8,18 @@ import { TextInput } from '@astryxdesign/core/TextInput';
 import { VStack } from '@astryxdesign/core/VStack';
 import { Clock, Mail, MapPin, Phone, Send } from 'lucide-react';
 import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import api from '../api/client';
 
 export const ContactPage: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const requestedService = searchParams.get('service')?.trim() || '';
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [country, setCountry] = useState('India');
   const [state, setState] = useState('Uttar Pradesh');
-  const [subject, setSubject] = useState('');
+  const [subject, setSubject] = useState(requestedService ? `Assistance request: ${requestedService}` : '');
   const [message, setMessage] = useState('');
 
   const [isLoading, setIsLoading] = useState(false);

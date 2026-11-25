@@ -1,47 +1,39 @@
-﻿import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { Text } from '@astryxdesign/core/Text';
-import { VStack } from '@astryxdesign/core/VStack';
-import { HStack } from '@astryxdesign/core/HStack';
-import { ArrowUpRight, FileText } from 'lucide-react';
+import { ArrowUpRight, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { ServiceRecord } from '../api/types';
-import { formatCurrency, parseDocuments } from '../utils/formatters';
-import { StatusTag } from './StatusTag';
+import { serviceCategory } from '../features/services/serviceCategories';
+import { formatCurrency } from '../utils/formatters';
+
+const descriptions: Record<string, string> = {
+  'GST Registration': 'Registration assistance and document coordination for businesses exploring GST enrolment.',
+  'ITR Filing': 'Organised support for preparing and filing an income tax return from your supplied records.',
+  'Private Limited Company Registration': 'Company formation assistance with a clear view of the information and documents involved.',
+  'Accounting & Bookkeeping Services': 'Ongoing support to organise business accounts, statements, and transaction records.',
+  'Tax Audit & Auditing': 'Audit support and financial record preparation, with scope confirmed for each engagement.',
+  'CIBIL Improvement & Resolution': 'Guidance for reviewing credit records and preparing a dispute or resolution request.',
+  'Project Report for Bank Loan': 'A structured project report prepared from your business plan and financial information.',
+  'Labour Law & Shop Act Compliance': 'Support to understand the documents and administrative steps for local compliance needs.',
+  'Trust & NGO Registration': 'Formation support for trusts and non-profit organisations, based on the selected structure.',
+  'HUF Registration & Deeds': 'Assistance preparing HUF documentation and the related service application.',
+};
 
 export function ServiceCard({ service }: { service: ServiceRecord }) {
-  const documents = parseDocuments(service.required_documents);
-  const govtFee = parseFloat(service.govt_fees || '0');
-  const fallback = '/services/service-1.jpg';
-  const imageUrl = service.service_image ? `/services/${service.service_image}` : fallback;
-  return <Card elevation="low" padding={0} style={{ height: '100%', overflow: 'hidden' }}>
-    <VStack gap={0} height="100%">
-      <img src={imageUrl} alt={service.service_name} loading="lazy"
-        onError={(event) => { if (!event.currentTarget.src.endsWith(fallback)) event.currentTarget.src = fallback; }}
-        style={{ width: '100%', aspectRatio: '16 / 7', objectFit: 'cover', background: 'var(--color-background-muted)' }} />
-      <VStack padding={5} gap={4} style={{ flex: 1 }}>
-        <HStack><StatusTag label="Verified Service" variant="green" /></HStack>
-        <Heading level={3}>{service.service_name}</Heading>
-        <HStack gap={2} vAlign="center"><FileText aria-hidden="true" color="var(--color-accent)" />
-          <Text type="supporting">{documents.length} Required Documents</Text>
-        </HStack>
-        <VStack gap={1}>
-          {documents.slice(0, 2).map((doc, index) => <Text key={index} type="supporting">{doc}</Text>)}
-          {documents.length > 2 && <Text type="supporting">+{documents.length - 2} more documents...</Text>}
-        </VStack>
-        <VStack gap={3} style={{ marginTop: 'auto', paddingTop: 'var(--spacing-4)', borderTop: 'thin solid var(--color-background-muted)' }}>
-          <HStack hAlign="between" vAlign="end" wrap="wrap" gap={2}>
-            <VStack gap={1}><Text type="supporting">Total Fee</Text><Text size="2xl" weight="bold" hasTabularNumbers>{formatCurrency(service.total_amt)}</Text></VStack>
-            {govtFee > 0 && <Text type="supporting">Govt: {formatCurrency(govtFee)}</Text>}
-          </HStack>
-          <Link to={`/services/${service.id}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            padding: 'var(--spacing-3)', borderRadius: 'var(--radius-element)', background: 'var(--color-fsk-info-subtle)',
-            color: 'var(--color-accent)', fontWeight: 600, textDecoration: 'none' }}>
-            View Details &amp; Apply <ArrowUpRight aria-hidden="true" />
-          </Link>
-        </VStack>
-      </VStack>
-    </VStack>
-  </Card>;
+  const [imageFailed, setImageFailed] = useState(false);
+  const total = Number(service.total_amt);
+  const hasPrice = Number.isFinite(total) && service.total_amt.trim() !== '';
+  const image = service.service_image ? `/services/${service.service_image}` : '';
+  return <article className="service-card">
+    {image && !imageFailed && <div className="service-card__image"><img src={image} alt="" loading="lazy" onError={() => setImageFailed(true)} /></div>}
+    <div className="service-card__body">
+      <div className="service-card__meta"><span>{serviceCategory(service.service_name)}</span><Check size={15} aria-label="Available in catalogue" /></div>
+      <h3>{service.service_name}</h3>
+      <p>{descriptions[service.service_name] || `Explore available assistance for ${service.service_name.toLowerCase()}, with scope confirmed before you apply.`}</p>
+      <div className="service-card__footer">
+        <div>{hasPrice ? <><span>Listed total</span><strong>{formatCurrency(total)}</strong></> : <span>Ask us about pricing</span>}</div>
+        <Link to={`/services/${service.id}`} aria-label={`View details for ${service.service_name}`}>View details <ArrowUpRight size={17} /></Link>
+      </div>
+    </div>
+  </article>;
 }
 export default ServiceCard;
+import { useState } from 'react';
