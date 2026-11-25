@@ -1,166 +1,64 @@
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Grid } from '@astryxdesign/core/Grid';
-import { Heading } from '@astryxdesign/core/Heading';
-import { HStack } from '@astryxdesign/core/HStack';
-import { Text } from '@astryxdesign/core/Text';
-import { VStack } from '@astryxdesign/core/VStack';
-import { ArrowRight, Shield } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import ServiceList from '../features/services/ServiceList';
+import { useState, type FormEvent } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ArrowRight, ArrowUpRight, Building2, Calculator, Check, ClipboardList, FileCheck, FileText, FolderOpen, Headphones, ListChecks, Receipt, Search, Send, Users } from 'lucide-react';
+import ServiceCard from '../components/ServiceCard';
+import { PlatformPreview, PartnerIllustration } from '../components/PlatformPreview';
+import { LoadingIndicator } from '../components/ui';
+import { useServices } from '../features/services/useServices';
+import { ServicePromotions } from '../features/services/ServicePromotions';
+import { selectPromotedServices } from '../features/services/promotedServices';
+import { HeroEntrance, ScrollReveal, StaggerGroup } from '../motion';
 
-const advantages = [
-  {
-    "title": "Lightning Fast",
-    "description": "Quick document verification and rapid processing for your compliance needs. Get active updates directly on your dashboard."
-  },
-  {
-    "title": "Bank-Level Security",
-    "description": "All confidential records and financial statements are safeguarded with strict access controls and encrypted archives."
-  },
-  {
-    "title": "Expert CA Team",
-    "description": "Every filing is thoroughly reviewed and submitted by licensed Chartered Accountants with extensive industry expertise."
-  },
-  {
-    "title": "24/7 Support",
-    "description": "Round-the-clock customer support available across chat, phone, and ticketing systems for continuous assistance."
-  },
-  {
-    "title": "Full Transparency",
-    "description": "No hidden charges or surprise invoices. Clear upfront pricing separating net professional fees and statutory government costs."
-  },
-  {
-    "title": "Dedicated Coordinator",
-    "description": "An operations coordinator is assigned to manage your order workflow from document collection to final invoice delivery."
-  }
+const steps = [
+ {title:'Choose a Service',text:'Find the service that matches your needs.',Icon:Search},
+ {title:'Submit Your Details',text:'Provide the information and documents required.',Icon:Send},
+ {title:'Track Your Application',text:'Follow the progress of your service request.',Icon:ListChecks},
+ {title:'Receive Your Deliverables',text:'Access available documents and service updates.',Icon:FileCheck}
 ];
-
-const metrics = [
-  ['10,000+', 'Happy Clients'],
-  ['50,000+', 'Services Completed'],
-  ['250+', 'Expert Professionals'],
-  ['15+', 'Industry Awards'],
+const benefits = [
+ {title:'Transparent Pricing',text:'Review service fees and applicable government charges before you apply.',Icon:Receipt},
+ {title:'Application Tracking',text:'Know where things stand. View your requests and their current stages.',Icon:ClipboardList},
+ {title:'Document Management',text:'Keep submitted documents and available deliverables together.',Icon:FolderOpen},
+ {title:'Professional Assistance',text:'Connect with the team for guidance on your service and next steps.',Icon:Headphones}
 ];
-
-// Keep existing business copy and service data; this slice changes presentation only.
-export const HomePage = () => {
-  const navigate = useNavigate();
-  return (
-    <VStack gap={0}>
-      <VStack as="section" paddingInline={4} paddingBlock={10} hAlign="center"
-        style={{ background: 'var(--color-background-muted)' }}>
-        <Grid columns={{ minWidth: 360, max: 2 }} gap={8} align="center" width="100%" maxWidth={1240}>
-          <VStack gap={5}>
-            <Text type="label" color="accent">FINANCIAL SERVICES. CLEARLY SIMPLIFIED.</Text>
-            <Heading level={1} type="display-3" weight="bold" textWrap="balance">
-              Your Financial Future Starts Here
-            </Heading>
-            <Text as="p" type="large" color="secondary">
-              Navigate your financial journey with confidence. We provide comprehensive business registration, taxation, auditing, and certification solutions with verified professional expertise.
-            </Text>
-            <HStack gap={3} wrap="wrap">
-              <Button label="Explore Solutions" variant="primary" size="lg"
-                endContent={<ArrowRight aria-hidden="true" />} onClick={() => navigate('/services')} />
-              <Button label="Explore Demo" variant="secondary" size="lg" onClick={() => navigate('/explore-demo')} />
-              <Button label="Get in Touch" variant="secondary" size="lg" onClick={() => navigate('/contact')} />
-            </HStack>
-            <HStack gap={4} wrap="wrap">
-              <Text type="supporting">10,000+ Active Clients</Text>
-              <Text type="supporting">99.8% Satisfaction Rate</Text>
-              <Text type="supporting">24/7 Compliance Support</Text>
-            </HStack>
-          </VStack>
-          <Card elevation="low" padding={6}>
-            <VStack gap={5}>
-              <HStack gap={3} vAlign="center">
-                <Shield aria-hidden="true" color="var(--color-accent)" />
-                <Text type="label" color="accent">YOUR BUSINESS, SUPPORTED</Text>
-              </HStack>
-              <Heading level={2}>Finservkart Enterprise Suite</Heading>
-              <Text type="supporting">ISO Certified &amp; Bank-Grade Security</Text>
-              <VStack gap={4}>
-                <VStack gap={1}>
-                  <Heading level={3}>Zero Hidden Charges</Heading>
-                  <Text color="secondary">Direct government fees + upfront professional cost breakdown.</Text>
-                </VStack>
-                <VStack gap={1}>
-                  <Heading level={3}>Chartered Accountant Verified</Heading>
-                  <Text color="secondary">Every workflow is assigned to licensed financial experts.</Text>
-                </VStack>
-                <VStack gap={1}>
-                  <Heading level={3}>Encrypted Document Vault</Heading>
-                  <Text color="secondary">Supporting docs zipped with AES encryption &amp; secure storage.</Text>
-                </VStack>
-              </VStack>
-              <Button label="Create Customer Account" variant="secondary" size="lg" width="100%"
-                onClick={() => navigate('/register')} />
-            </VStack>
-          </Card>
-        </Grid>
-      </VStack>
-
-      <VStack as="section" paddingInline={4} paddingBlock={6} hAlign="center">
-        <Grid columns={{ minWidth: 200, max: 4 }} gap={5} width="100%" maxWidth={1240}>
-          {metrics.map(([value, label]) => (
-            <VStack key={label} gap={1} hAlign="center">
-              <Text type="display-3" color="accent" hasTabularNumbers>{value}</Text>
-              <Text type="supporting">{label}</Text>
-            </VStack>
-          ))}
-        </Grid>
-      </VStack>
-
-      <VStack as="section" paddingInline={4} paddingBlock={10} hAlign="center" gap={6}>
-        <VStack gap={3} maxWidth={720} hAlign="center">
-          <Text type="label" color="accent">COMPREHENSIVE SOLUTIONS</Text>
-          <Heading level={2} justify="center" textWrap="balance">Financial services for every stage of business</Heading>
-          <Text as="p" color="secondary" justify="center">
-            Explore verified financial, taxation, and company formation services with clear government fee transparency and required document checklists.
-          </Text>
-        </VStack>
-        <VStack width="100%" maxWidth={1240}>
-          <ServiceList limit={6} />
-        </VStack>
-        <Button label="Explore All Available Services" variant="secondary" size="lg"
-          endContent={<ArrowRight aria-hidden="true" />} onClick={() => navigate('/services')} />
-      </VStack>
-
-      <VStack as="section" paddingInline={4} paddingBlock={10} hAlign="center" gap={8}
-        style={{ background: 'var(--color-background-muted)' }}>
-        <VStack gap={3} maxWidth={720} hAlign="center">
-          <Text type="label" color="accent">THE FINSERVKART ADVANTAGE</Text>
-          <Heading level={2} justify="center">Why Choose Finservkart?</Heading>
-          <Text as="p" color="secondary" justify="center">
-            We are dedicated to delivering excellence, transparent pricing, and regulatory compliance for businesses across India.
-          </Text>
-        </VStack>
-        <Grid columns={{ minWidth: 280, max: 3 }} gap={6} width="100%" maxWidth={1240}>
-          {advantages.map((item, index) => (
-            <VStack key={item.title} gap={3}>
-              <Text type="label" color="accent">0{index + 1}</Text>
-              <Heading level={3}>{item.title}</Heading>
-              <Text as="p" color="secondary">{item.description}</Text>
-            </VStack>
-          ))}
-        </Grid>
-      </VStack>
-
-      <VStack as="section" paddingInline={4} paddingBlock={10} hAlign="center" gap={5}>
-        <Text type="label" color="accent">LET?S MOVE YOUR BUSINESS FORWARD</Text>
-        <Heading level={2} justify="center" textWrap="balance">Ready to Streamline Your Business Finances?</Heading>
-        <VStack maxWidth={720}>
-          <Text as="p" color="secondary" justify="center">
-            Join over 10,000 businesses across India that rely on Finservkart for GST, ITR, audits, and company registrations.
-          </Text>
-        </VStack>
-        <HStack gap={3} wrap="wrap" hAlign="center">
-          <Button label="Create Free Account" variant="primary" size="lg" onClick={() => navigate('/register')} />
-          <Button label="Contact Our Advisors" variant="secondary" size="lg" onClick={() => navigate('/contact')} />
-        </HStack>
-      </VStack>
-    </VStack>
-  );
-};
-
+const categories = [
+ {label:'GST & Taxation',query:'GST',Icon:Receipt},
+ {label:'Income Tax',query:'ITR',Icon:FileText},
+ {label:'Company Registration',query:'Company',Icon:Building2},
+ {label:'Accounting',query:'Accounting',Icon:Calculator},
+ {label:'Audit & Compliance',query:'Audit',Icon:FileCheck},
+ {label:'Credit Assistance',query:'CIBIL',Icon:ClipboardList}
+];
+const faqs = [
+ ['How do I apply for a service?','Choose a service, review its details and select Apply to sign in. New customers can use the registration link to create an account.'],
+ ['What documents are required?','Each service detail page lists the required documents. Review that checklist before submitting your application.'],
+ ['How do I track an application?','Sign in to your customer portal, open My Applications and select a request to view its details and tracker.'],
+ ['How can I contact support?','Use the Contact page to send an enquiry. Existing customers can also access Support from their dashboard.'],
+ ['How can I become an agent?','Send an agent partnership enquiry through the Contact page. The team can explain the onboarding process and applicable programme terms. Existing agents can use Agent Login.'],
+ ['How can I enquire about a franchise?','Select Explore Franchise Opportunities to send an enquiry. The team can discuss the opportunity and onboarding requirements. Existing franchise partners can use Franchise Login.']
+];
+export function HomePage() {
+ const navigate=useNavigate(); const [search,setSearch]=useState('');
+ const {data:services=[],isLoading,isError,refetch}=useServices();
+ const promoted=selectPromotedServices(services);
+ const popular=[...promoted.map(p=>p.service),...services.filter(s=>!promoted.some(p=>p.service.id===s.id))].slice(0,6);
+ function submit(event:FormEvent<HTMLFormElement>){event.preventDefault(); const term=search.trim();navigate(term?`/services?q=${encodeURIComponent(term)}`:'/services');}
+ return <div className="homepage">
+ <section className="hero"><div className="container"><HeroEntrance className="hero-grid"><div className="hero-copy"><HeroEntrance.Label><p className="eyebrow">TAX &bull; REGISTRATION &bull; COMPLIANCE</p></HeroEntrance.Label><HeroEntrance.Headline><h1>Your Business, <br/><em>Our Expertise.</em></h1></HeroEntrance.Headline><HeroEntrance.Description><p className="hero-description">GST, Income Tax, Company Registration and Business Compliance services&mdash;all in one place, with expert assistance and easy application tracking.</p></HeroEntrance.Description><HeroEntrance.Actions><div className="action-row"><Link className="button button-amber" to="/services">Explore Services<ArrowUpRight size={18}/></Link><Link className="button button-light" to="/contact">Talk to an Expert</Link></div><p className="hero-footnote"><span/>From your first registration to your next milestone.</p></HeroEntrance.Actions></div><HeroEntrance.Illustration><div className="hero-visual"><PlatformPreview/><div className="hero-visual-note"><Check size={17}/>Clarity at every step.</div></div></HeroEntrance.Illustration></HeroEntrance></div></section>
+ <ScrollReveal className="discovery container" aria-label="Find a service"><div className="search-panel"><div><p className="eyebrow">WHAT CAN WE HELP YOU WITH?</p><h2>Find your next step.</h2></div><div className="search-content"><form role="search" aria-label="Find a service" onSubmit={submit}><label className="sr-only" htmlFor="home-search">Search services</label><Search size={22} aria-hidden="true"/><input id="home-search" value={search} onChange={event=>setSearch(event.target.value)} placeholder="Search GST, ITR, Company Registration..."/><button className="button button-primary" type="submit">Search<ArrowRight size={17}/></button></form><div className="quick-links"><span>Popular:</span>{promoted.slice(0,3).map(({service})=><Link key={service.id} to={`/services/${service.id}`}>{service.service_name}</Link>)}</div></div></div></ScrollReveal>
+ <ScrollReveal className="container categories-section" aria-labelledby="categories-title"><div className="section-heading compact-heading"><h2 id="categories-title">Services for every stage</h2><Link className="text-link" to="/services">Browse all services<ArrowUpRight size={17}/></Link></div><div className="category-grid">{categories.filter(c=>services.some(s=>s.service_name.toLowerCase().includes(c.query.toLowerCase()))).map(({label,query,Icon})=><Link className="category-link" key={label} to={`/services?q=${encodeURIComponent(query)}`}><Icon size={25} strokeWidth={1.5}/><span>{label}</span><ArrowUpRight size={16}/></Link>)}</div></ScrollReveal>
+ <section className="popular-section section-space"><div className="container"><ScrollReveal className="section-heading"><div><p className="eyebrow">BUILT AROUND YOUR BUSINESS</p><h2>Popular services.<br/>Practical expertise.</h2></div><p>Start with what you need today.<br/>We're here for what comes next.</p></ScrollReveal>
+ {isLoading?<div className="loading-services"><LoadingIndicator/>Loading services...</div>:isError?<div role="alert"><p>We couldn't load services.</p><button className="button button-secondary" onClick={()=>void refetch()}>Retry services</button></div>:popular.length?<StaggerGroup className="service-grid" stagger={0.09} yOffset={20}>{popular.map(service=><ServiceCard key={service.id} service={service}/>)}</StaggerGroup>:<p>No services are currently available.</p>}
+ <div className="section-tail"><Link className="text-link" to="/services">Explore the full service catalogue<ArrowRight size={18}/></Link></div></div></section>
+ <div className="container spotlight-wrap"><ServicePromotions services={services}/></div>
+ <section className="container section-space" id="how-it-works"><ScrollReveal className="section-heading"><div><p className="eyebrow">A CLEAR PATH FORWARD</p><h2>How Finservkart Works</h2></div><p>Less guesswork.<br/>More progress.</p></ScrollReveal><StaggerGroup className="process-list" childSelector="li" stagger={0.09} yOffset={20}>{steps.map(({title,text,Icon},i)=><li key={title}><div className="process-top"><span>0{i+1}</span><Icon size={23} strokeWidth={1.5}/></div><h3>{title}</h3><p>{text}</p></li>)}</StaggerGroup></section>
+ <section className="benefits-section"><ScrollReveal className="container benefits-grid"><div><p className="eyebrow">CONFIDENCE IN THE DETAILS</p><h2>Why Choose<br/>Finservkart</h2><p>Financial and business services can be complex. Your experience shouldn't be.</p><Link className="text-link" to="/about">Get to know us<ArrowUpRight size={17}/></Link></div><div className="benefit-list">{benefits.map(({title,text,Icon})=><div key={title}><Icon size={25} strokeWidth={1.5}/><div><h3>{title}</h3><p>{text}</p></div></div>)}</div></ScrollReveal></section>
+ <section className="agent-section section-space" id="agents"><ScrollReveal className="container partnership-grid"><div><p className="eyebrow">FOR AMBITIOUS SERVICE PARTNERS</p><h2>Grow Your Business as a Finservkart Agent</h2><p className="section-intro">Connect customers with taxation, registration, and compliance services through one convenient platform.</p><ul className="partner-benefits"><li><Check/><div><h3>Access Multiple Services</h3><p>Help customers discover and apply for relevant services.</p></div></li><li><Check/><div><h3>Manage Your Customers</h3><p>Keep track of customers and their service applications.</p></div></li><li><Check/><div><h3>Monitor Commissions</h3><p>View eligible commission information and approval status, subject to programme terms.</p></div></li></ul><div className="action-row"><Link className="button button-amber" to="/contact?subject=agent">Become an Agent<ArrowUpRight size={17}/></Link><Link className="button button-light" to="/login?role=agent">Agent Login</Link></div><p className="enquiry-note">Start with an enquiry. Our team will explain the next steps.</p></div><PartnerIllustration/></ScrollReveal></section>
+ <section className="franchise-section section-space" id="franchise"><ScrollReveal className="container partnership-grid"><PartnerIllustration network/><div><p className="eyebrow">GROW TOGETHER</p><h2>Build Your Network.<br/>Partner With Finservkart.</h2><p className="section-intro">Explore an opportunity to build and manage an agent network while helping more customers access financial and compliance services.</p><div className="franchise-benefits"><div><h3>Build an Agent Network</h3><p>Develop and manage your associated agent network.</p></div><div><h3>Monitor Performance</h3><p>Review agent activity, customers and applications.</p></div><div><h3>Centralised Management</h3><p>Access operational information through your dedicated dashboard.</p></div></div><div className="action-row"><Link className="button button-primary" to="/contact?subject=franchise">Explore Franchise Opportunities<ArrowUpRight size={17}/></Link><Link className="text-link" to="/login?role=franchise">Franchise Login<ArrowRight size={17}/></Link></div></div></ScrollReveal></section>
+ <section className="professional-section" id="professionals"><ScrollReveal className="container professional-row"><div className="professional-icon"><Users size={32} strokeWidth={1.5}/></div><div><p className="eyebrow">THE PROFESSIONAL NETWORK</p><h2>Expertise That Supports Every Application</h2><p>Chartered Accountants use their workspace to review assigned applications, manage documents and support service fulfilment.</p></div><Link className="button button-secondary" to="/login?role=ca">Professional Login<ArrowUpRight size={17}/></Link></ScrollReveal></section>
+ <section className="container section-space platform-section"><div className="section-heading"><div><p className="eyebrow">YOUR WORKSPACE, SIMPLIFIED</p><h2>Manage Everything<br/>in One Place</h2></div><div><p>Applications, documents and updates.<br/>A clearer view of the work that matters.</p><Link className="text-link" to="/explore-demo">Explore Platform Demo<ArrowUpRight size={17}/></Link></div></div><ScrollReveal className="platform-showcase"><PlatformPreview expanded/><ul>{['Application tracking','Document submission','Service updates','Payment records','Dashboard access'].map(label=><li key={label}><Check size={18}/>{label}</li>)}</ul></ScrollReveal></section>
+ <section className="faq-section section-space"><ScrollReveal className="container faq-grid"><div><p className="eyebrow">A LITTLE MORE CLARITY</p><h2>Frequently Asked<br/>Questions</h2><p>Still have a question?<br/>Let's talk about what you need.</p><Link className="text-link" to="/contact">Contact our team<ArrowUpRight size={17}/></Link></div><div>{faqs.map(([q,a])=><details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></ScrollReveal></section>
+ <section className="final-cta"><ScrollReveal className="container"><p className="eyebrow">LET'S MOVE YOUR BUSINESS FORWARD</p><h2>Ready to Get Started?</h2><p>Find the right financial, taxation, registration, or compliance service for your needs.</p><div className="action-row"><Link className="button button-amber" to="/services">Explore Services<ArrowUpRight size={17}/></Link><Link className="button button-light" to="/contact">Contact Us</Link></div><Link className="quiet-demo" to="/explore-demo">Explore Demo<ArrowRight size={14}/></Link></ScrollReveal></section>
+ </div>;
+}
 export default HomePage;

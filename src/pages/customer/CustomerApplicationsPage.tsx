@@ -1,10 +1,6 @@
+import { ActionButton, Panel, EmptyState, Title, Field } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
 import { StatusTag as Badge } from '../../components/StatusTag';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { EmptyState } from '@astryxdesign/core/EmptyState';
-import { Heading } from '@astryxdesign/core/Heading';
-import { TextInput } from '@astryxdesign/core/TextInput';
 import { PlusCircle } from 'lucide-react';
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +50,7 @@ export const CustomerApplicationsPage: React.FC = () => {
   ];
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "77.5rem", margin: '0 auto' }}>
       {/* Page Header */}
       <Surface
         style={{
@@ -62,22 +58,22 @@ export const CustomerApplicationsPage: React.FC = () => {
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: "var(--spacing-fsk-26)",
-          gap: "var(--spacing-fsk-5)",
+          marginBottom: "1.5rem",
+          gap: "1rem",
         }}
       >
         <Surface>
-          <Heading level={1}>
-            <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
+          <Title level={1}>
+            <Inline style={{ fontSize: "1.625rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.02em' }}>
               My Applications &amp; Services
             </Inline>
-          </Heading>
-          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+          </Title>
+          <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginTop: "0.25rem", margin: 0 }}>
             Track and manage all your corporate registration, tax filing, and statutory compliance orders.
           </p>
         </Surface>
 
-        <Button
+        <ActionButton
           label="New Application"
           variant="primary"
           size="md"
@@ -86,11 +82,11 @@ export const CustomerApplicationsPage: React.FC = () => {
         />
       </Surface>
 
-      {/* Filter and Search Bar Card */}
-      <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
-        <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-5)", justifyContent: 'space-between', alignItems: 'center' }}>
+      {/* Filter and Search Bar Panel */}
+      <Panel elevation="low" padding={4} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", marginBottom: "1.5rem" }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "1rem", justifyContent: 'space-between', alignItems: 'center' }}>
           {/* Status Filter Tabs */}
-          <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-12)" }}>
+          <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "0.5rem" }}>
             {filterTabs.map((tab) => {
               const isActive = selectedFilter === tab;
               const count =
@@ -106,13 +102,13 @@ export const CustomerApplicationsPage: React.FC = () => {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: "var(--spacing-fsk-17)",
-                    padding: "var(--spacing-fsk-12) var(--spacing-fsk-23)",
-                    borderRadius: "var(--radius-fsk-37)",
-                    border: isActive ? "var(--spacing-fsk-22) solid var(--color-fsk-162)" : "var(--spacing-fsk-22) solid var(--color-fsk-163)",
-                    background: isActive ? "var(--color-fsk-112)" : "var(--color-fsk-38)",
-                    color: isActive ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
-                    fontSize: "var(--font-fsk-14)",
+                    gap: "0.375rem",
+                    padding: "0.5rem 0.875rem",
+                    borderRadius: "0.5rem",
+                    border: isActive ? "0.0625rem solid var(--blue)" : "0.0625rem solid #e2e8f0",
+                    background: isActive ? "#e0f2fe" : "var(--white)",
+                    color: isActive ? "var(--blue)" : "var(--muted)",
+                    fontSize: "0.8125rem",
                     fontWeight: 600,
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
@@ -121,11 +117,11 @@ export const CustomerApplicationsPage: React.FC = () => {
                   <Inline>{tab}</Inline>
                   <Inline
                     style={{
-                      fontSize: "var(--font-fsk-14)",
-                      padding: "var(--spacing-fsk-22) var(--spacing-fsk-17)",
-                      borderRadius: "var(--radius-fsk-68)",
-                      background: isActive ? "var(--color-fsk-15)" : "var(--color-fsk-46)",
-                      color: isActive ? "var(--color-fsk-38)" : "var(--color-fsk-9)",
+                      fontSize: "0.8125rem",
+                      padding: "0.0625rem 0.375rem",
+                      borderRadius: "0.625rem",
+                      background: isActive ? "var(--blue)" : "var(--sage-light)",
+                      color: isActive ? "var(--white)" : "var(--muted)",
                     }}
                   >
                     {count}
@@ -136,8 +132,8 @@ export const CustomerApplicationsPage: React.FC = () => {
           </Surface>
 
           {/* Search Box */}
-          <Surface style={{ width: "var(--spacing-fsk-45)" }}>
-            <TextInput
+          <Surface style={{ width: "17.5rem" }}>
+            <Field
               label="Search applications"
               placeholder="Search by ID, service, CA..."
               value={searchQuery}
@@ -146,22 +142,22 @@ export const CustomerApplicationsPage: React.FC = () => {
             />
           </Surface>
         </Surface>
-      </Card>
+      </Panel>
 
       {/* Applications Data Table */}
-      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+      <Panel elevation="low" padding={0} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", overflow: 'hidden' }}>
         {filteredApplications.length > 0 ? (
           <Surface style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "0.8125rem" }}>
               <thead>
-                <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontWeight: 600, fontSize: "var(--font-fsk-14)", textTransform: 'uppercase' }}>
-                  <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Application ID</th>
-                  <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Service Name &amp; Category</th>
-                  <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Assigned CA</th>
-                  <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Amount</th>
-                  <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Submission Date</th>
-                  <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Current Status</th>
-                  <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", textAlign: 'right' }}>Actions</th>
+                <tr style={{ background: "var(--cream)", borderBottom: "0.0625rem solid var(--border)", color: "var(--muted)", fontWeight: 600, fontSize: "0.8125rem", textTransform: 'uppercase' }}>
+                  <th style={{ padding: "0.875rem 1rem" }}>Application ID</th>
+                  <th style={{ padding: "0.875rem 1rem" }}>Service Name &amp; Category</th>
+                  <th style={{ padding: "0.875rem 1rem" }}>Assigned CA</th>
+                  <th style={{ padding: "0.875rem 1rem" }}>Amount</th>
+                  <th style={{ padding: "0.875rem 1rem" }}>Submission Date</th>
+                  <th style={{ padding: "0.875rem 1rem" }}>Current Status</th>
+                  <th style={{ padding: "0.875rem 1rem", textAlign: 'right' }}>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -169,50 +165,50 @@ export const CustomerApplicationsPage: React.FC = () => {
                   <tr
                     key={app.id}
                     style={{
-                      borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)",
+                      borderBottom: "0.0625rem solid var(--sage-light)",
                       transition: 'background-color 0.15s ease',
                     }}
                   >
-                    <td style={{ padding: "var(--spacing-fsk-5)", fontWeight: 700, color: "var(--color-fsk-15)" }}>
+                    <td style={{ padding: "1rem", fontWeight: 700, color: "var(--blue)" }}>
                       {app.id}
                     </td>
-                    <td style={{ padding: "var(--spacing-fsk-5)" }}>
-                      <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{app.serviceName}</Surface>
-                      <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
+                    <td style={{ padding: "1rem" }}>
+                      <Surface style={{ fontWeight: 700, color: "var(--navy)" }}>{app.serviceName}</Surface>
+                      <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", marginTop: "0.125rem" }}>
                         Category: {app.category}
                       </Surface>
                     </td>
-                    <td style={{ padding: "var(--spacing-fsk-5)" }}>
+                    <td style={{ padding: "1rem" }}>
                       {app.assignedCA ? (
                         <Surface>
-                          <Surface style={{ fontWeight: 600, color: "var(--color-fsk-113)" }}>{app.assignedCA.name}</Surface>
-                          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-39)" }}>ID: {app.assignedCA.id}</Surface>
+                          <Surface style={{ fontWeight: 600, color: "#243b53" }}>{app.assignedCA.name}</Surface>
+                          <Surface style={{ fontSize: "0.8125rem", color: "#16a34a" }}>ID: {app.assignedCA.id}</Surface>
                         </Surface>
                       ) : (
-                        <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)" }}>Under Allocation</Inline>
+                        <Inline style={{ fontSize: "0.8125rem", color: "#687d93" }}>Under Allocation</Inline>
                       )}
                     </td>
-                    <td style={{ padding: "var(--spacing-fsk-5)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
+                    <td style={{ padding: "1rem", fontWeight: 700, color: "var(--navy)" }}>
                       ₹{app.totalAmount.toLocaleString('en-IN')}
                     </td>
-                    <td style={{ padding: "var(--spacing-fsk-5)", color: "var(--color-fsk-18)", fontSize: "var(--font-fsk-14)" }}>
+                    <td style={{ padding: "1rem", color: "var(--muted)", fontSize: "0.8125rem" }}>
                       {app.submissionDate}
                     </td>
-                    <td style={{ padding: "var(--spacing-fsk-5)" }}>
+                    <td style={{ padding: "1rem" }}>
                       {getStatusBadge(app.status)}
                     </td>
-                    <td style={{ padding: "var(--spacing-fsk-5)", textAlign: 'right' }}>
-                      <Surface style={{ display: 'flex', justifyContent: 'flex-end', gap: "var(--spacing-fsk-12)" }}>
+                    <td style={{ padding: "1rem", textAlign: 'right' }}>
+                      <Surface style={{ display: 'flex', justifyContent: 'flex-end', gap: "0.5rem" }}>
                         <button
                           type="button"
                           onClick={() => navigate(`/customer/applications/${app.id}/tracker`)}
                           style={{
-                            padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
-                            borderRadius: "var(--radius-fsk-42)",
-                            border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
-                            background: "var(--color-fsk-38)",
-                            color: "var(--color-fsk-25)",
-                            fontSize: "var(--font-fsk-14)",
+                            padding: "0.375rem 0.75rem",
+                            borderRadius: "0.375rem",
+                            border: "0.0625rem solid #cbd5e1",
+                            background: "var(--white)",
+                            color: "#334155",
+                            fontSize: "0.8125rem",
                             fontWeight: 600,
                             cursor: 'pointer',
                           }}
@@ -223,12 +219,12 @@ export const CustomerApplicationsPage: React.FC = () => {
                           type="button"
                           onClick={() => navigate(`/customer/applications/${app.id}`)}
                           style={{
-                            padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
-                            borderRadius: "var(--radius-fsk-42)",
+                            padding: "0.375rem 0.75rem",
+                            borderRadius: "0.375rem",
                             border: 'none',
-                            background: "var(--color-fsk-15)",
-                            color: "var(--color-fsk-38)",
-                            fontSize: "var(--font-fsk-14)",
+                            background: "var(--blue)",
+                            color: "var(--white)",
+                            fontSize: "0.8125rem",
                             fontWeight: 600,
                             cursor: 'pointer',
                           }}
@@ -243,12 +239,12 @@ export const CustomerApplicationsPage: React.FC = () => {
             </table>
           </Surface>
         ) : (
-          <Surface style={{ padding: "var(--spacing-fsk-4) var(--spacing-fsk-26)", textAlign: 'center' }}>
+          <Surface style={{ padding: "clamp(1rem, 3.6923076923076925vw, 3rem) 1.5rem", textAlign: 'center' }}>
             <EmptyState
               title="No Applications Found"
               description={`No applications matching "${searchQuery}" with status "${selectedFilter}". Try adjusting your filters or apply for a new service.`}
               actions={
-                <Button
+                <ActionButton
                   label="Clear Filters"
                   variant="secondary"
                   onClick={() => {
@@ -260,7 +256,7 @@ export const CustomerApplicationsPage: React.FC = () => {
             />
           </Surface>
         )}
-      </Card>
+      </Panel>
     </Surface>
   );
 };

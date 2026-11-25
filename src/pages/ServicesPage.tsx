@@ -1,33 +1,7 @@
-import { Surface, Inline } from '../components/Surface';
-import { StatusTag as Badge } from '../components/StatusTag';
-import { Heading } from '@astryxdesign/core/Heading';
-import { Text } from '@astryxdesign/core/Text';
-import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import ServiceList from '../features/services/ServiceList';
-
-export const ServicesPage: React.FC = () => {
-  return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto', padding: "var(--spacing-fsk-1) var(--spacing-fsk-2) var(--spacing-fsk-3) var(--spacing-fsk-2)" }}>
-      {/* Header Banner */}
-      <Surface style={{ textAlign: 'center', marginBottom: "var(--spacing-fsk-4)", paddingTop: "var(--spacing-fsk-5)" }}>
-        <Badge label="Complete Service Catalogue" variant="blue" />
-        <Heading level={1}>
-          <Inline style={{ fontSize: "var(--font-fsk-6)", fontWeight: 800, color: "var(--color-fsk-7)", display: 'block', marginTop: "var(--spacing-fsk-8)" }}>
-            Financial & Compliance Services
-          </Inline>
-        </Heading>
-        <Text type="supporting">
-          <Inline style={{ fontSize: "var(--font-fsk-10)", color: "var(--color-fsk-9)", maxWidth: "var(--spacing-fsk-11)", display: 'inline-block', marginTop: "var(--spacing-fsk-12)" }}>
-            Transparent pricing, clear document checklists, and verified chartered accountant support. Search our verified service catalog below.
-          </Inline>
-        </Text>
-      </Surface>
-
-      {/* Main Service List with search and cards */}
-      <ServiceList />
-    </Surface>
-  );
-};
-
+export function ServicesPage() {
+  const [params] = useSearchParams(); const query = params.get('q') ?? '';
+  return <div className="catalogue-page"><header className="page-heading"><div className="container"><p className="eyebrow">THE SERVICE DIRECTORY</p><h1>Financial & Compliance Services</h1><p>Find the support your business needs. Review service fees, document requirements and the next steps in one place.</p></div></header><div className="container section-space"><ServiceList key={query} initialSearch={query}/></div></div>;
+}
 export default ServicesPage;
-

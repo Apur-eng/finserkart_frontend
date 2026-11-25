@@ -1,6 +1,5 @@
+import { Panel, Title } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
 import {
   BarChart3,
   PieChart,
@@ -13,15 +12,15 @@ export const FranchiseReportsPage: React.FC = () => {
   const franchise = INITIAL_FRANCHISE_PROFILE;
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "77.5rem", margin: '0 auto' }}>
       {/* Header */}
-      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
-        <Heading level={1}>
-          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
+      <Surface style={{ marginBottom: "1.5rem" }}>
+        <Title level={1}>
+          <Inline style={{ fontSize: "1.625rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.02em' }}>
             Business Performance &amp; Reports
           </Inline>
-        </Heading>
-        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+        </Title>
+        <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginTop: "0.25rem", margin: 0 }}>
           Regional territory metrics, monthly revenue trends, service domain distribution, and agent performance cohorts.
         </p>
       </Surface>
@@ -31,55 +30,55 @@ export const FranchiseReportsPage: React.FC = () => {
         style={{
           display: 'grid',
           gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 15rem), 1fr))",
-          gap: "var(--spacing-fsk-2)",
-          marginBottom: "var(--spacing-fsk-20)",
+          gap: "1.25rem",
+          marginBottom: "clamp(1rem, 2.1538461538461537vw, 1.75rem)",
         }}
       >
-        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Average Order Value</Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-29)" }}>₹5,524</Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-39)", marginTop: "var(--spacing-fsk-29)", fontWeight: 600, display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
+        <Panel elevation="low" padding={4} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+          <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", fontWeight: 600 }}>Average Order Value</Surface>
+          <Surface style={{ fontSize: "clamp(1.5rem, 2.1538461538461537vw, 1.75rem)", fontWeight: 800, color: "var(--navy)", marginTop: "0.25rem" }}>₹5,524</Surface>
+          <Surface style={{ fontSize: "0.8125rem", color: "#16a34a", marginTop: "0.25rem", fontWeight: 600, display: 'flex', alignItems: 'center', gap: "0.25rem" }}>
             <TrendingUp size={13} /> +12% vs state average
           </Surface>
-        </Card>
+        </Panel>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Filing Completion Rate</Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-70)", marginTop: "var(--spacing-fsk-29)" }}>96.4%</Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-29)" }}>
+        <Panel elevation="low" padding={4} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+          <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", fontWeight: 600 }}>Filing Completion Rate</Surface>
+          <Surface style={{ fontSize: "clamp(1.5rem, 2.1538461538461537vw, 1.75rem)", fontWeight: 800, color: "#0284c7", marginTop: "0.25rem" }}>96.4%</Surface>
+          <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", marginTop: "0.25rem" }}>
             3.8 days median turnaround
           </Surface>
-        </Card>
+        </Panel>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Active Agent Productivity</Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-41)", marginTop: "var(--spacing-fsk-29)" }}>7.8 orders</Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-29)" }}>
+        <Panel elevation="low" padding={4} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+          <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", fontWeight: 600 }}>Active Agent Productivity</Surface>
+          <Surface style={{ fontSize: "clamp(1.5rem, 2.1538461538461537vw, 1.75rem)", fontWeight: 800, color: "#7c3aed", marginTop: "0.25rem" }}>7.8 orders</Surface>
+          <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", marginTop: "0.25rem" }}>
             Per active partner per month
           </Surface>
-        </Card>
+        </Panel>
 
-        <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600 }}>Gross Network GMV</Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-65)", marginTop: "var(--spacing-fsk-29)" }}>
+        <Panel elevation="low" padding={4} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+          <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", fontWeight: 600 }}>Gross Network GMV</Surface>
+          <Surface style={{ fontSize: "clamp(1.5rem, 2.1538461538461537vw, 1.75rem)", fontWeight: 800, color: "var(--teal)", marginTop: "0.25rem" }}>
             ₹{franchise.grossRevenue.toLocaleString('en-IN')}
           </Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-65)", marginTop: "var(--spacing-fsk-29)", fontWeight: 600 }}>
+          <Surface style={{ fontSize: "0.8125rem", color: "var(--teal)", marginTop: "0.25rem", fontWeight: 600 }}>
             ₹{franchise.franchiseCommissionEarned.toLocaleString('en-IN')} net override
           </Surface>
-        </Card>
+        </Panel>
       </Surface>
 
       {/* Grid: Monthly Performance & Service Domain Mix */}
-      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 22.5rem), 1fr))", gap: "var(--spacing-fsk-26)" }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 22.5rem), 1fr))", gap: "1.5rem" }}>
         {/* Monthly Revenue Breakdown */}
-        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-5)" }}>
-            <BarChart3 size={18} color="var(--color-fsk-70)" />
-            <Inline style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Monthly Revenue Progression (2026)</Inline>
+        <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.5rem", marginBottom: "1rem" }}>
+            <BarChart3 size={18} color="#0284c7" />
+            <Inline style={{ fontSize: "1rem", fontWeight: 700, color: "var(--navy)" }}>Monthly Revenue Progression (2026)</Inline>
           </Surface>
 
-          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-23)" }}>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "0.875rem" }}>
             {[
               { month: 'October 2026', orders: 22, gmv: 124500, override: 12450, pct: 100 },
               { month: 'September 2026', orders: 18, gmv: 98000, override: 9800, pct: 78 },
@@ -87,50 +86,50 @@ export const FranchiseReportsPage: React.FC = () => {
               { month: 'July 2026', orders: 8, gmv: 44000, override: 4400, pct: 35 },
             ].map((m) => (
               <Surface key={m.month}>
-                <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-17)", fontSize: "var(--font-fsk-14)" }}>
-                  <Inline style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>{m.month}</Inline>
-                  <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-8)" }}>
-                    <Inline style={{ color: "var(--color-fsk-9)" }}>{m.orders} filings</Inline>
-                    <strong style={{ color: "var(--color-fsk-70)" }}>₹{m.gmv.toLocaleString('en-IN')}</strong>
+                <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "0.375rem", fontSize: "0.8125rem" }}>
+                  <Inline style={{ fontWeight: 600, color: "var(--navy)" }}>{m.month}</Inline>
+                  <Surface style={{ display: 'flex', gap: "0.75rem" }}>
+                    <Inline style={{ color: "var(--muted)" }}>{m.orders} filings</Inline>
+                    <strong style={{ color: "#0284c7" }}>₹{m.gmv.toLocaleString('en-IN')}</strong>
                   </Surface>
                 </Surface>
-                <Surface style={{ width: '100%', height: "var(--spacing-fsk-12)", background: "var(--color-fsk-46)", borderRadius: "var(--radius-fsk-48)", overflow: 'hidden' }}>
-                  <Surface style={{ width: `${m.pct}%`, height: '100%', background: "var(--color-fsk-70)", borderRadius: "var(--radius-fsk-48)" }} />
+                <Surface style={{ width: '100%', height: "0.5rem", background: "var(--sage-light)", borderRadius: "0.25rem", overflow: 'hidden' }}>
+                  <Surface style={{ width: `${m.pct}%`, height: '100%', background: "#0284c7", borderRadius: "0.25rem" }} />
                 </Surface>
               </Surface>
             ))}
           </Surface>
-        </Card>
+        </Panel>
 
         {/* Service Category Contribution */}
-        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-5)" }}>
-            <PieChart size={18} color="var(--color-fsk-65)" />
-            <Inline style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Service Domain Distribution</Inline>
+        <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.5rem", marginBottom: "1rem" }}>
+            <PieChart size={18} color="var(--teal)" />
+            <Inline style={{ fontSize: "1rem", fontWeight: 700, color: "var(--navy)" }}>Service Domain Distribution</Inline>
           </Surface>
 
-          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-23)" }}>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "0.875rem" }}>
             {[
-              { name: 'Corporate Incorporation & Company Law', pct: 45, volume: '₹1,54,125', color: "var(--color-fsk-70)" },
-              { name: 'GST Registration, Filing & Advisory', pct: 30, volume: '₹1,02,750', color: "var(--color-fsk-65)" },
-              { name: 'FSSAI Licensing & Food Compliance', pct: 15, volume: '₹51,375', color: "var(--color-fsk-54)" },
-              { name: 'Trademark & Intellectual Property', pct: 10, volume: '₹34,250', color: "var(--color-fsk-41)" },
+              { name: 'Corporate Incorporation & Company Law', pct: 45, volume: '₹1,54,125', color: "#0284c7" },
+              { name: 'GST Registration, Filing & Advisory', pct: 30, volume: '₹1,02,750', color: "var(--teal)" },
+              { name: 'FSSAI Licensing & Food Compliance', pct: 15, volume: '₹51,375', color: "#d97706" },
+              { name: 'Trademark & Intellectual Property', pct: 10, volume: '₹34,250', color: "#7c3aed" },
             ].map((cat) => (
               <Surface key={cat.name}>
-                <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-17)", fontSize: "var(--font-fsk-14)" }}>
-                  <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-17)" }}>
-                    <Surface style={{ width: "var(--spacing-fsk-35)", height: "var(--spacing-fsk-35)", borderRadius: "var(--radius-fsk-135)", background: cat.color }} />
-                    <Inline style={{ fontWeight: 600, color: "var(--color-fsk-7)" }}>{cat.name}</Inline>
+                <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "0.375rem", fontSize: "0.8125rem" }}>
+                  <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.375rem" }}>
+                    <Surface style={{ width: "0.625rem", height: "0.625rem", borderRadius: "0.125rem", background: cat.color }} />
+                    <Inline style={{ fontWeight: 600, color: "var(--navy)" }}>{cat.name}</Inline>
                   </Surface>
-                  <strong style={{ color: "var(--color-fsk-7)" }}>{cat.pct}% ({cat.volume})</strong>
+                  <strong style={{ color: "var(--navy)" }}>{cat.pct}% ({cat.volume})</strong>
                 </Surface>
-                <Surface style={{ width: '100%', height: "var(--spacing-fsk-12)", background: "var(--color-fsk-46)", borderRadius: "var(--radius-fsk-48)", overflow: 'hidden' }}>
-                  <Surface style={{ width: `${cat.pct}%`, height: '100%', background: cat.color, borderRadius: "var(--radius-fsk-48)" }} />
+                <Surface style={{ width: '100%', height: "0.5rem", background: "var(--sage-light)", borderRadius: "0.25rem", overflow: 'hidden' }}>
+                  <Surface style={{ width: `${cat.pct}%`, height: '100%', background: cat.color, borderRadius: "0.25rem" }} />
                 </Surface>
               </Surface>
             ))}
           </Surface>
-        </Card>
+        </Panel>
       </Surface>
     </Surface>
   );

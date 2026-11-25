@@ -1,7 +1,6 @@
+import { Panel, Title } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
 import { StatusTag as Badge } from '../../components/StatusTag';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
 import {
   ArrowLeft,
   Briefcase,
@@ -20,33 +19,33 @@ export const AgentApplicationDetailsPage: React.FC = () => {
     INITIAL_AGENT_APPLICATIONS.find((a) => a.id === id) || INITIAL_AGENT_APPLICATIONS[0];
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-78)", margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "62.5rem", margin: '0 auto' }}>
       {/* Back button & Header */}
-      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
+      <Surface style={{ marginBottom: "1.5rem" }}>
         <button
           type="button"
           onClick={() => navigate('/agent/applications')}
           style={{
             background: 'none',
             border: 'none',
-            color: "var(--color-fsk-65)",
-            fontSize: "var(--font-fsk-14)",
+            color: "var(--teal)",
+            fontSize: "0.8125rem",
             fontWeight: 600,
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-17)",
+            gap: "0.375rem",
             padding: 0,
-            marginBottom: "var(--spacing-fsk-8)",
+            marginBottom: "0.75rem",
           }}
         >
           <ArrowLeft size={16} /> Back to Applications
         </button>
 
-        <Surface style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: "var(--spacing-fsk-5)" }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: "1rem" }}>
           <Surface>
-            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-17)" }}>
-              <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-65)" }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.5rem", marginBottom: "0.375rem" }}>
+              <Inline style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--teal)" }}>
                 Application Dossier #{application.id}
               </Inline>
               <Badge
@@ -55,98 +54,98 @@ export const AgentApplicationDetailsPage: React.FC = () => {
               />
             </Surface>
 
-            <Heading level={1}>
-              <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
+            <Title level={1}>
+              <Inline style={{ fontSize: "1.625rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.02em' }}>
                 {application.serviceName}
               </Inline>
-            </Heading>
+            </Title>
           </Surface>
 
-          <Card
+          <Panel
             elevation="low"
             padding={3}
             style={{
-              background: "var(--color-fsk-64)",
-              border: "var(--spacing-fsk-22) solid var(--color-fsk-81)",
-              borderRadius: "var(--radius-fsk-68)",
+              background: "#ecfdf5",
+              border: "0.0625rem solid #a7f3d0",
+              borderRadius: "0.625rem",
               textAlign: 'right',
             }}
           >
-            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-82)", fontWeight: 700, textTransform: 'uppercase' }}>
+            <Surface style={{ fontSize: "0.8125rem", color: "#047857", fontWeight: 700, textTransform: 'uppercase' }}>
               Your Commission
             </Surface>
-            <Surface style={{ fontSize: "var(--font-fsk-83)", fontWeight: 800, color: "var(--color-fsk-84)" }}>
+            <Surface style={{ fontSize: "1.375rem", fontWeight: 800, color: "#065f46" }}>
               ₹{application.agentCommission}
             </Surface>
             <Badge label={application.commissionStatus} variant="green" />
-          </Card>
+          </Panel>
         </Surface>
       </Surface>
 
       {/* Grid: Client info & CA info */}
-      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 20rem), 1fr))", gap: "var(--spacing-fsk-2)", marginBottom: "var(--spacing-fsk-20)" }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 20rem), 1fr))", gap: "1.25rem", marginBottom: "clamp(1rem, 2.1538461538461537vw, 1.75rem)" }}>
         {/* Customer Info */}
-        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-23)" }}>
-            <UserCheck size={18} color="var(--color-fsk-65)" />
-            <Inline style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Client Information</Inline>
+        <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.5rem", marginBottom: "0.875rem" }}>
+            <UserCheck size={18} color="var(--teal)" />
+            <Inline style={{ fontSize: "0.9375rem", fontWeight: 700, color: "var(--navy)" }}>Client Information</Inline>
           </Surface>
 
-          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-35)", fontSize: "var(--font-fsk-14)" }}>
-            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingBottom: "var(--spacing-fsk-12)" }}>
-              <Inline style={{ color: "var(--color-fsk-9)" }}>Client Name</Inline>
-              <strong style={{ color: "var(--color-fsk-7)" }}>{application.customerName}</strong>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "0.625rem", fontSize: "0.8125rem" }}>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "0.0625rem solid var(--sage-light)", paddingBottom: "0.5rem" }}>
+              <Inline style={{ color: "var(--muted)" }}>Client Name</Inline>
+              <strong style={{ color: "var(--navy)" }}>{application.customerName}</strong>
             </Surface>
-            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingBottom: "var(--spacing-fsk-12)" }}>
-              <Inline style={{ color: "var(--color-fsk-9)" }}>Enterprise</Inline>
-              <Inline style={{ color: "var(--color-fsk-7)" }}>{application.businessName}</Inline>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "0.0625rem solid var(--sage-light)", paddingBottom: "0.5rem" }}>
+              <Inline style={{ color: "var(--muted)" }}>Enterprise</Inline>
+              <Inline style={{ color: "var(--navy)" }}>{application.businessName}</Inline>
             </Surface>
-            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingBottom: "var(--spacing-fsk-12)" }}>
-              <Inline style={{ color: "var(--color-fsk-9)" }}>Customer ID</Inline>
-              <Inline style={{ color: "var(--color-fsk-65)", fontFamily: 'monospace' }}>{application.customerId}</Inline>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "0.0625rem solid var(--sage-light)", paddingBottom: "0.5rem" }}>
+              <Inline style={{ color: "var(--muted)" }}>Customer ID</Inline>
+              <Inline style={{ color: "var(--teal)", fontFamily: 'monospace' }}>{application.customerId}</Inline>
             </Surface>
-            <Surface style={{ display: 'flex', justifyContent: 'space-between', paddingTop: "var(--spacing-fsk-47)" }}>
-              <Inline style={{ color: "var(--color-fsk-9)" }}>Submission Date</Inline>
-              <Inline style={{ color: "var(--color-fsk-7)" }}>{application.date}</Inline>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', paddingTop: "0.125rem" }}>
+              <Inline style={{ color: "var(--muted)" }}>Submission Date</Inline>
+              <Inline style={{ color: "var(--navy)" }}>{application.date}</Inline>
             </Surface>
           </Surface>
-        </Card>
+        </Panel>
 
         {/* Assigned CA Desk */}
-        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-23)" }}>
-            <Briefcase size={18} color="var(--color-fsk-41)" />
-            <Inline style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)" }}>Assigned Chartered Accountant</Inline>
+        <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.5rem", marginBottom: "0.875rem" }}>
+            <Briefcase size={18} color="#7c3aed" />
+            <Inline style={{ fontSize: "0.9375rem", fontWeight: 700, color: "var(--navy)" }}>Assigned Chartered Accountant</Inline>
           </Surface>
 
-          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-35)", fontSize: "var(--font-fsk-14)" }}>
-            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingBottom: "var(--spacing-fsk-12)" }}>
-              <Inline style={{ color: "var(--color-fsk-9)" }}>Professional</Inline>
-              <strong style={{ color: "var(--color-fsk-7)" }}>{application.caName || 'Lucknow Regulatory Desk'}</strong>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "0.625rem", fontSize: "0.8125rem" }}>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "0.0625rem solid var(--sage-light)", paddingBottom: "0.5rem" }}>
+              <Inline style={{ color: "var(--muted)" }}>Professional</Inline>
+              <strong style={{ color: "var(--navy)" }}>{application.caName || 'Lucknow Regulatory Desk'}</strong>
             </Surface>
-            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingBottom: "var(--spacing-fsk-12)" }}>
-              <Inline style={{ color: "var(--color-fsk-9)" }}>Current Stage</Inline>
-              <Inline style={{ color: "var(--color-fsk-7)", fontWeight: 600 }}>Stage {application.currentStage} of 5</Inline>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "0.0625rem solid var(--sage-light)", paddingBottom: "0.5rem" }}>
+              <Inline style={{ color: "var(--muted)" }}>Current Stage</Inline>
+              <Inline style={{ color: "var(--navy)", fontWeight: 600 }}>Stage {application.currentStage} of 5</Inline>
             </Surface>
-            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingBottom: "var(--spacing-fsk-12)" }}>
-              <Inline style={{ color: "var(--color-fsk-9)" }}>Filing Priority</Inline>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', borderBottom: "0.0625rem solid var(--sage-light)", paddingBottom: "0.5rem" }}>
+              <Inline style={{ color: "var(--muted)" }}>Filing Priority</Inline>
               <Badge label="Standard Processing" variant="blue" />
             </Surface>
-            <Surface style={{ display: 'flex', justifyContent: 'space-between', paddingTop: "var(--spacing-fsk-47)" }}>
-              <Inline style={{ color: "var(--color-fsk-9)" }}>Order Fee</Inline>
-              <strong style={{ color: "var(--color-fsk-7)" }}>₹{application.amount.toLocaleString('en-IN')}</strong>
+            <Surface style={{ display: 'flex', justifyContent: 'space-between', paddingTop: "0.125rem" }}>
+              <Inline style={{ color: "var(--muted)" }}>Order Fee</Inline>
+              <strong style={{ color: "var(--navy)" }}>₹{application.amount.toLocaleString('en-IN')}</strong>
             </Surface>
           </Surface>
-        </Card>
+        </Panel>
       </Surface>
 
       {/* Workflow Milestone Progress */}
-      <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-        <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-5)" }}>
+      <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+        <Surface style={{ fontSize: "1rem", fontWeight: 700, color: "var(--navy)", marginBottom: "1rem" }}>
           Filing Milestone Overview
         </Surface>
 
-        <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-5)" }}>
+        <Surface style={{ display: 'flex', flexDirection: 'column', gap: "1rem" }}>
           {[
             { stage: 1, title: 'Application Intake & KYC Verification', desc: 'Client information and advance verified.', completed: application.currentStage >= 1 },
             { stage: 2, title: 'Document Inspection by Operations', desc: 'PAN, Aadhaar and business proofs verified.', completed: application.currentStage >= 2 },
@@ -154,33 +153,33 @@ export const AgentApplicationDetailsPage: React.FC = () => {
             { stage: 4, title: 'Government Portal Lodgement & Acknowledgement', desc: 'Submitted to central ministry/department.', completed: application.currentStage >= 4 },
             { stage: 5, title: 'Certificate Handover & Closure', desc: 'Approved certificate handed over to client.', completed: application.currentStage >= 5 },
           ].map((m) => (
-            <Surface key={m.stage} style={{ display: 'flex', alignItems: 'flex-start', gap: "var(--spacing-fsk-23)" }}>
+            <Surface key={m.stage} style={{ display: 'flex', alignItems: 'flex-start', gap: "0.875rem" }}>
               <Surface
                 style={{
-                  width: "var(--spacing-fsk-62)",
-                  height: "var(--spacing-fsk-62)",
+                  width: "2rem",
+                  height: "2rem",
                   borderRadius: '50%',
-                  background: m.completed ? "var(--color-fsk-64)" : "var(--color-fsk-46)",
-                  color: m.completed ? "var(--color-fsk-65)" : "var(--color-fsk-57)",
-                  border: m.completed ? "var(--spacing-fsk-47) solid var(--color-fsk-164)" : "var(--spacing-fsk-47) solid var(--color-fsk-59)",
+                  background: m.completed ? "#ecfdf5" : "var(--sage-light)",
+                  color: m.completed ? "var(--teal)" : "#687d93",
+                  border: m.completed ? "0.125rem solid #059669" : "0.125rem solid #cbd5e1",
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontWeight: 700,
-                  fontSize: "var(--font-fsk-14)",
+                  fontSize: "0.8125rem",
                   flexShrink: 0,
                 }}
               >
                 {m.completed ? <CheckCircle2 size={16} /> : m.stage}
               </Surface>
               <Surface style={{ flex: 1 }}>
-                <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)" }}>{m.title}</Surface>
-                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>{m.desc}</Surface>
+                <Surface style={{ fontSize: "0.875rem", fontWeight: 700, color: "var(--navy)" }}>{m.title}</Surface>
+                <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", marginTop: "0.125rem" }}>{m.desc}</Surface>
               </Surface>
             </Surface>
           ))}
         </Surface>
-      </Card>
+      </Panel>
     </Surface>
   );
 };

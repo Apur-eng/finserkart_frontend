@@ -1,8 +1,6 @@
+import { Panel, Title, Field } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
 import { StatusTag as Badge } from '../../components/StatusTag';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { TextInput } from '@astryxdesign/core/TextInput';
 import {
   Star,
   UserCheck
@@ -26,23 +24,23 @@ export const CoordinatorCAManagementPage: React.FC = () => {
   }, [cas, searchQuery]);
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "77.5rem", margin: '0 auto' }}>
       {/* Header */}
-      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
-        <Heading level={1}>
-          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
+      <Surface style={{ marginBottom: "1.5rem" }}>
+        <Title level={1}>
+          <Inline style={{ fontSize: "1.625rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.02em' }}>
             CA Capacity Management &amp; Workload Matrix
           </Inline>
-        </Heading>
-        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+        </Title>
+        <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginTop: "0.25rem", margin: 0 }}>
           Supervise active professional caseloads, discipline specializations, performance ratings, and availability status.
         </p>
       </Surface>
 
       {/* Search Bar */}
-      <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
-        <Surface style={{ maxWidth: "var(--spacing-fsk-50)" }}>
-          <TextInput
+      <Panel elevation="low" padding={4} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", marginBottom: "1.5rem" }}>
+        <Surface style={{ maxWidth: "26.25rem" }}>
+          <Field
             label="Search CA Matrix"
             placeholder="Search by name, ICAI number, discipline or city..."
             value={searchQuery}
@@ -50,71 +48,71 @@ export const CoordinatorCAManagementPage: React.FC = () => {
             width="100%"
           />
         </Surface>
-      </Card>
+      </Panel>
 
       {/* CA Table */}
-      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+      <Panel elevation="low" padding={0} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", overflow: 'hidden' }}>
         <Surface style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "0.8125rem" }}>
             <thead>
-              <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Chartered Accountant</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>ICAI Reg Number</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Specialization</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Active Caseload</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Rating</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Location</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>Availability</th>
+              <tr style={{ background: "var(--cream)", borderBottom: "0.0625rem solid var(--border)", color: "var(--muted)", fontSize: "0.8125rem", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Chartered Accountant</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>ICAI Reg Number</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Specialization</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Active Caseload</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Rating</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Location</th>
+                <th style={{ padding: "0.875rem 1.125rem", textAlign: 'right' }}>Availability</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((ca) => (
-                <tr key={ca.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
-                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
-                      <Surface style={{ width: "var(--spacing-fsk-52)", height: "var(--spacing-fsk-52)", borderRadius: '50%', background: "var(--color-fsk-53)", color: "var(--color-fsk-41)", display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
+                <tr key={ca.id} style={{ borderBottom: "0.0625rem solid var(--sage-light)" }}>
+                  <td style={{ padding: "0.875rem 1.125rem" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem" }}>
+                      <Surface style={{ width: "2.125rem", height: "2.125rem", borderRadius: '50%', background: "#f5f3ff", color: "#7c3aed", display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
                         <UserCheck size={16} />
                       </Surface>
-                      <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{ca.name}</Surface>
+                      <Surface style={{ fontWeight: 700, color: "var(--navy)" }}>{ca.name}</Surface>
                     </Surface>
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", fontFamily: 'monospace', color: "var(--color-fsk-41)", fontWeight: 600 }}>
+                  <td style={{ padding: "0.875rem 1.125rem", fontFamily: 'monospace', color: "#7c3aed", fontWeight: 600 }}>
                     {ca.membershipNo}
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-25)" }}>
+                  <td style={{ padding: "0.875rem 1.125rem", color: "#334155" }}>
                     {ca.specialization}
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
-                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)" }}>
-                      <strong style={{ color: "var(--color-fsk-7)" }}>{ca.activeCaseload} / {ca.capacityLimit}</strong>
-                      <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>active</Inline>
+                  <td style={{ padding: "0.875rem 1.125rem" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.5rem" }}>
+                      <strong style={{ color: "var(--navy)" }}>{ca.activeCaseload} / {ca.capacityLimit}</strong>
+                      <Inline style={{ fontSize: "0.8125rem", color: "var(--muted)" }}>active</Inline>
                     </Surface>
-                    <Surface style={{ width: "var(--spacing-fsk-109)", height: "var(--spacing-fsk-17)", background: "var(--color-fsk-21)", borderRadius: "var(--radius-fsk-110)", marginTop: "var(--spacing-fsk-29)", overflow: 'hidden' }}>
+                    <Surface style={{ width: "7.5rem", height: "0.375rem", background: "var(--border)", borderRadius: "0.1875rem", marginTop: "0.25rem", overflow: 'hidden' }}>
                       <Surface
                         style={{
                           width: `${(ca.activeCaseload / ca.capacityLimit) * 100}%`,
                           height: '100%',
-                          background: ca.activeCaseload >= ca.capacityLimit - 1 ? "var(--color-fsk-54)" : "var(--color-fsk-65)",
-                          borderRadius: "var(--radius-fsk-110)",
+                          background: ca.activeCaseload >= ca.capacityLimit - 1 ? "#d97706" : "var(--teal)",
+                          borderRadius: "0.1875rem",
                         }}
                       />
                     </Surface>
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
-                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)", fontWeight: 700, color: "var(--color-fsk-54)" }}>
-                      <Star size={13} fill="var(--color-fsk-54)" /> {ca.rating}
+                  <td style={{ padding: "0.875rem 1.125rem" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.25rem", fontWeight: 700, color: "#d97706" }}>
+                      <Star size={13} fill="#d97706" /> {ca.rating}
                     </Surface>
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-9)" }}>
+                  <td style={{ padding: "0.875rem 1.125rem", color: "var(--muted)" }}>
                     {ca.city}
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>
+                  <td style={{ padding: "0.875rem 1.125rem", textAlign: 'right' }}>
                     <Badge
                       label={ca.availability}
                       variant={ca.availability === 'Available' ? 'green' : 'orange'}
@@ -125,7 +123,7 @@ export const CoordinatorCAManagementPage: React.FC = () => {
             </tbody>
           </table>
         </Surface>
-      </Card>
+      </Panel>
     </Surface>
   );
 };

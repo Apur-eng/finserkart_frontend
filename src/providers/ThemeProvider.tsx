@@ -1,19 +1,4 @@
-import { Theme } from '@astryxdesign/core/theme';
-import React, { type ReactNode } from 'react';
-import { themes, defaultThemeSlug } from '../astryx-themes';
-
-interface ThemeProviderProps {
-  children: ReactNode;
-  mode?: 'light' | 'dark' | 'system';
-}
-
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, mode = 'light' }) => {
-  return (
-    <Theme theme={themes[defaultThemeSlug]} mode={mode}>
-      {children}
-    </Theme>
-  );
-};
-
+import type { ReactNode } from 'react';
+/** Stable application/test boundary; appearance is now ordinary CSS. */
+export function ThemeProvider({ children }: { children: ReactNode; mode?: 'light' | 'dark' | 'system' }) { return <>{children}</>; }
 export default ThemeProvider;
-

@@ -1,0 +1,121 @@
+@import "lenis/dist/lenis.css";
+
+/**
+ * Finservkart Motion & Interaction Design Tokens
+ * Refined, hardware-accelerated transitions inspired by Averra Labs,
+ * tailored for high-trust financial services workflows.
+ */
+
+:root {
+  /* Motion Duration Tokens (ms) */
+  --duration-instant: 150ms;
+  --duration-fast: 250ms;
+  --duration-normal: 400ms;
+  --duration-entrance: 550ms;
+  --duration-hero: 650ms;
+
+  /* Premium Easing Curves (Cubic Beziers) */
+  /* Fluid deceleration for UI elements settling into place */
+  --ease-out-fluid: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Smooth natural standard curve for hover & interactive state transitions */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  /* Gentle acceleration for exits */
+  --ease-in-soft: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Hover Elevation & Shadow Transitions */
+  --shadow-resting: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-hover-lift: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+  --shadow-focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.35);
+
+  /* Interactive Transforms */
+  --transform-hover-lift: translateY(-3px);
+  --transform-press-scale: scale(0.985);
+}
+
+/* CSS Transition Utility Classes */
+
+/* Interactive card hover lift with subtle shadow bloom */
+.fsk-motion-card {
+  transition: transform var(--duration-fast) var(--ease-out-fluid),
+              box-shadow var(--duration-fast) var(--ease-out-fluid),
+              border-color var(--duration-fast) var(--ease-standard);
+  will-change: transform, box-shadow;
+}
+
+.fsk-motion-card:hover {
+  transform: var(--transform-hover-lift);
+  box-shadow: var(--shadow-hover-lift);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.fsk-motion-card:active {
+  transform: var(--transform-press-scale);
+}
+
+/* Accessible, visible focus indicators for keyboard navigation */
+.fsk-motion-focus-visible:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
+  transition: box-shadow var(--duration-instant) var(--ease-standard);
+}
+
+/* Button tactile feedback */
+.fsk-motion-btn {
+  transition: transform var(--duration-instant) var(--ease-standard),
+              background-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard);
+  will-change: transform;
+}
+
+.fsk-motion-btn:hover {
+  transform: translateY(-1px);
+}
+
+.fsk-motion-btn:active {
+  transform: var(--transform-press-scale);
+}
+
+/* Hardware accelerated layer helper */
+.fsk-hardware-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Lenis smooth scrolling container standard styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Strict Reduced Motion Accessibility Overrides */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fsk-motion-card:hover,
+  .fsk-motion-btn:hover {
+    transform: none !important;
+  }
+}

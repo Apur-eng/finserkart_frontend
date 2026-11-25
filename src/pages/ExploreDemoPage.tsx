@@ -1,10 +1,5 @@
+import { ActionButton, Panel, Title, Row, Typography, Stack } from '../components/ui';
 import React from 'react';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { HStack } from '@astryxdesign/core/HStack';
-import { Text } from '@astryxdesign/core/Text';
-import { VStack } from '@astryxdesign/core/VStack';
 import {
   ArrowRight,
   Briefcase,
@@ -44,27 +39,27 @@ export const ExploreDemoPage: React.FC = () => {
   const { isDemoModeEnabled, enterDemo, currentRole } = useDemo();
 
   return (
-    <VStack gap={0} minHeight="100%">
+    <Stack gap={0} minHeight="100%">
       {/* Hero Section */}
-      <VStack
+      <Stack
         as="section"
         paddingInline={4}
         paddingBlock={10}
         hAlign="center"
         style={{
-          background: 'linear-gradient(180deg, var(--color-background-muted) 0%, var(--color-background-surface) 100%)',
-          borderBottom: '1px solid var(--color-background-muted)',
+          background: 'linear-gradient(180deg, var(--sage-light) 0%, var(--white) 100%)',
+          borderBottom: '1px solid var(--sage-light)',
         }}
       >
-        <VStack gap={4} width="100%" maxWidth={960} hAlign="center" style={{ textAlign: 'center' }}>
-          <HStack gap={2} vAlign="center">
+        <Stack gap={4} width="100%" maxWidth={960} hAlign="center" style={{ textAlign: 'center' }}>
+          <Row gap={2} vAlign="center">
             <span
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
-                background: 'var(--color-fsk-info-subtle)',
-                color: 'var(--color-accent)',
+                background: 'var(--status-info-subtle)',
+                color: 'var(--blue)',
                 borderRadius: '9999px',
                 padding: '4px 14px',
                 fontSize: '0.8125rem',
@@ -76,58 +71,58 @@ export const ExploreDemoPage: React.FC = () => {
               <Sparkles size={14} aria-hidden="true" />
               Interactive Client Demo
             </span>
-          </HStack>
+          </Row>
 
-          <Heading level={1} type="display-2" weight="bold">
+          <Title level={1} type="display-2" weight="bold">
             Explore Finservkart
-          </Heading>
+          </Title>
 
-          <Text as="p" type="large" color="secondary" style={{ maxWidth: 680 }}>
+          <Typography as="p" type="large" color="secondary" style={{ maxWidth: 680 }}>
             Experience the platform from every perspective.
-          </Text>
+          </Typography>
 
           <div
             style={{
-              marginTop: 'var(--spacing-2)',
-              padding: 'var(--spacing-3) var(--spacing-5)',
-              background: 'var(--color-background-surface)',
-              borderRadius: 'var(--radius-container)',
-              border: '1px solid var(--color-background-muted)',
-              boxShadow: 'var(--shadow-fsk-card)',
+              marginTop: '0.5rem',
+              padding: '0.75rem 1.25rem',
+              background: 'var(--white)',
+              borderRadius: 'var(--radius-panel)',
+              border: '1px solid var(--sage-light)',
+              boxShadow: 'var(--shadow-panel)',
               maxWidth: 720,
             }}
           >
-            <Text size="sm" color="secondary">
+            <Typography size="sm" color="secondary">
               Select any stakeholder role below to explore realistic workflows and dashboards powered by fictional sample data.
               No credentials or registration required.
-            </Text>
+            </Typography>
           </div>
 
           {!isDemoModeEnabled && (
             <div
               style={{
-                padding: 'var(--spacing-3) var(--spacing-4)',
+                padding: '0.75rem 1rem',
                 background: 'rgba(239, 68, 68, 0.1)',
-                border: '1px solid var(--color-state-error)',
-                borderRadius: 'var(--radius-element)',
+                border: '1px solid var(--status-error)',
+                borderRadius: 'var(--radius-small)',
                 color: 'var(--color-state-error)',
               }}
             >
-              <Text weight="bold" size="sm">
+              <Typography weight="bold" size="sm">
                 Demo mode is currently disabled by configuration (VITE_DEMO_MODE=false). Please use verified credentials to log in.
-              </Text>
+              </Typography>
             </div>
           )}
-        </VStack>
-      </VStack>
+        </Stack>
+      </Stack>
 
       {/* Role Cards Grid */}
-      <VStack
+      <Stack
         as="section"
         paddingInline={4}
         paddingBlock={8}
         hAlign="center"
-        style={{ flex: 1, background: 'var(--color-background-surface)' }}
+        style={{ flex: 1, background: 'var(--white)' }}
       >
         <div
           style={{
@@ -135,7 +130,7 @@ export const ExploreDemoPage: React.FC = () => {
             maxWidth: 1240,
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
-            gap: 'var(--spacing-5)',
+            gap: '1.25rem',
           }}
         >
           {DEMO_ROLES_LIST.map((role) => {
@@ -144,7 +139,7 @@ export const ExploreDemoPage: React.FC = () => {
             const features = roleFeatures[role.id] || [];
 
             return (
-              <Card
+              <Panel as="article"
                 key={role.id}
                 elevation="low"
                 padding={6}
@@ -152,25 +147,25 @@ export const ExploreDemoPage: React.FC = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  borderRadius: 'var(--radius-container)',
+                  borderRadius: 'var(--radius-panel)',
                   border: isCurrentActive
-                    ? '2px solid var(--color-accent)'
-                    : '1px solid var(--color-background-muted)',
-                  background: 'var(--color-background-surface)',
+                    ? '2px solid var(--blue)'
+                    : '1px solid var(--sage-light)',
+                  background: 'var(--white)',
                   transition: 'transform 0.2s, box-shadow 0.2s',
                   position: 'relative',
                 }}
               >
-                <VStack gap={4}>
-                  {/* Card Header */}
-                  <HStack hAlign="between" vAlign="center">
+                <Stack gap={4}>
+                  {/* Panel Header */}
+                  <Row hAlign="between" vAlign="center">
                     <div
                       style={{
                         width: 48,
                         height: 48,
-                        borderRadius: 'var(--radius-element)',
-                        background: 'var(--color-fsk-info-subtle)',
-                        color: 'var(--color-accent)',
+                        borderRadius: 'var(--radius-small)',
+                        background: 'var(--status-info-subtle)',
+                        color: 'var(--blue)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -184,21 +179,21 @@ export const ExploreDemoPage: React.FC = () => {
                         fontSize: '0.75rem',
                         fontWeight: 600,
                         padding: '2px 8px',
-                        borderRadius: 'var(--radius-element)',
-                        background: 'var(--color-background-muted)',
-                        color: 'var(--color-text-primary)',
+                        borderRadius: 'var(--radius-small)',
+                        background: 'var(--sage-light)',
+                        color: 'var(--navy)',
                       }}
                     >
                       {role.badge}
                     </span>
-                  </HStack>
+                  </Row>
 
                   {/* Title & Description */}
-                  <VStack gap={2}>
-                    <HStack gap={2} vAlign="center">
-                      <Heading level={2} style={{ fontSize: '1.25rem', margin: 0 }}>
+                  <Stack gap={2}>
+                    <Row gap={2} vAlign="center">
+                      <Title level={2} style={{ fontSize: '1.25rem', margin: 0 }}>
                         {role.name}
-                      </Heading>
+                      </Title>
                       {isCurrentActive && (
                         <span
                           style={{
@@ -206,46 +201,46 @@ export const ExploreDemoPage: React.FC = () => {
                             fontWeight: 700,
                             padding: '1px 6px',
                             borderRadius: '4px',
-                            background: 'var(--color-accent)',
+                            background: 'var(--blue)',
                             color: '#ffffff',
                           }}
                         >
                           Active
                         </span>
                       )}
-                    </HStack>
+                    </Row>
 
-                    <Text as="p" color="secondary" size="sm" style={{ minHeight: '2.5rem' }}>
+                    <Typography as="p" color="secondary" size="sm" style={{ minHeight: '2.5rem' }}>
                       {role.description}
-                    </Text>
-                  </VStack>
+                    </Typography>
+                  </Stack>
 
                   {/* Key Features List */}
                   <div
                     style={{
-                      borderTop: '1px solid var(--color-background-muted)',
-                      paddingTop: 'var(--spacing-3)',
+                      borderTop: '1px solid var(--sage-light)',
+                      paddingTop: '0.75rem',
                     }}
                   >
-                    <Text type="label" size="xsm" color="secondary" style={{ marginBottom: 'var(--spacing-2)' }}>
+                    <Typography type="label" size="xsm" color="secondary" style={{ marginBottom: '0.5rem' }}>
                       SAMPLE WORKFLOWS
-                    </Text>
-                    <VStack gap={2}>
+                    </Typography>
+                    <Stack gap={2}>
                       {features.map((feat) => (
-                        <HStack key={feat} gap={2} vAlign="center">
-                          <CheckCircle2 size={14} color="var(--color-accent)" style={{ flexShrink: 0 }} />
-                          <Text size="xsm" color="secondary">
+                        <Row key={feat} gap={2} vAlign="center">
+                          <CheckCircle2 size={14} color="var(--blue)" style={{ flexShrink: 0 }} />
+                          <Typography size="xsm" color="secondary">
                             {feat}
-                          </Text>
-                        </HStack>
+                          </Typography>
+                        </Row>
                       ))}
-                    </VStack>
+                    </Stack>
                   </div>
-                </VStack>
+                </Stack>
 
-                {/* Explore Button */}
-                <div style={{ marginTop: 'var(--spacing-6)' }}>
-                  <Button
+                {/* Explore ActionButton */}
+                <div style={{ marginTop: '1.5rem' }}>
+                  <ActionButton
                     label="Explore Dashboard"
                     variant="primary"
                     width="100%"
@@ -253,12 +248,12 @@ export const ExploreDemoPage: React.FC = () => {
                     endContent={<ArrowRight size={16} aria-hidden="true" />}
                     onClick={() => enterDemo(role.id, role.dashboardPath)}
                   />
-                  <div style={{ marginTop: 'var(--spacing-2)', textAlign: 'center' }}>
+                  <div style={{ marginTop: '0.5rem', textAlign: 'center' }}>
                     <Link
                       to={`/login?role=${role.loginParam}`}
                       style={{
                         fontSize: '0.75rem',
-                        color: 'var(--color-accent)',
+                        color: 'var(--blue)',
                         textDecoration: 'none',
                         fontWeight: 600,
                       }}
@@ -267,7 +262,7 @@ export const ExploreDemoPage: React.FC = () => {
                     </Link>
                   </div>
                 </div>
-              </Card>
+              </Panel>
             );
           })}
         </div>
@@ -277,51 +272,51 @@ export const ExploreDemoPage: React.FC = () => {
           style={{
             width: '100%',
             maxWidth: 1240,
-            marginTop: 'var(--spacing-8)',
-            paddingTop: 'var(--spacing-6)',
-            borderTop: '1px solid var(--color-background-muted)',
+            marginTop: '2rem',
+            paddingTop: '1.5rem',
+            borderTop: '1px solid var(--sage-light)',
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'space-between',
             alignItems: 'center',
-            gap: 'var(--spacing-4)',
+            gap: '1rem',
           }}
         >
-          <HStack gap={3} vAlign="center">
-            <Lock size={16} color="var(--color-accent)" />
-            <Text size="sm" color="secondary">
+          <Row gap={3} vAlign="center">
+            <Lock size={16} color="var(--blue)" />
+            <Typography size="sm" color="secondary">
               Production access requires verified enterprise authentication.
-            </Text>
-          </HStack>
+            </Typography>
+          </Row>
 
-          <HStack gap={3} vAlign="center">
+          <Row gap={3} vAlign="center">
             <Link
               to="/login"
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--color-accent)',
+                color: 'var(--blue)',
                 fontWeight: 600,
                 textDecoration: 'none',
               }}
             >
               Go to Unified Login
             </Link>
-            <Text size="sm" color="secondary">•</Text>
+            <Typography size="sm" color="secondary">•</Typography>
             <Link
               to="/"
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--color-text-primary)',
+                color: 'var(--navy)',
                 fontWeight: 600,
                 textDecoration: 'none',
               }}
             >
               Back to Home
             </Link>
-          </HStack>
+          </Row>
         </div>
-      </VStack>
-    </VStack>
+      </Stack>
+    </Stack>
   );
 };
 

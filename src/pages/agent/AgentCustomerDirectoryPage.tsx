@@ -1,9 +1,6 @@
+import { ActionButton, Panel, Title, Field } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
 import { StatusTag as Badge } from '../../components/StatusTag';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { TextInput } from '@astryxdesign/core/TextInput';
 import {
   FileText,
   Mail,
@@ -37,7 +34,7 @@ export const AgentCustomerDirectoryPage: React.FC = () => {
   }, [customers, searchQuery, statusFilter]);
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "77.5rem", margin: '0 auto' }}>
       {/* Header */}
       <Surface
         style={{
@@ -45,22 +42,22 @@ export const AgentCustomerDirectoryPage: React.FC = () => {
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: "var(--spacing-fsk-26)",
-          gap: "var(--spacing-fsk-5)",
+          marginBottom: "1.5rem",
+          gap: "1rem",
         }}
       >
         <Surface>
-          <Heading level={1}>
-            <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
+          <Title level={1}>
+            <Inline style={{ fontSize: "1.625rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.02em' }}>
               Customer Directory
             </Inline>
-          </Heading>
-          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+          </Title>
+          <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginTop: "0.25rem", margin: 0 }}>
             Inspect client accounts onboarded under your referral code, manage KYC status, and monitor active orders.
           </p>
         </Surface>
 
-        <Button
+        <ActionButton
           label="Onboard New Customer"
           variant="primary"
           size="md"
@@ -70,10 +67,10 @@ export const AgentCustomerDirectoryPage: React.FC = () => {
       </Surface>
 
       {/* Filter and Search Bar */}
-      <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
-        <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-5)", alignItems: 'center', justifyContent: 'space-between' }}>
-          <Surface style={{ flex: '1', minWidth: "min(100%, var(--spacing-fsk-45))", maxWidth: "var(--spacing-fsk-50)" }}>
-            <TextInput
+      <Panel elevation="low" padding={4} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", marginBottom: "1.5rem" }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "1rem", alignItems: 'center', justifyContent: 'space-between' }}>
+          <Surface style={{ flex: '1', minWidth: "min(100%, 17.5rem)", maxWidth: "26.25rem" }}>
+            <Field
               label="Search Clients"
               placeholder="Search by client name, business, city, email or phone..."
               value={searchQuery}
@@ -82,19 +79,19 @@ export const AgentCustomerDirectoryPage: React.FC = () => {
             />
           </Surface>
 
-          <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)" }}>
+          <Surface style={{ display: 'flex', gap: "0.5rem" }}>
             {(['All', 'Verified', 'Pending'] as const).map((filter) => (
               <button
                 key={filter}
                 type="button"
                 onClick={() => setStatusFilter(filter)}
                 style={{
-                  padding: "var(--spacing-fsk-17) var(--spacing-fsk-23)",
-                  borderRadius: "var(--radius-fsk-28)",
-                  border: statusFilter === filter ? "var(--spacing-fsk-22) solid var(--color-fsk-164)" : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
-                  background: statusFilter === filter ? "var(--color-fsk-64)" : "var(--color-fsk-38)",
-                  color: statusFilter === filter ? "var(--color-fsk-65)" : "var(--color-fsk-18)",
-                  fontSize: "var(--font-fsk-14)",
+                  padding: "0.375rem 0.875rem",
+                  borderRadius: "1rem",
+                  border: statusFilter === filter ? "0.0625rem solid #059669" : "0.0625rem solid #cbd5e1",
+                  background: statusFilter === filter ? "#ecfdf5" : "var(--white)",
+                  color: statusFilter === filter ? "var(--teal)" : "var(--muted)",
+                  fontSize: "0.8125rem",
                   fontWeight: statusFilter === filter ? 600 : 500,
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
@@ -105,101 +102,101 @@ export const AgentCustomerDirectoryPage: React.FC = () => {
             ))}
           </Surface>
         </Surface>
-      </Card>
+      </Panel>
 
       {/* Customers Table */}
-      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+      <Panel elevation="low" padding={0} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", overflow: 'hidden' }}>
         <Surface style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "0.8125rem" }}>
             <thead>
-              <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Client &amp; Enterprise</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Contact Info</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Location</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Onboarded</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Active Orders</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>KYC Status</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>Actions</th>
+              <tr style={{ background: "var(--cream)", borderBottom: "0.0625rem solid var(--border)", color: "var(--muted)", fontSize: "0.8125rem", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Client &amp; Enterprise</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Contact Info</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Location</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Onboarded</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Active Orders</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>KYC Status</th>
+                <th style={{ padding: "0.875rem 1.125rem", textAlign: 'right' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredCustomers.map((cust) => (
-                <tr key={cust.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
-                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+                <tr key={cust.id} style={{ borderBottom: "0.0625rem solid var(--sage-light)" }}>
+                  <td style={{ padding: "0.875rem 1.125rem" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem" }}>
                       <Surface
                         style={{
-                          width: "var(--spacing-fsk-85)",
-                          height: "var(--spacing-fsk-85)",
+                          width: "2.25rem",
+                          height: "2.25rem",
                           borderRadius: '50%',
-                          background: "var(--color-fsk-64)",
-                          color: "var(--color-fsk-65)",
+                          background: "#ecfdf5",
+                          color: "var(--teal)",
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           fontWeight: 700,
-                          fontSize: "var(--font-fsk-14)",
+                          fontSize: "0.8125rem",
                         }}
                       >
                         {cust.name[0]}
                       </Surface>
                       <Surface>
-                        <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{cust.name}</Surface>
-                        <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>{cust.businessName}</Surface>
-                        <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)" }}>ID: {cust.id}</Surface>
+                        <Surface style={{ fontWeight: 700, color: "var(--navy)" }}>{cust.name}</Surface>
+                        <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)" }}>{cust.businessName}</Surface>
+                        <Surface style={{ fontSize: "0.8125rem", color: "#687d93" }}>ID: {cust.id}</Surface>
                       </Surface>
                     </Surface>
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
-                    <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-47)", color: "var(--color-fsk-25)" }}>
-                      <Inline style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-86)", fontSize: "var(--font-fsk-14)" }}>
-                        <Phone size={13} color="var(--color-fsk-9)" /> {cust.phone}
+                  <td style={{ padding: "0.875rem 1.125rem" }}>
+                    <Surface style={{ display: 'flex', flexDirection: 'column', gap: "0.125rem", color: "#334155" }}>
+                      <Inline style={{ display: 'flex', alignItems: 'center', gap: "0.3125rem", fontSize: "0.8125rem" }}>
+                        <Phone size={13} color="var(--muted)" /> {cust.phone}
                       </Inline>
-                      <Inline style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-86)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>
-                        <Mail size={13} color="var(--color-fsk-9)" /> {cust.email}
+                      <Inline style={{ display: 'flex', alignItems: 'center', gap: "0.3125rem", fontSize: "0.8125rem", color: "var(--muted)" }}>
+                        <Mail size={13} color="var(--muted)" /> {cust.email}
                       </Inline>
                     </Surface>
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-25)" }}>
+                  <td style={{ padding: "0.875rem 1.125rem", color: "#334155" }}>
                     {cust.city}
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)" }}>
+                  <td style={{ padding: "0.875rem 1.125rem", color: "var(--muted)", fontSize: "0.8125rem" }}>
                     {cust.onboardedDate}
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
-                    <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{cust.activeOrdersCount} orders</Surface>
-                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-65)" }}>Total: ₹{cust.totalSpent.toLocaleString('en-IN')}</Surface>
+                  <td style={{ padding: "0.875rem 1.125rem" }}>
+                    <Surface style={{ fontWeight: 700, color: "var(--navy)" }}>{cust.activeOrdersCount} orders</Surface>
+                    <Surface style={{ fontSize: "0.8125rem", color: "var(--teal)" }}>Total: ₹{cust.totalSpent.toLocaleString('en-IN')}</Surface>
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
+                  <td style={{ padding: "0.875rem 1.125rem" }}>
                     <Badge
                       label={cust.kycStatus}
                       variant={cust.kycStatus === 'Verified' ? 'green' : 'orange'}
                     />
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>
-                    <Surface style={{ display: 'flex', justifyContent: 'flex-end', gap: "var(--spacing-fsk-12)" }}>
+                  <td style={{ padding: "0.875rem 1.125rem", textAlign: 'right' }}>
+                    <Surface style={{ display: 'flex', justifyContent: 'flex-end', gap: "0.5rem" }}>
                       <button
                         type="button"
                         onClick={() => navigate('/agent/applications')}
                         title="View Orders"
                         style={{
-                          padding: "var(--spacing-fsk-17) var(--spacing-fsk-35)",
-                          borderRadius: "var(--radius-fsk-42)",
-                          border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
-                          background: "var(--color-fsk-38)",
-                          color: "var(--color-fsk-65)",
-                          fontSize: "var(--font-fsk-14)",
+                          padding: "0.375rem 0.625rem",
+                          borderRadius: "0.375rem",
+                          border: "0.0625rem solid var(--border)",
+                          background: "var(--white)",
+                          color: "var(--teal)",
+                          fontSize: "0.8125rem",
                           fontWeight: 600,
                           cursor: 'pointer',
                           display: 'flex',
                           alignItems: 'center',
-                          gap: "var(--spacing-fsk-29)",
+                          gap: "0.25rem",
                         }}
                       >
                         <FileText size={13} /> Orders
@@ -211,7 +208,7 @@ export const AgentCustomerDirectoryPage: React.FC = () => {
             </tbody>
           </table>
         </Surface>
-      </Card>
+      </Panel>
     </Surface>
   );
 };

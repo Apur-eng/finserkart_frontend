@@ -1,8 +1,5 @@
+import { ActionButton, Panel, Title, Stack } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { VStack } from '@astryxdesign/core/VStack';
 import {
   ArrowLeft,
   CheckCircle2,
@@ -67,77 +64,77 @@ export const DocumentUploadPage: React.FC = () => {
   };
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-124)", margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "56.25rem", margin: '0 auto' }}>
       {/* Header */}
-      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
+      <Surface style={{ marginBottom: "1.5rem" }}>
         <button
           type="button"
           onClick={() => navigate('/customer/documents')}
           style={{
             background: 'none',
             border: 'none',
-            color: "var(--color-fsk-15)",
-            fontSize: "var(--font-fsk-14)",
+            color: "var(--blue)",
+            fontSize: "0.8125rem",
             fontWeight: 600,
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-17)",
+            gap: "0.375rem",
             padding: 0,
-            marginBottom: "var(--spacing-fsk-8)",
+            marginBottom: "0.75rem",
           }}
         >
           <ArrowLeft size={16} /> Back to Document Centre
         </button>
 
-        <Heading level={1}>
-          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
+        <Title level={1}>
+          <Inline style={{ fontSize: "1.625rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.02em' }}>
             Upload Documents
           </Inline>
-        </Heading>
-        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+        </Title>
+        <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginTop: "0.25rem", margin: 0 }}>
           Attach identification documents, premises proofs, and filings for verification by your assigned Chartered Accountant.
         </p>
       </Surface>
 
       {isSuccess ? (
-        <Card elevation="low" padding={6} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-125)", background: "var(--color-fsk-75)", textAlign: 'center' }}>
-          <Surface style={{ width: "var(--spacing-fsk-93)", height: "var(--spacing-fsk-93)", borderRadius: '50%', background: "var(--color-fsk-116)", color: "var(--color-fsk-39)", display: 'flex', alignItems: 'center', justifyContent: 'center', margin: "0 auto var(--spacing-fsk-5) auto" }}>
+        <Panel elevation="low" padding={6} style={{ borderRadius: "1rem", border: "0.0625rem solid #bbf7d0", background: "#f0fdf4", textAlign: 'center' }}>
+          <Surface style={{ width: "3.5rem", height: "3.5rem", borderRadius: '50%', background: "#dcfce7", color: "#16a34a", display: 'flex', alignItems: 'center', justifyContent: 'center', margin: "0 auto 1rem auto" }}>
             <CheckCircle2 size={32} />
           </Surface>
 
-          <Heading level={2}>
-            <Inline style={{ fontSize: "var(--font-fsk-83)", fontWeight: 800, color: "var(--color-fsk-126)" }}>
+          <Title level={2}>
+            <Inline style={{ fontSize: "1.375rem", fontWeight: 800, color: "#166534" }}>
               Documents Uploaded Successfully!
             </Inline>
-          </Heading>
+          </Title>
 
-          <p style={{ color: "var(--color-fsk-103)", fontSize: "var(--font-fsk-91)", maxWidth: "var(--spacing-fsk-127)", margin: "var(--spacing-fsk-8) auto var(--spacing-fsk-26) auto", lineHeight: 1.6 }}>
+          <p style={{ color: "#15803d", fontSize: "0.90625rem", maxWidth: "36.25rem", margin: "0.75rem auto 1.5rem auto", lineHeight: 1.6 }}>
             {stagedFiles.length} document(s) uploaded and queued for inspection by the verification desk for application <strong>{selectedAppId}</strong>.
           </p>
 
-          <Surface style={{ display: 'flex', justifyContent: 'center', gap: "var(--spacing-fsk-5)" }}>
-            <Button
+          <Surface style={{ display: 'flex', justifyContent: 'center', gap: "1rem" }}>
+            <ActionButton
               label="Return to Document Centre"
               variant="primary"
               size="md"
               onClick={() => navigate('/customer/documents')}
             />
-            <Button
+            <ActionButton
               label="Track Application"
               variant="secondary"
               size="md"
               onClick={() => navigate(`/customer/applications/${selectedAppId}/tracker`)}
             />
           </Surface>
-        </Card>
+        </Panel>
       ) : (
         <form onSubmit={handleSubmit}>
-          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
-            <VStack gap={4}>
+          <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", marginBottom: "1.5rem" }}>
+            <Stack gap={4}>
               {/* Service Application Selector */}
               <Surface>
-                <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
+                <label style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--navy)", display: 'block', marginBottom: "0.375rem" }}>
                   Target Application
                 </label>
                 <select
@@ -145,12 +142,12 @@ export const DocumentUploadPage: React.FC = () => {
                   onChange={(e) => setSelectedAppId(e.target.value)}
                   style={{
                     width: '100%',
-                    padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
-                    borderRadius: "var(--radius-fsk-37)",
-                    border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
-                    fontSize: "var(--font-fsk-24)",
-                    color: "var(--color-fsk-7)",
-                    background: "var(--color-fsk-38)",
+                    padding: "0.625rem 0.875rem",
+                    borderRadius: "0.5rem",
+                    border: "0.0625rem solid #cbd5e1",
+                    fontSize: "0.875rem",
+                    color: "var(--navy)",
+                    background: "var(--white)",
                     outline: 'none',
                   }}
                 >
@@ -164,10 +161,10 @@ export const DocumentUploadPage: React.FC = () => {
 
               {/* Document Category Selector */}
               <Surface>
-                <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
+                <label style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--navy)", display: 'block', marginBottom: "0.375rem" }}>
                   Document Category
                 </label>
-                <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-12)" }}>
+                <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "0.5rem" }}>
                   {categories.map((cat) => {
                     const isSelected = docCategory === cat;
                     return (
@@ -176,12 +173,12 @@ export const DocumentUploadPage: React.FC = () => {
                         type="button"
                         onClick={() => setDocCategory(cat)}
                         style={{
-                          padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
-                          borderRadius: "var(--radius-fsk-37)",
-                          border: isSelected ? "var(--spacing-fsk-22) solid var(--color-fsk-162)" : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
-                          background: isSelected ? "var(--color-fsk-112)" : "var(--color-fsk-38)",
-                          color: isSelected ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
-                          fontSize: "var(--font-fsk-14)",
+                          padding: "0.375rem 0.75rem",
+                          borderRadius: "0.5rem",
+                          border: isSelected ? "0.0625rem solid var(--blue)" : "0.0625rem solid #cbd5e1",
+                          background: isSelected ? "#e0f2fe" : "var(--white)",
+                          color: isSelected ? "var(--blue)" : "var(--muted)",
+                          fontSize: "0.8125rem",
                           fontWeight: 600,
                           cursor: 'pointer',
                         }}
@@ -197,22 +194,22 @@ export const DocumentUploadPage: React.FC = () => {
               <Surface
                 onClick={handleSimulatedAddFile}
                 style={{
-                  border: "var(--spacing-fsk-47) dashed var(--color-fsk-15)",
-                  borderRadius: "var(--radius-fsk-28)",
-                  background: "var(--color-fsk-27)",
-                  padding: "var(--spacing-fsk-122) var(--spacing-fsk-2)",
+                  border: "0.125rem dashed var(--blue)",
+                  borderRadius: "1rem",
+                  background: "var(--cream)",
+                  padding: "clamp(1rem, 2.769230769230769vw, 2.25rem) 1.25rem",
                   textAlign: 'center',
                   cursor: 'pointer',
                   transition: 'background-color 0.2s',
                 }}
               >
-                <Surface style={{ width: "var(--spacing-fsk-128)", height: "var(--spacing-fsk-128)", borderRadius: '50%', background: "var(--color-fsk-112)", color: "var(--color-fsk-15)", display: 'flex', alignItems: 'center', justifyContent: 'center', margin: "0 auto var(--spacing-fsk-8) auto" }}>
+                <Surface style={{ width: "3rem", height: "3rem", borderRadius: '50%', background: "#e0f2fe", color: "var(--blue)", display: 'flex', alignItems: 'center', justifyContent: 'center', margin: "0 auto 0.75rem auto" }}>
                   <UploadCloud size={24} />
                 </Surface>
-                <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
+                <Surface style={{ fontSize: "0.9375rem", fontWeight: 700, color: "var(--navy)" }}>
                   Click to Browse or Drag &amp; Drop Files Here
                 </Surface>
-                <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-29)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
+                <p style={{ fontSize: "0.8125rem", color: "var(--muted)", marginTop: "0.25rem", margin: "0.25rem 0 0 0" }}>
                   Supported formats: PDF, JPG, PNG (Maximum file size: 10 MB per file)
                 </p>
               </Surface>
@@ -220,11 +217,11 @@ export const DocumentUploadPage: React.FC = () => {
               {/* Staged Uploads List */}
               {stagedFiles.length > 0 && (
                 <Surface>
-                  <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-35)" }}>
+                  <Surface style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--navy)", marginBottom: "0.625rem" }}>
                     Staged for Upload ({stagedFiles.length})
                   </Surface>
 
-                  <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-12)" }}>
+                  <Surface style={{ display: 'flex', flexDirection: 'column', gap: "0.5rem" }}>
                     {stagedFiles.map((file, idx) => (
                       <Surface
                         key={idx}
@@ -232,19 +229,19 @@ export const DocumentUploadPage: React.FC = () => {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
-                          padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
-                          borderRadius: "var(--radius-fsk-37)",
-                          background: "var(--color-fsk-46)",
-                          border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+                          padding: "0.625rem 0.875rem",
+                          borderRadius: "0.5rem",
+                          background: "var(--sage-light)",
+                          border: "0.0625rem solid var(--border)",
                         }}
                       >
-                        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
-                          <FileText size={18} color="var(--color-fsk-15)" />
+                        <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem" }}>
+                          <FileText size={18} color="var(--blue)" />
                           <Surface>
-                            <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
+                            <Surface style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--navy)" }}>
                               {file.name}
                             </Surface>
-                            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>
+                            <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)" }}>
                               {file.size} • Category: {file.type}
                             </Surface>
                           </Surface>
@@ -257,8 +254,8 @@ export const DocumentUploadPage: React.FC = () => {
                             background: 'none',
                             border: 'none',
                             cursor: 'pointer',
-                            color: "var(--color-fsk-129)",
-                            padding: "var(--spacing-fsk-29)",
+                            color: "#ef4444",
+                            padding: "0.25rem",
                           }}
                         >
                           <Trash2 size={16} />
@@ -269,9 +266,9 @@ export const DocumentUploadPage: React.FC = () => {
                 </Surface>
               )}
 
-              {/* Submit Button */}
-              <Surface style={{ marginTop: "var(--spacing-fsk-12)" }}>
-                <Button
+              {/* Submit ActionButton */}
+              <Surface style={{ marginTop: "0.5rem" }}>
+                <ActionButton
                   label={isUploading ? 'Uploading to Verification Desk...' : `Upload ${stagedFiles.length} Document(s)`}
                   variant="primary"
                   size="md"
@@ -282,8 +279,8 @@ export const DocumentUploadPage: React.FC = () => {
                   icon={<UploadCloud size={16} />}
                 />
               </Surface>
-            </VStack>
-          </Card>
+            </Stack>
+          </Panel>
         </form>
       )}
     </Surface>

@@ -1,9 +1,5 @@
+import { ActionButton, Title, Row, Typography, Stack } from '../../components/ui';
 import React from 'react';
-import { Button } from '@astryxdesign/core/Button';
-import { Heading } from '@astryxdesign/core/Heading';
-import { HStack } from '@astryxdesign/core/HStack';
-import { Text } from '@astryxdesign/core/Text';
-import { VStack } from '@astryxdesign/core/VStack';
 import {
   Briefcase,
   Building2,
@@ -44,7 +40,7 @@ export const DemoRoleSwitcherModal: React.FC = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 'var(--spacing-4)',
+        padding: '1rem',
         background: 'rgba(15, 23, 42, 0.7)',
         backdropFilter: 'blur(4px)',
       }}
@@ -58,37 +54,37 @@ export const DemoRoleSwitcherModal: React.FC = () => {
           maxWidth: '680px',
           maxHeight: '90vh',
           overflowY: 'auto',
-          background: 'var(--color-background-surface)',
-          borderRadius: 'var(--radius-container)',
-          boxShadow: 'var(--shadow-fsk-card)',
-          padding: 'var(--spacing-5)',
-          border: '1px solid var(--color-background-muted)',
+          background: 'var(--white)',
+          borderRadius: 'var(--radius-panel)',
+          boxShadow: 'var(--shadow-panel)',
+          padding: '1.25rem',
+          border: '1px solid var(--sage-light)',
         }}
       >
-        <VStack gap={4}>
-          <HStack hAlign="between" vAlign="center">
-            <VStack gap={1}>
-              <Text type="label" color="accent">DEMO ROLE SWITCHER</Text>
-              <Heading level={2} id="demo-switcher-title" style={{ margin: 0, fontSize: '1.25rem' }}>
+        <Stack gap={4}>
+          <Row hAlign="between" vAlign="center">
+            <Stack gap={1}>
+              <Typography type="label" color="accent">DEMO ROLE SWITCHER</Typography>
+              <Title level={2} id="demo-switcher-title" style={{ margin: 0, fontSize: '1.25rem' }}>
                 Switch Perspective
-              </Heading>
-              <Text type="supporting">
+              </Title>
+              <Typography type="supporting">
                 Select a user role to explore its dedicated dashboard and sample workflows.
-              </Text>
-            </VStack>
-            <Button
+              </Typography>
+            </Stack>
+            <ActionButton
               label="Close"
               icon={<X size={18} aria-hidden="true" />}
               variant="ghost"
               onClick={closeSwitcher}
             />
-          </HStack>
+          </Row>
 
           <div
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: 'var(--spacing-3)',
+              gap: '0.75rem',
             }}
           >
             {DEMO_ROLES_LIST.map((role) => {
@@ -110,26 +106,26 @@ export const DemoRoleSwitcherModal: React.FC = () => {
                   style={{
                     cursor: 'pointer',
                     textAlign: 'left',
-                    borderRadius: 'var(--radius-element)',
+                    borderRadius: 'var(--radius-small)',
                     border: isSelected
-                      ? '2px solid var(--color-accent)'
-                      : '1px solid var(--color-background-muted)',
+                      ? '2px solid var(--blue)'
+                      : '1px solid var(--sage-light)',
                     background: isSelected
-                      ? 'var(--color-fsk-info-subtle)'
-                      : 'var(--color-background-surface)',
-                    padding: 'var(--spacing-3)',
+                      ? 'var(--status-info-subtle)'
+                      : 'var(--white)',
+                    padding: '0.75rem',
                     transition: 'border-color 0.15s, background-color 0.15s',
                   }}
                 >
-                  <HStack gap={3} vAlign="start">
+                  <Row gap={3} vAlign="start">
                     <div
                       style={{
-                        padding: 'var(--spacing-2)',
-                        borderRadius: 'var(--radius-element)',
+                        padding: '0.5rem',
+                        borderRadius: 'var(--radius-small)',
                         background: isSelected
-                          ? 'var(--color-accent)'
-                          : 'var(--color-background-muted)',
-                        color: isSelected ? '#ffffff' : 'var(--color-text-primary)',
+                          ? 'var(--blue)'
+                          : 'var(--sage-light)',
+                        color: isSelected ? '#ffffff' : 'var(--navy)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -139,32 +135,32 @@ export const DemoRoleSwitcherModal: React.FC = () => {
                       <Icon size={20} />
                     </div>
 
-                    <VStack gap={1} style={{ flex: 1, minWidth: 0 }}>
-                      <HStack hAlign="between" vAlign="center">
-                        <Text weight="bold" size="base">
+                    <Stack gap={1} style={{ flex: 1, minWidth: 0 }}>
+                      <Row hAlign="between" vAlign="center">
+                        <Typography weight="bold" size="base">
                           {role.name}
-                        </Text>
+                        </Typography>
                         {isSelected && (
-                          <HStack gap={1} vAlign="center">
-                            <CheckCircle2 size={14} color="var(--color-accent)" />
-                            <Text size="xsm" color="accent" weight="bold">Active</Text>
-                          </HStack>
+                          <Row gap={1} vAlign="center">
+                            <CheckCircle2 size={14} color="var(--blue)" />
+                            <Typography size="xsm" color="accent" weight="bold">Active</Typography>
+                          </Row>
                         )}
-                      </HStack>
-                      <Text type="supporting" size="xsm">
+                      </Row>
+                      <Typography type="supporting" size="xsm">
                         {role.description}
-                      </Text>
-                    </VStack>
-                  </HStack>
+                      </Typography>
+                    </Stack>
+                  </Row>
                 </div>
               );
             })}
           </div>
 
-          <HStack hAlign="end" gap={2} paddingBlockStart={2} style={{ borderTop: '1px solid var(--color-background-muted)' }}>
-            <Button label="Cancel" variant="secondary" onClick={closeSwitcher} />
-          </HStack>
-        </VStack>
+          <Row hAlign="end" gap={2} paddingBlockStart={2} style={{ borderTop: '1px solid var(--sage-light)' }}>
+            <ActionButton label="Cancel" variant="secondary" onClick={closeSwitcher} />
+          </Row>
+        </Stack>
       </div>
     </div>
   );

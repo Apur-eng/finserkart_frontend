@@ -1,9 +1,6 @@
+import { ActionButton, Panel, Title, Field } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
 import { StatusTag as Badge } from '../../components/StatusTag';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { TextInput } from '@astryxdesign/core/TextInput';
 import {
   Download,
   FileCheck,
@@ -48,7 +45,7 @@ export const DocumentCentrePage: React.FC = () => {
   };
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "77.5rem", margin: '0 auto' }}>
       {/* Header */}
       <Surface
         style={{
@@ -56,22 +53,22 @@ export const DocumentCentrePage: React.FC = () => {
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: "var(--spacing-fsk-26)",
-          gap: "var(--spacing-fsk-5)",
+          marginBottom: "1.5rem",
+          gap: "1rem",
         }}
       >
         <Surface>
-          <Heading level={1}>
-            <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
+          <Title level={1}>
+            <Inline style={{ fontSize: "1.625rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.02em' }}>
               Document Centre
             </Inline>
-          </Heading>
-          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+          </Title>
+          <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginTop: "0.25rem", margin: 0 }}>
             Central repository for your identity proofs, business premises records, and official government deliverable certificates.
           </p>
         </Surface>
 
-        <Button
+        <ActionButton
           label="Upload Document"
           variant="primary"
           size="md"
@@ -80,11 +77,11 @@ export const DocumentCentrePage: React.FC = () => {
         />
       </Surface>
 
-      {/* Filter and Search Card */}
-      <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
-        <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-5)", justifyContent: 'space-between', alignItems: 'center' }}>
+      {/* Filter and Search Panel */}
+      <Panel elevation="low" padding={4} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", marginBottom: "1.5rem" }}>
+        <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "1rem", justifyContent: 'space-between', alignItems: 'center' }}>
           {/* Tabs */}
-          <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "var(--spacing-fsk-12)" }}>
+          <Surface style={{ display: 'flex', flexWrap: 'wrap', gap: "0.5rem" }}>
             {(['All', 'Deliverable', 'Verified', 'Under Review'] as const).map((tab) => {
               const isActive = activeTab === tab;
               const count =
@@ -100,13 +97,13 @@ export const DocumentCentrePage: React.FC = () => {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: "var(--spacing-fsk-17)",
-                    padding: "var(--spacing-fsk-12) var(--spacing-fsk-23)",
-                    borderRadius: "var(--radius-fsk-37)",
-                    border: isActive ? "var(--spacing-fsk-22) solid var(--color-fsk-162)" : "var(--spacing-fsk-22) solid var(--color-fsk-163)",
-                    background: isActive ? "var(--color-fsk-112)" : "var(--color-fsk-38)",
-                    color: isActive ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
-                    fontSize: "var(--font-fsk-14)",
+                    gap: "0.375rem",
+                    padding: "0.5rem 0.875rem",
+                    borderRadius: "0.5rem",
+                    border: isActive ? "0.0625rem solid var(--blue)" : "0.0625rem solid #e2e8f0",
+                    background: isActive ? "#e0f2fe" : "var(--white)",
+                    color: isActive ? "var(--blue)" : "var(--muted)",
+                    fontSize: "0.8125rem",
                     fontWeight: 600,
                     cursor: 'pointer',
                   }}
@@ -114,11 +111,11 @@ export const DocumentCentrePage: React.FC = () => {
                   <Inline>{tab === 'Deliverable' ? 'Government Certificates' : tab}</Inline>
                   <Inline
                     style={{
-                      fontSize: "var(--font-fsk-14)",
-                      padding: "var(--spacing-fsk-22) var(--spacing-fsk-17)",
-                      borderRadius: "var(--radius-fsk-68)",
-                      background: isActive ? "var(--color-fsk-15)" : "var(--color-fsk-46)",
-                      color: isActive ? "var(--color-fsk-38)" : "var(--color-fsk-9)",
+                      fontSize: "0.8125rem",
+                      padding: "0.0625rem 0.375rem",
+                      borderRadius: "0.625rem",
+                      background: isActive ? "var(--blue)" : "var(--sage-light)",
+                      color: isActive ? "var(--white)" : "var(--muted)",
                     }}
                   >
                     {count}
@@ -129,8 +126,8 @@ export const DocumentCentrePage: React.FC = () => {
           </Surface>
 
           {/* Search Box */}
-          <Surface style={{ width: "var(--spacing-fsk-45)" }}>
-            <TextInput
+          <Surface style={{ width: "17.5rem" }}>
+            <Field
               label="Search files"
               placeholder="Search by filename or ID..."
               value={searchQuery}
@@ -139,69 +136,69 @@ export const DocumentCentrePage: React.FC = () => {
             />
           </Surface>
         </Surface>
-      </Card>
+      </Panel>
 
       {/* Documents Table */}
-      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+      <Panel elevation="low" padding={0} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", overflow: 'hidden' }}>
         <Surface style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "0.8125rem" }}>
             <thead>
-              <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontWeight: 600, fontSize: "var(--font-fsk-14)", textTransform: 'uppercase' }}>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Document Name</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Application ID &amp; Service</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Type</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>File Size</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Uploaded On</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>Verification Status</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", textAlign: 'right' }}>Action</th>
+              <tr style={{ background: "var(--cream)", borderBottom: "0.0625rem solid var(--border)", color: "var(--muted)", fontWeight: 600, fontSize: "0.8125rem", textTransform: 'uppercase' }}>
+                <th style={{ padding: "0.875rem 1rem" }}>Document Name</th>
+                <th style={{ padding: "0.875rem 1rem" }}>Application ID &amp; Service</th>
+                <th style={{ padding: "0.875rem 1rem" }}>Type</th>
+                <th style={{ padding: "0.875rem 1rem" }}>File Size</th>
+                <th style={{ padding: "0.875rem 1rem" }}>Uploaded On</th>
+                <th style={{ padding: "0.875rem 1rem" }}>Verification Status</th>
+                <th style={{ padding: "0.875rem 1rem", textAlign: 'right' }}>Action</th>
               </tr>
             </thead>
             <tbody>
               {filteredDocs.map((doc) => (
-                <tr key={doc.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
-                  <td style={{ padding: "var(--spacing-fsk-5)" }}>
-                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
-                      <Surface style={{ width: "var(--spacing-fsk-52)", height: "var(--spacing-fsk-52)", borderRadius: "var(--radius-fsk-37)", background: doc.status === 'Deliverable' ? "var(--color-fsk-116)" : "var(--color-fsk-112)", color: doc.status === 'Deliverable' ? "var(--color-fsk-39)" : "var(--color-fsk-15)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <tr key={doc.id} style={{ borderBottom: "0.0625rem solid var(--sage-light)" }}>
+                  <td style={{ padding: "1rem" }}>
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem" }}>
+                      <Surface style={{ width: "2.125rem", height: "2.125rem", borderRadius: "0.5rem", background: doc.status === 'Deliverable' ? "#dcfce7" : "#e0f2fe", color: doc.status === 'Deliverable' ? "#16a34a" : "var(--blue)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         {doc.status === 'Deliverable' ? <FileCheck size={18} /> : <FileText size={18} />}
                       </Surface>
                       <Surface>
-                        <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{doc.fileName}</Surface>
-                        <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>DOC-ID: {doc.id}</Surface>
+                        <Surface style={{ fontWeight: 700, color: "var(--navy)" }}>{doc.fileName}</Surface>
+                        <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)" }}>DOC-ID: {doc.id}</Surface>
                       </Surface>
                     </Surface>
                   </td>
-                  <td style={{ padding: "var(--spacing-fsk-5)" }}>
-                    <Surface style={{ fontWeight: 600, color: "var(--color-fsk-15)" }}>{doc.applicationId}</Surface>
-                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>{doc.serviceName}</Surface>
+                  <td style={{ padding: "1rem" }}>
+                    <Surface style={{ fontWeight: 600, color: "var(--blue)" }}>{doc.applicationId}</Surface>
+                    <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)" }}>{doc.serviceName}</Surface>
                   </td>
-                  <td style={{ padding: "var(--spacing-fsk-5)", color: "var(--color-fsk-18)" }}>
+                  <td style={{ padding: "1rem", color: "var(--muted)" }}>
                     {doc.fileType}
                   </td>
-                  <td style={{ padding: "var(--spacing-fsk-5)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)" }}>
+                  <td style={{ padding: "1rem", color: "var(--muted)", fontSize: "0.8125rem" }}>
                     {doc.fileSize}
                   </td>
-                  <td style={{ padding: "var(--spacing-fsk-5)", color: "var(--color-fsk-18)", fontSize: "var(--font-fsk-14)" }}>
+                  <td style={{ padding: "1rem", color: "var(--muted)", fontSize: "0.8125rem" }}>
                     {doc.uploadDate}
                   </td>
-                  <td style={{ padding: "var(--spacing-fsk-5)" }}>
+                  <td style={{ padding: "1rem" }}>
                     {getDocStatusBadge(doc.status)}
                   </td>
-                  <td style={{ padding: "var(--spacing-fsk-5)", textAlign: 'right' }}>
+                  <td style={{ padding: "1rem", textAlign: 'right' }}>
                     <a
                       href={doc.downloadUrl}
                       download
                       style={{
-                        padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
-                        borderRadius: "var(--radius-fsk-42)",
-                        border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
-                        background: "var(--color-fsk-38)",
-                        color: "var(--color-fsk-15)",
-                        fontSize: "var(--font-fsk-14)",
+                        padding: "0.375rem 0.75rem",
+                        borderRadius: "0.375rem",
+                        border: "0.0625rem solid #cbd5e1",
+                        background: "var(--white)",
+                        color: "var(--blue)",
+                        fontSize: "0.8125rem",
                         fontWeight: 600,
                         textDecoration: 'none',
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: "var(--spacing-fsk-17)",
+                        gap: "0.375rem",
                       }}
                     >
                       <Download size={14} /> Download
@@ -212,7 +209,7 @@ export const DocumentCentrePage: React.FC = () => {
             </tbody>
           </table>
         </Surface>
-      </Card>
+      </Panel>
     </Surface>
   );
 };

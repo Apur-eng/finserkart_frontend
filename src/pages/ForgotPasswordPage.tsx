@@ -1,11 +1,6 @@
+import { ActionButton, Panel, Title, Field, Notice, Stack } from '../components/ui';
 import { Surface, Inline } from '../components/Surface';
 import { StatusTag as Badge } from '../components/StatusTag';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { TextInput } from '@astryxdesign/core/TextInput';
-import { Banner } from '@astryxdesign/core/Banner';
-import { VStack } from '@astryxdesign/core/VStack';
 import {
   ArrowLeft,
   CheckCircle2,
@@ -66,79 +61,79 @@ export const ForgotPasswordPage: React.FC = () => {
   };
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-78)", margin: "var(--spacing-fsk-1) auto var(--spacing-fsk-3) auto", padding: "0 var(--spacing-fsk-2)" }}>
+    <Surface style={{ maxWidth: "62.5rem", margin: "clamp(1rem, 3.076923076923077vw, 2.5rem) auto clamp(1rem, 6.153846153846154vw, 5rem) auto", padding: "0 1.25rem" }}>
       <Surface
         style={{
           display: 'grid',
           gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 20rem), 1fr))",
-          gap: "var(--spacing-fsk-4)",
+          gap: "clamp(1rem, 3.6923076923076925vw, 3rem)",
           alignItems: 'center',
         }}
       >
-        {/* Left Side: Password Recovery Form Card */}
+        {/* Left Side: Password Recovery Form Panel */}
         <Surface>
-          <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
-            <Surface style={{ marginBottom: "var(--spacing-fsk-8)" }}>
+          <Surface style={{ marginBottom: "1.5rem" }}>
+            <Surface style={{ marginBottom: "0.75rem" }}>
               <Badge label="Account Security" variant="blue" />
             </Surface>
-            <Heading level={1}>
+            <Title level={1}>
               <Inline
                 style={{
-                  fontSize: "var(--font-fsk-95)",
+                  fontSize: "clamp(1.5rem, 2.4615384615384617vw, 2rem)",
                   fontWeight: 800,
-                  color: "var(--color-fsk-7)",
+                  color: "var(--navy)",
                   display: 'block',
-                  marginTop: "var(--spacing-fsk-17)",
+                  marginTop: "0.375rem",
                   letterSpacing: '-0.02em',
                 }}
               >
                 Reset Your Password
               </Inline>
-            </Heading>
-            <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-17)", lineHeight: 1.6 }}>
+            </Title>
+            <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginTop: "0.375rem", lineHeight: 1.6 }}>
               Enter the email address registered with your Finservkart account and we will send you your access recovery details.
             </p>
           </Surface>
 
-          <Card
+          <Panel
             elevation="low"
             padding={5}
-            style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}
+            style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}
           >
             {errorMessage && (
-              <Surface style={{ marginBottom: "var(--spacing-fsk-2)" }}>
-                <Banner status="error" title={errorMessage} />
+              <Surface style={{ marginBottom: "1.25rem" }}>
+                <Notice status="error" title={errorMessage} />
               </Surface>
             )}
 
             {isSubmitted && successMessage ? (
               <Surface>
-                <Surface style={{ marginBottom: "var(--spacing-fsk-2)" }}>
-                  <Banner status="success" title="Recovery Email Dispatched" />
+                <Surface style={{ marginBottom: "1.25rem" }}>
+                  <Notice status="success" title="Recovery Email Dispatched" />
                 </Surface>
 
                 <Surface
                   style={{
-                    background: "var(--color-fsk-75)",
-                    border: "var(--spacing-fsk-22) solid var(--color-fsk-125)",
-                    borderRadius: "var(--radius-fsk-28)",
-                    padding: "var(--spacing-fsk-2)",
-                    marginBottom: "var(--spacing-fsk-26)",
+                    background: "#f0fdf4",
+                    border: "0.0625rem solid #bbf7d0",
+                    borderRadius: "1rem",
+                    padding: "1.25rem",
+                    marginBottom: "1.5rem",
                   }}
                 >
-                  <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-12)" }}>
-                    <CheckCircle2 size={20} color="var(--color-fsk-39)" />
-                    <Inline style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-103)" }}>
+                  <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem", marginBottom: "0.5rem" }}>
+                    <CheckCircle2 size={20} color="#16a34a" />
+                    <Inline style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#15803d" }}>
                       Instructions Sent Successfully
                     </Inline>
                   </Surface>
-                  <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-126)", lineHeight: 1.6, margin: 0 }}>
+                  <p style={{ fontSize: "0.8125rem", color: "#166534", lineHeight: 1.6, margin: 0 }}>
                     We have sent access instructions to <strong>{email}</strong>. Please check your inbox and spam folder. For account safety, change your password immediately after signing in.
                   </p>
                 </Surface>
 
-                <VStack gap={3}>
-                  <Button
+                <Stack gap={3}>
+                  <ActionButton
                     label="Back to Login"
                     variant="primary"
                     size="md"
@@ -147,7 +142,7 @@ export const ForgotPasswordPage: React.FC = () => {
                     onClick={() => navigate('/login')}
                   />
 
-                  <Button
+                  <ActionButton
                     label="Resend Recovery Link"
                     variant="secondary"
                     size="md"
@@ -157,13 +152,13 @@ export const ForgotPasswordPage: React.FC = () => {
                       setSuccessMessage(null);
                     }}
                   />
-                </VStack>
+                </Stack>
               </Surface>
             ) : (
               <form onSubmit={handleSubmit}>
-                <VStack gap={4}>
+                <Stack gap={4}>
                   <Surface>
-                    <TextInput
+                    <Field
                       type="email"
                       label="Registered Account Email"
                       placeholder="name@example.com"
@@ -172,12 +167,12 @@ export const ForgotPasswordPage: React.FC = () => {
                       isRequired
                       width="100%"
                     />
-                    <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-17)", marginBottom: 0 }}>
+                    <p style={{ fontSize: "0.8125rem", color: "var(--muted)", marginTop: "0.375rem", marginBottom: 0 }}>
                       Enter the email associated with your customer, agent, or CA profile.
                     </p>
                   </Surface>
 
-                  <Button
+                  <ActionButton
                     label={isLoading ? 'Verifying Account...' : 'Send Recovery Email'}
                     variant="primary"
                     size="md"
@@ -192,20 +187,20 @@ export const ForgotPasswordPage: React.FC = () => {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      paddingTop: "var(--spacing-fsk-5)",
-                      borderTop: "var(--spacing-fsk-22) solid var(--color-fsk-46)",
-                      fontSize: "var(--font-fsk-14)",
+                      paddingTop: "1rem",
+                      borderTop: "0.0625rem solid var(--sage-light)",
+                      fontSize: "0.8125rem",
                     }}
                   >
                     <Link
                       to="/login"
                       style={{
-                        color: "var(--color-fsk-15)",
+                        color: "var(--blue)",
                         fontWeight: 600,
                         textDecoration: 'none',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: "var(--spacing-fsk-17)",
+                        gap: "0.375rem",
                       }}
                     >
                       <ArrowLeft size={14} /> Back to Sign In
@@ -215,84 +210,84 @@ export const ForgotPasswordPage: React.FC = () => {
                       Need an account?{' '}
                       <Link
                         to="/register"
-                        style={{ color: "var(--color-fsk-15)", fontWeight: 600, textDecoration: 'none' }}
+                        style={{ color: "var(--blue)", fontWeight: 600, textDecoration: 'none' }}
                       >
                         Register
                       </Link>
                     </Surface>
                   </Surface>
-                </VStack>
+                </Stack>
               </form>
             )}
-          </Card>
+          </Panel>
         </Surface>
 
         {/* Right Side: Security Context & Troubleshooting */}
         <Surface
           style={{
-            background: "var(--color-fsk-27)",
-            padding: "var(--spacing-fsk-1) var(--spacing-fsk-114)",
-            borderRadius: "var(--radius-fsk-28)",
-            border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+            background: "var(--cream)",
+            padding: "clamp(1rem, 3.076923076923077vw, 2.5rem) clamp(1rem, 2.4615384615384617vw, 2rem)",
+            borderRadius: "1rem",
+            border: "0.0625rem solid var(--border)",
           }}
         >
           <Surface
             style={{
-              width: "var(--spacing-fsk-128)",
-              height: "var(--spacing-fsk-128)",
-              borderRadius: "var(--radius-fsk-28)",
-              background: "var(--color-fsk-112)",
+              width: "3rem",
+              height: "3rem",
+              borderRadius: "1rem",
+              background: "#e0f2fe",
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: "var(--color-fsk-15)",
-              marginBottom: "var(--spacing-fsk-2)",
+              color: "var(--blue)",
+              marginBottom: "1.25rem",
             }}
           >
             <ShieldCheck size={28} />
           </Surface>
 
-          <h3 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-8)" }}>
+          <h3 style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--navy)", marginBottom: "0.75rem" }}>
             Account Security & Access
           </h3>
 
           <p
             style={{
-              fontSize: "var(--font-fsk-24)",
-              color: "var(--color-fsk-9)",
+              fontSize: "0.875rem",
+              color: "var(--muted)",
               lineHeight: 1.6,
-              marginBottom: "var(--spacing-fsk-26)",
+              marginBottom: "1.5rem",
             }}
           >
             Password recovery requests communicate directly with the verified Finservkart security service (<code>user-password-recovery.php</code>), ensuring encrypted delivery to your registered email address.
           </p>
 
-          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-2)" }}>
-            <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-8)", alignItems: 'flex-start' }}>
-              <Mail size={18} color="var(--color-fsk-15)" style={{ flexShrink: 0, marginTop: "var(--spacing-fsk-47)" }} />
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "1.25rem" }}>
+            <Surface style={{ display: 'flex', gap: "0.75rem", alignItems: 'flex-start' }}>
+              <Mail size={18} color="var(--blue)" style={{ flexShrink: 0, marginTop: "0.125rem" }} />
               <Surface>
-                <strong style={{ fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-113)" }}>Check Official Sender</strong>
-                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
+                <strong style={{ fontSize: "0.875rem", color: "#243b53" }}>Check Official Sender</strong>
+                <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", marginTop: "0.125rem" }}>
                   Official emails arrive from <code>info@finservkart.com</code>. Check both Inbox and Spam folders.
                 </Surface>
               </Surface>
             </Surface>
 
-            <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-8)", alignItems: 'flex-start' }}>
-              <UserCheck size={18} color="var(--color-fsk-31)" style={{ flexShrink: 0, marginTop: "var(--spacing-fsk-47)" }} />
+            <Surface style={{ display: 'flex', gap: "0.75rem", alignItems: 'flex-start' }}>
+              <UserCheck size={18} color="var(--teal)" style={{ flexShrink: 0, marginTop: "0.125rem" }} />
               <Surface>
-                <strong style={{ fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-113)" }}>Partner Portals</strong>
-                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
+                <strong style={{ fontSize: "0.875rem", color: "#243b53" }}>Partner Portals</strong>
+                <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", marginTop: "0.125rem" }}>
                   Agent, Franchise, and CA partners can also recover credentials using their registered email.
                 </Surface>
               </Surface>
             </Surface>
 
-            <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-8)", alignItems: 'flex-start' }}>
-              <HelpCircle size={18} color="var(--color-fsk-32)" style={{ flexShrink: 0, marginTop: "var(--spacing-fsk-47)" }} />
+            <Surface style={{ display: 'flex', gap: "0.75rem", alignItems: 'flex-start' }}>
+              <HelpCircle size={18} color="#f59e0b" style={{ flexShrink: 0, marginTop: "0.125rem" }} />
               <Surface>
-                <strong style={{ fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-113)" }}>Help & Phone Assistance</strong>
-                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
+                <strong style={{ fontSize: "0.875rem", color: "#243b53" }}>Help & Phone Assistance</strong>
+                <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", marginTop: "0.125rem" }}>
                   Still unable to access your profile? Contact our Lucknow support team at <strong>+91 9120000000</strong>.
                 </Surface>
               </Surface>

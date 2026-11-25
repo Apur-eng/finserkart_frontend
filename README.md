@@ -14,7 +14,7 @@ Comprehensive 68-page enterprise web platform across 7 distinct portals:
 
 ## Tech Stack
 - **Framework:** React 19 + TypeScript + Vite 8
-- **Design System:** `@astryxdesign/core` (Meta Astryx v0.7.16)
+- **UI:** Local React components, semantic HTML and CSS (Inter / Manrope)
 - **Styling:** StyleX tokens + CSS resets
 - **State & Data:** `@tanstack/react-query`, React Context, decoupled API contracts
 - **Routing:** `react-router-dom` v7

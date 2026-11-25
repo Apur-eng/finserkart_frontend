@@ -1,10 +1,5 @@
+import { Notice, ActionButton, Panel, Title, Field, Stack } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
-import { Banner } from '@astryxdesign/core/Banner';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { TextInput } from '@astryxdesign/core/TextInput';
-import { VStack } from '@astryxdesign/core/VStack';
 import {
   ArrowLeft,
   CheckCircle2,
@@ -46,64 +41,64 @@ export const AgentOnboardCustomerPage: React.FC = () => {
   };
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-92)", margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "55rem", margin: '0 auto' }}>
       {/* Back button & Header */}
-      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
+      <Surface style={{ marginBottom: "1.5rem" }}>
         <button
           type="button"
           onClick={() => navigate('/agent/customers')}
           style={{
             background: 'none',
             border: 'none',
-            color: "var(--color-fsk-65)",
-            fontSize: "var(--font-fsk-14)",
+            color: "var(--teal)",
+            fontSize: "0.8125rem",
             fontWeight: 600,
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-17)",
+            gap: "0.375rem",
             padding: 0,
-            marginBottom: "var(--spacing-fsk-8)",
+            marginBottom: "0.75rem",
           }}
         >
           <ArrowLeft size={16} /> Back to Customer Directory
         </button>
 
-        <Heading level={1}>
-          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
+        <Title level={1}>
+          <Inline style={{ fontSize: "1.625rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.02em' }}>
             Onboard New Customer
           </Inline>
-        </Heading>
-        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+        </Title>
+        <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginTop: "0.25rem", margin: 0 }}>
           Register client credentials and link their account directly under your partner referral code.
         </p>
       </Surface>
 
       {isSubmitted ? (
-        <Card elevation="low" padding={6} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-81)", background: "var(--color-fsk-38)", textAlign: 'center' }}>
-          <Surface style={{ width: "var(--spacing-fsk-93)", height: "var(--spacing-fsk-93)", borderRadius: '50%', background: "var(--color-fsk-64)", color: "var(--color-fsk-65)", display: 'flex', alignItems: 'center', justifyContent: 'center', margin: "0 auto var(--spacing-fsk-5)" }}>
+        <Panel elevation="low" padding={6} style={{ borderRadius: "1rem", border: "0.0625rem solid #a7f3d0", background: "var(--white)", textAlign: 'center' }}>
+          <Surface style={{ width: "3.5rem", height: "3.5rem", borderRadius: '50%', background: "#ecfdf5", color: "var(--teal)", display: 'flex', alignItems: 'center', justifyContent: 'center', margin: "0 auto 1rem" }}>
             <CheckCircle2 size={32} />
           </Surface>
 
-          <Heading level={2}>
-            <Inline style={{ fontSize: "var(--font-fsk-83)", fontWeight: 800, color: "var(--color-fsk-7)" }}>
+          <Title level={2}>
+            <Inline style={{ fontSize: "1.375rem", fontWeight: 800, color: "var(--navy)" }}>
               Customer Successfully Onboarded!
             </Inline>
-          </Heading>
+          </Title>
 
-          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", maxWidth: "var(--spacing-fsk-94)", margin: "var(--spacing-fsk-35) auto var(--spacing-fsk-2)", lineHeight: 1.6 }}>
-            Client <strong>{fname} {lname}</strong> ({businessName || 'Individual'}) has been registered under your referral code <strong>{agent.referralCode}</strong> with Customer ID: <strong style={{ color: "var(--color-fsk-65)" }}>{generatedCustId}</strong>.
+          <p style={{ color: "var(--muted)", fontSize: "0.875rem", maxWidth: "32.5rem", margin: "0.625rem auto 1.25rem", lineHeight: 1.6 }}>
+            Client <strong>{fname} {lname}</strong> ({businessName || 'Individual'}) has been registered under your referral code <strong>{agent.referralCode}</strong> with Customer ID: <strong style={{ color: "var(--teal)" }}>{generatedCustId}</strong>.
           </p>
 
-          <Surface style={{ display: 'flex', justifyContent: 'center', gap: "var(--spacing-fsk-23)" }}>
-            <Button
+          <Surface style={{ display: 'flex', justifyContent: 'center', gap: "0.875rem" }}>
+            <ActionButton
               label="Submit Service Application for Client"
               variant="primary"
               size="md"
               icon={<PlusCircle size={16} />}
               onClick={() => navigate('/agent/applications')}
             />
-            <Button
+            <ActionButton
               label="View Customer Directory"
               variant="secondary"
               size="md"
@@ -111,13 +106,13 @@ export const AgentOnboardCustomerPage: React.FC = () => {
               onClick={() => navigate('/agent/customers')}
             />
           </Surface>
-        </Card>
+        </Panel>
       ) : (
-        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
+        <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
           <form onSubmit={handleSubmit}>
-            <VStack gap={4}>
+            <Stack gap={4}>
               {/* Partner Attribution Notice */}
-              <Banner
+              <Notice
                 status="info"
                 title="Partner Referral Attribution"
                 description={`This customer will be locked to your agent profile (${agent.fname} ${agent.lname} - ${agent.referralCode}) for all future statutory and tax recurring commissions.`}
@@ -125,11 +120,11 @@ export const AgentOnboardCustomerPage: React.FC = () => {
 
               {/* Personal Information */}
               <Surface>
-                <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-8)" }}>
+                <Surface style={{ fontSize: "0.875rem", fontWeight: 700, color: "var(--navy)", marginBottom: "0.75rem" }}>
                   Client Contact Identity
                 </Surface>
-                <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-23)" }}>
-                  <TextInput
+                <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "0.875rem" }}>
+                  <Field
                     label="First Name"
                     placeholder="e.g. Ramesh"
                     value={fname}
@@ -137,7 +132,7 @@ export const AgentOnboardCustomerPage: React.FC = () => {
                     isRequired
                     width="100%"
                   />
-                  <TextInput
+                  <Field
                     label="Last Name"
                     placeholder="e.g. Gupta"
                     value={lname}
@@ -148,8 +143,8 @@ export const AgentOnboardCustomerPage: React.FC = () => {
                 </Surface>
               </Surface>
 
-              <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-23)" }}>
-                <TextInput
+              <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "0.875rem" }}>
+                <Field
                   label="Email Address"
                   placeholder="client@business.com"
                   value={email}
@@ -157,7 +152,7 @@ export const AgentOnboardCustomerPage: React.FC = () => {
                   isRequired
                   width="100%"
                 />
-                <TextInput
+                <Field
                   label="Mobile Number"
                   placeholder="+91 9876543210"
                   value={phone}
@@ -168,13 +163,13 @@ export const AgentOnboardCustomerPage: React.FC = () => {
               </Surface>
 
               {/* Enterprise Information */}
-              <Surface style={{ borderTop: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingTop: "var(--spacing-fsk-5)" }}>
-                <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ borderTop: "0.0625rem solid var(--sage-light)", paddingTop: "1rem" }}>
+                <Surface style={{ fontSize: "0.875rem", fontWeight: 700, color: "var(--navy)", marginBottom: "0.75rem" }}>
                   Business Enterprise Details
                 </Surface>
 
-                <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-23)", marginBottom: "var(--spacing-fsk-23)" }}>
-                  <TextInput
+                <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "0.875rem", marginBottom: "0.875rem" }}>
+                  <Field
                     label="Enterprise / Trade Name"
                     placeholder="e.g. Awadh Biofuel & Agro Solutions"
                     value={businessName}
@@ -182,7 +177,7 @@ export const AgentOnboardCustomerPage: React.FC = () => {
                     isRequired
                     width="100%"
                   />
-                  <TextInput
+                  <Field
                     label="PAN (Personal or Enterprise)"
                     placeholder="ABCDE1234F"
                     value={pan}
@@ -191,9 +186,9 @@ export const AgentOnboardCustomerPage: React.FC = () => {
                   />
                 </Surface>
 
-                <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-23)" }}>
+                <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "0.875rem" }}>
                   <Surface>
-                    <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
+                    <label style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--navy)", display: 'block', marginBottom: "0.375rem" }}>
                       Entity Structure
                     </label>
                     <select
@@ -201,12 +196,12 @@ export const AgentOnboardCustomerPage: React.FC = () => {
                       onChange={(e) => setEntityType(e.target.value)}
                       style={{
                         width: '100%',
-                        padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)",
-                        borderRadius: "var(--radius-fsk-37)",
-                        border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
-                        fontSize: "var(--font-fsk-14)",
-                        color: "var(--color-fsk-7)",
-                        background: "var(--color-fsk-38)",
+                        padding: "0.625rem 0.75rem",
+                        borderRadius: "0.5rem",
+                        border: "0.0625rem solid #cbd5e1",
+                        fontSize: "0.8125rem",
+                        color: "var(--navy)",
+                        background: "var(--white)",
                         outline: 'none',
                       }}
                     >
@@ -219,7 +214,7 @@ export const AgentOnboardCustomerPage: React.FC = () => {
                   </Surface>
 
                   <Surface>
-                    <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
+                    <label style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--navy)", display: 'block', marginBottom: "0.375rem" }}>
                       Primary Service Required
                     </label>
                     <select
@@ -227,12 +222,12 @@ export const AgentOnboardCustomerPage: React.FC = () => {
                       onChange={(e) => setInitialService(e.target.value)}
                       style={{
                         width: '100%',
-                        padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)",
-                        borderRadius: "var(--radius-fsk-37)",
-                        border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
-                        fontSize: "var(--font-fsk-14)",
-                        color: "var(--color-fsk-7)",
-                        background: "var(--color-fsk-38)",
+                        padding: "0.625rem 0.75rem",
+                        borderRadius: "0.5rem",
+                        border: "0.0625rem solid #cbd5e1",
+                        fontSize: "0.8125rem",
+                        color: "var(--navy)",
+                        background: "var(--white)",
                         outline: 'none',
                       }}
                     >
@@ -248,13 +243,13 @@ export const AgentOnboardCustomerPage: React.FC = () => {
               </Surface>
 
               {/* Geographical Address */}
-              <Surface style={{ borderTop: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingTop: "var(--spacing-fsk-5)" }}>
-                <Surface style={{ fontSize: "var(--font-fsk-24)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-8)" }}>
+              <Surface style={{ borderTop: "0.0625rem solid var(--sage-light)", paddingTop: "1rem" }}>
+                <Surface style={{ fontSize: "0.875rem", fontWeight: 700, color: "var(--navy)", marginBottom: "0.75rem" }}>
                   Location &amp; Pincode
                 </Surface>
 
-                <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-23)" }}>
-                  <TextInput
+                <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "0.875rem" }}>
+                  <Field
                     label="City"
                     placeholder="e.g. Lucknow"
                     value={city}
@@ -262,7 +257,7 @@ export const AgentOnboardCustomerPage: React.FC = () => {
                     isRequired
                     width="100%"
                   />
-                  <TextInput
+                  <Field
                     label="State"
                     placeholder="e.g. Uttar Pradesh"
                     value={state}
@@ -270,7 +265,7 @@ export const AgentOnboardCustomerPage: React.FC = () => {
                     isRequired
                     width="100%"
                   />
-                  <TextInput
+                  <Field
                     label="Pincode"
                     placeholder="226010"
                     value={pincode}
@@ -282,31 +277,31 @@ export const AgentOnboardCustomerPage: React.FC = () => {
               </Surface>
 
               {/* Pre-locked Referral Code */}
-              <Surface style={{ borderTop: "var(--spacing-fsk-22) solid var(--color-fsk-46)", paddingTop: "var(--spacing-fsk-5)" }}>
-                <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-23)" }}>
+              <Surface style={{ borderTop: "0.0625rem solid var(--sage-light)", paddingTop: "1rem" }}>
+                <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "0.875rem" }}>
                   <Surface>
-                    <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
+                    <label style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--navy)", display: 'block', marginBottom: "0.375rem" }}>
                       Partner Referral Code (Auto-Locked)
                     </label>
-                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)", background: "var(--color-fsk-46)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-59)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-18)", fontWeight: 600 }}>
-                      <Lock size={15} color="var(--color-fsk-9)" />
+                    <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.5rem", padding: "0.625rem 0.75rem", background: "var(--sage-light)", borderRadius: "0.5rem", border: "0.0625rem solid #cbd5e1", fontSize: "0.8125rem", color: "var(--muted)", fontWeight: 600 }}>
+                      <Lock size={15} color="var(--muted)" />
                       <Inline>{agent.referralCode} ({agent.id})</Inline>
                     </Surface>
                   </Surface>
 
                   <Surface>
-                    <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
+                    <label style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--navy)", display: 'block', marginBottom: "0.375rem" }}>
                       Affiliated Franchise
                     </label>
-                    <Surface style={{ padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)", background: "var(--color-fsk-46)", borderRadius: "var(--radius-fsk-37)", border: "var(--spacing-fsk-22) solid var(--color-fsk-59)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-18)", fontWeight: 600 }}>
+                    <Surface style={{ padding: "0.625rem 0.75rem", background: "var(--sage-light)", borderRadius: "0.5rem", border: "0.0625rem solid #cbd5e1", fontSize: "0.8125rem", color: "var(--muted)", fontWeight: 600 }}>
                       {agent.franchiseCode} - {agent.franchiseName}
                     </Surface>
                   </Surface>
                 </Surface>
               </Surface>
 
-              <Surface style={{ marginTop: "var(--spacing-fsk-8)" }}>
-                <Button
+              <Surface style={{ marginTop: "0.75rem" }}>
+                <ActionButton
                   label="Register Customer &amp; Create Account"
                   variant="primary"
                   size="md"
@@ -316,9 +311,9 @@ export const AgentOnboardCustomerPage: React.FC = () => {
                   isDisabled={!fname.trim() || !email.trim() || !phone.trim()}
                 />
               </Surface>
-            </VStack>
+            </Stack>
           </form>
-        </Card>
+        </Panel>
       )}
     </Surface>
   );

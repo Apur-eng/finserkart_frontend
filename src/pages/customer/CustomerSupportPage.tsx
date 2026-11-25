@@ -1,11 +1,6 @@
+import { Notice, ActionButton, Panel, Title, Field, Stack } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
 import { StatusTag as Badge } from '../../components/StatusTag';
-import { Banner } from '@astryxdesign/core/Banner';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { TextInput } from '@astryxdesign/core/TextInput';
-import { VStack } from '@astryxdesign/core/VStack';
 import {
   LifeBuoy,
   Mail,
@@ -66,22 +61,22 @@ export const CustomerSupportPage: React.FC = () => {
   ];
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-78)", margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "62.5rem", margin: '0 auto' }}>
       {/* Header */}
-      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
-        <Heading level={1}>
-          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
+      <Surface style={{ marginBottom: "1.5rem" }}>
+        <Title level={1}>
+          <Inline style={{ fontSize: "1.625rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.02em' }}>
             Customer Support & Helpdesk
           </Inline>
-        </Heading>
-        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+        </Title>
+        <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginTop: "0.25rem", margin: 0 }}>
           Submit support inquiries, report filing hurdles, or speak directly with our Lucknow operational team.
         </p>
       </Surface>
 
       {isSubmitted && (
-        <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
-          <Banner
+        <Surface style={{ marginBottom: "1.5rem" }}>
+          <Notice
             status="success"
             title="Support Ticket Created Successfully"
             description="Your inquiry has been assigned to our operations coordinator team. Expected response within 2 hours."
@@ -89,17 +84,17 @@ export const CustomerSupportPage: React.FC = () => {
         </Surface>
       )}
 
-      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 20rem), 1fr))", gap: "var(--spacing-fsk-20)", alignItems: 'flex-start' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 20rem), 1fr))", gap: "clamp(1rem, 2.1538461538461537vw, 1.75rem)", alignItems: 'flex-start' }}>
         {/* Left Column: Create Ticket Form */}
         <Surface>
-          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-20)" }}>
-            <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-5)" }}>
+          <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", marginBottom: "clamp(1rem, 2.1538461538461537vw, 1.75rem)" }}>
+            <Surface style={{ fontSize: "1rem", fontWeight: 700, color: "var(--navy)", marginBottom: "1rem" }}>
               Create Support Ticket
             </Surface>
 
             <form onSubmit={handleCreateTicket}>
-              <VStack gap={3}>
-                <TextInput
+              <Stack gap={3}>
+                <Field
                   label="Ticket Subject"
                   placeholder="e.g. Query regarding DSC signature in Pvt Ltd"
                   value={subject}
@@ -108,9 +103,9 @@ export const CustomerSupportPage: React.FC = () => {
                   width="100%"
                 />
 
-                <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-23)" }}>
+                <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "0.875rem" }}>
                   <Surface>
-                    <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
+                    <label style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--navy)", display: 'block', marginBottom: "0.375rem" }}>
                       Category
                     </label>
                     <select
@@ -118,12 +113,12 @@ export const CustomerSupportPage: React.FC = () => {
                       onChange={(e) => setCategory(e.target.value as any)}
                       style={{
                         width: '100%',
-                        padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)",
-                        borderRadius: "var(--radius-fsk-37)",
-                        border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
-                        fontSize: "var(--font-fsk-14)",
-                        color: "var(--color-fsk-7)",
-                        background: "var(--color-fsk-38)",
+                        padding: "0.625rem 0.75rem",
+                        borderRadius: "0.5rem",
+                        border: "0.0625rem solid #cbd5e1",
+                        fontSize: "0.8125rem",
+                        color: "var(--navy)",
+                        background: "var(--white)",
                         outline: 'none',
                       }}
                     >
@@ -135,7 +130,7 @@ export const CustomerSupportPage: React.FC = () => {
                   </Surface>
 
                   <Surface>
-                    <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
+                    <label style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--navy)", display: 'block', marginBottom: "0.375rem" }}>
                       Priority
                     </label>
                     <select
@@ -143,12 +138,12 @@ export const CustomerSupportPage: React.FC = () => {
                       onChange={(e) => setPriority(e.target.value as any)}
                       style={{
                         width: '100%',
-                        padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)",
-                        borderRadius: "var(--radius-fsk-37)",
-                        border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
-                        fontSize: "var(--font-fsk-14)",
-                        color: "var(--color-fsk-7)",
-                        background: "var(--color-fsk-38)",
+                        padding: "0.625rem 0.75rem",
+                        borderRadius: "0.5rem",
+                        border: "0.0625rem solid #cbd5e1",
+                        fontSize: "0.8125rem",
+                        color: "var(--navy)",
+                        background: "var(--white)",
                         outline: 'none',
                       }}
                     >
@@ -160,7 +155,7 @@ export const CustomerSupportPage: React.FC = () => {
                   </Surface>
 
                   <Surface>
-                    <label style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-7)", display: 'block', marginBottom: "var(--spacing-fsk-17)" }}>
+                    <label style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--navy)", display: 'block', marginBottom: "0.375rem" }}>
                       Related Application
                     </label>
                     <select
@@ -168,12 +163,12 @@ export const CustomerSupportPage: React.FC = () => {
                       onChange={(e) => setSelectedAppId(e.target.value)}
                       style={{
                         width: '100%',
-                        padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)",
-                        borderRadius: "var(--radius-fsk-37)",
-                        border: "var(--spacing-fsk-22) solid var(--color-fsk-59)",
-                        fontSize: "var(--font-fsk-14)",
-                        color: "var(--color-fsk-7)",
-                        background: "var(--color-fsk-38)",
+                        padding: "0.625rem 0.75rem",
+                        borderRadius: "0.5rem",
+                        border: "0.0625rem solid #cbd5e1",
+                        fontSize: "0.8125rem",
+                        color: "var(--navy)",
+                        background: "var(--white)",
                         outline: 'none',
                       }}
                     >
@@ -186,7 +181,7 @@ export const CustomerSupportPage: React.FC = () => {
                   </Surface>
                 </Surface>
 
-                <TextInput
+                <Field
                   label="Inquiry Details"
                   placeholder="Describe your issue or question in detail..."
                   value={message}
@@ -194,8 +189,8 @@ export const CustomerSupportPage: React.FC = () => {
                   width="100%"
                 />
 
-                <Surface style={{ marginTop: "var(--spacing-fsk-12)" }}>
-                  <Button
+                <Surface style={{ marginTop: "0.5rem" }}>
+                  <ActionButton
                     label="Submit Support Ticket"
                     variant="primary"
                     size="md"
@@ -205,22 +200,22 @@ export const CustomerSupportPage: React.FC = () => {
                     isDisabled={!subject.trim()}
                   />
                 </Surface>
-              </VStack>
+              </Stack>
             </form>
-          </Card>
+          </Panel>
 
           {/* Active Tickets List */}
-          <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-8)" }}>
+          <Surface style={{ fontSize: "1rem", fontWeight: 700, color: "var(--navy)", marginBottom: "0.75rem" }}>
             My Active Support Tickets ({tickets.length})
           </Surface>
 
-          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-8)" }}>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "0.75rem" }}>
             {tickets.map((t) => (
-              <Card key={t.id} elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-                <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: "var(--spacing-fsk-12)" }}>
+              <Panel key={t.id} elevation="low" padding={4} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+                <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: "0.5rem" }}>
                   <Surface>
-                    <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-15)" }}>{t.id}</Inline>
-                    <Surface style={{ fontSize: "var(--font-fsk-91)", fontWeight: 700, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)" }}>
+                    <Inline style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--blue)" }}>{t.id}</Inline>
+                    <Surface style={{ fontSize: "0.90625rem", fontWeight: 700, color: "var(--navy)", marginTop: "0.125rem" }}>
                       {t.subject}
                     </Surface>
                   </Surface>
@@ -230,71 +225,71 @@ export const CustomerSupportPage: React.FC = () => {
                   />
                 </Surface>
 
-                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginBottom: "var(--spacing-fsk-12)" }}>
+                <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", marginBottom: "0.5rem" }}>
                   Category: <strong>{t.category}</strong> {t.applicationId ? `• File: ${t.applicationId}` : ''} • Created: {t.createdAt}
                 </Surface>
 
-                <Surface style={{ background: "var(--color-fsk-27)", padding: "var(--spacing-fsk-12) var(--spacing-fsk-8)", borderRadius: "var(--radius-fsk-37)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-25)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
+                <Surface style={{ background: "var(--cream)", padding: "0.5rem 0.75rem", borderRadius: "0.5rem", fontSize: "0.8125rem", color: "#334155", border: "0.0625rem solid var(--border)" }}>
                   <strong>Latest Note:</strong> {t.lastReply}
                 </Surface>
-              </Card>
+              </Panel>
             ))}
           </Surface>
         </Surface>
 
         {/* Right Column: Contact Channels & FAQs */}
-        <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-26)" }}>
-          {/* Helpdesk Contact Card */}
-          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-23)" }}>
-              <Surface style={{ width: "var(--spacing-fsk-90)", height: "var(--spacing-fsk-90)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-112)", color: "var(--color-fsk-15)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Surface style={{ display: 'flex', flexDirection: 'column', gap: "1.5rem" }}>
+          {/* Helpdesk Contact Panel */}
+          <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem", marginBottom: "0.875rem" }}>
+              <Surface style={{ width: "2.375rem", height: "2.375rem", borderRadius: "0.5rem", background: "#e0f2fe", color: "var(--blue)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <LifeBuoy size={20} />
               </Surface>
               <Surface>
-                <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 600, textTransform: 'uppercase' }}>
+                <Inline style={{ fontSize: "0.8125rem", color: "var(--muted)", fontWeight: 600, textTransform: 'uppercase' }}>
                   Customer Support Center
                 </Inline>
-                <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
+                <Surface style={{ fontSize: "0.9375rem", fontWeight: 700, color: "var(--navy)" }}>
                   Direct Channels
                 </Surface>
               </Surface>
             </Surface>
 
-            <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-8)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-25)" }}>
-              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
-                <Phone size={16} color="var(--color-fsk-15)" />
+            <Surface style={{ display: 'flex', flexDirection: 'column', gap: "0.75rem", fontSize: "0.8125rem", color: "#334155" }}>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem" }}>
+                <Phone size={16} color="var(--blue)" />
                 <Inline>+91 9120000000 (Mon–Sat, 9:30 AM–6:30 PM)</Inline>
               </Surface>
-              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
-                <Mail size={16} color="var(--color-fsk-15)" />
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem" }}>
+                <Mail size={16} color="var(--blue)" />
                 <Inline>support@finservkart.com</Inline>
               </Surface>
-              <Surface style={{ display: 'flex', alignItems: 'flex-start', gap: "var(--spacing-fsk-35)" }}>
-                <MapPin size={16} color="var(--color-fsk-15)" style={{ flexShrink: 0, marginTop: "var(--spacing-fsk-47)" }} />
+              <Surface style={{ display: 'flex', alignItems: 'flex-start', gap: "0.625rem" }}>
+                <MapPin size={16} color="var(--blue)" style={{ flexShrink: 0, marginTop: "0.125rem" }} />
                 <Inline>Jankipuram Garden, Jankipuram, Lucknow, UP 226021</Inline>
               </Surface>
             </Surface>
-          </Card>
+          </Panel>
 
           {/* FAQs Accordion */}
-          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-            <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-23)" }}>
+          <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+            <Surface style={{ fontSize: "0.9375rem", fontWeight: 700, color: "var(--navy)", marginBottom: "0.875rem" }}>
               Frequently Asked Questions
             </Surface>
 
-            <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-23)" }}>
+            <Surface style={{ display: 'flex', flexDirection: 'column', gap: "0.875rem" }}>
               {faqs.map((faq, idx) => (
-                <Surface key={idx} style={{ borderBottom: idx === faqs.length - 1 ? 'none' : "var(--spacing-fsk-22) solid var(--color-fsk-165)", paddingBottom: idx === faqs.length - 1 ? 0 : "var(--spacing-fsk-8)" }}>
-                  <Surface style={{ fontWeight: 700, fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-29)" }}>
+                <Surface key={idx} style={{ borderBottom: idx === faqs.length - 1 ? 'none' : "0.0625rem solid #f1f5f9", paddingBottom: idx === faqs.length - 1 ? 0 : "0.75rem" }}>
+                  <Surface style={{ fontWeight: 700, fontSize: "0.8125rem", color: "var(--navy)", marginBottom: "0.25rem" }}>
                     {faq.q}
                   </Surface>
-                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", lineHeight: 1.5 }}>
+                  <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", lineHeight: 1.5 }}>
                     {faq.a}
                   </Surface>
                 </Surface>
               ))}
             </Surface>
-          </Card>
+          </Panel>
         </Surface>
       </Surface>
     </Surface>

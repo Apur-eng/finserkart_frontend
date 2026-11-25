@@ -8,7 +8,7 @@ import api from '../../api/client';
 
 describe('Module 01: Public Website Master Inventory (10 Pages)', () => {
   const pages = [
-    { route: '/', name: 'Homepage', titleExpected: 'Your Financial Future' },
+    { route: '/', name: 'Homepage', titleExpected: 'Your Business, Our Expertise.' },
     { route: '/about', name: 'About Us', titleExpected: 'About Finservkart' },
     { route: '/services', name: 'Services Catalogue', titleExpected: 'Financial &amp; Compliance Services' },
     { route: '/services/1', name: 'Service Details', titleExpected: 'Loading service details' },
@@ -33,10 +33,12 @@ describe('Module 01: Public Website Master Inventory (10 Pages)', () => {
       );
 
       expect(html).toBeTruthy();
-      expect(html).toContain(titleExpected);
+      expect(html.replace(/<[^>]+>/g, '')).toContain(titleExpected);
       if (route === '/') {
         // Guard content integrity when converting the marketing sections to data.
-        expect(html).toContain('Lightning Fast');
+        expect(html).toContain('How It Works');
+        expect(html).not.toContain('Bank-Level Security');
+        expect(html).not.toContain('99.8%');
         expect(html).not.toContain('&lt;/h3&gt;');
         expect((html.match(/<h1\b/g) ?? []).length).toBe(1);
       }

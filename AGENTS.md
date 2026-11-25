@@ -1,35 +1,18 @@
-# AGENTS.md
+# Repository Guidance
 
-Project-specific guidance for AI coding agents.
+This is the active Finservkart React/TypeScript/Vite frontend repository.
 
-<!-- ASTRYX:START -->
-Astryx v0.7.16 · 174 components
-CLI: run every command as `npx astryx <cmd>` (shown below as `astryx ...`).
+## Approved design reset ? 2026-11-20
 
-SETUP (once, in app entry e.g. main.tsx) — without these, components render unstyled:
-  import "@astryxdesign/core/reset.css";
-  import "@astryxdesign/core/astryx.css";
+The user explicitly superseded the previous Astryx design direction. Do not use Astryx components, themes, CLI, generated styles or another large UI library. Use semantic HTML, local React components and maintained CSS. This instruction supersedes Astryx-specific clauses in older workspace skills and historical design documents.
 
-WORKFLOW — start every page from a template, never from scratch:
-1. `astryx build "<idea>"` — names the template to scaffold from and the parts it lacks.
-2. `astryx template <name> <path>` — scaffold it; keep its frame, gap and padding; replace the content.
-3. `astryx template <Block>` for parts it lacks; `astryx component <Name>` to read props before using one.
-Changing an existing page? Keep it: skip step 2 and add blocks/components inside its sections.
-Before you deliver a build, run `astryx doctor --built <dir>`; don't deliver it if it fails.
+- Use src/components/ui.tsx for accessible form controls, panels and operational layouts. Public pages use semantic HTML and src/styles/public.css.
+- Keep named design values in src/styles/globals.css. Do not reintroduce numbered generated tokens.
+- Preserve routes, API contracts, auth, permissions, commission and payment behavior, demo access and role switching. Demo mode must not execute real financial operations.
+- Partner onboarding is an enquiry through the existing contact flow until a production onboarding contract is approved. Do not invent financial promises, testimonials, credentials or public contact details.
+- Keep React, strict TypeScript, Vite and React Router. Add dependencies only when necessary.
+- Inspect existing changes before editing; preserve unrelated work. Work locally, without external integrations, pushes, merges or deployments unless explicitly requested.
+- Verify with npm run test, npm run lint and npm run build. Astryx doctor is retired. Include relevant interaction coverage and inspect responsive layouts in a browser when available.
+- Report verification limits accurately; SSR and jsdom are not visual browser checks.
 
-RULES:
-- No <div> — components handle all layout and spacing.
-- Read `astryx docs layout` before changing a template's frame.
-- Dense data = rows (Table, List/Item), not Card-wrapped lists. Badge = counts only.
-- Style with component props first, then tokens (var(--color-*|--spacing-*|--radius-*)). No raw hex/px. No StyleX/Tailwind compiler here — don't use xstyle/utility classes directly. Some templates use StyleX and need a compiler plugin; see `astryx docs styling-overview`.
-- THEMES: palettes and custom colors go through the theme, never :root overrides. To make or change a theme (colors, fonts, corners, spacing, a look from a picture), prefer the experimental theme editor over hand-written theme files: `astryx experimental theme editor new <name> --like neutral`, then `editor set <name> <thing> <value>` or `editor how "<what you want>"`; wire it with `astryx theme add <name>`; after each change look at it with `astryx experimental theme editor show <name> --png` and open the PNGs it writes (changes nothing in the app); a theme change is not done until you have looked at the pictures. In code, extend an imported theme to customize it; `theme eject <slug>` only forks source. See `astryx docs theme`.
-- SELF-CHECK: re-read the file; replace any raw <div>/<span>, imported .css/@apply, or hardcoded #hex/px with the component or a token.
-
-`astryx help` lists every command. Key ones beyond the workflow:
-  search "<query>"   find any component / hook / doc / template
-  discover <words>   integrations you could add
-  docs <topic>       getting-started, principles, tokens, theme … (`astryx docs` lists all)
-  docs cli           commands and API reference
-  docs authoring     build an integration package, and every field it holds
-  upgrade --from <old version> --apply   run after a dependency bump
-<!-- ASTRYX:END -->
+Workspace safety and documentation-authority rules still apply. Backend changes are outside scope.

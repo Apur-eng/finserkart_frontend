@@ -1,8 +1,6 @@
+import { Notice, Panel, Field } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
 import { StatusTag as Badge } from '../../components/StatusTag';
-import { Banner } from '@astryxdesign/core/Banner';
-import { Card } from '@astryxdesign/core/Card';
-import { TextInput } from '@astryxdesign/core/TextInput';
 import {
   Activity,
   Download,
@@ -37,17 +35,17 @@ export const AdminActivityLogsPage: React.FC = () => {
   };
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-33)", margin: '0 auto', display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-20)" }}>
+    <Surface style={{ maxWidth: "85rem", margin: '0 auto', display: 'flex', flexDirection: 'column', gap: "clamp(1rem, 2.1538461538461537vw, 1.75rem)" }}>
       {/* Header */}
-      <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: "var(--spacing-fsk-5)" }}>
+      <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: "1rem" }}>
         <Surface>
-          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", color: "var(--color-fsk-34)", fontSize: "var(--font-fsk-14)", fontWeight: 600 }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.5rem", color: "#dc2626", fontSize: "0.8125rem", fontWeight: 600 }}>
             <Activity size={16} /> Platform Security & Audit Trail
           </Surface>
-          <h1 style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
+          <h1 style={{ fontSize: "clamp(1.5rem, 2.1538461538461537vw, 1.75rem)", fontWeight: 800, color: "var(--navy)", margin: "0.25rem 0 0 0" }}>
             System Activity & Audit Logs
           </h1>
-          <p style={{ fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
+          <p style={{ fontSize: "0.875rem", color: "var(--muted)", margin: "0.25rem 0 0 0" }}>
             Immutable administrative activity history, authorization events, and system compliance logs.
           </p>
         </Surface>
@@ -57,13 +55,13 @@ export const AdminActivityLogsPage: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-12)",
-            padding: "var(--spacing-fsk-35) var(--spacing-fsk-36)",
-            borderRadius: "var(--radius-fsk-37)",
-            background: "var(--color-fsk-34)",
-            color: "var(--color-fsk-38)",
+            gap: "0.5rem",
+            padding: "0.625rem 1.125rem",
+            borderRadius: "0.5rem",
+            background: "#dc2626",
+            color: "var(--white)",
             fontWeight: 600,
-            fontSize: "var(--font-fsk-24)",
+            fontSize: "0.875rem",
             border: 'none',
             cursor: 'pointer',
           }}
@@ -73,7 +71,7 @@ export const AdminActivityLogsPage: React.FC = () => {
       </Surface>
 
       {bannerMessage && (
-        <Banner
+        <Notice
           status="info"
           title="Audit Export"
           description={bannerMessage}
@@ -81,76 +79,76 @@ export const AdminActivityLogsPage: React.FC = () => {
       )}
 
       {/* Security Health Metrics */}
-      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16.25rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
-        <Card elevation="low" padding={4}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16.25rem), 1fr))", gap: "1rem" }}>
+        <Panel elevation="low" padding={4}>
           <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 500 }}>System Integrity</Inline>
-            <ShieldCheck size={20} color="var(--color-fsk-39)" />
+            <Inline style={{ fontSize: "0.8125rem", color: "var(--muted)", fontWeight: 500 }}>System Integrity</Inline>
+            <ShieldCheck size={20} color="#16a34a" />
           </Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-8)" }}>
+          <Surface style={{ fontSize: "clamp(1.5rem, 2.1538461538461537vw, 1.75rem)", fontWeight: 800, color: "var(--navy)", marginTop: "0.75rem" }}>
             100% Compliant
           </Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-39)", marginTop: "var(--spacing-fsk-29)" }}>
+          <Surface style={{ fontSize: "0.8125rem", color: "#16a34a", marginTop: "0.25rem" }}>
             Zero unauthorized privilege escalations
           </Surface>
-        </Card>
+        </Panel>
 
-        <Card elevation="low" padding={4}>
+        <Panel elevation="low" padding={4}>
           <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 500 }}>Logged Events Today</Inline>
-            <Server size={20} color="var(--color-fsk-40)" />
+            <Inline style={{ fontSize: "0.8125rem", color: "var(--muted)", fontWeight: 500 }}>Logged Events Today</Inline>
+            <Server size={20} color="var(--blue)" />
           </Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-8)" }}>
+          <Surface style={{ fontSize: "clamp(1.5rem, 2.1538461538461537vw, 1.75rem)", fontWeight: 800, color: "var(--navy)", marginTop: "0.75rem" }}>
             1,428
           </Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-40)", marginTop: "var(--spacing-fsk-29)" }}>
+          <Surface style={{ fontSize: "0.8125rem", color: "var(--blue)", marginTop: "0.25rem" }}>
             All operations mirrored to append-only storage
           </Surface>
-        </Card>
+        </Panel>
 
-        <Card elevation="low" padding={4}>
+        <Panel elevation="low" padding={4}>
           <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", fontWeight: 500 }}>Security Status</Inline>
-            <Lock size={20} color="var(--color-fsk-41)" />
+            <Inline style={{ fontSize: "0.8125rem", color: "var(--muted)", fontWeight: 500 }}>Security Status</Inline>
+            <Lock size={20} color="#7c3aed" />
           </Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-8)" }}>
+          <Surface style={{ fontSize: "clamp(1.5rem, 2.1538461538461537vw, 1.75rem)", fontWeight: 800, color: "var(--navy)", marginTop: "0.75rem" }}>
             Level 5 Root
           </Surface>
-          <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-41)", marginTop: "var(--spacing-fsk-29)" }}>
+          <Surface style={{ fontSize: "0.8125rem", color: "#7c3aed", marginTop: "0.25rem" }}>
             MFA enforced across all administrative accounts
           </Surface>
-        </Card>
+        </Panel>
       </Surface>
 
       {/* Filter and Log Table */}
-      <Card elevation="low" padding={5}>
-        <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "var(--spacing-fsk-2)", flexWrap: 'wrap', gap: "var(--spacing-fsk-5)" }}>
+      <Panel elevation="low" padding={5}>
+        <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "1.25rem", flexWrap: 'wrap', gap: "1rem" }}>
           <Surface>
-            <h2 style={{ fontSize: "var(--font-fsk-30)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
+            <h2 style={{ fontSize: "1.125rem", fontWeight: 700, color: "var(--navy)", margin: 0 }}>
               Immutable Platform Event Log
             </h2>
-            <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
+            <p style={{ fontSize: "0.8125rem", color: "var(--muted)", margin: "0.25rem 0 0 0" }}>
               Timestamped cryptographic records of user and operational actions.
             </p>
           </Surface>
 
-          <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-8)", alignItems: 'center', flexWrap: 'wrap' }}>
-            <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-17)" }}>
+          <Surface style={{ display: 'flex', gap: "0.75rem", alignItems: 'center', flexWrap: 'wrap' }}>
+            <Surface style={{ display: 'flex', gap: "0.375rem" }}>
               {['All', 'info', 'warning', 'critical'].map((sev) => (
                 <button
                   key={sev}
                   type="button"
                   onClick={() => setSeverityFilter(sev)}
                   style={{
-                    padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
-                    borderRadius: "var(--radius-fsk-42)",
-                    fontSize: "var(--font-fsk-14)",
+                    padding: "0.375rem 0.75rem",
+                    borderRadius: "0.375rem",
+                    fontSize: "0.8125rem",
                     fontWeight: 600,
                     textTransform: 'capitalize',
                     cursor: 'pointer',
-                    border: severityFilter === sev ? "var(--spacing-fsk-22) solid var(--color-fsk-34)" : "var(--spacing-fsk-22) solid var(--color-fsk-163)",
-                    background: severityFilter === sev ? "var(--color-fsk-43)" : "var(--color-fsk-38)",
-                    color: severityFilter === sev ? "var(--color-fsk-44)" : "var(--color-fsk-9)",
+                    border: severityFilter === sev ? "0.0625rem solid #dc2626" : "0.0625rem solid #e2e8f0",
+                    background: severityFilter === sev ? "#fee2e2" : "var(--white)",
+                    color: severityFilter === sev ? "#991b1b" : "var(--muted)",
                   }}
                 >
                   {sev}
@@ -158,8 +156,8 @@ export const AdminActivityLogsPage: React.FC = () => {
               ))}
             </Surface>
 
-            <Surface style={{ width: "var(--spacing-fsk-45)" }}>
-              <TextInput
+            <Surface style={{ width: "17.5rem" }}>
+              <Field
                 label="Search Logs"
                 placeholder="Search actor, action or IP..."
                 value={searchTerm}
@@ -170,42 +168,42 @@ export const AdminActivityLogsPage: React.FC = () => {
         </Surface>
 
         <Surface style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "0.8125rem" }}>
             <thead>
-              <tr style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontWeight: 600 }}>
-                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Log ID</th>
-                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Timestamp</th>
-                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Actor</th>
-                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Action & Description</th>
-                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Target Entity</th>
-                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>IP Address</th>
-                <th style={{ padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)" }}>Severity</th>
+              <tr style={{ borderBottom: "0.0625rem solid var(--border)", color: "var(--muted)", fontWeight: 600 }}>
+                <th style={{ padding: "0.75rem 1rem" }}>Log ID</th>
+                <th style={{ padding: "0.75rem 1rem" }}>Timestamp</th>
+                <th style={{ padding: "0.75rem 1rem" }}>Actor</th>
+                <th style={{ padding: "0.75rem 1rem" }}>Action & Description</th>
+                <th style={{ padding: "0.75rem 1rem" }}>Target Entity</th>
+                <th style={{ padding: "0.75rem 1rem" }}>IP Address</th>
+                <th style={{ padding: "0.75rem 1rem" }}>Severity</th>
               </tr>
             </thead>
             <tbody>
               {filteredLogs.map((log) => (
-                <tr key={log.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
+                <tr key={log.id} style={{ borderBottom: "0.0625rem solid var(--sage-light)" }}>
+                  <td style={{ padding: "0.875rem 1rem", fontWeight: 700, color: "var(--navy)" }}>
                     {log.id}
                   </td>
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-9)" }}>
+                  <td style={{ padding: "0.875rem 1rem", color: "var(--muted)" }}>
                     {log.timestamp}
                   </td>
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", fontWeight: 600, color: "var(--color-fsk-7)" }}>
+                  <td style={{ padding: "0.875rem 1rem", fontWeight: 600, color: "var(--navy)" }}>
                     {log.actor}
                   </td>
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-25)" }}>
+                  <td style={{ padding: "0.875rem 1rem", color: "#334155" }}>
                     {log.action}
                   </td>
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>
-                    <code style={{ background: "var(--color-fsk-46)", padding: "var(--spacing-fsk-47) var(--spacing-fsk-17)", borderRadius: "var(--radius-fsk-48)", fontSize: "var(--font-fsk-14)" }}>
+                  <td style={{ padding: "0.875rem 1rem" }}>
+                    <code style={{ background: "var(--sage-light)", padding: "0.125rem 0.375rem", borderRadius: "0.25rem", fontSize: "0.8125rem" }}>
                       {log.entity}
                     </code>
                   </td>
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)", color: "var(--color-fsk-9)", fontFamily: 'monospace' }}>
+                  <td style={{ padding: "0.875rem 1rem", color: "var(--muted)", fontFamily: 'monospace' }}>
                     {log.ip}
                   </td>
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-5)" }}>
+                  <td style={{ padding: "0.875rem 1rem" }}>
                     <Badge
                       label={log.severity.toUpperCase()}
                       variant={
@@ -222,7 +220,7 @@ export const AdminActivityLogsPage: React.FC = () => {
             </tbody>
           </table>
         </Surface>
-      </Card>
+      </Panel>
     </Surface>
   );
 };

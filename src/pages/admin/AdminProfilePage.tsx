@@ -1,8 +1,6 @@
+import { Notice, Panel, Field } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
 import { StatusTag as Badge } from '../../components/StatusTag';
-import { Banner } from '@astryxdesign/core/Banner';
-import { Card } from '@astryxdesign/core/Card';
-import { TextInput } from '@astryxdesign/core/TextInput';
 import {
   Clock,
   Key,
@@ -41,42 +39,42 @@ export const AdminProfilePage: React.FC = () => {
   };
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-72)", margin: '0 auto', display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-20)" }}>
+    <Surface style={{ maxWidth: "60rem", margin: '0 auto', display: 'flex', flexDirection: 'column', gap: "clamp(1rem, 2.1538461538461537vw, 1.75rem)" }}>
       {/* Header */}
       <Surface>
-        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", color: "var(--color-fsk-34)", fontSize: "var(--font-fsk-14)", fontWeight: 600 }}>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.5rem", color: "#dc2626", fontSize: "0.8125rem", fontWeight: 600 }}>
           <ShieldAlert size={16} /> Root Platform Governance Credentials
         </Surface>
-        <h1 style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
+        <h1 style={{ fontSize: "clamp(1.5rem, 2.1538461538461537vw, 1.75rem)", fontWeight: 800, color: "var(--navy)", margin: "0.25rem 0 0 0" }}>
           Administrator Profile & Security Clearance
         </h1>
-        <p style={{ fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
+        <p style={{ fontSize: "0.875rem", color: "var(--muted)", margin: "0.25rem 0 0 0" }}>
           Manage your platform root credentials, two-factor authentication, and security clearance.
         </p>
       </Surface>
 
       {bannerMessage && (
-        <Banner
+        <Notice
           status="info"
           title="Security Update"
           description={bannerMessage}
         />
       )}
 
-      {/* Admin Card */}
-      <Card elevation="low" padding={5}>
-        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-2)", flexWrap: 'wrap' }}>
+      {/* Admin Panel */}
+      <Panel elevation="low" padding={5}>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "1.25rem", flexWrap: 'wrap' }}>
           <Surface
             style={{
-              width: "var(--spacing-fsk-73)",
-              height: "var(--spacing-fsk-73)",
+              width: "4.5rem",
+              height: "4.5rem",
               borderRadius: '50%',
-              background: "var(--color-fsk-brand)",
-              color: "var(--color-fsk-38)",
+              background: "var(--status-brand)",
+              color: "var(--white)",
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: "var(--font-fsk-16)",
+              fontSize: "clamp(1.5rem, 2.1538461538461537vw, 1.75rem)",
               fontWeight: 800,
             }}
           >
@@ -84,44 +82,44 @@ export const AdminProfilePage: React.FC = () => {
           </Surface>
 
           <Surface style={{ flex: 1 }}>
-            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
-              <h2 style={{ fontSize: "var(--font-fsk-61)", fontWeight: 800, color: "var(--color-fsk-7)", margin: 0 }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem" }}>
+              <h2 style={{ fontSize: "1.25rem", fontWeight: 800, color: "var(--navy)", margin: 0 }}>
                 {profile.name}
               </h2>
               <Badge label="Super Admin" variant="red" />
             </Surface>
-            <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-5)", marginTop: "var(--spacing-fsk-17)", fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", flexWrap: 'wrap' }}>
-              <Inline style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
+            <Surface style={{ display: 'flex', gap: "1rem", marginTop: "0.375rem", fontSize: "0.8125rem", color: "var(--muted)", flexWrap: 'wrap' }}>
+              <Inline style={{ display: 'flex', alignItems: 'center', gap: "0.25rem" }}>
                 <Mail size={14} /> {profile.email}
               </Inline>
-              <Inline style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
+              <Inline style={{ display: 'flex', alignItems: 'center', gap: "0.25rem" }}>
                 <Clock size={14} /> Last Login: {profile.lastLogin}
               </Inline>
             </Surface>
           </Surface>
         </Surface>
-      </Card>
+      </Panel>
 
       {/* Security Clearance Details */}
-      <Card elevation="low" padding={5}>
-        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-5)" }}>
-          <ShieldCheck size={20} color="var(--color-fsk-39)" />
-          <h2 style={{ fontSize: "var(--font-fsk-74)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
+      <Panel elevation="low" padding={5}>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem", marginBottom: "1rem" }}>
+          <ShieldCheck size={20} color="#16a34a" />
+          <h2 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "var(--navy)", margin: 0 }}>
             Active Security Clearance
           </h2>
         </Surface>
 
-        <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16.25rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
-          <Surface style={{ padding: "var(--spacing-fsk-5)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-27)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
-            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Security Clearance Level</Surface>
-            <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-29)" }}>
+        <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16.25rem), 1fr))", gap: "1rem" }}>
+          <Surface style={{ padding: "1rem", borderRadius: "0.5rem", background: "var(--cream)", border: "0.0625rem solid var(--border)" }}>
+            <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)" }}>Security Clearance Level</Surface>
+            <Surface style={{ fontSize: "0.9375rem", fontWeight: 700, color: "var(--navy)", marginTop: "0.25rem" }}>
               {profile.securityClearance}
             </Surface>
           </Surface>
 
-          <Surface style={{ padding: "var(--spacing-fsk-5)", borderRadius: "var(--radius-fsk-37)", background: "var(--color-fsk-27)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)" }}>
-            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>Authorized Operations</Surface>
-            <Surface style={{ fontSize: "var(--font-fsk-19)", fontWeight: 700, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-29)" }}>
+          <Surface style={{ padding: "1rem", borderRadius: "0.5rem", background: "var(--cream)", border: "0.0625rem solid var(--border)" }}>
+            <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)" }}>Authorized Operations</Surface>
+            <Surface style={{ fontSize: "0.9375rem", fontWeight: 700, color: "var(--navy)", marginTop: "0.25rem" }}>
               Root Database, Treasury, User & CA Allocation
             </Surface>
           </Surface>
@@ -129,21 +127,21 @@ export const AdminProfilePage: React.FC = () => {
 
         <Surface
           style={{
-            marginTop: "var(--spacing-fsk-2)",
-            padding: "var(--spacing-fsk-5)",
-            borderRadius: "var(--radius-fsk-37)",
-            border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+            marginTop: "1.25rem",
+            padding: "1rem",
+            borderRadius: "0.5rem",
+            border: "0.0625rem solid var(--border)",
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            background: profile.twoFactorEnabled ? "var(--color-fsk-75)" : "var(--color-fsk-66)",
+            background: profile.twoFactorEnabled ? "#f0fdf4" : "#fffbeb",
           }}
         >
           <Surface>
-            <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)", fontSize: "var(--font-fsk-24)" }}>
+            <Surface style={{ fontWeight: 600, color: "var(--navy)", fontSize: "0.875rem" }}>
               Two-Factor Authentication (2FA)
             </Surface>
-            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
+            <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", marginTop: "0.125rem" }}>
               Hardware security key or TOTP authenticator required for administrative actions.
             </Surface>
           </Surface>
@@ -151,32 +149,32 @@ export const AdminProfilePage: React.FC = () => {
             type="button"
             onClick={toggle2FA}
             style={{
-              padding: "var(--spacing-fsk-12) var(--spacing-fsk-5)",
-              borderRadius: "var(--radius-fsk-42)",
-              background: profile.twoFactorEnabled ? "var(--color-fsk-39)" : "var(--color-fsk-38)",
-              color: profile.twoFactorEnabled ? "var(--color-fsk-38)" : "var(--color-fsk-25)",
-              border: profile.twoFactorEnabled ? 'none' : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+              padding: "0.5rem 1rem",
+              borderRadius: "0.375rem",
+              background: profile.twoFactorEnabled ? "#16a34a" : "var(--white)",
+              color: profile.twoFactorEnabled ? "var(--white)" : "#334155",
+              border: profile.twoFactorEnabled ? 'none' : "0.0625rem solid #cbd5e1",
               fontWeight: 600,
-              fontSize: "var(--font-fsk-14)",
+              fontSize: "0.8125rem",
               cursor: 'pointer',
             }}
           >
             {profile.twoFactorEnabled ? 'Enabled (Active)' : 'Enable 2FA'}
           </button>
         </Surface>
-      </Card>
+      </Panel>
 
       {/* Password Management */}
-      <Card elevation="low" padding={5}>
-        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-5)" }}>
-          <Lock size={20} color="var(--color-fsk-34)" />
-          <h2 style={{ fontSize: "var(--font-fsk-74)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
+      <Panel elevation="low" padding={5}>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem", marginBottom: "1rem" }}>
+          <Lock size={20} color="#dc2626" />
+          <h2 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "var(--navy)", margin: 0 }}>
             Update Administrator Credentials
           </h2>
         </Surface>
 
-        <form onSubmit={handlePasswordUpdate} style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-5)" }}>
-          <TextInput
+        <form onSubmit={handlePasswordUpdate} style={{ display: 'flex', flexDirection: 'column', gap: "1rem" }}>
+          <Field
             label="Current Master Password"
             type="password"
             placeholder="••••••••••••"
@@ -184,7 +182,7 @@ export const AdminProfilePage: React.FC = () => {
             onChange={(val) => setCurrentPassword(val)}
           />
 
-          <TextInput
+          <Field
             label="New Administrator Password"
             type="password"
             placeholder="Minimum 12 characters with symbols and digits"
@@ -192,7 +190,7 @@ export const AdminProfilePage: React.FC = () => {
             onChange={(val) => setNewPassword(val)}
           />
 
-          <TextInput
+          <Field
             label="Confirm New Password"
             type="password"
             placeholder="Repeat new password"
@@ -200,19 +198,19 @@ export const AdminProfilePage: React.FC = () => {
             onChange={(val) => setConfirmPassword(val)}
           />
 
-          <Surface style={{ display: 'flex', justifyContent: 'flex-end', marginTop: "var(--spacing-fsk-12)" }}>
+          <Surface style={{ display: 'flex', justifyContent: 'flex-end', marginTop: "0.5rem" }}>
             <button
               type="submit"
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: "var(--spacing-fsk-12)",
-                padding: "var(--spacing-fsk-35) var(--spacing-fsk-2)",
-                borderRadius: "var(--radius-fsk-37)",
-                background: "var(--color-fsk-34)",
-                color: "var(--color-fsk-38)",
+                gap: "0.5rem",
+                padding: "0.625rem 1.25rem",
+                borderRadius: "0.5rem",
+                background: "#dc2626",
+                color: "var(--white)",
                 fontWeight: 600,
-                fontSize: "var(--font-fsk-24)",
+                fontSize: "0.875rem",
                 border: 'none',
                 cursor: 'pointer',
               }}
@@ -221,7 +219,7 @@ export const AdminProfilePage: React.FC = () => {
             </button>
           </Surface>
         </form>
-      </Card>
+      </Panel>
     </Surface>
   );
 };

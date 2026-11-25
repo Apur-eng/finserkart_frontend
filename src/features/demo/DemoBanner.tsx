@@ -1,5 +1,5 @@
+import { Row } from '../../components/ui';
 import React from 'react';
-import { HStack } from '@astryxdesign/core/HStack';
 import { LogOut, RefreshCw, Sparkles } from 'lucide-react';
 import { useDemo } from './useDemo';
 import { DemoRoleSwitcherModal } from './DemoRoleSwitcherModal';
@@ -18,7 +18,7 @@ export const DemoBanner: React.FC = () => {
           background: 'linear-gradient(90deg, #1e293b 0%, #0f172a 100%)',
           color: '#f8fafc',
           borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
-          padding: 'var(--spacing-2) var(--spacing-4)',
+          padding: '0.5rem 1rem',
           position: 'relative',
           zIndex: 50,
           boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
@@ -32,11 +32,11 @@ export const DemoBanner: React.FC = () => {
             flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: 'var(--spacing-2)',
+            gap: '0.5rem',
           }}
         >
           {/* Left indicator */}
-          <HStack gap={2} vAlign="center" wrap="wrap">
+          <Row gap={2} vAlign="center" wrap="wrap">
             <span
               style={{
                 display: 'inline-flex',
@@ -71,10 +71,10 @@ export const DemoBanner: React.FC = () => {
                 <strong style={{ color: '#ffffff' }}>{currentRoleConfig.name}</strong>
               </span>
             )}
-          </HStack>
+          </Row>
 
           {/* Right actions */}
-          <HStack gap={2} vAlign="center">
+          <Row gap={2} vAlign="center">
             <button
               type="button"
               onClick={openSwitcher}
@@ -85,7 +85,7 @@ export const DemoBanner: React.FC = () => {
                 background: 'rgba(255, 255, 255, 0.12)',
                 color: '#ffffff',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
-                borderRadius: 'var(--radius-element)',
+                borderRadius: 'var(--radius-small)',
                 padding: '4px 12px',
                 fontSize: '0.8125rem',
                 fontWeight: 600,
@@ -109,7 +109,7 @@ export const DemoBanner: React.FC = () => {
                 background: 'rgba(239, 68, 68, 0.2)',
                 color: '#fca5a5',
                 border: '1px solid rgba(239, 68, 68, 0.4)',
-                borderRadius: 'var(--radius-element)',
+                borderRadius: 'var(--radius-small)',
                 padding: '4px 12px',
                 fontSize: '0.8125rem',
                 fontWeight: 600,
@@ -122,7 +122,7 @@ export const DemoBanner: React.FC = () => {
               <LogOut size={14} aria-hidden="true" />
               Exit Demo
             </button>
-          </HStack>
+          </Row>
         </div>
       </div>
       <DemoRoleSwitcherModal />

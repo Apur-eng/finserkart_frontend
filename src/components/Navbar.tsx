@@ -1,71 +1,28 @@
 import { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Button } from '@astryxdesign/core/Button';
-import { Drawer } from '@astryxdesign/core/Drawer';
-import { HStack } from '@astryxdesign/core/HStack';
-import { VStack } from '@astryxdesign/core/VStack';
-import { Text } from '@astryxdesign/core/Text';
-import { Menu, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, Menu, X } from 'lucide-react';
+import { SidePanel } from './ui';
 import { useCompactViewport } from '../hooks/useCompactViewport';
 
-const links = [['/', 'Home'], ['/about', 'About Us'], ['/services', 'Services'], ['/contact', 'Contact']];
-const roles = [
-  ['customer', 'Customer Login'],
-  ['agent', 'Agent Login'],
-  ['franchise', 'Franchise Login'],
-  ['ca', 'CA Login'],
-  ['coordinator', 'Operations Coordinator Login'],
-  ['admin', 'Main Admin Login'],
-];
-const linkStyle = { padding: 'var(--spacing-3)', borderRadius: 'var(--radius-element)', textDecoration: 'none', fontWeight: 600 };
-
+const roles = [['customer','Customer Login'],['agent','Agent Login'],['franchise','Franchise Login'],['ca','CA Login'],['coordinator','Operations Coordinator Login'],['admin','Main Admin Login']];
+function Dropdown({ label, children }: { label: string; children: React.ReactNode }) {
+  return <details className="nav-dropdown" onKeyDown={event => { if(event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus(); } }} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) event.currentTarget.open = false; }}>
+    <summary>{label}<ChevronDown size={13} aria-hidden="true" /></summary><div className="nav-dropdown-panel" onClick={event => { if ((event.target as HTMLElement).closest('a')) { const details = event.currentTarget.closest('details'); if(details) details.open = false; } }}>{children}</div>
+  </details>;
+}
 export function Navbar() {
   const compact = useCompactViewport();
-  const { pathname, search } = useLocation();
-  const route = pathname + search;
-  const [openAt, setOpenAt] = useState<string | null>(null);
-  const navigation = <>
-    {links.map(([to, label]) => <NavLink key={to} to={to} end={to === '/'}
-      style={({ isActive }) => ({ ...linkStyle, color: isActive ? 'var(--color-accent)' : 'var(--color-text-primary)',
-        background: isActive ? 'var(--color-fsk-info-subtle)' : 'transparent' })}>{label}</NavLink>)}
-  </>;
-  return <VStack as="header" style={{ position: 'sticky', top: 0, zIndex: 40, background: 'var(--color-background-surface)',
-    borderBottom: 'thin solid var(--color-background-muted)' }} hAlign="center" paddingInline={4}>
-    <a className="skip-link" href="#public-content">Skip to content</a>
-    <HStack width="100%" maxWidth={1240} paddingBlock={3} hAlign="between" vAlign="center" gap={3}>
-      <Link to="/" aria-label="Finservkart home" style={{ textDecoration: 'none', color: 'var(--color-fsk-brand)' }}>
-        <HStack gap={2} vAlign="center"><ShieldCheck aria-hidden="true" /><Text size="xl" weight="bold" color="inherit">Finservkart</Text></HStack>
-      </Link>
-      {!compact && <HStack as="nav" aria-label="Main navigation" gap={1} vAlign="center">{navigation}</HStack>}
-      <HStack gap={2} vAlign="center">
-        {!compact && <>
-          <Link to="/explore-demo" style={{ ...linkStyle, border: '1px solid var(--color-accent)', color: 'var(--color-accent)' }}>Explore Demo</Link>
-          <details onKeyDown={(event) => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus(); } }}
-            style={{ position: 'relative' }}>
-            <summary style={{ ...linkStyle, cursor: 'pointer', color: 'var(--color-text-primary)' }}>Login</summary>
-            <VStack padding={2} gap={1} style={{ position: 'absolute', right: 0, zIndex: 50,
-              minWidth: 'max-content', background: 'var(--color-background-surface)', borderRadius: 'var(--radius-container)', boxShadow: 'var(--shadow-fsk-card)' }}>
-              {roles.map(([role, label]) => <Link key={role} to={`/login?role=${role}`} style={linkStyle}
-                onClick={(event) => { const details = event.currentTarget.closest('details'); if (details) details.open = false; }}>{label}</Link>)}
-            </VStack>
-          </details>
-          <Link to="/register" style={{ ...linkStyle, background: 'var(--color-accent)', color: 'var(--color-background-surface)' }}>Create account <ArrowUpRight aria-hidden="true" size={16} /></Link>
-        </>}
-        {compact && <Button label="Menu" icon={<Menu aria-hidden="true" />} variant="secondary"
-          aria-expanded={openAt === route} onClick={() => setOpenAt(route)} />}
-      </HStack>
-    </HStack>
-    {compact && <Drawer label="Main navigation" isOpen={openAt === route} onOpenChange={(open) => setOpenAt(open ? route : null)} width={340}>
-      <VStack gap={3}>
-        <Button label="Close menu" variant="secondary" onClick={() => setOpenAt(null)} />
-        <Link to="/explore-demo" style={{ ...linkStyle, background: 'var(--color-fsk-info-subtle)', color: 'var(--color-accent)' }}>Explore Demo</Link>
-        <VStack as="nav" aria-label="Main navigation">{navigation}</VStack>
-        <Text type="label">Your account</Text>
-        {roles.map(([role, label]) => <Link key={role} to={`/login?role=${role}`} style={linkStyle}>{label}</Link>)}
-        <Link to="/login" style={linkStyle}>Unified Login</Link>
-        <Link to="/register" style={linkStyle}>Create New Account</Link>
-      </VStack>
-    </Drawer>}
-  </VStack>;
+  const location = useLocation(); const route = location.pathname + location.search + location.hash;
+  const [openAt,setOpenAt] = useState<string|null>(null);
+  const nav = <><NavLink to="/" end>Home</NavLink><NavLink to="/services">Services</NavLink><Link to="/#how-it-works">How It Works</Link>
+    <Dropdown label="Partner With Us"><Link to="/#agents">Become an Agent</Link><Link to="/#franchise">Franchise Opportunities</Link><Link to="/#professionals">Professional Network</Link></Dropdown>
+    <NavLink to="/about">About Us</NavLink><NavLink to="/contact">Contact</NavLink></>;
+  const logins = <>{roles.map(([role,label],index)=><span key={role}>{index === 4 && <small className="menu-caption">Staff login</small>}<Link to={`/login?role=${role}`}>{label}</Link></span>)}</>;
+  return <header className="site-header"><a className="skip-link" href="#public-content">Skip to content</a>
+    <div className="container nav-bar"><Link className="brand" to="/" aria-label="Finservkart home"><span className="brand-mark" aria-hidden="true">f<span>.</span></span>finservkart<span className="brand-dot">.</span></Link>
+    {!compact && <><nav aria-label="Main navigation" className="desktop-nav">{nav}</nav><div className="nav-actions"><Link className="nav-demo" to="/explore-demo">Explore Demo</Link><Dropdown label="Login">{logins}</Dropdown><Link to="/register" className="button button-primary">Get Started<ArrowUpRight size={15} aria-hidden="true" /></Link></div></>}
+    {compact && <button className="button button-ghost" aria-expanded={openAt===route} aria-controls="mobile-navigation" onClick={()=>setOpenAt(route)}><Menu size={21} aria-hidden="true"/>Menu</button>}</div>
+    {compact && <SidePanel label="Main navigation" isOpen={openAt===route} onOpenChange={open=>setOpenAt(open?route:null)}><div id="mobile-navigation" className="mobile-nav"><button className="button button-secondary" onClick={()=>setOpenAt(null)}><X size={18} aria-hidden="true"/>Close menu</button><nav aria-label="Main navigation">{nav}</nav><p className="eyebrow">Your account</p>{logins}<Link className="button button-primary" to="/register">Get Started</Link><Link to="/explore-demo">Explore Demo</Link></div></SidePanel>}
+  </header>;
 }
 export default Navbar;

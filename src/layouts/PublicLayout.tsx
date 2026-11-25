@@ -1,26 +1,29 @@
-import { Surface } from '../components/Surface';
-import { AppShell } from '@astryxdesign/core/AppShell';
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import { LenisProvider } from '../motion';
 
-export const PublicLayout: React.FC = () => {
+export function PublicLayout() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      document.getElementById(hash.slice(1))?.scrollIntoView?.();
+    } else {
+      document.documentElement.scrollTop = 0;
+    }
+  }, [pathname, hash]);
+
   return (
-    <AppShell
-      height="auto"
-      variant="surface"
-      topNav={<Navbar />}
-      contentPadding={0}
-    >
-      <Surface style={{ minHeight: "calc(100vh - var(--spacing-fsk-144))", display: 'flex', flexDirection: 'column' }}>
-        <main id="public-content" tabIndex={-1} style={{ flex: 1, minWidth: 0 }}>
+    <LenisProvider>
+      <div className="public-site">
+        <Navbar />
+        <main id="public-content" tabIndex={-1}>
           <Outlet />
         </main>
         <Footer />
-      </Surface>
-    </AppShell>
+      </div>
+    </LenisProvider>
   );
-};
-
+}
 export default PublicLayout;

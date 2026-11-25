@@ -1,8 +1,5 @@
+import { ActionButton, Panel, Title, Field } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { TextInput } from '@astryxdesign/core/TextInput';
 import {
   Clock,
   Send,
@@ -69,27 +66,27 @@ export const CAConversationsPage: React.FC = () => {
   };
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-78)", margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "62.5rem", margin: '0 auto' }}>
       {/* Header */}
-      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
-        <Heading level={1}>
-          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
+      <Surface style={{ marginBottom: "1.5rem" }}>
+        <Title level={1}>
+          <Inline style={{ fontSize: "1.625rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.02em' }}>
             Customer Communications & Queries
           </Inline>
-        </Heading>
-        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+        </Title>
+        <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginTop: "0.25rem", margin: 0 }}>
           Direct advisory channel with client applicants for filing clarifications, OTP requests, and document deficiencies.
         </p>
       </Surface>
 
-      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-2)", alignItems: 'flex-start' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "1.25rem", alignItems: 'flex-start' }}>
         {/* Left: Applications Thread Selector */}
-        <Card elevation="low" padding={3} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-          <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-57)", textTransform: 'uppercase', padding: "var(--spacing-fsk-17) var(--spacing-fsk-12) var(--spacing-fsk-8)" }}>
+        <Panel elevation="low" padding={3} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+          <Surface style={{ fontSize: "0.8125rem", fontWeight: 700, color: "#687d93", textTransform: 'uppercase', padding: "0.375rem 0.5rem 0.75rem" }}>
             Active Client Threads
           </Surface>
 
-          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-17)" }}>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "0.375rem" }}>
             {applications.map((app) => {
               const isSelected = app.id === selectedAppId;
               return (
@@ -101,68 +98,68 @@ export const CAConversationsPage: React.FC = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     textAlign: 'left',
-                    padding: "var(--spacing-fsk-35) var(--spacing-fsk-8)",
-                    borderRadius: "var(--radius-fsk-37)",
+                    padding: "0.625rem 0.75rem",
+                    borderRadius: "0.5rem",
                     border: 'none',
-                    background: isSelected ? "var(--color-fsk-53)" : 'transparent',
+                    background: isSelected ? "#f5f3ff" : 'transparent',
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
                   }}
                 >
-                  <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginBottom: "var(--spacing-fsk-47)" }}>
-                    <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: isSelected ? 700 : 600, color: isSelected ? "var(--color-fsk-41)" : "var(--color-fsk-7)" }}>
+                  <Surface style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginBottom: "0.125rem" }}>
+                    <Inline style={{ fontSize: "0.8125rem", fontWeight: isSelected ? 700 : 600, color: isSelected ? "#7c3aed" : "var(--navy)" }}>
                       {app.customerName}
                     </Inline>
-                    <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)", fontFamily: 'monospace' }}>#{app.id}</Inline>
+                    <Inline style={{ fontSize: "0.8125rem", color: "#687d93", fontFamily: 'monospace' }}>#{app.id}</Inline>
                   </Surface>
-                  <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>{app.serviceName}</Inline>
+                  <Inline style={{ fontSize: "0.8125rem", color: "var(--muted)" }}>{app.serviceName}</Inline>
                 </button>
               );
             })}
           </Surface>
-        </Card>
+        </Panel>
 
         {/* Right: Message Window */}
-        <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+        <Panel elevation="low" padding={0} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", overflow: 'hidden' }}>
           {/* Header of Conversation */}
           <Surface
             style={{
-              padding: "var(--spacing-fsk-23) var(--spacing-fsk-2)",
-              borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
-              background: "var(--color-fsk-27)",
+              padding: "0.875rem 1.25rem",
+              borderBottom: "0.0625rem solid var(--border)",
+              background: "var(--cream)",
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
             }}
           >
-            <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+            <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem" }}>
               <Surface
                 style={{
-                  width: "var(--spacing-fsk-85)",
-                  height: "var(--spacing-fsk-85)",
+                  width: "2.25rem",
+                  height: "2.25rem",
                   borderRadius: '50%',
-                  background: "var(--color-fsk-53)",
-                  color: "var(--color-fsk-41)",
+                  background: "#f5f3ff",
+                  color: "#7c3aed",
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontWeight: 700,
-                  fontSize: "var(--font-fsk-14)",
+                  fontSize: "0.8125rem",
                 }}
               >
                 {currentApp.customerName[0]}
               </Surface>
               <Surface>
-                <Surface style={{ fontSize: "var(--font-fsk-91)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
+                <Surface style={{ fontSize: "0.90625rem", fontWeight: 700, color: "var(--navy)" }}>
                   {currentApp.customerName} ({currentApp.businessName})
                 </Surface>
-                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>
+                <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)" }}>
                   Filing: {currentApp.serviceName} • Dossier #{currentApp.id}
                 </Surface>
               </Surface>
             </Surface>
 
-            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-65)", display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)", fontWeight: 600 }}>
+            <Surface style={{ fontSize: "0.8125rem", color: "var(--teal)", display: 'flex', alignItems: 'center', gap: "0.25rem", fontWeight: 600 }}>
               <ShieldCheck size={14} /> Official Advisory Channel
             </Surface>
           </Surface>
@@ -170,14 +167,14 @@ export const CAConversationsPage: React.FC = () => {
           {/* Messages Body */}
           <Surface
             style={{
-              padding: "var(--spacing-fsk-2)",
-              minHeight: "var(--spacing-fsk-98)",
-              maxHeight: "var(--spacing-fsk-99)",
+              padding: "1.25rem",
+              minHeight: "21.25rem",
+              maxHeight: "27.5rem",
               overflowY: 'auto',
               display: 'flex',
               flexDirection: 'column',
-              gap: "var(--spacing-fsk-5)",
-              background: "var(--color-fsk-100)",
+              gap: "1rem",
+              background: "#fcfcfc",
             }}
           >
             {messages.map((msg) => {
@@ -195,15 +192,15 @@ export const CAConversationsPage: React.FC = () => {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: "var(--spacing-fsk-17)",
-                      marginBottom: "var(--spacing-fsk-29)",
-                      fontSize: "var(--font-fsk-14)",
-                      color: "var(--color-fsk-57)",
+                      gap: "0.375rem",
+                      marginBottom: "0.25rem",
+                      fontSize: "0.8125rem",
+                      color: "#687d93",
                     }}
                   >
                     <Inline>{msg.senderName}</Inline>
                     <Inline>•</Inline>
-                    <Inline style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-47)" }}>
+                    <Inline style={{ display: 'flex', alignItems: 'center', gap: "0.125rem" }}>
                       <Clock size={10} /> {msg.timestamp}
                     </Inline>
                   </Surface>
@@ -211,14 +208,14 @@ export const CAConversationsPage: React.FC = () => {
                   <Surface
                     style={{
                       maxWidth: '75%',
-                      padding: "var(--spacing-fsk-8) var(--spacing-fsk-5)",
-                      borderRadius: isCA ? "var(--spacing-fsk-23) var(--spacing-fsk-23) var(--spacing-fsk-47) var(--spacing-fsk-23)" : "var(--spacing-fsk-23) var(--spacing-fsk-23) var(--spacing-fsk-23) var(--spacing-fsk-47)",
-                      background: isCA ? "var(--color-fsk-41)" : "var(--color-fsk-38)",
-                      color: isCA ? "var(--color-fsk-38)" : "var(--color-fsk-7)",
-                      fontSize: "var(--font-fsk-14)",
+                      padding: "0.75rem 1rem",
+                      borderRadius: isCA ? "0.875rem 0.875rem 0.125rem 0.875rem" : "0.875rem 0.875rem 0.875rem 0.125rem",
+                      background: isCA ? "#7c3aed" : "var(--white)",
+                      color: isCA ? "var(--white)" : "var(--navy)",
+                      fontSize: "0.8125rem",
                       lineHeight: 1.5,
-                      border: isCA ? 'none' : "var(--spacing-fsk-22) solid var(--color-fsk-163)",
-                      boxShadow: "var(--shadow-fsk-card)",
+                      border: isCA ? 'none' : "0.0625rem solid #e2e8f0",
+                      boxShadow: "var(--shadow-panel)",
                     }}
                   >
                     {msg.message}
@@ -229,10 +226,10 @@ export const CAConversationsPage: React.FC = () => {
           </Surface>
 
           {/* Footer Input */}
-          <Surface style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", borderTop: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-            <form onSubmit={handleSendMessage} style={{ display: 'flex', gap: "var(--spacing-fsk-35)", alignItems: 'center' }}>
+          <Surface style={{ padding: "0.875rem 1.125rem", borderTop: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+            <form onSubmit={handleSendMessage} style={{ display: 'flex', gap: "0.625rem", alignItems: 'center' }}>
               <Surface style={{ flex: 1 }}>
-                <TextInput
+                <Field
                   label="Advisory Message"
                   placeholder={`Send regulatory advice or instructions to ${currentApp.customerName}...`}
                   value={inputText}
@@ -240,7 +237,7 @@ export const CAConversationsPage: React.FC = () => {
                   width="100%"
                 />
               </Surface>
-              <Button
+              <ActionButton
                 label="Send"
                 variant="primary"
                 size="md"
@@ -250,7 +247,7 @@ export const CAConversationsPage: React.FC = () => {
               />
             </form>
           </Surface>
-        </Card>
+        </Panel>
       </Surface>
     </Surface>
   );

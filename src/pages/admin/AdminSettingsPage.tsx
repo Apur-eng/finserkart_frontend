@@ -1,7 +1,5 @@
+import { Notice, Panel, Field } from '../../components/ui';
 import { Surface } from '../../components/Surface';
-import { Banner } from '@astryxdesign/core/Banner';
-import { Card } from '@astryxdesign/core/Card';
-import { TextInput } from '@astryxdesign/core/TextInput';
 import {
   Database,
   Globe,
@@ -26,84 +24,84 @@ export const AdminSettingsPage: React.FC = () => {
   };
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-78)", margin: '0 auto', display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-20)" }}>
+    <Surface style={{ maxWidth: "62.5rem", margin: '0 auto', display: 'flex', flexDirection: 'column', gap: "clamp(1rem, 2.1538461538461537vw, 1.75rem)" }}>
       {/* Header */}
       <Surface>
-        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", color: "var(--color-fsk-34)", fontSize: "var(--font-fsk-14)", fontWeight: 600 }}>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.5rem", color: "#dc2626", fontSize: "0.8125rem", fontWeight: 600 }}>
           <Settings size={16} /> Global Platform Governance
         </Surface>
-        <h1 style={{ fontSize: "var(--font-fsk-16)", fontWeight: 800, color: "var(--color-fsk-7)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
+        <h1 style={{ fontSize: "clamp(1.5rem, 2.1538461538461537vw, 1.75rem)", fontWeight: 800, color: "var(--navy)", margin: "0.25rem 0 0 0" }}>
           Platform Settings & System Configuration
         </h1>
-        <p style={{ fontSize: "var(--font-fsk-24)", color: "var(--color-fsk-9)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
+        <p style={{ fontSize: "0.875rem", color: "var(--muted)", margin: "0.25rem 0 0 0" }}>
           Configure core operational parameters, payment gateway webhooks, and automation thresholds.
         </p>
       </Surface>
 
       {isSaved && (
-        <Banner
+        <Notice
           status="success"
           title="Configuration Saved"
           description="Platform settings updated and synchronized across all distributed worker clusters."
         />
       )}
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-26)" }}>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: "1.5rem" }}>
         {/* Section 1: General Branding & Support */}
-        <Card elevation="low" padding={5}>
-          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-5)" }}>
-            <Globe size={20} color="var(--color-fsk-34)" />
-            <h2 style={{ fontSize: "var(--font-fsk-74)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
+        <Panel elevation="low" padding={5}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem", marginBottom: "1rem" }}>
+            <Globe size={20} color="#dc2626" />
+            <h2 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "var(--navy)", margin: 0 }}>
               General Platform Identity
             </h2>
           </Surface>
 
-          <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
-            <TextInput
+          <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "1rem" }}>
+            <Field
               label="Platform Legal Name"
               value={settings.platformName}
               onChange={(val) => setSettings({ ...settings, platformName: val })}
             />
-            <TextInput
+            <Field
               label="Support Desk Inbound Email"
               value={settings.supportEmail}
               onChange={(val) => setSettings({ ...settings, supportEmail: val })}
             />
-            <TextInput
+            <Field
               label="Customer Hotline Phone"
               value={settings.supportPhone}
               onChange={(val) => setSettings({ ...settings, supportPhone: val })}
             />
           </Surface>
-        </Card>
+        </Panel>
 
         {/* Section 2: Automation & Operational Controls */}
-        <Card elevation="low" padding={5}>
-          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-5)" }}>
-            <Sliders size={20} color="var(--color-fsk-40)" />
-            <h2 style={{ fontSize: "var(--font-fsk-74)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
+        <Panel elevation="low" padding={5}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem", marginBottom: "1rem" }}>
+            <Sliders size={20} color="var(--blue)" />
+            <h2 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "var(--navy)", margin: 0 }}>
               Operational Automation & Routing Rules
             </h2>
           </Surface>
 
-          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-5)" }}>
+          <Surface style={{ display: 'flex', flexDirection: 'column', gap: "1rem" }}>
             {/* Auto Assign CA */}
             <Surface
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                padding: "var(--spacing-fsk-5)",
-                borderRadius: "var(--radius-fsk-37)",
-                border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
-                background: "var(--color-fsk-27)",
+                padding: "1rem",
+                borderRadius: "0.5rem",
+                border: "0.0625rem solid var(--border)",
+                background: "var(--cream)",
               }}
             >
               <Surface>
-                <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)", fontSize: "var(--font-fsk-24)" }}>
+                <Surface style={{ fontWeight: 600, color: "var(--navy)", fontSize: "0.875rem" }}>
                   Automated CA Load-Balanced Allocation
                 </Surface>
-                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
+                <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", marginTop: "0.125rem" }}>
                   When enabled, verified applications are instantly routed to the CA with lowest active queue.
                 </Surface>
               </Surface>
@@ -111,13 +109,13 @@ export const AdminSettingsPage: React.FC = () => {
                 type="button"
                 onClick={() => setSettings({ ...settings, autoAssignCA: !settings.autoAssignCA })}
                 style={{
-                  padding: "var(--spacing-fsk-12) var(--spacing-fsk-5)",
-                  borderRadius: "var(--radius-fsk-42)",
-                  background: settings.autoAssignCA ? "var(--color-fsk-40)" : "var(--color-fsk-38)",
-                  color: settings.autoAssignCA ? "var(--color-fsk-38)" : "var(--color-fsk-18)",
-                  border: settings.autoAssignCA ? 'none' : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                  padding: "0.5rem 1rem",
+                  borderRadius: "0.375rem",
+                  background: settings.autoAssignCA ? "var(--blue)" : "var(--white)",
+                  color: settings.autoAssignCA ? "var(--white)" : "var(--muted)",
+                  border: settings.autoAssignCA ? 'none' : "0.0625rem solid #cbd5e1",
                   fontWeight: 600,
-                  fontSize: "var(--font-fsk-14)",
+                  fontSize: "0.8125rem",
                   cursor: 'pointer',
                 }}
               >
@@ -131,17 +129,17 @@ export const AdminSettingsPage: React.FC = () => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                padding: "var(--spacing-fsk-5)",
-                borderRadius: "var(--radius-fsk-37)",
-                border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
-                background: "var(--color-fsk-27)",
+                padding: "1rem",
+                borderRadius: "0.5rem",
+                border: "0.0625rem solid var(--border)",
+                background: "var(--cream)",
               }}
             >
               <Surface>
-                <Surface style={{ fontWeight: 600, color: "var(--color-fsk-7)", fontSize: "var(--font-fsk-24)" }}>
+                <Surface style={{ fontWeight: 600, color: "var(--navy)", fontSize: "0.875rem" }}>
                   Platform Emergency Maintenance Mode
                 </Surface>
-                <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", marginTop: "var(--spacing-fsk-47)" }}>
+                <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", marginTop: "0.125rem" }}>
                   Restricts consumer logins and shows maintenance splash banner across portals.
                 </Surface>
               </Surface>
@@ -149,13 +147,13 @@ export const AdminSettingsPage: React.FC = () => {
                 type="button"
                 onClick={() => setSettings({ ...settings, maintenanceMode: !settings.maintenanceMode })}
                 style={{
-                  padding: "var(--spacing-fsk-12) var(--spacing-fsk-5)",
-                  borderRadius: "var(--radius-fsk-42)",
-                  background: settings.maintenanceMode ? "var(--color-fsk-34)" : "var(--color-fsk-38)",
-                  color: settings.maintenanceMode ? "var(--color-fsk-38)" : "var(--color-fsk-18)",
-                  border: settings.maintenanceMode ? 'none' : "var(--spacing-fsk-22) solid var(--color-fsk-59)",
+                  padding: "0.5rem 1rem",
+                  borderRadius: "0.375rem",
+                  background: settings.maintenanceMode ? "#dc2626" : "var(--white)",
+                  color: settings.maintenanceMode ? "var(--white)" : "var(--muted)",
+                  border: settings.maintenanceMode ? 'none' : "0.0625rem solid #cbd5e1",
                   fontWeight: 600,
-                  fontSize: "var(--font-fsk-14)",
+                  fontSize: "0.8125rem",
                   cursor: 'pointer',
                 }}
               >
@@ -163,50 +161,50 @@ export const AdminSettingsPage: React.FC = () => {
               </button>
             </Surface>
           </Surface>
-        </Card>
+        </Panel>
 
         {/* Section 3: Financial & Statutory Payout Thresholds */}
-        <Card elevation="low" padding={5}>
-          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", marginBottom: "var(--spacing-fsk-5)" }}>
-            <Database size={20} color="var(--color-fsk-39)" />
-            <h2 style={{ fontSize: "var(--font-fsk-74)", fontWeight: 700, color: "var(--color-fsk-7)", margin: 0 }}>
+        <Panel elevation="low" padding={5}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem", marginBottom: "1rem" }}>
+            <Database size={20} color="#16a34a" />
+            <h2 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "var(--navy)", margin: 0 }}>
               Financial & Statutory Parameters
             </h2>
           </Surface>
 
-          <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
-            <TextInput
+          <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "1rem" }}>
+            <Field
               label="Statutory TDS Deduction Rate (%)"
               value={String(settings.taxDeductionPercent)}
               onChange={(val) => setSettings({ ...settings, taxDeductionPercent: Number(val) || 0 })}
             />
-            <TextInput
+            <Field
               label="Minimum Partner Payout Threshold (₹)"
               value={String(settings.minPayoutThreshold)}
               onChange={(val) => setSettings({ ...settings, minPayoutThreshold: Number(val) || 0 })}
             />
-            <TextInput
+            <Field
               label="Payment Gateway Live Production Key"
               value={settings.paymentGatewayKey}
               onChange={(val) => setSettings({ ...settings, paymentGatewayKey: val })}
             />
           </Surface>
-        </Card>
+        </Panel>
 
         {/* Action Button */}
-        <Surface style={{ display: 'flex', justifyContent: 'flex-end', gap: "var(--spacing-fsk-8)" }}>
+        <Surface style={{ display: 'flex', justifyContent: 'flex-end', gap: "0.75rem" }}>
           <button
             type="submit"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: "var(--spacing-fsk-12)",
-              padding: "var(--spacing-fsk-35) var(--spacing-fsk-2)",
-              borderRadius: "var(--radius-fsk-37)",
-              background: "var(--color-fsk-34)",
-              color: "var(--color-fsk-38)",
+              gap: "0.5rem",
+              padding: "0.625rem 1.25rem",
+              borderRadius: "0.5rem",
+              background: "#dc2626",
+              color: "var(--white)",
               fontWeight: 600,
-              fontSize: "var(--font-fsk-24)",
+              fontSize: "0.875rem",
               border: 'none',
               cursor: 'pointer',
             }}

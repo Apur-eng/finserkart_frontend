@@ -1,11 +1,6 @@
+import { Notice, ActionButton, Panel, Title, Field, Stack } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
 import { StatusTag as Badge } from '../../components/StatusTag';
-import { Banner } from '@astryxdesign/core/Banner';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { TextInput } from '@astryxdesign/core/TextInput';
-import { VStack } from '@astryxdesign/core/VStack';
 import {
   Building2,
   KeyRound,
@@ -63,27 +58,27 @@ export const CustomerProfilePage: React.FC = () => {
   };
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-72)", margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "60rem", margin: '0 auto' }}>
       {/* Header */}
-      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
-        <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-29)" }}>
-          <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-15)" }}>Account Management</Inline>
-          <Inline style={{ color: "var(--color-fsk-59)" }}>•</Inline>
+      <Surface style={{ marginBottom: "1.5rem" }}>
+        <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.5rem", marginBottom: "0.25rem" }}>
+          <Inline style={{ fontSize: "0.8125rem", fontWeight: 600, color: "var(--blue)" }}>Account Management</Inline>
+          <Inline style={{ color: "#cbd5e1" }}>•</Inline>
           <Badge label={`CustID: ${profile.CustID}`} variant="blue" />
         </Surface>
-        <Heading level={1}>
-          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
+        <Title level={1}>
+          <Inline style={{ fontSize: "1.625rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.02em' }}>
             Customer Profile & Settings
           </Inline>
-        </Heading>
-        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+        </Title>
+        <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginTop: "0.25rem", margin: 0 }}>
           Manage your personal identity, registered business enterprise, verified banking details, and account security credentials.
         </p>
       </Surface>
 
       {feedbackMessage && (
-        <Surface style={{ marginBottom: "var(--spacing-fsk-2)" }}>
-          <Banner
+        <Surface style={{ marginBottom: "1.25rem" }}>
+          <Notice
             status={feedbackMessage.includes('not match') ? 'error' : 'success'}
             title={feedbackMessage}
           />
@@ -91,7 +86,7 @@ export const CustomerProfilePage: React.FC = () => {
       )}
 
       {/* Tabs */}
-      <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-26)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", paddingBottom: "var(--spacing-fsk-8)" }}>
+      <Surface style={{ display: 'flex', gap: "0.5rem", marginBottom: "1.5rem", borderBottom: "0.0625rem solid var(--border)", paddingBottom: "0.75rem" }}>
         {[
           { key: 'profile', label: 'Personal Information', icon: <User size={15} /> },
           { key: 'business', label: 'Business & Tax Data', icon: <Building2 size={15} /> },
@@ -107,13 +102,13 @@ export const CustomerProfilePage: React.FC = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: "var(--spacing-fsk-12)",
-                padding: "var(--spacing-fsk-12) var(--spacing-fsk-5)",
-                borderRadius: "var(--radius-fsk-37)",
+                gap: "0.5rem",
+                padding: "0.5rem 1rem",
+                borderRadius: "0.5rem",
                 border: 'none',
-                background: isActive ? "var(--color-fsk-112)" : 'transparent',
-                color: isActive ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
-                fontSize: "var(--font-fsk-14)",
+                background: isActive ? "#e0f2fe" : 'transparent',
+                color: isActive ? "var(--blue)" : "var(--muted)",
+                fontSize: "0.8125rem",
                 fontWeight: 600,
                 cursor: 'pointer',
               }}
@@ -127,90 +122,90 @@ export const CustomerProfilePage: React.FC = () => {
 
       {/* Tab 1: Personal Info */}
       {activeTab === 'profile' && (
-        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-          <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-2)" }}>
+        <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+          <Surface style={{ fontSize: "1rem", fontWeight: 700, color: "var(--navy)", marginBottom: "1.25rem" }}>
             Personal Identification
           </Surface>
 
-          <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "var(--spacing-fsk-2)", fontSize: "var(--font-fsk-14)" }}>
+          <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "1.25rem", fontSize: "0.8125rem" }}>
             <Surface>
-              <Inline style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", display: 'block', marginBottom: "var(--spacing-fsk-29)" }}>First Name</Inline>
-              <strong style={{ color: "var(--color-fsk-7)", fontSize: "var(--font-fsk-19)" }}>{profile.fname}</strong>
+              <Inline style={{ color: "var(--muted)", fontSize: "0.8125rem", display: 'block', marginBottom: "0.25rem" }}>First Name</Inline>
+              <strong style={{ color: "var(--navy)", fontSize: "0.9375rem" }}>{profile.fname}</strong>
             </Surface>
             <Surface>
-              <Inline style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", display: 'block', marginBottom: "var(--spacing-fsk-29)" }}>Last Name</Inline>
-              <strong style={{ color: "var(--color-fsk-7)", fontSize: "var(--font-fsk-19)" }}>{profile.lname}</strong>
+              <Inline style={{ color: "var(--muted)", fontSize: "0.8125rem", display: 'block', marginBottom: "0.25rem" }}>Last Name</Inline>
+              <strong style={{ color: "var(--navy)", fontSize: "0.9375rem" }}>{profile.lname}</strong>
             </Surface>
             <Surface>
-              <Inline style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", display: 'block', marginBottom: "var(--spacing-fsk-29)" }}>Registered Email</Inline>
-              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-17)", color: "var(--color-fsk-7)", fontWeight: 600 }}>
-                <Mail size={15} color="var(--color-fsk-15)" /> {profile.email}
+              <Inline style={{ color: "var(--muted)", fontSize: "0.8125rem", display: 'block', marginBottom: "0.25rem" }}>Registered Email</Inline>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.375rem", color: "var(--navy)", fontWeight: 600 }}>
+                <Mail size={15} color="var(--blue)" /> {profile.email}
               </Surface>
             </Surface>
             <Surface>
-              <Inline style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", display: 'block', marginBottom: "var(--spacing-fsk-29)" }}>Contact Phone</Inline>
-              <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-17)", color: "var(--color-fsk-7)", fontWeight: 600 }}>
-                <Phone size={15} color="var(--color-fsk-15)" /> {profile.contact}
+              <Inline style={{ color: "var(--muted)", fontSize: "0.8125rem", display: 'block', marginBottom: "0.25rem" }}>Contact Phone</Inline>
+              <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.375rem", color: "var(--navy)", fontWeight: 600 }}>
+                <Phone size={15} color="var(--blue)" /> {profile.contact}
               </Surface>
             </Surface>
             <Surface>
-              <Inline style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", display: 'block', marginBottom: "var(--spacing-fsk-29)" }}>Assigned Agent</Inline>
-              <strong style={{ color: "var(--color-fsk-7)" }}>{profile.agentName}</strong> ({profile.agentId})
+              <Inline style={{ color: "var(--muted)", fontSize: "0.8125rem", display: 'block', marginBottom: "0.25rem" }}>Assigned Agent</Inline>
+              <strong style={{ color: "var(--navy)" }}>{profile.agentName}</strong> ({profile.agentId})
             </Surface>
             <Surface>
-              <Inline style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", display: 'block', marginBottom: "var(--spacing-fsk-29)" }}>Member Since</Inline>
-              <strong style={{ color: "var(--color-fsk-7)" }}>{profile.memberSince}</strong>
+              <Inline style={{ color: "var(--muted)", fontSize: "0.8125rem", display: 'block', marginBottom: "0.25rem" }}>Member Since</Inline>
+              <strong style={{ color: "var(--navy)" }}>{profile.memberSince}</strong>
             </Surface>
           </Surface>
-        </Card>
+        </Panel>
       )}
 
       {/* Tab 2: Business & Tax Data */}
       {activeTab === 'business' && (
-        <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-          <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-2)" }}>
+        <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+          <Surface style={{ fontSize: "1rem", fontWeight: 700, color: "var(--navy)", marginBottom: "1.25rem" }}>
             Registered Business Enterprise
           </Surface>
 
-          <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "var(--spacing-fsk-2)", fontSize: "var(--font-fsk-14)" }}>
+          <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr))", gap: "1.25rem", fontSize: "0.8125rem" }}>
             <Surface>
-              <Inline style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", display: 'block', marginBottom: "var(--spacing-fsk-29)" }}>Business Entity Name</Inline>
-              <strong style={{ color: "var(--color-fsk-7)", fontSize: "var(--font-fsk-19)" }}>{profile.businessName}</strong>
+              <Inline style={{ color: "var(--muted)", fontSize: "0.8125rem", display: 'block', marginBottom: "0.25rem" }}>Business Entity Name</Inline>
+              <strong style={{ color: "var(--navy)", fontSize: "0.9375rem" }}>{profile.businessName}</strong>
             </Surface>
             <Surface>
-              <Inline style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", display: 'block', marginBottom: "var(--spacing-fsk-29)" }}>PAN Number</Inline>
-              <strong style={{ color: "var(--color-fsk-7)", fontSize: "var(--font-fsk-19)" }}>{profile.pan}</strong>
+              <Inline style={{ color: "var(--muted)", fontSize: "0.8125rem", display: 'block', marginBottom: "0.25rem" }}>PAN Number</Inline>
+              <strong style={{ color: "var(--navy)", fontSize: "0.9375rem" }}>{profile.pan}</strong>
             </Surface>
             <Surface>
-              <Inline style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", display: 'block', marginBottom: "var(--spacing-fsk-29)" }}>GSTIN</Inline>
-              <strong style={{ color: "var(--color-fsk-15)", fontSize: "var(--font-fsk-19)" }}>{profile.gstin}</strong>
+              <Inline style={{ color: "var(--muted)", fontSize: "0.8125rem", display: 'block', marginBottom: "0.25rem" }}>GSTIN</Inline>
+              <strong style={{ color: "var(--blue)", fontSize: "0.9375rem" }}>{profile.gstin}</strong>
             </Surface>
             <Surface>
-              <Inline style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", display: 'block', marginBottom: "var(--spacing-fsk-29)" }}>City &amp; State</Inline>
-              <strong style={{ color: "var(--color-fsk-7)" }}>{profile.city}, {profile.state} ({profile.pincode})</strong>
+              <Inline style={{ color: "var(--muted)", fontSize: "0.8125rem", display: 'block', marginBottom: "0.25rem" }}>City &amp; State</Inline>
+              <strong style={{ color: "var(--navy)" }}>{profile.city}, {profile.state} ({profile.pincode})</strong>
             </Surface>
             <Surface style={{ gridColumn: 'span 2' }}>
-              <Inline style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", display: 'block', marginBottom: "var(--spacing-fsk-29)" }}>Operating Address</Inline>
-              <strong style={{ color: "var(--color-fsk-7)" }}>{profile.address}</strong>
+              <Inline style={{ color: "var(--muted)", fontSize: "0.8125rem", display: 'block', marginBottom: "0.25rem" }}>Operating Address</Inline>
+              <strong style={{ color: "var(--navy)" }}>{profile.address}</strong>
             </Surface>
           </Surface>
-        </Card>
+        </Panel>
       )}
 
       {/* Tab 3: Bank Details Form */}
       {activeTab === 'bank' && (
         <form onSubmit={handleSaveBankDetails}>
-          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)" }}>
-            <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-12)" }}>
+          <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)" }}>
+            <Surface style={{ fontSize: "1rem", fontWeight: 700, color: "var(--navy)", marginBottom: "0.5rem" }}>
               Bank Account for Reimbursements &amp; Refunds
             </Surface>
-            <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", marginBottom: "var(--spacing-fsk-2)" }}>
+            <p style={{ color: "var(--muted)", fontSize: "0.8125rem", marginBottom: "1.25rem" }}>
               Preserved in database columns <code>bank</code>, <code>branch</code>, <code>ACNo</code>, <code>IFSE</code> under customer session.
             </p>
 
-            <VStack gap={3}>
-              <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
-                <TextInput
+            <Stack gap={3}>
+              <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "1rem" }}>
+                <Field
                   label="Bank Name"
                   placeholder="e.g. HDFC Bank"
                   value={bankName}
@@ -218,7 +213,7 @@ export const CustomerProfilePage: React.FC = () => {
                   isRequired
                   width="100%"
                 />
-                <TextInput
+                <Field
                   label="Branch"
                   placeholder="e.g. Hazratganj Branch"
                   value={branch}
@@ -228,8 +223,8 @@ export const CustomerProfilePage: React.FC = () => {
                 />
               </Surface>
 
-              <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "var(--spacing-fsk-5)" }}>
-                <TextInput
+              <Surface style={{ display: 'grid', gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))", gap: "1rem" }}>
+                <Field
                   label="Account Number"
                   placeholder="Enter full account number"
                   value={accountNo}
@@ -237,7 +232,7 @@ export const CustomerProfilePage: React.FC = () => {
                   isRequired
                   width="100%"
                 />
-                <TextInput
+                <Field
                   label="IFSC Code"
                   placeholder="e.g. HDFC0000123"
                   value={ifsc}
@@ -247,8 +242,8 @@ export const CustomerProfilePage: React.FC = () => {
                 />
               </Surface>
 
-              <Surface style={{ marginTop: "var(--spacing-fsk-8)" }}>
-                <Button
+              <Surface style={{ marginTop: "0.75rem" }}>
+                <ActionButton
                   label="Save Bank Details"
                   variant="primary"
                   size="md"
@@ -256,24 +251,24 @@ export const CustomerProfilePage: React.FC = () => {
                   icon={<Save size={16} />}
                 />
               </Surface>
-            </VStack>
-          </Card>
+            </Stack>
+          </Panel>
         </form>
       )}
 
       {/* Tab 4: Security & Password */}
       {activeTab === 'security' && (
         <form onSubmit={handleUpdatePassword}>
-          <Card elevation="low" padding={5} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", maxWidth: "var(--spacing-fsk-123)" }}>
-            <Surface style={{ fontSize: "var(--font-fsk-10)", fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-12)" }}>
+          <Panel elevation="low" padding={5} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", maxWidth: "35rem" }}>
+            <Surface style={{ fontSize: "1rem", fontWeight: 700, color: "var(--navy)", marginBottom: "0.5rem" }}>
               Update Account Password
             </Surface>
-            <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", marginBottom: "var(--spacing-fsk-2)" }}>
+            <p style={{ color: "var(--muted)", fontSize: "0.8125rem", marginBottom: "1.25rem" }}>
               Ensure your account uses a secure password with at least 8 characters.
             </p>
 
-            <VStack gap={3}>
-              <TextInput
+            <Stack gap={3}>
+              <Field
                 type="password"
                 label="Current Password"
                 placeholder="Enter current password"
@@ -283,7 +278,7 @@ export const CustomerProfilePage: React.FC = () => {
                 width="100%"
               />
 
-              <TextInput
+              <Field
                 type="password"
                 label="New Password"
                 placeholder="Enter new password"
@@ -293,7 +288,7 @@ export const CustomerProfilePage: React.FC = () => {
                 width="100%"
               />
 
-              <TextInput
+              <Field
                 type="password"
                 label="Confirm New Password"
                 placeholder="Confirm new password"
@@ -303,8 +298,8 @@ export const CustomerProfilePage: React.FC = () => {
                 width="100%"
               />
 
-              <Surface style={{ marginTop: "var(--spacing-fsk-8)" }}>
-                <Button
+              <Surface style={{ marginTop: "0.75rem" }}>
+                <ActionButton
                   label="Update Password"
                   variant="primary"
                   size="md"
@@ -312,8 +307,8 @@ export const CustomerProfilePage: React.FC = () => {
                   icon={<KeyRound size={16} />}
                 />
               </Surface>
-            </VStack>
-          </Card>
+            </Stack>
+          </Panel>
         </form>
       )}
     </Surface>

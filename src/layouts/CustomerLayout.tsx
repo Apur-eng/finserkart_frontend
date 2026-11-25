@@ -31,54 +31,54 @@ export const CustomerLayout: React.FC = () => {
   const customerTopNav = (
     <header
       style={{
-        flexWrap: 'wrap', gap: "var(--spacing-fsk-8)", paddingBlock: "var(--spacing-fsk-8)",
-        minHeight: "var(--spacing-fsk-141)",
-        background: "var(--color-fsk-38)",
-        borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+        flexWrap: 'wrap', gap: "0.75rem", paddingBlock: "0.75rem",
+        minHeight: "4rem",
+        background: "var(--white)",
+        borderBottom: "0.0625rem solid var(--border)",
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: "0 var(--spacing-fsk-26)",
-        boxShadow: "var(--shadow-fsk-card)",
+        padding: "0 1.5rem",
+        boxShadow: "var(--shadow-panel)",
       }}
     >
       {/* Brand Lockup */}
-      <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-8)" }}>
-        <Link to="/customer/dashboard" style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", textDecoration: 'none' }}>
+      <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.75rem" }}>
+        <Link to="/customer/dashboard" style={{ display: 'flex', alignItems: 'center', gap: "0.625rem", textDecoration: 'none' }}>
           <Surface
             style={{
-              width: "var(--spacing-fsk-52)",
-              height: "var(--spacing-fsk-52)",
-              borderRadius: "var(--radius-fsk-37)",
-              background: "var(--color-fsk-brand)",
+              width: "2.125rem",
+              height: "2.125rem",
+              borderRadius: "0.5rem",
+              background: "var(--status-brand)",
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: "var(--color-fsk-38)",
+              color: "var(--white)",
             }}
           >
             <ShieldCheck size={20} />
           </Surface>
-          <Inline style={{ fontSize: "var(--font-fsk-30)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.01em' }}>
+          <Inline style={{ fontSize: "1.125rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.01em' }}>
             Finservkart
           </Inline>
         </Link>
-        <Inline style={{ color: "var(--color-fsk-59)" }}>|</Inline>
+        <Inline style={{ color: "#cbd5e1" }}>|</Inline>
         <Badge label="Customer Portal" variant="blue" />
       </Surface>
 
       {/* Right Controls */}
-      <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-5)" }}>
+      <Surface style={{ display: 'flex', alignItems: 'center', gap: "1rem" }}>
         {/* Link back to public site */}
         <Link
           to="/"
           style={{
-            fontSize: "var(--font-fsk-14)",
-            color: "var(--color-fsk-9)",
+            fontSize: "0.8125rem",
+            color: "var(--muted)",
             textDecoration: 'none',
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-86)",
+            gap: "0.3125rem",
           }}
         >
           <ExternalLink size={14} /> Public Website
@@ -89,16 +89,16 @@ export const CustomerLayout: React.FC = () => {
           to="/customer/notifications" aria-label="Notifications"
           style={{
             position: 'relative',
-            width: "var(--spacing-fsk-85)",
-            height: "var(--spacing-fsk-85)",
-            borderRadius: "var(--radius-fsk-37)",
-            border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+            width: "2.25rem",
+            height: "2.25rem",
+            borderRadius: "0.5rem",
+            border: "0.0625rem solid var(--border)",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: "var(--color-fsk-18)",
+            color: "var(--muted)",
             textDecoration: 'none',
-            background: currentPath === '/customer/notifications' ? "var(--color-fsk-46)" : "var(--color-fsk-38)",
+            background: currentPath === '/customer/notifications' ? "var(--sage-light)" : "var(--white)",
           }}
         >
           <Bell size={18} />
@@ -106,19 +106,19 @@ export const CustomerLayout: React.FC = () => {
             <Inline
               style={{
                 position: 'absolute',
-                top: "var(--spacing-fsk-143)",
-                right: "var(--spacing-fsk-143)",
-                background: "var(--color-fsk-129)",
-                color: "var(--color-fsk-38)",
-                fontSize: "var(--font-fsk-14)",
+                top: "-0.25rem",
+                right: "-0.25rem",
+                background: "#ef4444",
+                color: "var(--white)",
+                fontSize: "0.8125rem",
                 fontWeight: 700,
-                borderRadius: "var(--radius-fsk-77)",
-                width: "var(--spacing-fsk-36)",
-                height: "var(--spacing-fsk-36)",
+                borderRadius: "62.4375rem",
+                width: "1.125rem",
+                height: "1.125rem",
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                border: "var(--spacing-fsk-47) solid var(--color-fsk-38)",
+                border: "0.125rem solid var(--white)",
               }}
             >
               {unreadCount}
@@ -131,35 +131,35 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-35)",
-            padding: "var(--spacing-fsk-29) var(--spacing-fsk-8) var(--spacing-fsk-29) var(--spacing-fsk-17)",
-            borderRadius: "var(--radius-fsk-28)",
-            border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
-            background: "var(--color-fsk-27)",
+            gap: "0.625rem",
+            padding: "0.25rem 0.75rem 0.25rem 0.375rem",
+            borderRadius: "1rem",
+            border: "0.0625rem solid var(--border)",
+            background: "var(--cream)",
             cursor: 'pointer',
           }}
         >
           <Surface
             style={{
-              width: "var(--spacing-fsk-71)",
-              height: "var(--spacing-fsk-71)",
+              width: "1.75rem",
+              height: "1.75rem",
               borderRadius: '50%',
-              background: "var(--color-fsk-15)",
-              color: "var(--color-fsk-38)",
+              background: "var(--blue)",
+              color: "var(--white)",
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: "var(--font-fsk-14)",
+              fontSize: "0.8125rem",
               fontWeight: 700,
             }}
           >
             {INITIAL_CUSTOMER_PROFILE.fname[0]}
           </Surface>
           <Surface>
-            <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-7)", lineHeight: 1.2 }}>
+            <Surface style={{ fontSize: "0.8125rem", fontWeight: 600, color: "var(--navy)", lineHeight: 1.2 }}>
               {INITIAL_CUSTOMER_PROFILE.fname} {INITIAL_CUSTOMER_PROFILE.lname}
             </Surface>
-            <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>
+            <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)" }}>
               {INITIAL_CUSTOMER_PROFILE.CustID}
             </Surface>
           </Surface>
@@ -173,11 +173,11 @@ export const CustomerLayout: React.FC = () => {
             background: 'none',
             border: 'none',
             cursor: 'pointer',
-            padding: "var(--spacing-fsk-12)",
-            color: "var(--color-fsk-9)",
+            padding: "0.5rem",
+            color: "var(--muted)",
             display: 'flex',
             alignItems: 'center',
-            borderRadius: "var(--radius-fsk-42)",
+            borderRadius: "0.375rem",
           }}
           title="Sign out of customer session"
         >
@@ -192,17 +192,17 @@ export const CustomerLayout: React.FC = () => {
     <Surface
       style={{
         width: '100%',
-        borderRight: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
-        background: "var(--color-fsk-38)",
-        minHeight: "calc(100vh - var(--spacing-fsk-141))",
-        padding: "var(--spacing-fsk-5) var(--spacing-fsk-8)",
+        borderRight: "0.0625rem solid var(--border)",
+        background: "var(--white)",
+        minHeight: "calc(100vh - 4rem)",
+        padding: "1rem 0.75rem",
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
       }}
     >
-      <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-29)" }}>
-        <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-57)", textTransform: 'uppercase', letterSpacing: '0.05em', padding: "var(--spacing-fsk-12) var(--spacing-fsk-8) var(--spacing-fsk-29) var(--spacing-fsk-8)" }}>
+      <Surface style={{ display: 'flex', flexDirection: 'column', gap: "0.25rem" }}>
+        <Surface style={{ fontSize: "0.8125rem", fontWeight: 700, color: "#687d93", textTransform: 'uppercase', letterSpacing: '0.05em', padding: "0.5rem 0.75rem 0.25rem 0.75rem" }}>
           Overview
         </Surface>
 
@@ -211,14 +211,14 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-35)",
-            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
-            borderRadius: "var(--radius-fsk-37)",
-            fontSize: "var(--font-fsk-24)",
+            gap: "0.625rem",
+            padding: "0.625rem 0.875rem",
+            borderRadius: "0.5rem",
+            fontSize: "0.875rem",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/dashboard' || currentPath === '/customer' ? "var(--color-fsk-112)" : 'transparent',
-            color: currentPath === '/customer/dashboard' || currentPath === '/customer' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
+            background: currentPath === '/customer/dashboard' || currentPath === '/customer' ? "#e0f2fe" : 'transparent',
+            color: currentPath === '/customer/dashboard' || currentPath === '/customer' ? "var(--blue)" : "var(--muted)",
           }}
         >
           <Home size={18} />
@@ -230,14 +230,14 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-35)",
-            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
-            borderRadius: "var(--radius-fsk-37)",
-            fontSize: "var(--font-fsk-24)",
+            gap: "0.625rem",
+            padding: "0.625rem 0.875rem",
+            borderRadius: "0.5rem",
+            fontSize: "0.875rem",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath.startsWith('/customer/applications') && currentPath !== '/customer/applications/new' ? "var(--color-fsk-112)" : 'transparent',
-            color: currentPath.startsWith('/customer/applications') && currentPath !== '/customer/applications/new' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
+            background: currentPath.startsWith('/customer/applications') && currentPath !== '/customer/applications/new' ? "#e0f2fe" : 'transparent',
+            color: currentPath.startsWith('/customer/applications') && currentPath !== '/customer/applications/new' ? "var(--blue)" : "var(--muted)",
           }}
         >
           <Layers size={18} />
@@ -249,21 +249,21 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-35)",
-            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
-            borderRadius: "var(--radius-fsk-37)",
-            fontSize: "var(--font-fsk-24)",
+            gap: "0.625rem",
+            padding: "0.625rem 0.875rem",
+            borderRadius: "0.5rem",
+            fontSize: "0.875rem",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/applications/new' ? "var(--color-fsk-112)" : 'transparent',
-            color: currentPath === '/customer/applications/new' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
+            background: currentPath === '/customer/applications/new' ? "#e0f2fe" : 'transparent',
+            color: currentPath === '/customer/applications/new' ? "var(--blue)" : "var(--muted)",
           }}
         >
           <PlusCircle size={18} />
           <Inline>New Application</Inline>
         </Link>
 
-        <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-57)", textTransform: 'uppercase', letterSpacing: '0.05em', padding: "var(--spacing-fsk-5) var(--spacing-fsk-8) var(--spacing-fsk-29) var(--spacing-fsk-8)" }}>
+        <Surface style={{ fontSize: "0.8125rem", fontWeight: 700, color: "#687d93", textTransform: 'uppercase', letterSpacing: '0.05em', padding: "1rem 0.75rem 0.25rem 0.75rem" }}>
           Workstation
         </Surface>
 
@@ -272,14 +272,14 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-35)",
-            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
-            borderRadius: "var(--radius-fsk-37)",
-            fontSize: "var(--font-fsk-24)",
+            gap: "0.625rem",
+            padding: "0.625rem 0.875rem",
+            borderRadius: "0.5rem",
+            fontSize: "0.875rem",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/documents' ? "var(--color-fsk-112)" : 'transparent',
-            color: currentPath === '/customer/documents' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
+            background: currentPath === '/customer/documents' ? "#e0f2fe" : 'transparent',
+            color: currentPath === '/customer/documents' ? "var(--blue)" : "var(--muted)",
           }}
         >
           <FileText size={18} />
@@ -291,14 +291,14 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-35)",
-            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
-            borderRadius: "var(--radius-fsk-37)",
-            fontSize: "var(--font-fsk-24)",
+            gap: "0.625rem",
+            padding: "0.625rem 0.875rem",
+            borderRadius: "0.5rem",
+            fontSize: "0.875rem",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/documents/upload' ? "var(--color-fsk-112)" : 'transparent',
-            color: currentPath === '/customer/documents/upload' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
+            background: currentPath === '/customer/documents/upload' ? "#e0f2fe" : 'transparent',
+            color: currentPath === '/customer/documents/upload' ? "var(--blue)" : "var(--muted)",
           }}
         >
           <UploadCloud size={18} />
@@ -310,14 +310,14 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-35)",
-            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
-            borderRadius: "var(--radius-fsk-37)",
-            fontSize: "var(--font-fsk-24)",
+            gap: "0.625rem",
+            padding: "0.625rem 0.875rem",
+            borderRadius: "0.5rem",
+            fontSize: "0.875rem",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/conversations' ? "var(--color-fsk-112)" : 'transparent',
-            color: currentPath === '/customer/conversations' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
+            background: currentPath === '/customer/conversations' ? "#e0f2fe" : 'transparent',
+            color: currentPath === '/customer/conversations' ? "var(--blue)" : "var(--muted)",
           }}
         >
           <MessageSquare size={18} />
@@ -329,21 +329,21 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-35)",
-            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
-            borderRadius: "var(--radius-fsk-37)",
-            fontSize: "var(--font-fsk-24)",
+            gap: "0.625rem",
+            padding: "0.625rem 0.875rem",
+            borderRadius: "0.5rem",
+            fontSize: "0.875rem",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/payments' ? "var(--color-fsk-112)" : 'transparent',
-            color: currentPath === '/customer/payments' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
+            background: currentPath === '/customer/payments' ? "#e0f2fe" : 'transparent',
+            color: currentPath === '/customer/payments' ? "var(--blue)" : "var(--muted)",
           }}
         >
           <Receipt size={18} />
           <Inline>Payments &amp; Invoices</Inline>
         </Link>
 
-        <Surface style={{ fontSize: "var(--font-fsk-14)", fontWeight: 700, color: "var(--color-fsk-57)", textTransform: 'uppercase', letterSpacing: '0.05em', padding: "var(--spacing-fsk-5) var(--spacing-fsk-8) var(--spacing-fsk-29) var(--spacing-fsk-8)" }}>
+        <Surface style={{ fontSize: "0.8125rem", fontWeight: 700, color: "#687d93", textTransform: 'uppercase', letterSpacing: '0.05em', padding: "1rem 0.75rem 0.25rem 0.75rem" }}>
           Account &amp; Help
         </Surface>
 
@@ -352,14 +352,14 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-35)",
-            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
-            borderRadius: "var(--radius-fsk-37)",
-            fontSize: "var(--font-fsk-24)",
+            gap: "0.625rem",
+            padding: "0.625rem 0.875rem",
+            borderRadius: "0.5rem",
+            fontSize: "0.875rem",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/profile' ? "var(--color-fsk-112)" : 'transparent',
-            color: currentPath === '/customer/profile' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
+            background: currentPath === '/customer/profile' ? "#e0f2fe" : 'transparent',
+            color: currentPath === '/customer/profile' ? "var(--blue)" : "var(--muted)",
           }}
         >
           <User size={18} />
@@ -372,21 +372,21 @@ export const CustomerLayout: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
-            borderRadius: "var(--radius-fsk-37)",
-            fontSize: "var(--font-fsk-24)",
+            padding: "0.625rem 0.875rem",
+            borderRadius: "0.5rem",
+            fontSize: "0.875rem",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/notifications' ? "var(--color-fsk-112)" : 'transparent',
-            color: currentPath === '/customer/notifications' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
+            background: currentPath === '/customer/notifications' ? "#e0f2fe" : 'transparent',
+            color: currentPath === '/customer/notifications' ? "var(--blue)" : "var(--muted)",
           }}
         >
-          <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)" }}>
+          <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.625rem" }}>
             <Bell size={18} />
             <Inline>Notifications</Inline>
           </Surface>
           {unreadCount > 0 && (
-            <Inline style={{ background: "var(--color-fsk-129)", color: "var(--color-fsk-38)", fontSize: "var(--font-fsk-14)", padding: "var(--spacing-fsk-22) var(--spacing-fsk-17)", borderRadius: "var(--radius-fsk-68)" }}>
+            <Inline style={{ background: "#ef4444", color: "var(--white)", fontSize: "0.8125rem", padding: "0.0625rem 0.375rem", borderRadius: "0.625rem" }}>
               {unreadCount}
             </Inline>
           )}
@@ -397,14 +397,14 @@ export const CustomerLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-35)",
-            padding: "var(--spacing-fsk-35) var(--spacing-fsk-23)",
-            borderRadius: "var(--radius-fsk-37)",
-            fontSize: "var(--font-fsk-24)",
+            gap: "0.625rem",
+            padding: "0.625rem 0.875rem",
+            borderRadius: "0.5rem",
+            fontSize: "0.875rem",
             fontWeight: 600,
             textDecoration: 'none',
-            background: currentPath === '/customer/support' ? "var(--color-fsk-112)" : 'transparent',
-            color: currentPath === '/customer/support' ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
+            background: currentPath === '/customer/support' ? "#e0f2fe" : 'transparent',
+            color: currentPath === '/customer/support' ? "var(--blue)" : "var(--muted)",
           }}
         >
           <HelpCircle size={18} />
@@ -415,21 +415,21 @@ export const CustomerLayout: React.FC = () => {
       {/* Assigned Agent Box */}
       <Surface
         style={{
-          background: "var(--color-fsk-27)",
-          borderRadius: "var(--radius-fsk-28)",
-          border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
-          padding: "var(--spacing-fsk-8)",
-          fontSize: "var(--font-fsk-14)",
-          marginTop: "var(--spacing-fsk-2)",
+          background: "var(--cream)",
+          borderRadius: "1rem",
+          border: "0.0625rem solid var(--border)",
+          padding: "0.75rem",
+          fontSize: "0.8125rem",
+          marginTop: "1.25rem",
         }}
       >
-        <Surface style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", textTransform: 'uppercase', fontWeight: 600 }}>
+        <Surface style={{ color: "var(--muted)", fontSize: "0.8125rem", textTransform: 'uppercase', fontWeight: 600 }}>
           Assigned Business Agent
         </Surface>
-        <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)", marginTop: "var(--spacing-fsk-47)" }}>
+        <Surface style={{ fontWeight: 700, color: "var(--navy)", marginTop: "0.125rem" }}>
           {INITIAL_CUSTOMER_PROFILE.agentName}
         </Surface>
-        <Surface style={{ color: "var(--color-fsk-15)", fontSize: "var(--font-fsk-14)", marginTop: "var(--spacing-fsk-22)" }}>
+        <Surface style={{ color: "var(--blue)", fontSize: "0.8125rem", marginTop: "0.0625rem" }}>
           ID: {INITIAL_CUSTOMER_PROFILE.agentId}
         </Surface>
       </Surface>

@@ -1,8 +1,6 @@
+import { Panel, Title, Field } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
 import { StatusTag as Badge } from '../../components/StatusTag';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { TextInput } from '@astryxdesign/core/TextInput';
 import {
   Mail,
   Phone
@@ -26,23 +24,23 @@ export const FranchiseAgentsPage: React.FC = () => {
   }, [agents, searchQuery]);
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-0)", margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "77.5rem", margin: '0 auto' }}>
       {/* Header */}
-      <Surface style={{ marginBottom: "var(--spacing-fsk-26)" }}>
-        <Heading level={1}>
-          <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
+      <Surface style={{ marginBottom: "1.5rem" }}>
+        <Title level={1}>
+          <Inline style={{ fontSize: "1.625rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.02em' }}>
             Associated Agents Directory
           </Inline>
-        </Heading>
-        <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+        </Title>
+        <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginTop: "0.25rem", margin: 0 }}>
           Manage your network of territory agents, review customer acquisition numbers, and monitor filing revenue.
         </p>
       </Surface>
 
       {/* Filter and Search Bar */}
-      <Card elevation="low" padding={4} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", marginBottom: "var(--spacing-fsk-26)" }}>
-        <Surface style={{ maxWidth: "var(--spacing-fsk-50)" }}>
-          <TextInput
+      <Panel elevation="low" padding={4} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", marginBottom: "1.5rem" }}>
+        <Surface style={{ maxWidth: "26.25rem" }}>
+          <Field
             label="Search Agents"
             placeholder="Search by agent name, ID, city or referral code..."
             value={searchQuery}
@@ -50,64 +48,64 @@ export const FranchiseAgentsPage: React.FC = () => {
             width="100%"
           />
         </Surface>
-      </Card>
+      </Panel>
 
       {/* Agents Table */}
-      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+      <Panel elevation="low" padding={0} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", overflow: 'hidden' }}>
         <Surface style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "var(--font-fsk-14)" }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: "0.8125rem" }}>
             <thead>
-              <tr style={{ background: "var(--color-fsk-27)", borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)", color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-14)", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Agent Name &amp; ID</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Referral Code</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Contact Info</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Territory / City</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Clients</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>Gross Revenue</th>
-                <th style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>Status</th>
+              <tr style={{ background: "var(--cream)", borderBottom: "0.0625rem solid var(--border)", color: "var(--muted)", fontSize: "0.8125rem", textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Agent Name &amp; ID</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Referral Code</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Contact Info</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Territory / City</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Clients</th>
+                <th style={{ padding: "0.875rem 1.125rem" }}>Gross Revenue</th>
+                <th style={{ padding: "0.875rem 1.125rem", textAlign: 'right' }}>Status</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((ag) => (
-                <tr key={ag.id} style={{ borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-46)" }}>
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
-                    <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{ag.name}</Surface>
-                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-70)", fontFamily: 'monospace', fontWeight: 600 }}>
+                <tr key={ag.id} style={{ borderBottom: "0.0625rem solid var(--sage-light)" }}>
+                  <td style={{ padding: "0.875rem 1.125rem" }}>
+                    <Surface style={{ fontWeight: 700, color: "var(--navy)" }}>{ag.name}</Surface>
+                    <Surface style={{ fontSize: "0.8125rem", color: "#0284c7", fontFamily: 'monospace', fontWeight: 600 }}>
                       {ag.id}
                     </Surface>
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
-                    <Inline style={{ fontFamily: 'monospace', fontWeight: 700, color: "var(--color-fsk-65)", background: "var(--color-fsk-64)", padding: "var(--spacing-fsk-29) var(--spacing-fsk-12)", borderRadius: "var(--radius-fsk-42)" }}>
+                  <td style={{ padding: "0.875rem 1.125rem" }}>
+                    <Inline style={{ fontFamily: 'monospace', fontWeight: 700, color: "var(--teal)", background: "#ecfdf5", padding: "0.25rem 0.5rem", borderRadius: "0.375rem" }}>
                       {ag.referralCode}
                     </Inline>
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
-                    <Surface style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-47)", fontSize: "var(--font-fsk-14)" }}>
-                      <Inline style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)" }}>
-                        <Phone size={12} color="var(--color-fsk-9)" /> {ag.phone}
+                  <td style={{ padding: "0.875rem 1.125rem" }}>
+                    <Surface style={{ display: 'flex', flexDirection: 'column', gap: "0.125rem", fontSize: "0.8125rem" }}>
+                      <Inline style={{ display: 'flex', alignItems: 'center', gap: "0.25rem" }}>
+                        <Phone size={12} color="var(--muted)" /> {ag.phone}
                       </Inline>
-                      <Inline style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-29)", color: "var(--color-fsk-9)" }}>
-                        <Mail size={12} color="var(--color-fsk-9)" /> {ag.email}
+                      <Inline style={{ display: 'flex', alignItems: 'center', gap: "0.25rem", color: "var(--muted)" }}>
+                        <Mail size={12} color="var(--muted)" /> {ag.email}
                       </Inline>
                     </Surface>
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", color: "var(--color-fsk-25)" }}>
+                  <td style={{ padding: "0.875rem 1.125rem", color: "#334155" }}>
                     {ag.city}
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)" }}>
-                    <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)" }}>{ag.customersCount} clients</Surface>
-                    <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>{ag.applicationsCount} filings</Surface>
+                  <td style={{ padding: "0.875rem 1.125rem" }}>
+                    <Surface style={{ fontWeight: 700, color: "var(--navy)" }}>{ag.customersCount} clients</Surface>
+                    <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)" }}>{ag.applicationsCount} filings</Surface>
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", fontWeight: 700, color: "var(--color-fsk-70)" }}>
+                  <td style={{ padding: "0.875rem 1.125rem", fontWeight: 700, color: "#0284c7" }}>
                     ₹{ag.totalRevenue.toLocaleString('en-IN')}
                   </td>
 
-                  <td style={{ padding: "var(--spacing-fsk-23) var(--spacing-fsk-36)", textAlign: 'right' }}>
+                  <td style={{ padding: "0.875rem 1.125rem", textAlign: 'right' }}>
                     <Badge label={ag.status} variant="green" />
                   </td>
                 </tr>
@@ -115,7 +113,7 @@ export const FranchiseAgentsPage: React.FC = () => {
             </tbody>
           </table>
         </Surface>
-      </Card>
+      </Panel>
     </Surface>
   );
 };

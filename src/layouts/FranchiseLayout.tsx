@@ -28,53 +28,53 @@ export const FranchiseLayout: React.FC = () => {
   const franchiseTopNav = (
     <header
       style={{
-        flexWrap: 'wrap', gap: "var(--spacing-fsk-8)", paddingBlock: "var(--spacing-fsk-8)",
-        minHeight: "var(--spacing-fsk-141)",
-        background: "var(--color-fsk-38)",
-        borderBottom: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+        flexWrap: 'wrap', gap: "0.75rem", paddingBlock: "0.75rem",
+        minHeight: "4rem",
+        background: "var(--white)",
+        borderBottom: "0.0625rem solid var(--border)",
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: "0 var(--spacing-fsk-26)",
-        boxShadow: "var(--shadow-fsk-card)",
+        padding: "0 1.5rem",
+        boxShadow: "var(--shadow-panel)",
       }}
     >
       {/* Brand Lockup */}
-      <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-8)" }}>
-        <Link to="/franchise/dashboard" style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-35)", textDecoration: 'none' }}>
+      <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.75rem" }}>
+        <Link to="/franchise/dashboard" style={{ display: 'flex', alignItems: 'center', gap: "0.625rem", textDecoration: 'none' }}>
           <Surface
             style={{
-              width: "var(--spacing-fsk-52)",
-              height: "var(--spacing-fsk-52)",
-              borderRadius: "var(--radius-fsk-37)",
-              background: "var(--color-fsk-brand)",
+              width: "2.125rem",
+              height: "2.125rem",
+              borderRadius: "0.5rem",
+              background: "var(--status-brand)",
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: "var(--color-fsk-38)",
+              color: "var(--white)",
             }}
           >
             <Building size={20} />
           </Surface>
-          <Inline style={{ fontSize: "var(--font-fsk-30)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.01em' }}>
+          <Inline style={{ fontSize: "1.125rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.01em' }}>
             Finservkart
           </Inline>
         </Link>
-        <Inline style={{ color: "var(--color-fsk-59)" }}>|</Inline>
+        <Inline style={{ color: "#cbd5e1" }}>|</Inline>
         <Badge label="Franchise Portal" variant="blue" />
       </Surface>
 
       {/* Right Controls */}
-      <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-5)" }}>
+      <Surface style={{ display: 'flex', alignItems: 'center', gap: "1rem" }}>
         <Link
           to="/"
           style={{
-            fontSize: "var(--font-fsk-14)",
-            color: "var(--color-fsk-9)",
+            fontSize: "0.8125rem",
+            color: "var(--muted)",
             textDecoration: 'none',
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-86)",
+            gap: "0.3125rem",
           }}
         >
           <ExternalLink size={14} /> Public Website
@@ -86,36 +86,36 @@ export const FranchiseLayout: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: "var(--spacing-fsk-35)",
-            padding: "var(--spacing-fsk-17) var(--spacing-fsk-8)",
-            borderRadius: "var(--radius-fsk-77)",
-            background: "var(--color-fsk-27)",
-            border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+            gap: "0.625rem",
+            padding: "0.375rem 0.75rem",
+            borderRadius: "62.4375rem",
+            background: "var(--cream)",
+            border: "0.0625rem solid var(--border)",
             textDecoration: 'none',
             color: 'inherit',
           }}
         >
           <Surface
             style={{
-              width: "var(--spacing-fsk-71)",
-              height: "var(--spacing-fsk-71)",
+              width: "1.75rem",
+              height: "1.75rem",
               borderRadius: '50%',
-              background: "var(--color-fsk-70)",
-              color: "var(--color-fsk-38)",
+              background: "#0284c7",
+              color: "var(--white)",
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: "var(--font-fsk-14)",
+              fontSize: "0.8125rem",
               fontWeight: 700,
             }}
           >
             {franchise.directorName[0]}
           </Surface>
           <Surface style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}>
-            <Inline style={{ fontSize: "var(--font-fsk-14)", fontWeight: 600, color: "var(--color-fsk-7)" }}>
+            <Inline style={{ fontSize: "0.8125rem", fontWeight: 600, color: "var(--navy)" }}>
               {franchise.directorName}
             </Inline>
-            <Inline style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)" }}>{franchise.id}</Inline>
+            <Inline style={{ fontSize: "0.8125rem", color: "var(--muted)" }}>{franchise.id}</Inline>
           </Surface>
         </Link>
 
@@ -128,8 +128,8 @@ export const FranchiseLayout: React.FC = () => {
             background: 'none',
             border: 'none',
             cursor: 'pointer',
-            padding: "var(--spacing-fsk-12)",
-            color: "var(--color-fsk-57)",
+            padding: "0.5rem",
+            color: "#687d93",
             display: 'flex',
             alignItems: 'center',
           }}
@@ -155,30 +155,30 @@ export const FranchiseLayout: React.FC = () => {
     <aside
       style={{
         width: '100%',
-        background: "var(--color-fsk-38)",
-        borderRight: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
+        background: "var(--white)",
+        borderRight: "0.0625rem solid var(--border)",
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        padding: "var(--spacing-fsk-5) var(--spacing-fsk-8)",
-        minHeight: "calc(100vh - var(--spacing-fsk-141))",
+        padding: "1rem 0.75rem",
+        minHeight: "calc(100vh - 4rem)",
       }}
     >
       <Surface>
         <Surface
           style={{
-            padding: "var(--spacing-fsk-12) var(--spacing-fsk-8) var(--spacing-fsk-23)",
-            fontSize: "var(--font-fsk-14)",
+            padding: "0.5rem 0.75rem 0.875rem",
+            fontSize: "0.8125rem",
             fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
-            color: "var(--color-fsk-57)",
+            color: "#687d93",
           }}
         >
           Franchise Operations
         </Surface>
 
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: "var(--spacing-fsk-29)" }}>
+        <nav style={{ display: 'flex', flexDirection: 'column', gap: "0.25rem" }}>
           {navItems.map((item) => {
             const isActive = currentPath === item.path || (item.path !== '/franchise/dashboard' && currentPath.startsWith(item.path));
             return (
@@ -188,18 +188,18 @@ export const FranchiseLayout: React.FC = () => {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: "var(--spacing-fsk-35)",
-                  padding: "var(--spacing-fsk-142) var(--spacing-fsk-8)",
-                  borderRadius: "var(--radius-fsk-37)",
+                  gap: "0.625rem",
+                  padding: "0.5625rem 0.75rem",
+                  borderRadius: "0.5rem",
                   textDecoration: 'none',
-                  fontSize: "var(--font-fsk-14)",
+                  fontSize: "0.8125rem",
                   fontWeight: isActive ? 600 : 500,
-                  color: isActive ? "var(--color-fsk-70)" : "var(--color-fsk-18)",
-                  background: isActive ? "var(--color-fsk-131)" : 'transparent',
+                  color: isActive ? "#0284c7" : "var(--muted)",
+                  background: isActive ? "#f0f9ff" : 'transparent',
                   transition: 'background 0.15s ease, color 0.15s ease',
                 }}
               >
-                <Inline style={{ color: isActive ? "var(--color-fsk-70)" : "var(--color-fsk-9)" }}>{item.icon}</Inline>
+                <Inline style={{ color: isActive ? "#0284c7" : "var(--muted)" }}>{item.icon}</Inline>
                 <Inline>{item.label}</Inline>
               </Link>
             );
@@ -209,18 +209,18 @@ export const FranchiseLayout: React.FC = () => {
 
       <Surface
         style={{
-          background: "var(--color-fsk-27)",
-          borderRadius: "var(--radius-fsk-68)",
-          border: "var(--spacing-fsk-22) solid var(--color-fsk-21)",
-          padding: "var(--spacing-fsk-8)",
-          fontSize: "var(--font-fsk-14)",
-          color: "var(--color-fsk-18)",
+          background: "var(--cream)",
+          borderRadius: "0.625rem",
+          border: "0.0625rem solid var(--border)",
+          padding: "0.75rem",
+          fontSize: "0.8125rem",
+          color: "var(--muted)",
         }}
       >
-        <Surface style={{ fontWeight: 700, color: "var(--color-fsk-7)", marginBottom: "var(--spacing-fsk-29)" }}>
+        <Surface style={{ fontWeight: 700, color: "var(--navy)", marginBottom: "0.25rem" }}>
           {franchise.name}
         </Surface>
-        <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-9)", lineHeight: 1.4 }}>
+        <Surface style={{ fontSize: "0.8125rem", color: "var(--muted)", lineHeight: 1.4 }}>
           {franchise.city} • {franchise.id}
         </Surface>
       </Surface>

@@ -80,7 +80,7 @@ describe('Finservkart Demo Access and Role-Based Login Suite', () => {
     });
   });
 
-  it('renders "Explore Demo" button on the homepage hero section', async () => {
+  it('renders "Explore Demo" link on the homepage', async () => {
     const host = document.createElement('div');
     document.body.append(host);
     const root = createRoot(host);
@@ -98,7 +98,7 @@ describe('Finservkart Demo Access and Role-Based Login Suite', () => {
       );
     });
 
-    const exploreButton = Array.from(host.querySelectorAll('button')).find((b) =>
+    const exploreButton = Array.from(host.querySelectorAll('a')).find((b) =>
       b.textContent?.includes('Explore Demo')
     );
     expect(exploreButton).toBeTruthy();
@@ -187,7 +187,7 @@ describe('Finservkart Demo Access and Role-Based Login Suite', () => {
       h.textContent?.includes('Main Admin')
     );
     expect(adminHeading).toBeTruthy();
-    const adminCard = adminHeading?.closest('div[style*="flex-direction: column"]');
+    const adminCard = adminHeading?.closest('article');
     const adminButton = adminCard?.querySelector('button');
     expect(adminButton).toBeTruthy();
 

@@ -1,10 +1,4 @@
-import { VStack, type VStackProps } from '@astryxdesign/core/VStack';
-
-/** Transitional Astryx layout primitive for existing, behavior-preserving page compositions. */
-export function Surface({ style, ...props }: VStackProps) {
-  return <VStack {...props} style={{ display: 'block', flexDirection: 'row', minWidth: 0, ...style }} />;
-}
-
-export function Inline({ style, ...props }: VStackProps) {
-  return <VStack as="span" {...props} style={{ display: 'inline', flexDirection: 'row', ...style }} />;
-}
+import type { HTMLAttributes } from 'react';
+/** Unstyled semantic containers for existing operational screens. */
+export function Surface(props: HTMLAttributes<HTMLDivElement>) { return <div {...props} />; }
+export function Inline(props: HTMLAttributes<HTMLSpanElement>) { return <span {...props} />; }

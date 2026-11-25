@@ -1,12 +1,5 @@
+import { Notice, ActionButton, Panel, Title, Row, Typography, Field, Stack } from '../components/ui';
 import { Surface, Inline } from '../components/Surface';
-import { Banner } from '@astryxdesign/core/Banner';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
-import { HStack } from '@astryxdesign/core/HStack';
-import { Text } from '@astryxdesign/core/Text';
-import { TextInput } from '@astryxdesign/core/TextInput';
-import { VStack } from '@astryxdesign/core/VStack';
 import {
   ArrowRight,
   Briefcase,
@@ -194,20 +187,20 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <Surface style={{ maxWidth: '78rem', margin: 'var(--spacing-fsk-1) auto var(--spacing-fsk-3) auto', padding: '0 var(--spacing-fsk-2)' }}>
-      <Surface style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem), 1fr))', gap: 'var(--spacing-fsk-4)', alignItems: 'start' }}>
-        {/* Left Side: Login Card */}
+    <Surface style={{ maxWidth: '78rem', margin: 'clamp(1rem, 3.076923076923077vw, 2.5rem) auto clamp(1rem, 6.153846153846154vw, 5rem) auto', padding: '0 1.25rem' }}>
+      <Surface style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem), 1fr))', gap: 'clamp(1rem, 3.6923076923076925vw, 3rem)', alignItems: 'start' }}>
+        {/* Left Side: Login Panel */}
         <Surface>
-          <Surface style={{ marginBottom: 'var(--spacing-4)' }}>
-            <Inline style={{ fontSize: 'var(--font-fsk-14)', fontWeight: 600, color: 'var(--color-accent)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <Surface style={{ marginBottom: '1rem' }}>
+            <Inline style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--blue)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Unified Portal Access
             </Inline>
-            <Heading level={1}>
-              <Inline style={{ fontSize: 'var(--font-fsk-95)', fontWeight: 800, color: 'var(--color-fsk-7)', display: 'block', marginTop: 'var(--spacing-2)' }}>
+            <Title level={1}>
+              <Inline style={{ fontSize: 'clamp(1.5rem, 2.4615384615384617vw, 2rem)', fontWeight: 800, color: 'var(--navy)', display: 'block', marginTop: '0.5rem' }}>
                 Sign In to Finservkart
               </Inline>
-            </Heading>
-            <p style={{ color: 'var(--color-fsk-9)', fontSize: '0.9375rem', marginTop: 'var(--spacing-2)' }}>
+            </Title>
+            <p style={{ color: 'var(--muted)', fontSize: '0.9375rem', marginTop: '0.5rem' }}>
               Choose your role to access your dedicated dashboard, track filings, and manage workflows.
             </p>
           </Surface>
@@ -220,10 +213,10 @@ export const LoginPage: React.FC = () => {
               display: 'flex',
               flexWrap: 'wrap',
               gap: '6px',
-              background: 'var(--color-background-muted)',
+              background: 'var(--sage-light)',
               padding: '6px',
-              borderRadius: 'var(--radius-container)',
-              marginBottom: 'var(--spacing-4)',
+              borderRadius: 'var(--radius-panel)',
+              marginBottom: '1rem',
             }}
           >
             {ROLES.map((r) => {
@@ -244,12 +237,12 @@ export const LoginPage: React.FC = () => {
                     minWidth: '110px',
                     padding: '8px 6px',
                     border: 'none',
-                    borderRadius: 'var(--radius-element)',
+                    borderRadius: 'var(--radius-small)',
                     fontWeight: 600,
                     fontSize: '0.8125rem',
                     cursor: 'pointer',
-                    background: isSelected ? 'var(--color-background-surface)' : 'transparent',
-                    color: isSelected ? 'var(--color-accent)' : 'var(--color-text-primary)',
+                    background: isSelected ? 'var(--white)' : 'transparent',
+                    color: isSelected ? 'var(--blue)' : 'var(--navy)',
                     boxShadow: isSelected ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
                     transition: 'all 0.15s ease-in-out',
                     textAlign: 'center',
@@ -263,24 +256,24 @@ export const LoginPage: React.FC = () => {
 
           {/* Demo Callout Option (Requirement 6) */}
           {isDemoModeEnabled && (
-            <Card
+            <Panel
               elevation="low"
               padding={4}
               style={{
-                marginBottom: 'var(--spacing-4)',
+                marginBottom: '1rem',
                 background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(59, 130, 246, 0.03) 100%)',
                 border: '1px solid rgba(37, 99, 235, 0.25)',
-                borderRadius: 'var(--radius-container)',
+                borderRadius: 'var(--radius-panel)',
               }}
             >
-              <VStack gap={2}>
-                <HStack hAlign="between" vAlign="center" wrap="wrap">
-                  <HStack gap={2} vAlign="center">
-                    <Sparkles size={16} color="var(--color-accent)" />
-                    <Text weight="bold" size="sm" color="accent">
+              <Stack gap={2}>
+                <Row hAlign="between" vAlign="center" wrap="wrap">
+                  <Row gap={2} vAlign="center">
+                    <Sparkles size={16} color="var(--blue)" />
+                    <Typography weight="bold" size="sm" color="accent">
                       Explore as {activeConfig.title}
-                    </Text>
-                  </HStack>
+                    </Typography>
+                  </Row>
                   <span
                     style={{
                       fontSize: '0.6875rem',
@@ -288,17 +281,17 @@ export const LoginPage: React.FC = () => {
                       padding: '2px 8px',
                       borderRadius: '9999px',
                       background: 'rgba(37, 99, 235, 0.15)',
-                      color: 'var(--color-accent)',
+                      color: 'var(--blue)',
                       textTransform: 'uppercase',
                     }}
                   >
                     Demo Mode Active
                   </span>
-                </HStack>
-                <Text size="sm" color="secondary">
+                </Row>
+                <Typography size="sm" color="secondary">
                   Testing the platform demo? Skip credentials and explore the {activeConfig.title} dashboard immediately with sample data.
-                </Text>
-                <Button
+                </Typography>
+                <ActionButton
                   label={`Explore as ${activeConfig.title}`}
                   variant="primary"
                   size="md"
@@ -306,45 +299,45 @@ export const LoginPage: React.FC = () => {
                   endContent={<ArrowRight size={16} aria-hidden="true" />}
                   onClick={handleExploreDemo}
                 />
-              </VStack>
-            </Card>
+              </Stack>
+            </Panel>
           )}
 
           {/* Production Authentication Form */}
-          <Card elevation="low" padding={5}>
-            <VStack gap={3}>
-              <HStack hAlign="between" vAlign="center">
-                <Text type="label" size="xsm" color="secondary">
+          <Panel elevation="low" padding={5}>
+            <Stack gap={3}>
+              <Row hAlign="between" vAlign="center">
+                <Typography type="label" size="xsm" color="secondary">
                   PRODUCTION LOGIN — {activeConfig.title.toUpperCase()}
-                </Text>
+                </Typography>
                 <span
                   style={{
                     fontSize: '0.6875rem',
-                    color: 'var(--color-text-secondary)',
+                    color: 'var(--muted)',
                     fontFamily: 'monospace',
                   }}
                 >
                   {activeConfig.endpoint}
                 </span>
-              </HStack>
+              </Row>
 
               {/* Alerts */}
               {errorMessage && (
-                <Surface style={{ marginBottom: 'var(--spacing-2)' }}>
-                  <Banner status="error" title={errorMessage} />
+                <Surface style={{ marginBottom: '0.5rem' }}>
+                  <Notice status="error" title={errorMessage} />
                 </Surface>
               )}
 
               {successMessage && (
-                <Surface style={{ marginBottom: 'var(--spacing-2)' }}>
-                  <Banner status="success" title={successMessage} />
+                <Surface style={{ marginBottom: '0.5rem' }}>
+                  <Notice status="success" title={successMessage} />
                 </Surface>
               )}
 
               <form onSubmit={handleSubmit}>
-                <VStack gap={3}>
+                <Stack gap={3}>
                   <Surface>
-                    <TextInput
+                    <Field
                       type="text"
                       label={activeConfig.usernameLabel}
                       placeholder={activeConfig.usernamePlaceholder}
@@ -352,12 +345,12 @@ export const LoginPage: React.FC = () => {
                       onChange={(val) => setIdentifier(val)}
                       isRequired
                       width="100%"
-                      startIcon={Mail}
+                      startIcon={<Mail size={18} />}
                     />
                   </Surface>
 
                   <Surface>
-                    <TextInput
+                    <Field
                       type={showPassword ? 'text' : 'password'}
                       label="Password"
                       placeholder="Enter verified password"
@@ -365,11 +358,11 @@ export const LoginPage: React.FC = () => {
                       onChange={(val) => setPassword(val)}
                       isRequired
                       width="100%"
-                      startIcon={Lock}
+                      startIcon={<Lock size={18} />}
                     />
                   </Surface>
 
-                  <Surface style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+                  <Surface style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.875rem', color: 'var(--muted)' }}>
                     <input
                       type="checkbox"
                       id="showPass"
@@ -382,7 +375,7 @@ export const LoginPage: React.FC = () => {
                     </label>
                   </Surface>
 
-                  <Button
+                  <ActionButton
                     label={isLoading ? 'Verifying...' : `Sign In as ${activeConfig.title}`}
                     variant="secondary"
                     size="md"
@@ -390,53 +383,53 @@ export const LoginPage: React.FC = () => {
                     type="submit"
                     isLoading={isLoading}
                   />
-                </VStack>
+                </Stack>
               </form>
 
               {/* Bottom Context Links */}
-              <Surface style={{ marginTop: 'var(--spacing-3)', paddingTop: 'var(--spacing-3)', borderTop: '1px solid var(--color-background-muted)', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 'var(--spacing-2)', fontSize: '0.8125rem' }}>
+              <Surface style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--sage-light)', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '0.5rem', fontSize: '0.8125rem' }}>
                 {activeConfig.canSelfRegister ? (
                   <Surface>
                     Don't have an account?{' '}
-                    <Link to="/register" style={{ color: 'var(--color-accent)', fontWeight: 600, textDecoration: 'none' }}>
+                    <Link to="/register" style={{ color: 'var(--blue)', fontWeight: 600, textDecoration: 'none' }}>
                       Sign Up
                     </Link>
                   </Surface>
                 ) : activeConfig.isStaff ? (
-                  <Surface style={{ color: 'var(--color-text-secondary)', fontSize: '0.75rem' }}>
+                  <Surface style={{ color: 'var(--muted)', fontSize: '0.75rem' }}>
                     Staff accounts are provisioned internally by platform administrators.
                   </Surface>
                 ) : (
-                  <Surface style={{ color: 'var(--color-text-secondary)', fontSize: '0.75rem' }}>
+                  <Surface style={{ color: 'var(--muted)', fontSize: '0.75rem' }}>
                     Professional partners are onboarded via the compliance operations desk.
                   </Surface>
                 )}
 
                 <Surface>
-                  <Link to="/forgot-password" style={{ color: 'var(--color-accent)', fontWeight: 600, textDecoration: 'none' }}>
+                  <Link to="/forgot-password" style={{ color: 'var(--blue)', fontWeight: 600, textDecoration: 'none' }}>
                     Forgot password?
                   </Link>
                 </Surface>
               </Surface>
-            </VStack>
-          </Card>
+            </Stack>
+          </Panel>
         </Surface>
 
         {/* Right Side: Information & Illustration */}
-        <Surface style={{ background: 'var(--color-background-surface)', padding: 'var(--spacing-6)', borderRadius: 'var(--radius-container)', border: '1px solid var(--color-background-muted)', boxShadow: 'var(--shadow-fsk-card)' }}>
-          <Surface style={{ width: 48, height: 48, borderRadius: 'var(--radius-element)', background: 'var(--color-fsk-info-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-accent)', marginBottom: 'var(--spacing-3)' }}>
+        <Surface style={{ background: 'var(--white)', padding: '1.5rem', borderRadius: 'var(--radius-panel)', border: '1px solid var(--sage-light)', boxShadow: 'var(--shadow-panel)' }}>
+          <Surface style={{ width: 48, height: 48, borderRadius: 'var(--radius-small)', background: 'var(--status-info-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--blue)', marginBottom: '0.75rem' }}>
             <ShieldCheck size={28} />
           </Surface>
 
-          <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: 'var(--spacing-2)' }}>
+          <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '0.5rem' }}>
             Role-Based Portal Governance
           </h3>
 
-          <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', lineHeight: 1.6, marginBottom: 'var(--spacing-4)' }}>
+          <p style={{ fontSize: '0.875rem', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '1rem' }}>
             Finservkart partitions responsibilities across six distinct stakeholder portals. Each role has strict operational boundaries and verified access controls.
           </p>
 
-          <VStack gap={3}>
+          <Stack gap={3}>
             {ROLES.map((r) => {
               const Icon = r.icon;
               const isSelected = role === r.id;
@@ -459,32 +452,32 @@ export const LoginPage: React.FC = () => {
                     gap: '12px',
                     alignItems: 'start',
                     padding: '8px 10px',
-                    borderRadius: 'var(--radius-element)',
+                    borderRadius: 'var(--radius-small)',
                     cursor: 'pointer',
-                    background: isSelected ? 'var(--color-fsk-info-subtle)' : 'transparent',
-                    border: isSelected ? '1px solid var(--color-accent)' : '1px solid transparent',
+                    background: isSelected ? 'var(--status-info-subtle)' : 'transparent',
+                    border: isSelected ? '1px solid var(--blue)' : '1px solid transparent',
                   }}
                 >
-                  <Icon size={18} color={isSelected ? 'var(--color-accent)' : 'var(--color-text-secondary)'} style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <Icon size={18} color={isSelected ? 'var(--blue)' : 'var(--muted)'} style={{ flexShrink: 0, marginTop: '2px' }} />
                   <Surface>
-                    <HStack gap={2} vAlign="center">
-                      <strong style={{ fontSize: '0.875rem', color: isSelected ? 'var(--color-accent)' : 'var(--color-text-primary)' }}>
+                    <Row gap={2} vAlign="center">
+                      <strong style={{ fontSize: '0.875rem', color: isSelected ? 'var(--blue)' : 'var(--navy)' }}>
                         {r.title}
                       </strong>
-                      <span style={{ fontSize: '0.6875rem', color: 'var(--color-text-secondary)', background: 'var(--color-background-muted)', padding: '1px 6px', borderRadius: '4px' }}>
+                      <span style={{ fontSize: '0.6875rem', color: 'var(--muted)', background: 'var(--sage-light)', padding: '1px 6px', borderRadius: '4px' }}>
                         {r.badge}
                       </span>
-                    </HStack>
-                    <Surface style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginTop: '2px' }}>
+                    </Row>
+                    <Surface style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '2px' }}>
                       {r.description}
                     </Surface>
                   </Surface>
                 </div>
               );
             })}
-          </VStack>
+          </Stack>
 
-          <div style={{ marginTop: 'var(--spacing-5)', paddingTop: 'var(--spacing-3)', borderTop: '1px solid var(--color-background-muted)' }}>
+          <div style={{ marginTop: '1.25rem', paddingTop: '0.75rem', borderTop: '1px solid var(--sage-light)' }}>
             <Link
               to="/explore-demo"
               style={{
@@ -492,7 +485,7 @@ export const LoginPage: React.FC = () => {
                 alignItems: 'center',
                 gap: '6px',
                 fontSize: '0.875rem',
-                color: 'var(--color-accent)',
+                color: 'var(--blue)',
                 fontWeight: 600,
                 textDecoration: 'none',
               }}

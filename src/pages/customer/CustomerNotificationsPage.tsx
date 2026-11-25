@@ -1,7 +1,5 @@
+import { ActionButton, Panel, Title } from '../../components/ui';
 import { Surface, Inline } from '../../components/Surface';
-import { Button } from '@astryxdesign/core/Button';
-import { Card } from '@astryxdesign/core/Card';
-import { Heading } from '@astryxdesign/core/Heading';
 import {
   Bell,
   Clock,
@@ -28,20 +26,20 @@ export const CustomerNotificationsPage: React.FC = () => {
   const getNotificationIcon = (type: CustomerNotification['type']) => {
     switch (type) {
       case 'milestone':
-        return <Clock size={18} color="var(--color-fsk-15)" />;
+        return <Clock size={18} color="var(--blue)" />;
       case 'document':
-        return <FileText size={18} color="var(--color-fsk-39)" />;
+        return <FileText size={18} color="#16a34a" />;
       case 'message':
-        return <MessageSquare size={18} color="var(--color-fsk-119)" />;
+        return <MessageSquare size={18} color="#9333ea" />;
       case 'payment':
-        return <Receipt size={18} color="var(--color-fsk-15)" />;
+        return <Receipt size={18} color="var(--blue)" />;
       default:
-        return <Bell size={18} color="var(--color-fsk-18)" />;
+        return <Bell size={18} color="var(--muted)" />;
     }
   };
 
   return (
-    <Surface style={{ maxWidth: "var(--spacing-fsk-89)", margin: '0 auto' }}>
+    <Surface style={{ maxWidth: "53.75rem", margin: '0 auto' }}>
       {/* Header */}
       <Surface
         style={{
@@ -49,23 +47,23 @@ export const CustomerNotificationsPage: React.FC = () => {
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: "var(--spacing-fsk-26)",
-          gap: "var(--spacing-fsk-5)",
+          marginBottom: "1.5rem",
+          gap: "1rem",
         }}
       >
         <Surface>
-          <Heading level={1}>
-            <Inline style={{ fontSize: "var(--font-fsk-49)", fontWeight: 800, color: "var(--color-fsk-7)", letterSpacing: '-0.02em' }}>
+          <Title level={1}>
+            <Inline style={{ fontSize: "1.625rem", fontWeight: 800, color: "var(--navy)", letterSpacing: '-0.02em' }}>
               Notifications & Activity
             </Inline>
-          </Heading>
-          <p style={{ color: "var(--color-fsk-9)", fontSize: "var(--font-fsk-24)", marginTop: "var(--spacing-fsk-29)", margin: 0 }}>
+          </Title>
+          <p style={{ color: "var(--muted)", fontSize: "0.875rem", marginTop: "0.25rem", margin: 0 }}>
             Operational updates, CA query dispatches, document approvals, and payment receipts.
           </p>
         </Surface>
 
-        <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)" }}>
-          <Button
+        <Surface style={{ display: 'flex', gap: "0.5rem" }}>
+          <ActionButton
             label="Mark All Read"
             variant="secondary"
             size="sm"
@@ -75,7 +73,7 @@ export const CustomerNotificationsPage: React.FC = () => {
       </Surface>
 
       {/* Filter Tabs */}
-      <Surface style={{ display: 'flex', gap: "var(--spacing-fsk-12)", marginBottom: "var(--spacing-fsk-2)" }}>
+      <Surface style={{ display: 'flex', gap: "0.5rem", marginBottom: "1.25rem" }}>
         {(['All', 'Unread'] as const).map((tab) => {
           const isActive = filter === tab;
           const count =
@@ -91,19 +89,19 @@ export const CustomerNotificationsPage: React.FC = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: "var(--spacing-fsk-17)",
-                padding: "var(--spacing-fsk-17) var(--spacing-fsk-23)",
-                borderRadius: "var(--radius-fsk-37)",
-                border: isActive ? "var(--spacing-fsk-22) solid var(--color-fsk-162)" : "var(--spacing-fsk-22) solid var(--color-fsk-163)",
-                background: isActive ? "var(--color-fsk-112)" : "var(--color-fsk-38)",
-                color: isActive ? "var(--color-fsk-15)" : "var(--color-fsk-18)",
-                fontSize: "var(--font-fsk-14)",
+                gap: "0.375rem",
+                padding: "0.375rem 0.875rem",
+                borderRadius: "0.5rem",
+                border: isActive ? "0.0625rem solid var(--blue)" : "0.0625rem solid #e2e8f0",
+                background: isActive ? "#e0f2fe" : "var(--white)",
+                color: isActive ? "var(--blue)" : "var(--muted)",
+                fontSize: "0.8125rem",
                 fontWeight: 600,
                 cursor: 'pointer',
               }}
             >
               <Inline>{tab}</Inline>
-              <Inline style={{ fontSize: "var(--font-fsk-14)", padding: "var(--spacing-fsk-22) var(--spacing-fsk-17)", borderRadius: "var(--radius-fsk-68)", background: isActive ? "var(--color-fsk-15)" : "var(--color-fsk-46)", color: isActive ? "var(--color-fsk-38)" : "var(--color-fsk-9)" }}>
+              <Inline style={{ fontSize: "0.8125rem", padding: "0.0625rem 0.375rem", borderRadius: "0.625rem", background: isActive ? "var(--blue)" : "var(--sage-light)", color: isActive ? "var(--white)" : "var(--muted)" }}>
                 {count}
               </Inline>
             </button>
@@ -112,62 +110,62 @@ export const CustomerNotificationsPage: React.FC = () => {
       </Surface>
 
       {/* Notifications List */}
-      <Card elevation="low" padding={0} style={{ borderRadius: "var(--radius-fsk-28)", border: "var(--spacing-fsk-22) solid var(--color-fsk-21)", background: "var(--color-fsk-38)", overflow: 'hidden' }}>
+      <Panel elevation="low" padding={0} style={{ borderRadius: "1rem", border: "0.0625rem solid var(--border)", background: "var(--white)", overflow: 'hidden' }}>
         <Surface style={{ display: 'flex', flexDirection: 'column' }}>
           {filtered.map((item, idx) => (
             <Surface
               key={item.id}
               style={{
-                padding: "var(--spacing-fsk-5) var(--spacing-fsk-2)",
-                borderBottom: idx === filtered.length - 1 ? 'none' : "var(--spacing-fsk-22) solid var(--color-fsk-165)",
+                padding: "1rem 1.25rem",
+                borderBottom: idx === filtered.length - 1 ? 'none' : "0.0625rem solid #f1f5f9",
                 display: 'flex',
                 alignItems: 'flex-start',
                 justifyContent: 'space-between',
-                gap: "var(--spacing-fsk-5)",
-                background: item.isRead ? "var(--color-fsk-38)" : "var(--color-fsk-27)",
+                gap: "1rem",
+                background: item.isRead ? "var(--white)" : "var(--cream)",
                 transition: 'background-color 0.15s ease',
               }}
             >
-              <Surface style={{ display: 'flex', alignItems: 'flex-start', gap: "var(--spacing-fsk-23)" }}>
+              <Surface style={{ display: 'flex', alignItems: 'flex-start', gap: "0.875rem" }}>
                 <Surface
                   style={{
-                    width: "var(--spacing-fsk-85)",
-                    height: "var(--spacing-fsk-85)",
-                    borderRadius: "var(--radius-fsk-37)",
-                    background: "var(--color-fsk-46)",
+                    width: "2.25rem",
+                    height: "2.25rem",
+                    borderRadius: "0.5rem",
+                    background: "var(--sage-light)",
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0,
-                    marginTop: "var(--spacing-fsk-47)",
+                    marginTop: "0.125rem",
                   }}
                 >
                   {getNotificationIcon(item.type)}
                 </Surface>
 
                 <Surface>
-                  <Surface style={{ display: 'flex', alignItems: 'center', gap: "var(--spacing-fsk-12)" }}>
-                    <Inline style={{ fontSize: "var(--font-fsk-91)", fontWeight: 700, color: "var(--color-fsk-7)" }}>
+                  <Surface style={{ display: 'flex', alignItems: 'center', gap: "0.5rem" }}>
+                    <Inline style={{ fontSize: "0.90625rem", fontWeight: 700, color: "var(--navy)" }}>
                       {item.title}
                     </Inline>
                     {!item.isRead && (
                       <Inline
                         style={{
-                          width: "var(--spacing-fsk-12)",
-                          height: "var(--spacing-fsk-12)",
+                          width: "0.5rem",
+                          height: "0.5rem",
                           borderRadius: '50%',
-                          background: "var(--color-fsk-15)",
+                          background: "var(--blue)",
                           display: 'inline-block',
                         }}
                       />
                     )}
                   </Surface>
 
-                  <p style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-18)", lineHeight: 1.5, marginTop: "var(--spacing-fsk-29)", margin: "var(--spacing-fsk-29) 0 0 0" }}>
+                  <p style={{ fontSize: "0.8125rem", color: "var(--muted)", lineHeight: 1.5, marginTop: "0.25rem", margin: "0.25rem 0 0 0" }}>
                     {item.description}
                   </p>
 
-                  <Surface style={{ fontSize: "var(--font-fsk-14)", color: "var(--color-fsk-57)", marginTop: "var(--spacing-fsk-17)" }}>
+                  <Surface style={{ fontSize: "0.8125rem", color: "#687d93", marginTop: "0.375rem" }}>
                     {item.timestamp}
                   </Surface>
                 </Surface>
@@ -176,15 +174,15 @@ export const CustomerNotificationsPage: React.FC = () => {
               <Link
                 to={item.linkUrl}
                 style={{
-                  fontSize: "var(--font-fsk-14)",
+                  fontSize: "0.8125rem",
                   fontWeight: 600,
-                  color: "var(--color-fsk-15)",
+                  color: "var(--blue)",
                   textDecoration: 'none',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: "var(--spacing-fsk-29)",
+                  gap: "0.25rem",
                   whiteSpace: 'nowrap',
-                  paddingTop: "var(--spacing-fsk-47)",
+                  paddingTop: "0.125rem",
                 }}
               >
                 View <ExternalLink size={13} />
@@ -192,7 +190,7 @@ export const CustomerNotificationsPage: React.FC = () => {
             </Surface>
           ))}
         </Surface>
-      </Card>
+      </Panel>
     </Surface>
   );
 };
