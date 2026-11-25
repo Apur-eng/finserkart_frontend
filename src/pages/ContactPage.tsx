@@ -8,13 +8,16 @@ import api from '../api/client';
 export const ContactPage: React.FC = () => {
   const [params] = useSearchParams();
   const enquiry = params.get('subject');
+  const requestedService = params.get('service')?.trim() || '';
   const enquiryTitle = enquiry === 'agent' ? 'Agent partnership enquiry' : enquiry === 'franchise' ? 'Franchise opportunity enquiry' : '';
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [country, setCountry] = useState('India');
   const [state, setState] = useState('Uttar Pradesh');
-  const [subject, setSubject] = useState(enquiryTitle);
+  const [subject, setSubject] = useState(
+    requestedService ? `Assistance request: ${requestedService}` : enquiryTitle
+  );
   const [message, setMessage] = useState('');
 
   const [isLoading, setIsLoading] = useState(false);

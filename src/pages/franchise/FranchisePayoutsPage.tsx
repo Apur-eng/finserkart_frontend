@@ -12,14 +12,17 @@ import {
   INITIAL_FRANCHISE_PAYOUTS,
   INITIAL_FRANCHISE_PROFILE
 } from '../../features/franchise/franchiseData';
+import { useDemo } from '../../features/demo/useDemo';
 
 export const FranchisePayoutsPage: React.FC = () => {
+  const { isDemoActive, isDemoModeEnabled } = useDemo();
+  const isDemoMode = isDemoActive || isDemoModeEnabled;
   const franchise = INITIAL_FRANCHISE_PROFILE;
   const [payouts, setPayouts] = useState(INITIAL_FRANCHISE_PAYOUTS);
   const [isRequested, setIsRequested] = useState(false);
 
   const handleRequestPayout = () => {
-    if (franchise.pendingPayout <= 0) return;
+    if (isDemoMode || franchise.pendingPayout <= 0) return;
 
     const newPayout = {
       id: `FRAN-PAY-${Math.floor(100 + Math.random() * 900)}`,
@@ -115,12 +118,18 @@ export const FranchisePayoutsPage: React.FC = () => {
           </p>
 
           <ActionButton
-            label={isRequested ? 'Settlement Processing' : 'Request Corporate Settlement'}
+            label={
+              isDemoMode
+                ? 'Settlements Disabled in Demo Mode'
+                : isRequested
+                ? 'Settlement Processing'
+                : 'Request Corporate Settlement'
+            }
             variant="primary"
             size="md"
             icon={<ArrowDownLeft size={16} />}
             onClick={handleRequestPayout}
-            isDisabled={isRequested || franchise.pendingPayout <= 0}
+            isDisabled={isDemoMode || isRequested || franchise.pendingPayout <= 0}
             width="100%"
           />
         </Panel>

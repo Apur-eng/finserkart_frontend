@@ -26,7 +26,6 @@ interface RoleLoginConfig {
   badge: string;
   usernameLabel: string;
   usernamePlaceholder: string;
-  endpoint: string;
   targetDashboard: string;
   isStaff: boolean;
   canSelfRegister: boolean;
@@ -41,7 +40,6 @@ const ROLES: RoleLoginConfig[] = [
     badge: 'Client Portal',
     usernameLabel: 'Customer Email',
     usernamePlaceholder: 'name@example.com',
-    endpoint: '/customer.php',
     targetDashboard: '/customer',
     isStaff: false,
     canSelfRegister: true,
@@ -54,7 +52,6 @@ const ROLES: RoleLoginConfig[] = [
     badge: 'Channel Partner',
     usernameLabel: 'Agent Email or Phone',
     usernamePlaceholder: 'agent@finservkart.com',
-    endpoint: '/agent.php',
     targetDashboard: '/agent',
     isStaff: false,
     canSelfRegister: true,
@@ -67,7 +64,6 @@ const ROLES: RoleLoginConfig[] = [
     badge: 'Regional Network',
     usernameLabel: 'Franchise ID or Email',
     usernamePlaceholder: 'FRN-XXXXX or franchise@finservkart.com',
-    endpoint: '/frenchise/index.php',
     targetDashboard: '/franchise',
     isStaff: false,
     canSelfRegister: false,
@@ -80,7 +76,6 @@ const ROLES: RoleLoginConfig[] = [
     badge: 'Regulatory Desk',
     usernameLabel: 'CA Membership No. or Email',
     usernamePlaceholder: 'ICAI-XXXXX or ca@finservkart.com',
-    endpoint: '/ca-login.php',
     targetDashboard: '/ca',
     isStaff: false,
     canSelfRegister: false,
@@ -93,7 +88,6 @@ const ROLES: RoleLoginConfig[] = [
     badge: 'Operations Desk',
     usernameLabel: 'Staff Username or Email',
     usernamePlaceholder: 'coord.name@finservkart.internal',
-    endpoint: '/co-ordinator/index.php',
     targetDashboard: '/coordinator',
     isStaff: true,
     canSelfRegister: false,
@@ -106,7 +100,6 @@ const ROLES: RoleLoginConfig[] = [
     badge: 'Platform Administration',
     usernameLabel: 'Administrator Email or Username',
     usernamePlaceholder: 'admin@finservkart.internal',
-    endpoint: '/admin/index.php',
     targetDashboard: '/admin',
     isStaff: true,
     canSelfRegister: false,
@@ -150,29 +143,26 @@ export const LoginPage: React.FC = () => {
 
     setIsLoading(true);
     try {
-      if (role === 'customer') {
-        const result = await api.loginCustomer({
-          email: identifier.trim().toLowerCase(),
-          password,
-        });
+      const result = await api.login(role, {
+        email: identifier.trim().toLowerCase(),
+        username: identifier.trim(),
+        password,
+      });
 
-        if (result.success) {
-          setSuccessMessage('Login successful! Redirecting...');
-          const serviceId = searchParams.get('serviceId');
-          setTimeout(() => {
-            if (serviceId) {
-              navigate(`/services/${serviceId}`);
-            } else {
-              navigate('/customer');
-            }
-          }, 800);
-        } else {
-          setErrorMessage(result.message || 'Invalid email or password.');
-        }
+      if (result.success) {
+        setSuccessMessage('Login successful! Redirecting...');
+        const serviceId = searchParams.get('serviceId');
+        setTimeout(() => {
+          if (serviceId && role === 'customer') {
+            navigate(`/services/${serviceId}`);
+          } else {
+            navigate(result.redirectUrl || activeConfig.targetDashboard);
+          }
+        }, 800);
       } else {
-        // Backend auth for other roles connects to verified PHP endpoint in production
         setErrorMessage(
-          `Production ${activeConfig.title} authentication communicates with backend contract (${activeConfig.endpoint}). For this client preview, use "Explore as ${activeConfig.title}" above to test with sample data.`
+          result.message ||
+            `Live ${activeConfig.title} authentication is awaiting the new backend API.`
         );
       }
     } catch (err: unknown) {
@@ -317,7 +307,7 @@ export const LoginPage: React.FC = () => {
                     fontFamily: 'monospace',
                   }}
                 >
-                  {activeConfig.endpoint}
+                  {activeConfig.badge}
                 </span>
               </Row>
 

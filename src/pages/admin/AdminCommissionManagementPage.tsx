@@ -14,14 +14,18 @@ import {
   type AdminCommissionRule,
   type AdminPayoutApprovalItem
 } from '../../features/admin/adminData';
+import { useDemo } from '../../features/demo/useDemo';
 
 export const AdminCommissionManagementPage: React.FC = () => {
+  const { isDemoActive, isDemoModeEnabled } = useDemo();
+  const isDemoMode = isDemoActive || isDemoModeEnabled;
   const [rules] = useState<AdminCommissionRule[]>(INITIAL_ADMIN_COMMISSION_RULES);
   const [payouts, setPayouts] = useState<AdminPayoutApprovalItem[]>(INITIAL_ADMIN_PAYOUT_APPROVALS);
   const [searchTerm, setSearchTerm] = useState('');
   const [successBanner, setSuccessBanner] = useState<string | null>(null);
 
   const handleApprove = (id: string, name: string, amount: number) => {
+    if (isDemoMode) return;
     setPayouts((prev) =>
       prev.map((p) => (p.id === id ? { ...p, status: 'Disbursed' } : p))
     );
@@ -29,6 +33,7 @@ export const AdminCommissionManagementPage: React.FC = () => {
   };
 
   const handleReject = (id: string, name: string) => {
+    if (isDemoMode) return;
     setPayouts((prev) =>
       prev.map((p) => (p.id === id ? { ...p, status: 'Rejected' } : p))
     );
@@ -193,6 +198,7 @@ export const AdminCommissionManagementPage: React.FC = () => {
                       <Surface style={{ display: 'flex', gap: "0.5rem", justifyContent: 'flex-end' }}>
                         <button
                           type="button"
+                          disabled={isDemoMode}
                           onClick={() => handleApprove(payout.id, payout.beneficiaryName, payout.amount)}
                           style={{
                             padding: "0.375rem 0.875rem",
@@ -202,23 +208,26 @@ export const AdminCommissionManagementPage: React.FC = () => {
                             fontWeight: 600,
                             fontSize: "0.8125rem",
                             border: 'none',
-                            cursor: 'pointer',
+                            cursor: isDemoMode ? 'not-allowed' : 'pointer',
+                            opacity: isDemoMode ? 0.5 : 1,
                           }}
                         >
                           Approve
                         </button>
                         <button
                           type="button"
+                          disabled={isDemoMode}
                           onClick={() => handleReject(payout.id, payout.beneficiaryName)}
                           style={{
                             padding: "0.375rem 0.875rem",
                             borderRadius: "0.375rem",
+                            opacity: isDemoMode ? 0.5 : 1,
+                            cursor: isDemoMode ? 'not-allowed' : 'pointer',
                             background: "#fee2e2",
                             color: "#dc2626",
                             fontWeight: 600,
                             fontSize: "0.8125rem",
                             border: "0.0625rem solid #fecaca",
-                            cursor: 'pointer',
                           }}
                         >
                           Reject

@@ -1,7 +1,19 @@
-import { useSearchParams } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+import type { FC } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import ServiceList from '../features/services/ServiceList';
-export function ServicesPage() {
-  const [params] = useSearchParams(); const query = params.get('q') ?? '';
-  return <div className="catalogue-page"><header className="page-heading"><div className="container"><p className="eyebrow">THE SERVICE DIRECTORY</p><h1>Financial & Compliance Services</h1><p>Find the support your business needs. Review service fees, document requirements and the next steps in one place.</p></div></header><div className="container section-space"><ServiceList key={query} initialSearch={query}/></div></div>;
-}
+
+export const ServicesPage: FC = () => {
+  const [params] = useSearchParams();
+  const query = params.get('q') ?? '';
+  return <div className="services-page">
+    <section className="services-intro">
+      <p className="eyebrow">FINANCIAL &amp; COMPLIANCE SERVICES</p>
+      <h1>Financial &amp; Compliance Services</h1>
+      <p>Browse the services currently listed in our catalogue. Compare available information and open a service to review its details.</p>
+      <Link to="/contact">Not sure where to start? Talk to our team <ArrowRight size={17} /></Link>
+    </section>
+    <ServiceList key={query} initialSearch={query} />
+  </div>;
+};
 export default ServicesPage;

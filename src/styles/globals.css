@@ -4,6 +4,7 @@
 @import '@fontsource/manrope/latin-600.css';
 @import '@fontsource/manrope/latin-700.css';
 @import './public.css';
+@import './public-experience.css';
 @import '../motion/styles/motion.css';
 :root {
  --navy:#10243a; --cream:#faf8f3; --teal:#0e6259; --blue:#2459e8; --amber:#e8ad38; --white:#fff; --sage:#e6efe9; --sage-light:#f0f4f1; --muted:#596673; --border:#dce2df;

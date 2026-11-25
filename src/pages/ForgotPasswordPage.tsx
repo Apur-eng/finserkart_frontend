@@ -259,7 +259,7 @@ export const ForgotPasswordPage: React.FC = () => {
               marginBottom: "1.5rem",
             }}
           >
-            Password recovery requests communicate directly with the verified Finservkart security service (<code>user-password-recovery.php</code>), ensuring encrypted delivery to your registered email address.
+            Password recovery requests will communicate with the Finservkart authentication service once configured, ensuring encrypted delivery to your registered email address.
           </p>
 
           <Surface style={{ display: 'flex', flexDirection: 'column', gap: "1.25rem" }}>

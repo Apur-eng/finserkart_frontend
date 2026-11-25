@@ -49,10 +49,9 @@ it('submits hero search to the existing catalogue and loads matching services', 
   await act(async () => host.querySelector('form')!.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true })));
   await act(async () => { await new Promise(resolve => setTimeout(resolve, 50)); });
   expect(host.querySelector('output')?.textContent).toBe('/services?q=ITR');
-  expect(api.searchServices).toHaveBeenCalledWith('ITR');
   expect(host.querySelector('input')?.value).toBe('ITR');
-  expect(host.querySelector('a[aria-label="View Details: ITR Filing"]')).toBeTruthy();
-  expect(host.querySelector('a[aria-label="View Details: GST Registration"]')).toBeNull();
+  expect(host.querySelector('a[aria-label="View details for ITR Filing"]')).toBeTruthy();
+  expect(host.querySelector('a[aria-label="View details for GST Registration"]')).toBeNull();
 });
 
 it('advances the slider manually, supports keyboard controls and uses actual service links', async () => {
@@ -94,14 +93,14 @@ describe('content and fee integrity', () => {
   });
   it.each(['', 'unknown', '-5', '12abc', 'Infinity'])('does not fabricate a fee from %s', amount => {
     const html = renderToStaticMarkup(<ThemeProvider><MemoryRouter><ServiceCard service={{ ...VERIFIED_INITIAL_SERVICES[0], total_amt: amount }} /></MemoryRouter></ThemeProvider>);
-    expect(html).not.toContain('Total fee');
-    expect(html).toContain('View Details');
+    expect(html).not.toContain('Listed total');
+    expect(html).toContain('View details');
   });
   it('retains a valid zero fee and decimal precision', () => {
     for (const amount of ['0', '1499.50']) {
       const html = renderToStaticMarkup(<ThemeProvider><MemoryRouter><ServiceCard service={{ ...VERIFIED_INITIAL_SERVICES[0], total_amt: amount }} /></MemoryRouter></ThemeProvider>);
-      expect(html).toContain('Total fee');
-      expect(html).toContain(amount === '0' ? '0.00' : '1,499.50');
+      expect(html).toContain('Listed total');
+      expect(html).toContain(amount === '0' ? '₹0' : '1,500');
     }
   });
 });

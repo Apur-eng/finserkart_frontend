@@ -12,14 +12,17 @@ import {
   INITIAL_AGENT_PAYOUTS,
   INITIAL_AGENT_PROFILE
 } from '../../features/agent/agentData';
+import { useDemo } from '../../features/demo/useDemo';
 
 export const AgentPayoutsPage: React.FC = () => {
+  const { isDemoActive, isDemoModeEnabled } = useDemo();
+  const isDemoMode = isDemoActive || isDemoModeEnabled;
   const agent = INITIAL_AGENT_PROFILE;
   const [payouts, setPayouts] = useState(INITIAL_AGENT_PAYOUTS);
   const [isRequested, setIsRequested] = useState(false);
 
   const handleRequestPayout = () => {
-    if (agent.pendingCommission <= 0) return;
+    if (isDemoMode || agent.pendingCommission <= 0) return;
 
     const newPayout = {
       id: `PAY-2026-${Math.floor(100 + Math.random() * 900)}`,
@@ -115,12 +118,18 @@ export const AgentPayoutsPage: React.FC = () => {
           </p>
 
           <ActionButton
-            label={isRequested ? 'Payout Processing' : 'Request Instant Payout'}
+            label={
+              isDemoMode
+                ? 'Payouts Disabled in Demo Mode'
+                : isRequested
+                ? 'Payout Processing'
+                : 'Request Instant Payout'
+            }
             variant="primary"
             size="md"
             icon={<ArrowDownLeft size={16} />}
             onClick={handleRequestPayout}
-            isDisabled={isRequested || agent.pendingCommission <= 0}
+            isDisabled={isDemoMode || isRequested || agent.pendingCommission <= 0}
             width="100%"
           />
         </Panel>

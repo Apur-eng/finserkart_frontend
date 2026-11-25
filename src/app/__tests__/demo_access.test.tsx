@@ -305,9 +305,9 @@ describe('Finservkart Demo Access and Role-Based Login Suite', () => {
       (adminTab as HTMLElement)?.click();
     });
 
-    // Check demo callout changed to Main Admin
+    // Check demo callout changed to Main Admin and no legacy .php paths leak into UI
     expect(host.textContent).toContain('Explore as Main Admin');
-    expect(host.textContent).toContain('/admin/index.php');
+    expect(host.textContent).not.toContain('.php');
 
     // Administrative roles do not display public self-registration
     expect(host.textContent).toContain('Staff accounts are provisioned internally');

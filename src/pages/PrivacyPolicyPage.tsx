@@ -103,7 +103,7 @@ export const PrivacyPolicyPage: React.FC = () => {
                 <strong>Platform Usage Data:</strong> Internet Protocol (IP) address, operating system, browser specifications, and transaction logs captured to ensure session security and prevent fraudulent access.
               </li>
               <li>
-                <strong>Cookies:</strong> Session tokens (e.g., <code>PHPSESSID</code>) utilized to maintain authenticated sessions and workflow continuity across our portals.
+                <strong>Cookies:</strong> Session cookies or authentication tokens utilized to maintain authenticated sessions and workflow continuity across our portals.
               </li>
             </ul>
           </section>

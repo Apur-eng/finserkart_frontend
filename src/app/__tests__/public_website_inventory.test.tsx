@@ -36,7 +36,7 @@ describe('Module 01: Public Website Master Inventory (10 Pages)', () => {
       expect(html.replace(/<[^>]+>/g, '')).toContain(titleExpected);
       if (route === '/') {
         // Guard content integrity when converting the marketing sections to data.
-        expect(html).toContain('How It Works');
+        expect(html).toContain('How Finservkart Works');
         expect(html).not.toContain('Bank-Level Security');
         expect(html).not.toContain('99.8%');
         expect(html).not.toContain('&lt;/h3&gt;');
